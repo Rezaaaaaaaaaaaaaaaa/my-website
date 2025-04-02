@@ -10,7 +10,8 @@ const PublicationsPage = () => {
       journal: "Journal of Environmental Management",
       year: 2023,
       volume: "328",
-      pages: "116926"
+      pages: "116926",
+      doi: "10.1016/j.jenvman.2023.116926"
     },
     {
       id: 2,
@@ -20,7 +21,8 @@ const PublicationsPage = () => {
       journal: "Ecological Engineering",
       year: 2023,
       volume: "187",
-      pages: "106851"
+      pages: "106851",
+      doi: "10.1016/j.ecoleng.2022.106851"
     },
     {
       id: 3,
@@ -30,7 +32,8 @@ const PublicationsPage = () => {
       journal: "Ecological Engineering",
       year: 2022,
       volume: "185",
-      pages: "106818"
+      pages: "106818",
+      doi: "10.1016/j.ecoleng.2022.106818"
     },
     {
       id: 6,
@@ -42,13 +45,23 @@ const PublicationsPage = () => {
       year: 2022
     },
     {
+      id: 7,
+      type: 'conference',
+      title: "Enhanced Nitrate Removal with Methanol Dosing in Woodchip Bioreactors: Laboratory and Field Evidence",
+      authors: "Moghaddam, R., et al.",
+      conference: "Farmed Landscapes Research Centre Conference",
+      location: "Massey University, NZ",
+      year: 2023
+    },
+    {
       id: 8,
       type: 'technical',
       title: "Kaiate Stream: assessment of changes in faecal contaminants and turbidity after the implementation of mitigation measures",
       authors: "Hughes, A., Moghaddam, R.",
       publisher: "NIWA Client Report",
       year: 2024,
-      reportNumber: "2024008HN"
+      reportNumber: "2024008HN",
+      pages: "30"
     }
   ];
 
@@ -69,6 +82,11 @@ const PublicationsPage = () => {
               <p className="publication-journal">
                 {publication.journal}, {publication.volume}, {publication.pages}
               </p>
+              {publication.doi && (
+                <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener noreferrer" className="publication-link">
+                  DOI: {publication.doi}
+                </a>
+              )}
             </div>
           ))}
         </div>
@@ -93,7 +111,7 @@ const PublicationsPage = () => {
               <h3>{publication.title}</h3>
               <p className="publication-authors">{publication.authors} ({publication.year})</p>
               <p className="publication-publisher">
-                {publication.publisher}, {publication.reportNumber}
+                {publication.publisher}, {publication.reportNumber}, {publication.pages} pages
               </p>
             </div>
           ))}

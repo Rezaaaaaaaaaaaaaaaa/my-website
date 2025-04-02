@@ -1,3 +1,5 @@
+/* App.css - Main styling for the portfolio website */
+
 /* Reset & Base Styles */
 * {
   margin: 0;
@@ -303,7 +305,7 @@ section h2 {
   background-color: #f5f5f5;
 }
 
-/* Common Page Styles */
+/* Page Header */
 .page-header {
   background-color: #1a5276;
   color: white;
@@ -322,7 +324,7 @@ section h2 {
   margin: 0 auto;
 }
 
-/* Projects Page Styles */
+/* Projects Page */
 .projects-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -371,7 +373,7 @@ section h2 {
   font-size: 0.9rem;
 }
 
-/* Publications Page Styles */
+/* Publications Page */
 .publications-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -385,7 +387,7 @@ section h2 {
   background-color: #f9f9f9;
 }
 
-/* Contact Page Styles */
+/* Contact Page */
 .contact-container {
   max-width: 1200px;
   margin: 0 auto;

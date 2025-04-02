@@ -51,7 +51,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Featured Projects */}
+      {/* Featured Projects Section */}
       <section className="featured-projects">
         <h2>Featured Projects</h2>
         <div className="project-grid">
@@ -68,8 +68,8 @@ const HomePage = () => {
             <h3>Aquatic Mitigation Systems for NES-F Compliance</h3>
             <p>Development of cost-effective mitigation systems for agricultural runoff treatment compliant with NZ regulations.</p>
             <div className="project-metrics">
-              <span>Implementation Cost: 20% lower</span>
-              <span>Treatment Efficiency: 85%</span>
+              <span>Implementation Cost: 20% lower than alternatives</span>
+              <span>Treatment Efficiency: 85% contaminant removal</span>
             </div>
             <Link to="/projects" className="project-link">Learn More</Link>
           </div>

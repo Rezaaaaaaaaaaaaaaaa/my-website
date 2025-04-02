@@ -1,0 +1,9 @@
+# Hero Background Image
+
+Please place a file named 'hero-bg.jpg' in this folder.
+This will be used as the background image for the hero section on the homepage.
+
+Recommended:
+- A professional image related to environmental engineering
+- High resolution (at least 1920x1080)
+- Good contrast so that white text remains readable

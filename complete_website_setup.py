@@ -1,142 +1,50 @@
 #!/usr/bin/env python3
 """
-Complete React Portfolio Website Setup Script
+Complete Portfolio Website Setup Script
 
-This script creates a fully functional React portfolio website for an environmental engineer.
-It handles all folder creation, file generation, and content setup to ensure the site builds 
-properly on Netlify without errors.
+This script creates all necessary files and folder structure for a React-based
+professional portfolio website for an Environmental Engineer.
 
 Usage:
-1. Save this script in your project root directory
-2. Run with: python complete_website_setup.py
-3. Commit and push the generated files to GitHub
-4. Deploy on Netlify with: build command 'npm run build', publish directory 'build'
+1. Save this script as 'portfolio_setup.py'
+2. Run: python portfolio_setup.py
+3. After running, install dependencies: npm install
+4. Start the development server: npm start
+5. Push to GitHub and deploy on Netlify
+
+The script will generate a complete React website with:
+- Proper folder structure
+- All required components
+- Navigation and routing
+- CSS styling
+- Package configuration
 """
 
 import os
 import sys
 import shutil
-from pathlib import Path
 
-# Define the structure of directories to create
-DIRECTORIES = [
-    'src',
-    'src/components',
-    'src/pages',
-    'public',
-]
-
-# Define all file contents as a dictionary
-FILES = {
-    # Root files
-    'package.json': """{
-  "name": "rmes-portfolio",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.16.0",
-    "react-scripts": "5.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
+def create_directories():
+    """Create the necessary directory structure"""
+    print("Creating directory structure...")
+    
+    # Define directories to create
+    directories = [
+        'src',
+        'src/components',
+        'src/pages',
+        'public',
+        'public/images'
     ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
-}""",
+    
+    # Create directories
+    for directory in directories:
+        os.makedirs(directory, exist_ok=True)
+        print(f"Created directory: {directory}")
 
-    # Public files
-    'public/index.html': """<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Dr. Reza Moghaddam - Environmental & Bioprocess Engineer Portfolio"
-    />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>RMES - Reza Moghaddam Environmental Solutions</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
-</html>""",
-
-    'public/manifest.json': """{
-  "short_name": "RMES",
-  "name": "Reza Moghaddam Environmental Solutions",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
-}""",
-
-    'public/robots.txt': """# https://www.robotstxt.org/robotstxt.html
-User-agent: *
-Disallow:
-""",
-
-    # Source files
-    'src/index.js': """import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-""",
-
-    'src/index.css': """body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f9f9f9;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-""",
-
-    'src/App.js': """import React from 'react';
+def create_app_js():
+    """Create the main App.js file"""
+    content = """import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
@@ -160,9 +68,34 @@ function App() {
 }
 
 export default App;
-""",
+"""
+    with open('src/App.js', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("Created App.js")
 
-    'src/App.css': """/* Reset & Base Styles */
+def create_index_js():
+    """Create the index.js file"""
+    content = """import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './App.css';
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+"""
+    with open('src/index.js', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("Created index.js")
+
+def create_app_css():
+    """Create the App.css file with styles"""
+    content = """/* App.css - Main styling for the portfolio website */
+
+/* Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -467,7 +400,7 @@ section h2 {
   background-color: #f5f5f5;
 }
 
-/* Common Page Styles */
+/* Page Header */
 .page-header {
   background-color: #1a5276;
   color: white;
@@ -486,7 +419,7 @@ section h2 {
   margin: 0 auto;
 }
 
-/* Projects Page Styles */
+/* Projects Page */
 .projects-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -535,7 +468,7 @@ section h2 {
   font-size: 0.9rem;
 }
 
-/* Publications Page Styles */
+/* Publications Page */
 .publications-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -549,7 +482,7 @@ section h2 {
   background-color: #f9f9f9;
 }
 
-/* Contact Page Styles */
+/* Contact Page */
 .contact-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -591,10 +524,14 @@ section h2 {
     margin-top: 1rem;
   }
 }
-""",
+"""
+    with open('src/App.css', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("Created App.css")
 
-    # Components
-    'src/components/Navbar.js': """import React from 'react';
+def create_navbar_component():
+    """Create the Navbar component"""
+    content = """import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -624,10 +561,14 @@ const Navbar = () => {
 };
 
 export default Navbar;
-""",
+"""
+    with open('src/components/Navbar.js', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("Created Navbar.js component")
 
-    # Pages
-    'src/pages/HomePage.js': """import React from 'react';
+def create_home_page():
+    """Create the HomePage component"""
+    content = """import React from 'react';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
@@ -680,7 +621,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Featured Projects */}
+      {/* Featured Projects Section */}
       <section className="featured-projects">
         <h2>Featured Projects</h2>
         <div className="project-grid">
@@ -697,8 +638,8 @@ const HomePage = () => {
             <h3>Aquatic Mitigation Systems for NES-F Compliance</h3>
             <p>Development of cost-effective mitigation systems for agricultural runoff treatment compliant with NZ regulations.</p>
             <div className="project-metrics">
-              <span>Implementation Cost: 20% lower</span>
-              <span>Treatment Efficiency: 85%</span>
+              <span>Implementation Cost: 20% lower than alternatives</span>
+              <span>Treatment Efficiency: 85% contaminant removal</span>
             </div>
             <Link to="/projects" className="project-link">Learn More</Link>
           </div>
@@ -737,9 +678,14 @@ const HomePage = () => {
 };
 
 export default HomePage;
-""",
+"""
+    with open('src/pages/HomePage.js', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("Created HomePage.js")
 
-    'src/pages/ProjectsPage.js': """import React from 'react';
+def create_projects_page():
+    """Create the ProjectsPage component"""
+    content = """import React from 'react';
 
 const ProjectsPage = () => {
   const projects = [
@@ -752,18 +698,18 @@ const ProjectsPage = () => {
         efficiencyImprovement: "30%",
         costReduction: "25%"
       },
-      technologies: ["Denitrifying Bioreactors", "Carbon Dosing Systems", "Water Quality Monitoring"]
+      technologies: ["Denitrifying Bioreactors", "Carbon Dosing Systems", "Water Quality Monitoring", "Agricultural Drainage"]
     },
     {
       id: 2,
       title: "Aquatic Mitigation Systems for NES-F Compliance",
       description: "Development of cost-effective mitigation systems for agricultural runoff treatment compliant with NZ regulations.",
-      details: "This project involved designing and implementing mitigation systems that help farmers comply with New Zealand's National Environmental Standards for Freshwater. The systems were designed with cost-effectiveness and practical implementation in mind.",
+      details: "This project involved designing and implementing mitigation systems that help farmers comply with New Zealand's National Environmental Standards for Freshwater (NES-F). The systems were designed with cost-effectiveness and practical implementation in mind.",
       metrics: {
         implementationCost: "20% lower than alternatives",
         treatmentEfficiency: "85% contaminant removal"
       },
-      technologies: ["Constructed Wetlands", "Filter Systems", "Regulatory Compliance"]
+      technologies: ["Constructed Wetlands", "Filter Systems", "Regulatory Compliance", "Cost-Benefit Analysis"]
     },
     {
       id: 3,
@@ -774,7 +720,7 @@ const ProjectsPage = () => {
         yieldIncrease: "25%",
         processEfficiency: "20% improvement"
       },
-      technologies: ["Bioethanol Production", "Fermentation Technology", "Process Optimization"]
+      technologies: ["Bioethanol Production", "Fermentation Technology", "Process Optimization", "Sustainable Energy"]
     }
   ];
 
@@ -824,9 +770,14 @@ const ProjectsPage = () => {
 };
 
 export default ProjectsPage;
-""",
+"""
+    with open('src/pages/ProjectsPage.js', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("Created ProjectsPage.js")
 
-    'src/pages/PublicationsPage.js': """import React from 'react';
+def create_publications_page():
+    """Create the PublicationsPage component"""
+    content = """import React from 'react';
 
 const PublicationsPage = () => {
   const publications = [
@@ -838,7 +789,8 @@ const PublicationsPage = () => {
       journal: "Journal of Environmental Management",
       year: 2023,
       volume: "328",
-      pages: "116926"
+      pages: "116926",
+      doi: "10.1016/j.jenvman.2023.116926"
     },
     {
       id: 2,
@@ -848,7 +800,8 @@ const PublicationsPage = () => {
       journal: "Ecological Engineering",
       year: 2023,
       volume: "187",
-      pages: "106851"
+      pages: "106851",
+      doi: "10.1016/j.ecoleng.2022.106851"
     },
     {
       id: 3,
@@ -858,7 +811,8 @@ const PublicationsPage = () => {
       journal: "Ecological Engineering",
       year: 2022,
       volume: "185",
-      pages: "106818"
+      pages: "106818",
+      doi: "10.1016/j.ecoleng.2022.106818"
     },
     {
       id: 6,
@@ -870,13 +824,23 @@ const PublicationsPage = () => {
       year: 2022
     },
     {
+      id: 7,
+      type: 'conference',
+      title: "Enhanced Nitrate Removal with Methanol Dosing in Woodchip Bioreactors: Laboratory and Field Evidence",
+      authors: "Moghaddam, R., et al.",
+      conference: "Farmed Landscapes Research Centre Conference",
+      location: "Massey University, NZ",
+      year: 2023
+    },
+    {
       id: 8,
       type: 'technical',
       title: "Kaiate Stream: assessment of changes in faecal contaminants and turbidity after the implementation of mitigation measures",
       authors: "Hughes, A., Moghaddam, R.",
       publisher: "NIWA Client Report",
       year: 2024,
-      reportNumber: "2024008HN"
+      reportNumber: "2024008HN",
+      pages: "30"
     }
   ];
 
@@ -897,6 +861,11 @@ const PublicationsPage = () => {
               <p className="publication-journal">
                 {publication.journal}, {publication.volume}, {publication.pages}
               </p>
+              {publication.doi && (
+                <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener noreferrer" className="publication-link">
+                  DOI: {publication.doi}
+                </a>
+              )}
             </div>
           ))}
         </div>
@@ -921,7 +890,7 @@ const PublicationsPage = () => {
               <h3>{publication.title}</h3>
               <p className="publication-authors">{publication.authors} ({publication.year})</p>
               <p className="publication-publisher">
-                {publication.publisher}, {publication.reportNumber}
+                {publication.publisher}, {publication.reportNumber}, {publication.pages} pages
               </p>
             </div>
           ))}
@@ -932,9 +901,14 @@ const PublicationsPage = () => {
 };
 
 export default PublicationsPage;
-""",
+"""
+    with open('src/pages/PublicationsPage.js', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("Created PublicationsPage.js")
 
-    'src/pages/ContactPage.js': """import React from 'react';
+def create_contact_page():
+    """Create the ContactPage component"""
+    content = """import React from 'react';
 
 const ContactPage = () => {
   return (
@@ -1009,10 +983,81 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
-""",
+"""
+    with open('src/pages/ContactPage.js', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("Created ContactPage.js")
 
-    # .gitignore file
-    '.gitignore': """# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+def create_index_html():
+    """Create the index.html file"""
+    content = """<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Dr. Reza Moghaddam - Environmental & Bioprocess Engineer Portfolio"
+    />
+    <meta name="keywords" content="Environmental Engineering, Bioprocess Engineering, Water Treatment, Bioreactors, Nitrate Removal, New Zealand" />
+    <meta name="author" content="Dr. Reza Moghaddam" />
+    <title>Reza Moghaddam | Environmental Engineer</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
+"""
+    with open('public/index.html', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("Created index.html")
+
+def create_package_json():
+    """Create the package.json file"""
+    content = """{
+  "name": "rmes-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
+    "react-scripts": "5.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}"""
+    with open('package.json', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("Created package.json")
+
+def create_gitignore():
+    """Create the .gitignore file"""
+    content = """# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /node_modules
@@ -1036,60 +1081,66 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 """
-}
+    with open('.gitignore', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("Created .gitignore")
 
-def create_empty_image_file(filename, size=10):
-    """Create a small placeholder image file"""
-    with open(filename, 'wb') as f:
-        f.write(b'\x00' * size)
+def create_placeholder_image():
+    """Create a placeholder text file explaining the need for hero-bg.jpg"""
+    content = """# Hero Background Image
 
-def setup_website():
-    """Set up the entire website structure and files"""
+Please place a file named 'hero-bg.jpg' in this folder.
+This will be used as the background image for the hero section on the homepage.
+
+Recommended:
+- A professional image related to environmental engineering
+- High resolution (at least 1920x1080)
+- Good contrast so that white text remains readable
+"""
+    with open('public/hero-bg.txt', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("Created hero-bg.txt placeholder")
+
+def main():
+    """Main function that orchestrates the website creation"""
+    print("\n=== Creating React Portfolio Website Structure ===\n")
     
-    print("\n===== Setting up RMES Portfolio Website =====\n")
+    # Create directory structure
+    create_directories()
     
-    # Create directories
-    for directory in DIRECTORIES:
-        os.makedirs(directory, exist_ok=True)
-        print(f"Created directory: {directory}")
+    # Create core React files
+    create_app_js()
+    create_index_js()
+    create_app_css()
     
-    # Create all files
-    for filename, content in FILES.items():
-        # Ensure the directory exists
-        directory = os.path.dirname(filename)
-        if directory and not os.path.exists(directory):
-            os.makedirs(directory, exist_ok=True)
-        
-        # Write the file
-        with open(filename, 'w', encoding='utf-8') as f:
-            f.write(content)
-        print(f"Created file: {filename}")
+    # Create components
+    create_navbar_component()
     
-    # Create a simple placeholder hero image
-    hero_image_path = os.path.join('public', 'hero-bg.jpg')
-    if not os.path.exists(hero_image_path):
-        create_empty_image_file(hero_image_path, size=1024)
-        print(f"Created placeholder image: {hero_image_path} (replace with a real image)")
+    # Create pages
+    create_home_page()
+    create_projects_page()
+    create_publications_page()
+    create_contact_page()
     
-    # Create favicon placeholder
-    favicon_path = os.path.join('public', 'favicon.ico')
-    if not os.path.exists(favicon_path):
-        create_empty_image_file(favicon_path, size=1024)
-        print(f"Created placeholder favicon: {favicon_path}")
+    # Create HTML and config files
+    create_index_html()
+    create_package_json()
+    create_gitignore()
+    create_placeholder_image()
     
-    print("\n===== Website Setup Complete! =====\n")
-    
-    # Print next steps
-    print("Next Steps:")
-    print("1. Replace the placeholder hero-bg.jpg in the public folder with a real image")
-    print("2. Install dependencies: npm install")
-    print("3. Start the development server: npm start")
-    print("4. Commit and push to GitHub:")
+    print("\n=== Website Structure Created Successfully! ===\n")
+    print("Next steps:")
+    print("1. Add a background image named 'hero-bg.jpg' to the public folder")
+    print("2. Run 'npm install' to install dependencies")
+    print("3. Run 'npm start' to preview the website locally")
+    print("4. Push to GitHub:")
     print("   git add .")
-    print("   git commit -m \"Update website files\"")
+    print("   git commit -m \"Initial website setup\"")
     print("   git push")
-    print("\nYour website should now build successfully on Netlify!")
+    print("5. Deploy to Netlify:")
+    print("   - Connect your GitHub repository")
+    print("   - Build command: npm run build")
+    print("   - Publish directory: build")
 
 if __name__ == "__main__":
-    # Run the website setup
-    setup_website()
+    main()

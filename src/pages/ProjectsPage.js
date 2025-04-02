@@ -11,18 +11,18 @@ const ProjectsPage = () => {
         efficiencyImprovement: "30%",
         costReduction: "25%"
       },
-      technologies: ["Denitrifying Bioreactors", "Carbon Dosing Systems", "Water Quality Monitoring"]
+      technologies: ["Denitrifying Bioreactors", "Carbon Dosing Systems", "Water Quality Monitoring", "Agricultural Drainage"]
     },
     {
       id: 2,
       title: "Aquatic Mitigation Systems for NES-F Compliance",
       description: "Development of cost-effective mitigation systems for agricultural runoff treatment compliant with NZ regulations.",
-      details: "This project involved designing and implementing mitigation systems that help farmers comply with New Zealand's National Environmental Standards for Freshwater. The systems were designed with cost-effectiveness and practical implementation in mind.",
+      details: "This project involved designing and implementing mitigation systems that help farmers comply with New Zealand's National Environmental Standards for Freshwater (NES-F). The systems were designed with cost-effectiveness and practical implementation in mind.",
       metrics: {
         implementationCost: "20% lower than alternatives",
         treatmentEfficiency: "85% contaminant removal"
       },
-      technologies: ["Constructed Wetlands", "Filter Systems", "Regulatory Compliance"]
+      technologies: ["Constructed Wetlands", "Filter Systems", "Regulatory Compliance", "Cost-Benefit Analysis"]
     },
     {
       id: 3,
@@ -33,7 +33,7 @@ const ProjectsPage = () => {
         yieldIncrease: "25%",
         processEfficiency: "20% improvement"
       },
-      technologies: ["Bioethanol Production", "Fermentation Technology", "Process Optimization"]
+      technologies: ["Bioethanol Production", "Fermentation Technology", "Process Optimization", "Sustainable Energy"]
     }
   ];
 

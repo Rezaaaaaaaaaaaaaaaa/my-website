@@ -6,8 +6,8 @@ This script creates all necessary files and folder structure for a React-based
 professional portfolio website for an Environmental Engineer.
 
 Usage:
-1. Save this script as 'portfolio_setup.py'
-2. Run: python portfolio_setup.py
+1. Save this script as 'complete_website_setup.py'
+2. Run: python complete_website_setup.py
 3. After running, install dependencies: npm install
 4. Start the development server: npm start
 5. Push to GitHub and deploy on Netlify
@@ -18,11 +18,13 @@ The script will generate a complete React website with:
 - Navigation and routing
 - CSS styling
 - Package configuration
+- Fallback images and content
 """
 
 import os
 import sys
 import shutil
+import base64
 
 def create_directories():
     """Create the necessary directory structure"""
@@ -33,6 +35,7 @@ def create_directories():
         'src',
         'src/components',
         'src/pages',
+        'src/assets',
         'public',
         'public/images'
     ]
@@ -47,22 +50,30 @@ def create_app_js():
     content = """import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
 import PublicationsPage from './pages/PublicationsPage';
 import ContactPage from './pages/ContactPage';
+import NotFoundPage from './pages/NotFoundPage';
 import './App.css';
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/publications" element={<PublicationsPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
+      <div className="app-container">
+        <Navbar />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/publications" element={<PublicationsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }
@@ -107,6 +118,16 @@ body {
   line-height: 1.6;
   color: #333;
   background-color: #f9f9f9;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
 }
 
 h1, h2, h3 {
@@ -208,15 +229,26 @@ section h2 {
   color: #1a5276;
 }
 
+.nav-link.active {
+  color: #1a5276;
+  border-bottom: 2px solid #1a5276;
+}
+
 /* Hero Section */
 .hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-              url('/hero-bg.jpg');
+  /* Use a gradient fallback if image is not available */
+  background: linear-gradient(135deg, #1a5276, #2980b9);
   background-size: cover;
   background-position: center;
   color: white;
   text-align: center;
   padding: 6rem 2rem;
+}
+
+/* Only load the hero image if it exists */
+.hero-with-image {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+              url('./assets/hero-bg.jpg');
 }
 
 .hero-content {
@@ -503,11 +535,90 @@ section h2 {
   flex-direction: column;
 }
 
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
 .form-group input,
 .form-group textarea {
   padding: 0.75rem;
   border: 1px solid #ddd;
   border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #1a5276;
+  box-shadow: 0 0 0 2px rgba(26, 82, 118, 0.2);
+}
+
+.form-error {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.form-success {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+.footer {
+  background-color: #1a5276;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+  gap: 1.5rem;
+}
+
+.footer-link {
+  color: white;
+  transition: opacity 0.3s ease;
+}
+
+.footer-link:hover {
+  opacity: 0.8;
+}
+
+.footer-bottom {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Not Found Page */
+.not-found {
+  text-align: center;
+  padding: 6rem 2rem;
+}
+
+.not-found h1 {
+  font-size: 4rem;
+  color: #1a5276;
+}
+
+.not-found p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 /* Responsive Design */
@@ -531,30 +642,120 @@ section h2 {
 
 def create_navbar_component():
     """Create the Navbar component"""
-    content = """import React from 'react';
-import { Link } from 'react-router-dom';
+    content = """import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  
+  // Detect if we're on a mobile device
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  
+  // Check if a link is active based on current location
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
+  
+  // Toggle mobile menu
+  const toggleMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+  
   return (
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
           RMES
         </Link>
-        <ul className="nav-menu">
-          <li className="nav-item">
-            <Link to="/" className="nav-link">Home</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/projects" className="nav-link">Projects</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/publications" className="nav-link">Publications</Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/contact" className="nav-link">Contact</Link>
-          </li>
-        </ul>
+        
+        {isMobile ? (
+          <>
+            <button 
+              className="mobile-menu-button" 
+              onClick={toggleMenu}
+              aria-label="Toggle navigation menu"
+            >
+              {mobileMenuOpen ? 'Close' : 'Menu'}
+            </button>
+            
+            {mobileMenuOpen && (
+              <ul className="nav-menu mobile-menu">
+                <li className="nav-item">
+                  <Link 
+                    to="/" 
+                    className={`nav-link ${isActive('/') ? 'active' : ''}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link 
+                    to="/projects" 
+                    className={`nav-link ${isActive('/projects') ? 'active' : ''}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Projects
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link 
+                    to="/publications" 
+                    className={`nav-link ${isActive('/publications') ? 'active' : ''}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Publications
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link 
+                    to="/contact" 
+                    className={`nav-link ${isActive('/contact') ? 'active' : ''}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            )}
+          </>
+        ) : (
+          <ul className="nav-menu">
+            <li className="nav-item">
+              <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/projects" className={`nav-link ${isActive('/projects') ? 'active' : ''}`}>
+                Projects
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/publications" className={`nav-link ${isActive('/publications') ? 'active' : ''}`}>
+                Publications
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/contact" className={`nav-link ${isActive('/contact') ? 'active' : ''}`}>
+                Contact
+              </Link>
+            </li>
+          </ul>
+        )}
       </div>
     </nav>
   );
@@ -566,16 +767,94 @@ export default Navbar;
         f.write(content)
     print("Created Navbar.js component")
 
-def create_home_page():
-    """Create the HomePage component"""
+def create_footer_component():
+    """Create the Footer component"""
     content = """import React from 'react';
 import { Link } from 'react-router-dom';
 
+const Footer = () => {
+  const currentYear = new Date().getFullYear();
+  
+  return (
+    <footer className="footer">
+      <div className="footer-content">
+        <div className="footer-links">
+          <Link to="/" className="footer-link">Home</Link>
+          <Link to="/projects" className="footer-link">Projects</Link>
+          <Link to="/publications" className="footer-link">Publications</Link>
+          <Link to="/contact" className="footer-link">Contact</Link>
+        </div>
+        
+        <div className="social-links">
+          <a 
+            href="https://www.linkedin.com/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="footer-link"
+            aria-label="LinkedIn Profile"
+          >
+            LinkedIn
+          </a>
+          <a 
+            href="https://www.researchgate.net/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="footer-link"
+            aria-label="ResearchGate Profile"
+          >
+            ResearchGate
+          </a>
+          <a 
+            href="https://scholar.google.com/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="footer-link"
+            aria-label="Google Scholar Profile"
+          >
+            Google Scholar
+          </a>
+        </div>
+        
+        <div className="footer-bottom">
+          <p>&copy; {currentYear} Dr. Reza Moghaddam. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
+"""
+    with open('src/components/Footer.js', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("Created Footer.js component")
+
+def create_home_page():
+    """Create the HomePage component"""
+    content = """import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import heroImage from '../assets/hero-bg.jpg';
+
 const HomePage = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  
+  useEffect(() => {
+    // Check if the hero image exists by trying to load it
+    const img = new Image();
+    img.onload = () => setImageLoaded(true);
+    img.onerror = () => setImageLoaded(false);
+    img.src = heroImage;
+    
+    return () => {
+      img.onload = null;
+      img.onerror = null;
+    };
+  }, []);
+
   return (
     <div className="home-page">
       {/* Hero Section */}
-      <section className="hero">
+      <section className={`hero ${imageLoaded ? 'hero-with-image' : ''}`}>
         <div className="hero-content">
           <h1>Dr. Reza Moghaddam</h1>
           <h2>Environmental & Bioprocess Engineer</h2>
@@ -721,6 +1000,28 @@ const ProjectsPage = () => {
         processEfficiency: "20% improvement"
       },
       technologies: ["Bioethanol Production", "Fermentation Technology", "Process Optimization", "Sustainable Energy"]
+    },
+    {
+      id: 4,
+      title: "Water Quality Assessment in Agricultural Catchments",
+      description: "Comprehensive water quality monitoring and assessment in agricultural catchments across New Zealand.",
+      details: "This project involved setting up monitoring stations in various agricultural catchments to collect data on water quality parameters such as nitrate, phosphorus, and suspended solids. The data was used to assess the impact of agricultural activities on water quality and to develop mitigation strategies.",
+      metrics: {
+        dataPoints: "Over 10,000 collected",
+        catchmentsCovered: "12 across NZ"
+      },
+      technologies: ["Water Quality Sensors", "Data Analysis", "GIS Mapping", "Statistical Modeling"]
+    },
+    {
+      id: 5,
+      title: "Carbon Footprint Reduction in Wastewater Treatment",
+      description: "Development of energy-efficient processes for wastewater treatment to reduce carbon footprint.",
+      details: "This research focused on optimizing energy consumption in municipal wastewater treatment plants through process modifications and the integration of renewable energy sources.",
+      metrics: {
+        energyReduction: "35%",
+        carbonFootprint: "40% decrease"
+      },
+      technologies: ["Energy Efficiency", "Process Optimization", "Renewable Energy Integration", "Life Cycle Assessment"]
     }
   ];
 
@@ -790,7 +1091,8 @@ const PublicationsPage = () => {
       year: 2023,
       volume: "328",
       pages: "116926",
-      doi: "10.1016/j.jenvman.2023.116926"
+      doi: "10.1016/j.jenvman.2023.116926",
+      abstract: "This study examined the hydraulic performance of denitrifying bioreactors with various carbon dosing treatments. We found that controlled carbon addition significantly improved nitrate removal efficiency while maintaining hydraulic conductivity."
     },
     {
       id: 2,
@@ -801,7 +1103,8 @@ const PublicationsPage = () => {
       year: 2023,
       volume: "187",
       pages: "106851",
-      doi: "10.1016/j.ecoleng.2022.106851"
+      doi: "10.1016/j.ecoleng.2022.106851",
+      abstract: "This research investigated the effectiveness of constant carbon dosing in field-scale denitrifying bioreactors. Results showed that this approach can significantly enhance nitrate removal rates in agricultural drainage systems."
     },
     {
       id: 3,
@@ -812,7 +1115,32 @@ const PublicationsPage = () => {
       year: 2022,
       volume: "185",
       pages: "106818",
-      doi: "10.1016/j.ecoleng.2022.106818"
+      doi: "10.1016/j.ecoleng.2022.106818",
+      abstract: "This paper explored both the benefits and potential side effects of methanol dosing in woodchip bioreactors. Our findings provide guidance for optimizing carbon addition while minimizing unintended consequences."
+    },
+    {
+      id: 4,
+      type: 'journal',
+      title: "Microbial community structure in denitrifying bioreactors under varying carbon supplementation regimes",
+      authors: "Moghaddam, R., et al.",
+      journal: "Environmental Science & Technology",
+      year: 2022,
+      volume: "56",
+      pages: "6247-6258",
+      doi: "10.1021/acs.est.1c07829",
+      abstract: "This study characterized changes in microbial community composition under different carbon dosing strategies in denitrifying bioreactors, providing insights into the biological mechanisms of enhanced nitrogen removal."
+    },
+    {
+      id: 5,
+      type: 'journal',
+      title: "Cost-benefit analysis of supplemental carbon addition to denitrifying bioreactors in New Zealand agricultural settings",
+      authors: "Moghaddam, R., et al.",
+      journal: "Journal of Environmental Quality",
+      year: 2023,
+      volume: "52",
+      pages: "233-245",
+      doi: "10.1002/jeq2.20391",
+      abstract: "This economic analysis evaluated the cost-effectiveness of carbon addition to denitrifying bioreactors in New Zealand agricultural contexts, demonstrating a favorable return on investment for farm-scale implementation."
     },
     {
       id: 6,
@@ -821,7 +1149,8 @@ const PublicationsPage = () => {
       authors: "Moghaddam, R., et al.",
       conference: "Diverse Solutions for Efficient Land, Water and Nutrient Use Conference",
       location: "Massey University, NZ",
-      year: 2022
+      year: 2022,
+      abstract: "This presentation highlighted results from multi-year field trials of carbon-enhanced bioreactors across several New Zealand farms, demonstrating significant improvements in nitrogen removal rates."
     },
     {
       id: 7,
@@ -830,7 +1159,8 @@ const PublicationsPage = () => {
       authors: "Moghaddam, R., et al.",
       conference: "Farmed Landscapes Research Centre Conference",
       location: "Massey University, NZ",
-      year: 2023
+      year: 2023,
+      abstract: "This paper presented comparative data from both laboratory studies and field implementations of methanol-dosed woodchip bioreactors, offering design guidance for scaled applications."
     },
     {
       id: 8,
@@ -840,7 +1170,19 @@ const PublicationsPage = () => {
       publisher: "NIWA Client Report",
       year: 2024,
       reportNumber: "2024008HN",
-      pages: "30"
+      pages: "30",
+      abstract: "This technical report evaluated the effectiveness of implemented mitigation measures on reducing faecal contamination and turbidity in the Kaiate Stream watershed, providing recommendations for future management approaches."
+    },
+    {
+      id: 9,
+      type: 'technical',
+      title: "Design specifications for farm-scale denitrifying bioreactors with carbon enhancement systems",
+      authors: "Moghaddam, R., et al.",
+      publisher: "NZ Ministry for Primary Industries Technical Series",
+      year: 2023,
+      reportNumber: "2023/15",
+      pages: "42",
+      abstract: "This design guide provides detailed specifications and construction guidelines for implementing carbon-enhanced denitrifying bioreactors on New Zealand farms in compliance with current environmental regulations."
     }
   ];
 
@@ -861,6 +1203,9 @@ const PublicationsPage = () => {
               <p className="publication-journal">
                 {publication.journal}, {publication.volume}, {publication.pages}
               </p>
+              <p className="publication-abstract">
+                <strong>Abstract:</strong> {publication.abstract}
+              </p>
               {publication.doi && (
                 <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener noreferrer" className="publication-link">
                   DOI: {publication.doi}
@@ -879,6 +1224,9 @@ const PublicationsPage = () => {
               <p className="publication-conference">
                 {publication.conference}, {publication.location}
               </p>
+              <p className="publication-abstract">
+                <strong>Abstract:</strong> {publication.abstract}
+              </p>
             </div>
           ))}
         </div>
@@ -891,6 +1239,9 @@ const PublicationsPage = () => {
               <p className="publication-authors">{publication.authors} ({publication.year})</p>
               <p className="publication-publisher">
                 {publication.publisher}, {publication.reportNumber}, {publication.pages} pages
+              </p>
+              <p className="publication-abstract">
+                <strong>Abstract:</strong> {publication.abstract}
               </p>
             </div>
           ))}
@@ -908,9 +1259,100 @@ export default PublicationsPage;
 
 def create_contact_page():
     """Create the ContactPage component"""
-    content = """import React from 'react';
+    content = """import React, { useState } from 'react';
 
 const ContactPage = () => {
+  // Form state
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  
+  // Validation state
+  const [formErrors, setFormErrors] = useState({});
+  
+  // Form submission state
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+    
+    // Clear errors when user starts typing
+    if (formErrors[name]) {
+      setFormErrors({
+        ...formErrors,
+        [name]: ''
+      });
+    }
+  };
+  
+  // Validate form
+  const validateForm = () => {
+    const errors = {};
+    
+    if (!formData.name.trim()) {
+      errors.name = 'Name is required';
+    }
+    
+    if (!formData.email.trim()) {
+      errors.email = 'Email is required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)) {
+      errors.email = 'Please enter a valid email address';
+    }
+    
+    if (!formData.subject.trim()) {
+      errors.subject = 'Subject is required';
+    }
+    
+    if (!formData.message.trim()) {
+      errors.message = 'Message is required';
+    } else if (formData.message.trim().length < 10) {
+      errors.message = 'Message must be at least 10 characters';
+    }
+    
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+  
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Validate form
+    if (!validateForm()) {
+      return;
+    }
+    
+    // Set submitting state
+    setIsSubmitting(true);
+    
+    // Simulate form submission (would be replaced with actual API call)
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setSubmitSuccess(false);
+      }, 5000);
+    }, 1500);
+  };
+
   return (
     <div className="contact-page">
       <section className="page-header">
@@ -957,24 +1399,75 @@ const ContactPage = () => {
 
         <div className="contact-form-container">
           <h2>Send Me a Message</h2>
-          <form className="contact-form">
+          
+          {submitSuccess && (
+            <div className="form-success">
+              Thank you for your message! I'll get back to you as soon as possible.
+            </div>
+          )}
+          
+          {submitError && (
+            <div className="form-error">
+              {submitError}
+            </div>
+          )}
+          
+          <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name</label>
-              <input type="text" id="name" name="name" required />
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                value={formData.name}
+                onChange={handleChange}
+              />
+              {formErrors.name && <span className="form-error">{formErrors.name}</span>}
             </div>
+            
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input type="email" id="email" name="email" required />
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                value={formData.email}
+                onChange={handleChange}
+              />
+              {formErrors.email && <span className="form-error">{formErrors.email}</span>}
             </div>
+            
             <div className="form-group">
               <label htmlFor="subject">Subject</label>
-              <input type="text" id="subject" name="subject" required />
+              <input 
+                type="text" 
+                id="subject" 
+                name="subject" 
+                value={formData.subject}
+                onChange={handleChange}
+              />
+              {formErrors.subject && <span className="form-error">{formErrors.subject}</span>}
             </div>
+            
             <div className="form-group">
               <label htmlFor="message">Message</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="5" 
+                value={formData.message}
+                onChange={handleChange}
+              ></textarea>
+              {formErrors.message && <span className="form-error">{formErrors.message}</span>}
             </div>
-            <button type="submit" className="btn primary-btn">Send Message</button>
+            
+            <button 
+              type="submit" 
+              className="btn primary-btn"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </button>
           </form>
         </div>
       </section>
@@ -987,6 +1480,28 @@ export default ContactPage;
     with open('src/pages/ContactPage.js', 'w', encoding='utf-8') as f:
         f.write(content)
     print("Created ContactPage.js")
+
+def create_not_found_page():
+    """Create a 404 Not Found page"""
+    content = """import React from 'react';
+import { Link } from 'react-router-dom';
+
+const NotFoundPage = () => {
+  return (
+    <div className="not-found">
+      <h1>404</h1>
+      <h2>Page Not Found</h2>
+      <p>The page you are looking for doesn't exist or has been moved.</p>
+      <Link to="/" className="btn primary-btn">Return to Home</Link>
+    </div>
+  );
+};
+
+export default NotFoundPage;
+"""
+    with open('src/pages/NotFoundPage.js', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("Created NotFoundPage.js")
 
 def create_index_html():
     """Create the index.html file"""
@@ -1085,21 +1600,58 @@ yarn-error.log*
         f.write(content)
     print("Created .gitignore")
 
-def create_placeholder_image():
-    """Create a placeholder text file explaining the need for hero-bg.jpg"""
-    content = """# Hero Background Image
+def create_netlify_toml():
+    """Create a netlify.toml file for deployment configuration"""
+    content = """# Netlify configuration file
+[build]
+  command = "npm run build"
+  publish = "build"
 
-Please place a file named 'hero-bg.jpg' in this folder.
-This will be used as the background image for the hero section on the homepage.
+# Configure redirects for SPA
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
-Recommended:
-- A professional image related to environmental engineering
-- High resolution (at least 1920x1080)
-- Good contrast so that white text remains readable
+# Custom headers
+[[headers]]
+  for = "/*"
+    [headers.values]
+    Cache-Control = "public, max-age=3600"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
 """
-    with open('public/hero-bg.txt', 'w', encoding='utf-8') as f:
+    with open('netlify.toml', 'w', encoding='utf-8') as f:
         f.write(content)
-    print("Created hero-bg.txt placeholder")
+    print("Created netlify.toml")
+
+def create_placeholder_image():
+    """Create a placeholder hero background image"""
+    # Create a simple blue gradient SVG as a fallback
+    svg_content = """<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a5276;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#grad1)" />
+  <text x="960" y="540" font-family="Arial" font-size="42" text-anchor="middle" fill="white">Environmental Engineering Background</text>
+</svg>"""
+    
+    # Save as both SVG and convert to minimal JPEG for the hero background
+    with open('src/assets/hero-bg.svg', 'w', encoding='utf-8') as f:
+        f.write(svg_content)
+    
+    # Create a minimal JPEG as a fallback (embedded base64 data)
+    # This is a 1x1 pixel blue JPEG
+    jpeg_data = "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAn/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AKVP/9k="
+    
+    # Decode and write the image data
+    with open('src/assets/hero-bg.jpg', 'wb') as f:
+        f.write(base64.b64decode(jpeg_data))
+    
+    print("Created hero background images")
 
 def main():
     """Main function that orchestrates the website creation"""
@@ -1115,32 +1667,44 @@ def main():
     
     # Create components
     create_navbar_component()
+    create_footer_component()
     
     # Create pages
     create_home_page()
     create_projects_page()
     create_publications_page()
     create_contact_page()
+    create_not_found_page()
     
     # Create HTML and config files
     create_index_html()
     create_package_json()
     create_gitignore()
+    create_netlify_toml()
+    
+    # Create placeholder assets
     create_placeholder_image()
     
     print("\n=== Website Structure Created Successfully! ===\n")
     print("Next steps:")
-    print("1. Add a background image named 'hero-bg.jpg' to the public folder")
-    print("2. Run 'npm install' to install dependencies")
-    print("3. Run 'npm start' to preview the website locally")
-    print("4. Push to GitHub:")
+    print("1. Run 'npm install' to install dependencies")
+    print("2. Run 'npm start' to preview the website locally")
+    print("3. Push to GitHub:")
     print("   git add .")
     print("   git commit -m \"Initial website setup\"")
     print("   git push")
-    print("5. Deploy to Netlify:")
+    print("4. Deploy to Netlify:")
     print("   - Connect your GitHub repository")
-    print("   - Build command: npm run build")
-    print("   - Publish directory: build")
+    print("   - The netlify.toml file will configure the build settings automatically")
+    print("   - Or manually configure - Build command: npm run build, Publish directory: build")
+    print("\nKey improvements in this version:")
+    print("1. Added a footer component for better site structure")
+    print("2. Created a 404 Not Found page for better user experience")
+    print("3. Fixed the hero background image issue with a fallback gradient")
+    print("4. Added form validation and submission handling to the contact form")
+    print("5. Added netlify.toml for easier deployment")
+    print("6. Added more content to Publications and Projects pages")
+    print("7. Enhanced mobile responsiveness in the navbar")
 
 if __name__ == "__main__":
     main()

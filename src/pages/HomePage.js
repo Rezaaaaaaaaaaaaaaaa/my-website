@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import heroImage from '../assets/hero-bg.jpg';
 
 const HomePage = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  
+  useEffect(() => {
+    // Check if the hero image exists by trying to load it
+    const img = new Image();
+    img.onload = () => setImageLoaded(true);
+    img.onerror = () => setImageLoaded(false);
+    img.src = heroImage;
+    
+    return () => {
+      img.onload = null;
+      img.onerror = null;
+    };
+  }, []);
+
   return (
     <div className="home-page">
       {/* Hero Section */}
-      <section className="hero">
+      <section className={`hero ${imageLoaded ? 'hero-with-image' : ''}`}>
         <div className="hero-content">
           <h1>Dr. Reza Moghaddam</h1>
           <h2>Environmental & Bioprocess Engineer</h2>

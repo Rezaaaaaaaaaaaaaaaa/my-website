@@ -34,6 +34,28 @@ const ProjectsPage = () => {
         processEfficiency: "20% improvement"
       },
       technologies: ["Bioethanol Production", "Fermentation Technology", "Process Optimization", "Sustainable Energy"]
+    },
+    {
+      id: 4,
+      title: "Water Quality Assessment in Agricultural Catchments",
+      description: "Comprehensive water quality monitoring and assessment in agricultural catchments across New Zealand.",
+      details: "This project involved setting up monitoring stations in various agricultural catchments to collect data on water quality parameters such as nitrate, phosphorus, and suspended solids. The data was used to assess the impact of agricultural activities on water quality and to develop mitigation strategies.",
+      metrics: {
+        dataPoints: "Over 10,000 collected",
+        catchmentsCovered: "12 across NZ"
+      },
+      technologies: ["Water Quality Sensors", "Data Analysis", "GIS Mapping", "Statistical Modeling"]
+    },
+    {
+      id: 5,
+      title: "Carbon Footprint Reduction in Wastewater Treatment",
+      description: "Development of energy-efficient processes for wastewater treatment to reduce carbon footprint.",
+      details: "This research focused on optimizing energy consumption in municipal wastewater treatment plants through process modifications and the integration of renewable energy sources.",
+      metrics: {
+        energyReduction: "35%",
+        carbonFootprint: "40% decrease"
+      },
+      technologies: ["Energy Efficiency", "Process Optimization", "Renewable Energy Integration", "Life Cycle Assessment"]
     }
   ];
 

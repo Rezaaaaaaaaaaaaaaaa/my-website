@@ -1,0 +1,16 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M5 15H45V35H5V15Z" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <path d="M10 15V10H20V15" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <path d="M30 15V10H40V15" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <path d="M10 35V40H20V35" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <path d="M30 35V40H40V35" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <circle cx="15" cy="25" r="5" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <circle cx="35" cy="25" r="5" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <path d="M20 25H30" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <path d="M25 10V15" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <path d="M25 35V40" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <path d="M15 20L15 10" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
+  <path d="M35 20L35 10" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
+  <path d="M15 30L15 40" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
+  <path d="M35 30L35 40" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
+</svg>

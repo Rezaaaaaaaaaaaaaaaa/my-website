@@ -1,0 +1,163 @@
+/* Form component styles */
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 82, 118, 0.2);
+  }
+  
+  &::placeholder {
+    color: var(--text-light);
+    opacity: 0.7;
+  }
+  
+  &:disabled {
+    background-color: var(--border-color);
+    cursor: not-allowed;
+  }
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-error {
+  color: var(--error-color);
+  font-size: 0.875rem;
+  margin-top: var(--spacing-xs);
+}
+
+.form-success {
+  background-color: rgba(39, 174, 96, 0.1);
+  color: var(--success-color);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  
+  svg {
+    margin-right: var(--spacing-sm);
+  }
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+  
+  .form-check-input {
+    margin-right: var(--spacing-sm);
+  }
+  
+  .form-check-label {
+    font-weight: normal;
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+}
+
+/* Custom select styles */
+.select-wrapper {
+  position: relative;
+  
+  &::after {
+    content: '▼';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 0.75rem;
+    color: var(--text-light);
+  }
+  
+  select.form-control {
+    appearance: none;
+    padding-right: 2.5rem;
+  }
+}
+
+/* Custom file input */
+.file-input-wrapper {
+  position: relative;
+  
+  .file-input-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    text-align: center;
+    transition: border-color var(--transition-fast);
+    
+    &:hover {
+      border-color: var(--primary-color);
+    }
+    
+    svg {
+      margin-right: var(--spacing-sm);
+    }
+  }
+  
+  input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    overflow: hidden;
+  }
+}
+
+/* Form in a card style */
+.form-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  
+  .form-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    
+    h2 {
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    p {
+      color: var(--text-light);
+    }
+  }
+}
+
+/* Contact form specific styles */
+.contact-form {
+  @extend .form-card;
+  max-width: 600px;
+  margin: 0 auto;
+}

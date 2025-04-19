@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ReactComponent as Logo } from '../assets/logo.svg';
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   
   // Detect if we're on a mobile device
@@ -20,6 +22,23 @@ const Navbar = () => {
     };
   }, []);
   
+  // Detect scrolling for navbar style change
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  
   // Check if a link is active based on current location
   const isActive = (path) => {
     return location.pathname === path;
@@ -31,10 +50,11 @@ const Navbar = () => {
   };
   
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          RMES
+        <Link to="/" className="logo">
+          <Logo className="logo-icon" />
+          <span className="logo-text">RMES</span>
         </Link>
         
         {isMobile ? (
@@ -56,6 +76,15 @@ const Navbar = () => {
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link 
+                    to="/services" 
+                    className={`nav-link ${isActive('/services') ? 'active' : ''}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Services
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -93,6 +122,11 @@ const Navbar = () => {
             <li className="nav-item">
               <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>
                 Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/services" className={`nav-link ${isActive('/services') ? 'active' : ''}`}>
+                Services
               </Link>
             </li>
             <li className="nav-item">

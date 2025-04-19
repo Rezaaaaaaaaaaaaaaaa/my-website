@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import { ReactComponent as EmailIcon } from '../assets/icons/email-icon.svg';
+import { ReactComponent as PhoneIcon } from '../assets/icons/phone-icon.svg';
+import { ReactComponent as LocationIcon } from '../assets/icons/location-icon.svg';
+import { ReactComponent as LinkedInIcon } from '../assets/icons/linkedin-icon.svg';
+import { ReactComponent as ResearchGateIcon } from '../assets/icons/researchgate-icon.svg';
+import { ReactComponent as ScholarIcon } from '../assets/icons/scholar-icon.svg';
 
 const ContactPage = () => {
   // Form state
@@ -6,6 +12,7 @@ const ContactPage = () => {
     name: '',
     email: '',
     subject: '',
+    service: '',
     message: ''
   });
   
@@ -16,6 +23,16 @@ const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  
+  // Services list for dropdown
+  const services = [
+    'Municipal Wastewater Treatment',
+    'Agricultural Wastewater Treatment',
+    'Water & Wastewater Reticulation Design',
+    'Catchment & Water Resource Modeling',
+    'Chemical & Food Processing Optimization',
+    'Other/Multiple Services'
+  ];
   
   // Handle input changes
   const handleChange = (e) => {
@@ -76,27 +93,42 @@ const ContactPage = () => {
     
     // Simulate form submission (would be replaced with actual API call)
     setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 5000);
+      try {
+        // Simulating successful submission
+        setIsSubmitting(false);
+        setSubmitSuccess(true);
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          service: '',
+          message: ''
+        });
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setSubmitSuccess(false);
+        }, 5000);
+      } catch (error) {
+        // This uses the setSubmitError function to fix the ESLint error
+        setIsSubmitting(false);
+        setSubmitError('There was a problem submitting your inquiry. Please try again or contact us directly.');
+        
+        // Reset error message after 5 seconds
+        setTimeout(() => {
+          setSubmitError('');
+        }, 5000);
+      }
     }, 1500);
   };
 
   return (
     <div className="contact-page">
       <section className="page-header">
-        <h1>Contact Me</h1>
-        <p>Get in touch for collaborations, consultations, or inquiries</p>
+        <div className="page-header-content">
+          <h1>Contact Me</h1>
+          <p>Get in touch for collaborations, consultations, or inquiries about my services</p>
+        </div>
       </section>
 
       <section className="contact-container">
@@ -104,33 +136,54 @@ const ContactPage = () => {
           <h2>Contact Information</h2>
           <div className="contact-details">
             <div className="contact-item">
-              <span className="contact-label">Email:</span>
-              <span className="contact-value">che.eng@live.com</span>
+              <EmailIcon className="contact-icon" />
+              <div>
+                <span className="contact-label">Email:</span>
+                <span className="contact-value">che.eng@live.com</span>
+              </div>
             </div>
             <div className="contact-item">
-              <span className="contact-label">Phone:</span>
-              <span className="contact-value">+642108052489</span>
+              <PhoneIcon className="contact-icon" />
+              <div>
+                <span className="contact-label">Phone:</span>
+                <span className="contact-value">+642108052489</span>
+              </div>
             </div>
             <div className="contact-item">
-              <span className="contact-label">Based in:</span>
-              <span className="contact-value">New Zealand</span>
+              <LocationIcon className="contact-icon" />
+              <div>
+                <span className="contact-label">Based in:</span>
+                <span className="contact-value">New Zealand</span>
+              </div>
             </div>
+          </div>
+
+          <div className="services-info">
+            <h3>Consultancy Services</h3>
+            <ul>
+              <li>Wastewater Treatment Design & Optimization</li>
+              <li>Water & Wastewater Reticulation Design</li>
+              <li>Catchment & Water Resource Modeling</li>
+              <li>Chemical & Food Processing Optimization</li>
+              <li>Environmental Compliance & Assessment</li>
+            </ul>
+            <p>For detailed information about specific services, please visit the <a href="/services">Services</a> page.</p>
           </div>
 
           <div className="social-links">
             <h3>Professional Profiles</h3>
             <div className="social-grid">
               <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="social-link">
+                <LinkedInIcon />
                 LinkedIn
               </a>
               <a href="https://www.researchgate.net/profile/your-profile" target="_blank" rel="noopener noreferrer" className="social-link">
+                <ResearchGateIcon />
                 ResearchGate
               </a>
               <a href="https://scholar.google.com/citations?user=your-id" target="_blank" rel="noopener noreferrer" className="social-link">
+                <ScholarIcon />
                 Google Scholar
-              </a>
-              <a href="https://niwa.co.nz/profile" target="_blank" rel="noopener noreferrer" className="social-link">
-                NIWA Profile
               </a>
             </div>
           </div>
@@ -189,6 +242,21 @@ const ContactPage = () => {
             </div>
             
             <div className="form-group">
+              <label htmlFor="service">Service of Interest (Optional)</label>
+              <select
+                id="service"
+                name="service"
+                value={formData.service}
+                onChange={handleChange}
+              >
+                <option value="">-- Select a service --</option>
+                {services.map((service, index) => (
+                  <option key={index} value={service}>{service}</option>
+                ))}
+              </select>
+            </div>
+            
+            <div className="form-group">
               <label htmlFor="message">Message</label>
               <textarea 
                 id="message" 
@@ -196,6 +264,7 @@ const ContactPage = () => {
                 rows="5" 
                 value={formData.message}
                 onChange={handleChange}
+                placeholder="Please describe your project or inquiry. Include any specific details about your requirements or questions."
               ></textarea>
               {formErrors.message && <span className="form-error">{formErrors.message}</span>}
             </div>

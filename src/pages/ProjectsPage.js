@@ -1,10 +1,16 @@
 import React from 'react';
+import { ReactComponent as NitrateIcon } from '../assets/icons/nitrate-icon.svg';
+import { ReactComponent as UasbIcon } from '../assets/icons/uasb-icon.svg';
+import { ReactComponent as CatchmentModelIcon } from '../assets/icons/catchment-model-icon.svg';
+import { ReactComponent as MbrIcon } from '../assets/icons/mbr-icon.svg';
+import { ReactComponent as ReticulationProjectIcon } from '../assets/icons/reticulation-project-icon.svg';
 
 const ProjectsPage = () => {
   const projects = [
     {
       id: 1,
       title: "Enhanced Nitrate Removal in Woodchip Bioreactors",
+      icon: <NitrateIcon />,
       description: "Implementation of carbon dosing techniques to improve nitrate removal efficiency in agricultural drainage systems.",
       details: "This project focused on optimizing the nitrate removal capacity of woodchip bioreactors through strategic carbon supplementation. By implementing a controlled dosing system, we were able to enhance denitrification rates while maintaining operational simplicity.",
       metrics: {
@@ -15,7 +21,34 @@ const ProjectsPage = () => {
     },
     {
       id: 2,
+      title: "Municipal WWTP Optimization Using UASB Technology",
+      icon: <UasbIcon />,
+      description: "Implementation of Upflow Anaerobic Sludge Blanket (UASB) reactors for enhanced energy efficiency in municipal wastewater treatment.",
+      details: "This project involved redesigning an existing municipal wastewater treatment plant to incorporate UASB technology, significantly reducing energy consumption while enabling biogas recovery. The anaerobic treatment stage was optimized for New Zealand's climate conditions and municipal wastewater characteristics.",
+      metrics: {
+        energyProduction: "40% increase",
+        operationalCost: "35% reduction",
+        effluenceQuality: "Met all regulatory requirements"
+      },
+      technologies: ["UASB Reactors", "Biogas Recovery", "Process Control Systems", "Effluent Polishing"]
+    },
+    {
+      id: 3,
+      title: "Catchment Modeling for Agricultural Runoff Mitigation",
+      icon: <CatchmentModelIcon />,
+      description: "Comprehensive modeling of surface and groundwater interactions to optimize placement of water quality interventions.",
+      details: "This project utilized integrated surface-groundwater modeling to identify optimal locations for implementing water quality treatment systems across an agricultural catchment. The model incorporated land use, soil characteristics, groundwater flow patterns, and surface water dynamics to maximize the effectiveness of mitigation measures.",
+      metrics: {
+        contaminantReduction: "45%",
+        implementationEfficiency: "60% improvement",
+        costSavings: "38% compared to conventional approaches"
+      },
+      technologies: ["MODFLOW", "MIKE SHE", "GIS Analysis", "Python-based Data Integration", "Best Management Practice Optimization"]
+    },
+    {
+      id: 4,
       title: "Aquatic Mitigation Systems for NES-F Compliance",
+      icon: <NitrateIcon />,
       description: "Development of cost-effective mitigation systems for agricultural runoff treatment compliant with NZ regulations.",
       details: "This project involved designing and implementing mitigation systems that help farmers comply with New Zealand's National Environmental Standards for Freshwater (NES-F). The systems were designed with cost-effectiveness and practical implementation in mind.",
       metrics: {
@@ -25,8 +58,48 @@ const ProjectsPage = () => {
       technologies: ["Constructed Wetlands", "Filter Systems", "Regulatory Compliance", "Cost-Benefit Analysis"]
     },
     {
-      id: 3,
+      id: 5,
+      title: "Membrane Bioreactor Implementation for Water Reuse",
+      icon: <MbrIcon />,
+      description: "Design and implementation of MBR technology for advanced wastewater treatment and water reuse applications.",
+      details: "This project involved the design and installation of a Membrane Bioreactor (MBR) system to upgrade an existing treatment facility for water reuse applications. The MBR technology was selected for its superior effluent quality and reliability, enabling the treated water to be safely reused for irrigation and industrial processes.",
+      metrics: {
+        waterRecovery: "95% of influent flow",
+        contaminantRemoval: ">99% for suspended solids and pathogens",
+        energyEfficiency: "Optimized with 25% reduction over initial design"
+      },
+      technologies: ["Membrane Bioreactors", "Ultrafiltration", "Process Automation", "Water Reuse Systems"]
+    },
+    {
+      id: 6,
+      title: "Food Processing Wastewater Treatment Optimization",
+      icon: <UasbIcon />,
+      description: "Process analysis and optimization for a dairy processing facility's wastewater treatment system.",
+      details: "This project involved comprehensive modeling and optimization of a dairy processing facility's wastewater treatment system. By implementing a combination of anaerobic pre-treatment and enhanced nutrient removal systems, we were able to significantly improve treatment efficiency while reducing operational costs and generating biogas for energy recovery.",
+      metrics: {
+        organicLoadingCapacity: "Increased by 60%",
+        bioenergyProduction: "Generated 35% of facility's energy needs",
+        complianceViolations: "Reduced to zero over monitoring period"
+      },
+      technologies: ["Anaerobic Digestion", "EGSB Reactors", "Nutrient Removal Systems", "Process Integration", "Energy Recovery"]
+    },
+    {
+      id: 7,
+      title: "Water Reticulation Design for Rural Community",
+      icon: <ReticulationProjectIcon />,
+      description: "Comprehensive design of a water supply and distribution system for a rural community with challenging topography.",
+      details: "This project involved the design of a complete water supply and distribution system for a rural community of 2,500 residents spread across challenging terrain. The system incorporated multiple pressure zones, booster pumping stations, and storage reservoirs to ensure reliable water delivery while minimizing energy consumption and maintenance requirements.",
+      metrics: {
+        reliabilityImprovement: "99.9% uptime achieved",
+        energyEfficiency: "40% reduction compared to conventional design",
+        waterLoss: "Reduced to <5% through pressure management and leak detection"
+      },
+      technologies: ["Hydraulic Modeling", "Pressure Zone Design", "SCADA Integration", "Energy Optimization", "Asset Management Planning"]
+    },
+    {
+      id: 8,
       title: "Bioethanol Production Optimization",
+      icon: <ChemicalIcon />,
       description: "Process optimization for bioethanol production using industrial and traditional Saccharomyces cerevisiae strains.",
       details: "This research compared different yeast strains for bioethanol production and optimized fermentation conditions to maximize yield while maintaining process sustainability.",
       metrics: {
@@ -34,42 +107,25 @@ const ProjectsPage = () => {
         processEfficiency: "20% improvement"
       },
       technologies: ["Bioethanol Production", "Fermentation Technology", "Process Optimization", "Sustainable Energy"]
-    },
-    {
-      id: 4,
-      title: "Water Quality Assessment in Agricultural Catchments",
-      description: "Comprehensive water quality monitoring and assessment in agricultural catchments across New Zealand.",
-      details: "This project involved setting up monitoring stations in various agricultural catchments to collect data on water quality parameters such as nitrate, phosphorus, and suspended solids. The data was used to assess the impact of agricultural activities on water quality and to develop mitigation strategies.",
-      metrics: {
-        dataPoints: "Over 10,000 collected",
-        catchmentsCovered: "12 across NZ"
-      },
-      technologies: ["Water Quality Sensors", "Data Analysis", "GIS Mapping", "Statistical Modeling"]
-    },
-    {
-      id: 5,
-      title: "Carbon Footprint Reduction in Wastewater Treatment",
-      description: "Development of energy-efficient processes for wastewater treatment to reduce carbon footprint.",
-      details: "This research focused on optimizing energy consumption in municipal wastewater treatment plants through process modifications and the integration of renewable energy sources.",
-      metrics: {
-        energyReduction: "35%",
-        carbonFootprint: "40% decrease"
-      },
-      technologies: ["Energy Efficiency", "Process Optimization", "Renewable Energy Integration", "Life Cycle Assessment"]
     }
   ];
 
   return (
     <div className="projects-page">
       <section className="page-header">
-        <h1>Projects & Research</h1>
-        <p>A collection of my environmental engineering projects and research initiatives</p>
+        <div className="page-header-content">
+          <h1>Projects & Research</h1>
+          <p>A collection of my environmental engineering projects and research initiatives</p>
+        </div>
       </section>
 
       <section className="projects-container">
         {projects.map(project => (
           <div key={project.id} className="project-full-card">
-            <h2>{project.title}</h2>
+            <h2>
+              <span className="project-icon">{project.icon}</span>
+              {project.title}
+            </h2>
             <p className="project-description">{project.description}</p>
             
             <div className="project-details">

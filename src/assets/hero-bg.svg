@@ -1,10 +1,15 @@
-<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="url(#paint0_linear_1_2)"/>
+  <path opacity="0.1" d="M0 0H1920V1080H0V0Z" fill="#FFFFFF"/>
+  <path opacity="0.05" d="M960 0L1920 1080H0L960 0Z" fill="#FFFFFF"/>
+  <path opacity="0.05" d="M960 1080L0 0H1920L960 1080Z" fill="#FFFFFF"/>
+  <circle cx="960" cy="540" r="200" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="50"/>
+  <circle cx="960" cy="540" r="400" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="50"/>
+  <circle cx="960" cy="540" r="600" stroke="#FFFFFF" stroke-opacity="0.03" stroke-width="50"/>
   <defs>
-    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1a5276;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+    <linearGradient id="paint0_linear_1_2" x1="0" y1="0" x2="1920" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1A5276"/>
+      <stop offset="1" stop-color="#2980B9"/>
     </linearGradient>
   </defs>
-  <rect width="1920" height="1080" fill="url(#grad1)" />
-  <text x="960" y="540" font-family="Arial" font-size="42" text-anchor="middle" fill="white">Environmental Engineering Background</text>
 </svg>

@@ -1,0 +1,65 @@
+/* Home page specific styles */
+.home-page {
+  .section {
+    scroll-margin-top: 80px;
+  }
+}
+
+/* Featured blog posts on home page */
+.featured-blogs {
+  background-color: var(--bg-color);
+  padding: var(--spacing-xl) 0;
+}
+
+.blog-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--spacing-lg);
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  
+  @media (max-width: map-get($breakpoints, 'md')) {
+    padding: 0 var(--spacing-md);
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Publications preview on home page */
+.publications-preview {
+  background-color: var(--card-bg);
+  padding: var(--spacing-xl) 0;
+}
+
+.publication-list {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  
+  @media (max-width: map-get($breakpoints, 'md')) {
+    padding: 0 var(--spacing-md);
+  }
+}
+
+.publication-item {
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  border-left: 4px solid var(--primary-color);
+  background-color: var(--bg-color);
+  transition: transform var(--transition-fast);
+  
+  &:hover {
+    transform: translateX(5px);
+  }
+  
+  h3 {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  p {
+    color: var(--text-light);
+    margin-bottom: 0;
+  }
+}

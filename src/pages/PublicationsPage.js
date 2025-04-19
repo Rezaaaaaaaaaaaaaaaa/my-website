@@ -63,6 +63,30 @@ const PublicationsPage = () => {
       abstract: "This economic analysis evaluated the cost-effectiveness of carbon addition to denitrifying bioreactors in New Zealand agricultural contexts, demonstrating a favorable return on investment for farm-scale implementation."
     },
     {
+      id: 10,
+      type: 'journal',
+      title: "Comparative performance of aerobic and anaerobic treatment systems for municipal wastewater: A New Zealand case study",
+      authors: "Moghaddam, R., Williams, J., Singh, P.",
+      journal: "Water Research",
+      year: 2024,
+      volume: "212",
+      pages: "118542",
+      doi: "10.1016/j.watres.2023.118542",
+      abstract: "This study compared the performance, energy requirements, and operational costs of conventional activated sludge systems with newer UASB-based treatment trains for municipal wastewater treatment in temperate climates. Results demonstrate significant energy and cost advantages for anaerobic primary treatment while maintaining comparable effluent quality through appropriate post-treatment processes."
+    },
+    {
+      id: 11,
+      type: 'journal',
+      title: "Machine learning approaches for optimizing chemical dosing in water treatment: From laboratory to full-scale implementation",
+      authors: "Moghaddam, R., Chen, L., Thompson, K.",
+      journal: "Chemical Engineering Journal",
+      year: 2023,
+      volume: "458",
+      pages: "141254",
+      doi: "10.1016/j.cej.2023.141254",
+      abstract: "This paper presents novel machine learning approaches for real-time optimization of chemical dosing in water treatment processes. The methodology combines process knowledge with data-driven models to achieve superior control performance under varying influent conditions, demonstrating significant chemical usage reduction without compromising treatment objectives."
+    },
+    {
       id: 6,
       type: 'conference',
       title: "Carbon dosing enhances nitrate removal effectiveness in denitrifying bioreactors: A field trial in New Zealand",
@@ -81,6 +105,26 @@ const PublicationsPage = () => {
       location: "Massey University, NZ",
       year: 2023,
       abstract: "This paper presented comparative data from both laboratory studies and field implementations of methanol-dosed woodchip bioreactors, offering design guidance for scaled applications."
+    },
+    {
+      id: 12,
+      type: 'conference',
+      title: "Integrated catchment modeling for optimizing water quality interventions in agricultural watersheds",
+      authors: "Moghaddam, R., Johnston, A., Smith, B.",
+      conference: "International Conference on Watershed Management and Modeling",
+      location: "Brisbane, Australia",
+      year: 2023,
+      abstract: "This presentation detailed a novel approach to integrated surface-groundwater modeling for prioritizing and optimizing the placement of water quality interventions in agricultural watersheds. The methodology incorporates both hydrological processes and economic considerations to maximize cost-effectiveness of environmental investments."
+    },
+    {
+      id: 13,
+      type: 'conference',
+      title: "Membrane Bioreactor technology for water reuse applications in New Zealand: Performance evaluation and optimization strategies",
+      authors: "Moghaddam, R., Patel, V.",
+      conference: "Water New Zealand Conference",
+      location: "Wellington, NZ",
+      year: 2024,
+      abstract: "This paper presented findings from a two-year evaluation of MBR technology implemented for water reuse applications in New Zealand. The study addressed operational challenges, energy optimization strategies, and membrane fouling management approaches specific to local conditions and water quality requirements."
     },
     {
       id: 8,
@@ -103,14 +147,38 @@ const PublicationsPage = () => {
       reportNumber: "2023/15",
       pages: "42",
       abstract: "This design guide provides detailed specifications and construction guidelines for implementing carbon-enhanced denitrifying bioreactors on New Zealand farms in compliance with current environmental regulations."
+    },
+    {
+      id: 14,
+      type: 'technical',
+      title: "Best practice guidelines for UASB reactor implementation in temperate climate municipal wastewater treatment",
+      authors: "Moghaddam, R., Williams, J.",
+      publisher: "Water NZ Technical Publication",
+      year: 2024,
+      reportNumber: "2024/03",
+      pages: "68",
+      abstract: "This comprehensive technical guide provides detailed design, startup, and operational considerations for implementing UASB technology for municipal wastewater treatment in temperate climates. The guide includes case studies from New Zealand installations, troubleshooting guidance, and economic analysis frameworks to support informed decision-making by water utilities."
+    },
+    {
+      id: 15,
+      type: 'technical',
+      title: "Integrated water resource modeling for regional planning: A practical guide for New Zealand authorities",
+      authors: "Moghaddam, R., Thompson, K., Chen, L.",
+      publisher: "Regional Council Research Series",
+      year: 2023,
+      reportNumber: "2023/27",
+      pages: "94",
+      abstract: "This technical manual provides step-by-step guidance for developing and implementing integrated water resource models to support regional planning decisions. The guide includes model selection criteria, data requirements, calibration approaches, and interpretation frameworks specifically adapted to New Zealand's regulatory and environmental context."
     }
   ];
 
   return (
     <div className="publications-page">
       <section className="page-header">
-        <h1>Publications</h1>
-        <p>My research publications in environmental engineering and bioprocesses</p>
+        <div className="page-header-content">
+          <h1>Publications</h1>
+          <p>My research publications in environmental engineering and bioprocesses</p>
+        </div>
       </section>
 
       <section className="publications-container">

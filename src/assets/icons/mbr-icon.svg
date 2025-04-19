@@ -1,0 +1,17 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="5" y="10" width="40" height="30" rx="2" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <path d="M5 20H45" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <path d="M25 10V40" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <circle cx="15" cy="30" r="5" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <circle cx="35" cy="30" r="5" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <path d="M15 12L12 5" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <path d="M35 12L38 5" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <path d="M15 38L12 45" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <path d="M35 38L38 45" stroke="#1a5276" stroke-width="2" fill="none"/>
+  <path d="M15 15L15 5" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
+  <path d="M35 15L35 5" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
+  <path d="M15 35L15 45" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
+  <path d="M35 35L35 45" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
+  <circle cx="15" cy="30" r="2" fill="#27ae60"/>
+  <circle cx="35" cy="30" r="2" fill="#27ae60"/>
+</svg>

@@ -1,0 +1,15 @@
+<svg width="200" height="60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a5276;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <g>
+    <path d="M30,10 C17.3,10 7,20.3 7,33 C7,45.7 17.3,56 30,56 C42.7,56 53,45.7 53,33 C53,20.3 42.7,10 30,10 Z M30,50 C20.6,50 13,42.4 13,33 C13,23.6 20.6,16 30,16 C39.4,16 47,23.6 47,33 C47,42.4 39.4,50 30,50 Z" fill="url(#logo-gradient)"/>
+    <path d="M30,20 L30,33 L40,38" stroke="#1a5276" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="30" cy="33" r="3" fill="#1a5276"/>
+    <text x="65" y="30" font-family="Arial" font-size="18" font-weight="bold" fill="#1a5276">RMES</text>
+    <text x="65" y="48" font-family="Arial" font-size="10" fill="#555">Environmental Engineering</text>
+  </g>
+</svg>

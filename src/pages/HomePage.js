@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import heroImage from '../assets/hero-bg.jpg';
-import { ReactComponent as EnvironmentalIcon } from '../assets/icons/environmental-icon.svg';
-import { ReactComponent as BioprocessIcon } from '../assets/icons/bioprocess-icon.svg';
-import { ReactComponent as ModelingIcon } from '../assets/icons/modeling-icon.svg';
-import { ReactComponent as NitrateIcon } from '../assets/icons/nitrate-icon.svg';
-import { ReactComponent as UasbIcon } from '../assets/icons/uasb-icon.svg';
-import { ReactComponent as CatchmentModelIcon } from '../assets/icons/catchment-model-icon.svg';
+import heroImage from '../assets/hero-bg.svg';
+// Import service icons
+import wastewaterIcon from '../assets/icons/wastewater-icon.svg';
+import reticulationIcon from '../assets/icons/reticulation-icon.svg';
+import catchmentIcon from '../assets/icons/catchment-icon.svg';
+import processIcon from '../assets/icons/process-icon.svg';
 
 const HomePage = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -44,8 +43,7 @@ const HomePage = () => {
         <h2>Areas of Expertise</h2>
         <div className="expertise-grid">
           <div className="expertise-card">
-            <EnvironmentalIcon className="expertise-card-icon" />
-            <h3>Environmental Engineering</h3>
+            <h3><img src={wastewaterIcon} alt="" />Environmental Engineering</h3>
             <ul>
               <li>Municipal & Agricultural Wastewater Treatment</li>
               <li>Denitrifying Bioreactors</li>
@@ -54,8 +52,7 @@ const HomePage = () => {
             </ul>
           </div>
           <div className="expertise-card">
-            <BioprocessIcon className="expertise-card-icon" />
-            <h3>Bioprocess Engineering</h3>
+            <h3><img src={processIcon} alt="" />Bioprocess Engineering</h3>
             <ul>
               <li>Aerobic & Anaerobic Treatment Systems</li>
               <li>Bioreactor Design & Optimization</li>
@@ -64,8 +61,7 @@ const HomePage = () => {
             </ul>
           </div>
           <div className="expertise-card">
-            <ModelingIcon className="expertise-card-icon" />
-            <h3>Modeling & Analysis</h3>
+            <h3><img src={catchmentIcon} alt="" />Modeling & Analysis</h3>
             <ul>
               <li>Catchment & Water Resource Modeling</li>
               <li>Chemical & Food Processing Optimization</li>
@@ -81,8 +77,7 @@ const HomePage = () => {
         <h2>Featured Projects</h2>
         <div className="project-grid">
           <div className="project-card">
-            <NitrateIcon className="project-card-icon" />
-            <h3>Enhanced Nitrate Removal in Woodchip Bioreactors</h3>
+            <h3><img src={wastewaterIcon} alt="" />Enhanced Nitrate Removal in Woodchip Bioreactors</h3>
             <p>Implementation of carbon dosing techniques to improve nitrate removal efficiency in agricultural drainage systems.</p>
             <div className="project-metrics">
               <span>Efficiency Improvement: 30%</span>
@@ -91,8 +86,7 @@ const HomePage = () => {
             <Link to="/projects" className="project-link">Learn More</Link>
           </div>
           <div className="project-card">
-            <UasbIcon className="project-card-icon" />
-            <h3>Municipal WWTP Optimization Using UASB Technology</h3>
+            <h3><img src={wastewaterIcon} alt="" />Municipal WWTP Optimization Using UASB Technology</h3>
             <p>Implementation of Upflow Anaerobic Sludge Blanket (UASB) reactors for enhanced energy efficiency in wastewater treatment.</p>
             <div className="project-metrics">
               <span>Energy Production: 40% increase</span>
@@ -101,8 +95,7 @@ const HomePage = () => {
             <Link to="/projects" className="project-link">Learn More</Link>
           </div>
           <div className="project-card">
-            <CatchmentModelIcon className="project-card-icon" />
-            <h3>Catchment Modeling for Agricultural Runoff Mitigation</h3>
+            <h3><img src={catchmentIcon} alt="" />Catchment Modeling for Agricultural Runoff Mitigation</h3>
             <p>Comprehensive modeling of surface and groundwater interactions to optimize placement of water quality interventions.</p>
             <div className="project-metrics">
               <span>Contaminant Reduction: 45%</span>
@@ -156,11 +149,9 @@ const HomePage = () => {
 
       {/* Contact CTA */}
       <section className="contact-cta">
-        <div className="contact-cta-content">
-          <h2>Interested in Collaboration?</h2>
-          <p>I'm always open to discussing research projects, consulting opportunities, or innovative solutions for environmental challenges.</p>
-          <Link to="/contact" className="btn primary-btn">Get in Touch</Link>
-        </div>
+        <h2>Interested in Collaboration?</h2>
+        <p>I'm always open to discussing research projects, consulting opportunities, or innovative solutions for environmental challenges.</p>
+        <Link to="/contact" className="btn primary-btn">Get in Touch</Link>
       </section>
     </div>
   );

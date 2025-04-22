@@ -1,15 +1,43 @@
-<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1920" height="1080" fill="url(#paint0_linear_1_2)"/>
-  <path opacity="0.1" d="M0 0H1920V1080H0V0Z" fill="#FFFFFF"/>
-  <path opacity="0.05" d="M960 0L1920 1080H0L960 0Z" fill="#FFFFFF"/>
-  <path opacity="0.05" d="M960 1080L0 0H1920L960 1080Z" fill="#FFFFFF"/>
-  <circle cx="960" cy="540" r="200" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="50"/>
-  <circle cx="960" cy="540" r="400" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="50"/>
-  <circle cx="960" cy="540" r="600" stroke="#FFFFFF" stroke-opacity="0.03" stroke-width="50"/>
+<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="paint0_linear_1_2" x1="0" y1="0" x2="1920" y2="1080" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1A5276"/>
-      <stop offset="1" stop-color="#2980B9"/>
+    <linearGradient id="hero-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a5276;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.1" />
+      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.1" />
     </linearGradient>
   </defs>
+  
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#hero-gradient)" />
+  
+  <!-- Abstract Wave Patterns -->
+  <path d="M0,200 C320,250 640,150 960,200 C1280,250 1600,150 1920,200 L1920,1080 L0,1080 Z" 
+        fill="url(#wave-gradient)" opacity="0.3" />
+  <path d="M0,400 C320,450 640,350 960,400 C1280,450 1600,350 1920,400 L1920,1080 L0,1080 Z" 
+        fill="url(#wave-gradient)" opacity="0.2" />
+  <path d="M0,600 C320,650 640,550 960,600 C1280,650 1600,550 1920,600 L1920,1080 L0,1080 Z" 
+        fill="url(#wave-gradient)" opacity="0.1" />
+  
+  <!-- Subtle Bubbles -->
+  <circle cx="300" cy="300" r="20" fill="#ffffff" opacity="0.1" />
+  <circle cx="500" cy="400" r="15" fill="#ffffff" opacity="0.1" />
+  <circle cx="700" cy="250" r="10" fill="#ffffff" opacity="0.1" />
+  <circle cx="900" cy="350" r="25" fill="#ffffff" opacity="0.1" />
+  <circle cx="1100" cy="450" r="15" fill="#ffffff" opacity="0.1" />
+  <circle cx="1300" cy="300" r="10" fill="#ffffff" opacity="0.1" />
+  <circle cx="1500" cy="500" r="20" fill="#ffffff" opacity="0.1" />
+  <circle cx="1700" cy="350" r="15" fill="#ffffff" opacity="0.1" />
+  
+  <!-- Environmental Symbol -->
+  <g transform="translate(1700, 200) scale(0.6)">
+    <circle cx="0" cy="0" r="100" fill="#ffffff" opacity="0.1" />
+    <path d="M0,-70 C-40,-70 -70,-40 -70,0 C-70,40 -40,70 0,70 C40,70 70,40 70,0 C70,-40 40,-70 0,-70 Z" 
+          fill="none" stroke="#ffffff" stroke-width="5" opacity="0.3" />
+    <path d="M0,-40 L0,40 M-40,0 L40,0" 
+          stroke="#ffffff" stroke-width="5" opacity="0.3" />
+  </g>
 </svg>

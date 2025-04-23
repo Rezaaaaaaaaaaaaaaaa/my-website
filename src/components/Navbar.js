@@ -52,7 +52,7 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <img src="/images/logos/main-logo.svg" alt="RMES Logo" />
+          <img src="images/logos/main-logo.svg" alt="RMES Environmental Engineering" />
         </Link>
         
         {isMobile ? (

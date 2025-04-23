@@ -1,5 +1,3 @@
-
-
 #!/usr/bin/env python3
 """
 Optimized Portfolio Website Setup Script with Visual Elements
@@ -11,8 +9,8 @@ Environmental Engineer with enhanced visual elements, including:
 - Attractive UI components
 - Responsive design elements
 
-The script uses a production-ready approach with assets in the public folder
-for maximum compatibility with all deployment platforms.
+The script has been optimized to ensure compatibility with Netlify deployments
+by placing all static assets in the public folder.
 
 Usage:
 1. Save this script as 'optimized_website_setup.py'
@@ -30,15 +28,10 @@ import json
 import argparse
 
 # Define command line arguments
-parser = argparse.ArgumentParser(description="Generate optimized portfolio website")
+parser = argparse.ArgumentParser(description="Generate enhanced portfolio website")
 parser.add_argument('--clean', action='store_true', help='Clean repository before generating new files')
 parser.add_argument('--backup', action='store_true', help='Create backup of existing files before cleaning')
 args = parser.parse_args()
-
-def ensure_dir_exists(directory):
-    """Ensure a directory exists, creating it if necessary"""
-    os.makedirs(directory, exist_ok=True)
-    return directory
 
 def clean_repository():
     """Clean the repository by removing generated files"""
@@ -46,7 +39,8 @@ def clean_repository():
     
     if args.backup:
         # Create a backup directory
-        ensure_dir_exists('backup')
+        if not os.path.exists('backup'):
+            os.makedirs('backup')
         
         # Backup important files
         if os.path.exists('src'):
@@ -97,15 +91,15 @@ def create_directories():
         'src/data',
         'public',
         'public/images',
-        'public/images/logos',
         'public/images/icons',
+        'public/images/logos',
         'public/images/diagrams',
         'public/images/backgrounds'
     ]
     
     # Create directories
     for directory in directories:
-        ensure_dir_exists(directory)
+        os.makedirs(directory, exist_ok=True)
         print(f"Created directory: {directory}")
 
 def create_main_logo():
@@ -131,7 +125,6 @@ def create_main_logo():
   <text x="55" y="50" font-family="Arial" font-size="10" fill="#e1f5fe">ENVIRONMENTAL ENGINEERING</text>
 </svg>"""
 
-    # Save in public folder for better compatibility
     with open('public/images/logos/main-logo.svg', 'w', encoding='utf-8') as f:
         f.write(logo_content)
     print("Created main logo SVG")
@@ -275,7 +268,7 @@ def create_service_icons():
   </g>
 </svg>"""
 
-    # Save all icons in public folder for better compatibility
+    # Save all icons
     icons = {
         'wastewater-treatment.svg': wastewater_icon,
         'water-reticulation.svg': reticulation_icon,
@@ -479,7 +472,7 @@ def create_process_diagrams():
   </defs>
 </svg>"""
 
-    # Save all diagrams in public folder
+    # Save all diagrams
     diagrams = {
         'wastewater-treatment-process.svg': wastewater_diagram,
         'catchment-modeling-approach.svg': catchment_diagram,
@@ -828,7 +821,7 @@ section h2 {
 
 .hero-with-image {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-              url('/images/backgrounds/hero-bg.svg');
+              url('images/backgrounds/hero-bg.svg');
   background-size: cover;
 }
 
@@ -956,7 +949,7 @@ section h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/images/backgrounds/services-bg.svg');
+  background-image: url('images/backgrounds/services-bg.svg');
   background-size: cover;
   background-position: center;
   opacity: 0.05;
@@ -1088,7 +1081,7 @@ section h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/images/backgrounds/services-bg.svg');
+  background-image: url('images/backgrounds/services-bg.svg');
   background-size: cover;
   background-position: center;
   opacity: 0.1;
@@ -1182,7 +1175,7 @@ section h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/images/backgrounds/services-bg.svg');
+  background-image: url('images/backgrounds/services-bg.svg');
   background-size: cover;
   background-position: center;
   opacity: 0.1;
@@ -1218,7 +1211,7 @@ section h2 {
 /* Page Header */
 .page-header {
   background-color: #1a5276;
-  background-image: url('/images/backgrounds/services-bg.svg');
+  background-image: url('images/backgrounds/services-bg.svg');
   background-size: cover;
   color: white;
   text-align: center;
@@ -1325,30 +1318,6 @@ section h2 {
   max-width: 1000px;
   margin: 0 auto;
   padding: 3rem 2rem;
-}
-
-.publications-filter {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.filter-btn {
-  padding: 0.5rem 1rem;
-  border: 1px solid #1a5276;
-  background: none;
-  color: #1a5276;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-  background-color: #1a5276;
-  color: white;
 }
 
 .publication-card {
@@ -1798,7 +1767,7 @@ section h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/images/backgrounds/services-bg.svg');
+  background-image: url('images/backgrounds/services-bg.svg');
   background-size: cover;
   background-position: center;
   opacity: 0.1;
@@ -2113,7 +2082,7 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <img src="/images/logos/main-logo.svg" alt="RMES Logo" />
+          <img src="images/logos/main-logo.svg" alt="RMES Environmental Engineering" />
         </Link>
         
         {isMobile ? (
@@ -2215,6 +2184,7 @@ export default Navbar;
     with open('src/components/Navbar.js', 'w', encoding='utf-8') as f:
         f.write(content)
     print("Created enhanced Navbar.js component with logo")
+
 def create_footer_component():
     """Create the Footer component with logo and social icons"""
     content = """import React from 'react';
@@ -2227,7 +2197,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-logo">
-          <img src="/images/logos/main-logo.svg" alt="RMES Logo" />
+          <img src="images/logos/main-logo.svg" alt="RMES Environmental Engineering" />
         </div>
         
         <div className="footer-links">
@@ -2256,7 +2226,7 @@ const Footer = () => {
             aria-label="ResearchGate Profile"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19.586 0c-2.123 0-3.359 1.265-3.359 2.981v1.017h3.869v1.023h-3.869v10.34c1.14-.908 2.009-1.316 3.273-1.316 2.688 0 4.5 2.1 4.5 5.274 0 2.73-2.328 4.681-5.172 4.681-2.565 0-4.428-1.559-4.428-3.828 0-1.467.633-2.475 2.331-3.729v-11.371h-2.364v-1.074h2.364v-1.017c0-2.922 1.978-3.981 5.379-3.981h1.335v1h-.859zm-13.814 12.591c-3.022 0-5.772 2.19-5.772 5.473 0 3.147 2.35 5.136 5.772 5.136 2.819 0 5.266-1.74 5.266-5.136 0-3.333-2.85-5.473-5.266-5.473zm-.329 2.581c1.013 0 1.914.901 1.914 2.892s-.901 2.867-1.914 2.867c-1.264 0-2.074-.776-2.074-2.867 0-2.116.81-2.892 2.074-2.892zm11.252.484c-.859 0-1.351.226-2.271 1.174v5.273c.685.751 1.467 1.174 2.373 1.174 1.391 0 2.565-1.149 2.565-2.799 0-2.425-1.149-3.822-2.667-3.822z"/>
+              <path d="M19.586 0c-2.123 0-3.359 1.265-3.359 2.981v1.017h3.869v1.023h-3.869v10.34c1.14-.908 2.009-1.316 3.273-1.316 2.688 0 4.5 2.1 4.5 5.274 0 2.73-2.328 4.681-5.172 4.681-2.565 0-4.428-1.559-4.428-3.828 0-1.467.633-2.475 2.331-3.729v-11.371h-2.364v-1.074h2.364v-1.017c0-2.922 1.978-3.981 5.379-3.981h1.335v1h-.859zm-13.814 12.591c-3.022 0-5.772 2.19-5.772 5.473 0 3.147 2.35 5.136 5.772 5.136 2.819 0 5.266-1.74 5.266-5.136 0-3.333-2.85-5.473-5.266-5.473zm-.329 2.581c1.013 0 1.914.901 1.914 2.892s-.901 2.867-1.914 2.867c-1.264 0-2.074-.776-2.074-2.867 0-2.116.81-2.892 2.074-2.892z"/>
             </svg>
           </a>
           <a 
@@ -2291,7 +2261,6 @@ def create_home_page():
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
-  const [imageLoaded, setImageLoaded] = useState(false);
   const [animatedElements, setAnimatedElements] = useState({
     hero: false,
     expertise: false,
@@ -2301,12 +2270,6 @@ const HomePage = () => {
   });
   
   useEffect(() => {
-    // Check if the hero image exists by trying to load it
-    const img = new Image();
-    img.onload = () => setImageLoaded(true);
-    img.onerror = () => setImageLoaded(false);
-    img.src = '/images/backgrounds/hero-bg.svg';
-    
     // Add scroll animation observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -2334,8 +2297,6 @@ const HomePage = () => {
     }, 300);
     
     return () => {
-      img.onload = null;
-      img.onerror = null;
       sections.forEach(section => {
         observer.unobserve(section);
       });
@@ -2345,7 +2306,7 @@ const HomePage = () => {
   return (
     <div className="home-page">
       {/* Hero Section */}
-      <section className={`hero ${imageLoaded ? 'hero-with-image' : ''}`}>
+      <section className="hero hero-with-image">
         <div className={`hero-content ${animatedElements.hero ? 'fade-in' : ''}`}>
           <h1>Dr. Reza Moghaddam</h1>
           <h2>Environmental & Bioprocess Engineer</h2>
@@ -2362,10 +2323,7 @@ const HomePage = () => {
         <h2 className={animatedElements.expertise ? 'slide-up' : ''}>Areas of Expertise</h2>
         <div className="expertise-grid">
           <div className={`expertise-card ${animatedElements.expertise ? 'slide-in-left' : ''}`}>
-            <h3>
-              <img src="/images/icons/wastewater-treatment.svg" alt="" />
-              Environmental Engineering
-            </h3>
+            <h3><img src="images/icons/wastewater-treatment.svg" alt="" /> Environmental Engineering</h3>
             <ul>
               <li>Municipal & Agricultural Wastewater Treatment</li>
               <li>Denitrifying Bioreactors</li>
@@ -2374,10 +2332,7 @@ const HomePage = () => {
             </ul>
           </div>
           <div className={`expertise-card ${animatedElements.expertise ? 'slide-up' : ''}`}>
-            <h3>
-              <img src="/images/icons/bioprocess-engineering.svg" alt="" />
-              Bioprocess Engineering
-            </h3>
+            <h3><img src="images/icons/bioprocess-engineering.svg" alt="" /> Bioprocess Engineering</h3>
             <ul>
               <li>Aerobic & Anaerobic Treatment Systems</li>
               <li>Bioreactor Design & Optimization</li>
@@ -2386,10 +2341,7 @@ const HomePage = () => {
             </ul>
           </div>
           <div className={`expertise-card ${animatedElements.expertise ? 'slide-in-right' : ''}`}>
-            <h3>
-              <img src="/images/icons/catchment-modeling.svg" alt="" />
-              Modeling & Analysis
-            </h3>
+            <h3><img src="images/icons/catchment-modeling.svg" alt="" /> Modeling & Analysis</h3>
             <ul>
               <li>Catchment & Water Resource Modeling</li>
               <li>Chemical & Food Processing Optimization</li>
@@ -2405,25 +2357,25 @@ const HomePage = () => {
         <h2 className={animatedElements.services ? 'slide-up' : ''}>Consultancy Services</h2>
         <div className="services-grid">
           <div className={`service-preview-card ${animatedElements.services ? 'slide-in-left' : ''}`}>
-            <img src="/images/icons/wastewater-treatment.svg" className="service-icon" alt="" />
+            <img src="images/icons/wastewater-treatment.svg" alt="" className="service-icon" />
             <h3>Wastewater Treatment</h3>
             <p>Comprehensive design and optimization services for municipal and agricultural wastewater systems including innovative aerobic and anaerobic technologies.</p>
             <Link to="/services" className="service-link">Learn More</Link>
           </div>
           <div className={`service-preview-card ${animatedElements.services ? 'slide-up' : ''}`}>
-            <img src="/images/icons/water-reticulation.svg" className="service-icon" alt="" />
+            <img src="images/icons/water-reticulation.svg" alt="" className="service-icon" />
             <h3>Water Reticulation</h3>
             <p>Expert design services for water distribution and wastewater collection networks from small-scale developments to municipal systems.</p>
             <Link to="/services" className="service-link">Learn More</Link>
           </div>
           <div className={`service-preview-card ${animatedElements.services ? 'slide-in-right' : ''}`}>
-            <img src="/images/icons/catchment-modeling.svg" className="service-icon" alt="" />
+            <img src="images/icons/catchment-modeling.svg" alt="" className="service-icon" />
             <h3>Catchment Modeling</h3>
             <p>Advanced surface and groundwater modeling services for water resource management, water quality assessment, and regulatory compliance.</p>
             <Link to="/services" className="service-link">Learn More</Link>
           </div>
           <div className={`service-preview-card ${animatedElements.services ? 'slide-in-left' : ''}`}>
-            <img src="/images/icons/process-optimization.svg" className="service-icon" alt="" />
+            <img src="images/icons/process-optimization.svg" alt="" className="service-icon" />
             <h3>Process Optimization</h3>
             <p>Systematic optimization of processing operations to enhance efficiency, reduce costs, and improve sustainability metrics.</p>
             <Link to="/services" className="service-link">Learn More</Link>
@@ -2530,7 +2482,7 @@ const ServicesPage = () => {
           <div className="service-grid">
             <div className="service-card">
               <div className="service-icon-container">
-                <img src="/images/icons/wastewater-treatment.svg" className="service-icon" alt="" />
+                <img src="images/icons/wastewater-treatment.svg" alt="" className="service-icon" />
               </div>
               <h3>Municipal Wastewater Treatment</h3>
               <p>Comprehensive design and optimization services for municipal wastewater treatment facilities, focusing on efficiency, compliance, and sustainability.</p>
@@ -2554,7 +2506,7 @@ const ServicesPage = () => {
             
             <div className="service-card">
               <div className="service-icon-container">
-                <img src="/images/icons/bioprocess-engineering.svg" className="service-icon" alt="" />
+                <img src="images/icons/bioprocess-engineering.svg" alt="" className="service-icon" />
               </div>
               <h3>Agricultural Wastewater Treatment</h3>
               <p>Specialized solutions for agricultural wastewater focusing on nutrient recovery, contaminant removal, and regulatory compliance.</p>
@@ -2579,7 +2531,7 @@ const ServicesPage = () => {
           
           <div className="diagram-container">
             <h3>Municipal Wastewater Treatment Process</h3>
-            <img src="/images/diagrams/wastewater-treatment-process.svg" alt="Wastewater Treatment Process Diagram" />
+            <img src="images/diagrams/wastewater-treatment-process.svg" alt="Wastewater treatment process diagram showing preliminary, primary, secondary and tertiary treatment stages" />
           </div>
         </section>
         
@@ -2589,7 +2541,7 @@ const ServicesPage = () => {
           
           <div className="full-width-service">
             <div className="service-icon-container">
-              <img src="/images/icons/water-reticulation.svg" className="service-icon" alt="" />
+              <img src="images/icons/water-reticulation.svg" alt="" className="service-icon" />
             </div>
             <h3>Comprehensive Reticulation Network Design</h3>
             <p>Expert design services for water distribution and wastewater collection systems, from small-scale developments to municipal networks.</p>
@@ -2634,7 +2586,7 @@ const ServicesPage = () => {
           <div className="service-grid">
             <div className="service-card">
               <div className="service-icon-container">
-                <img src="/images/icons/catchment-modeling.svg" className="service-icon" alt="" />
+                <img src="images/icons/catchment-modeling.svg" alt="" className="service-icon" />
               </div>
               <h3>Surface Water Modeling</h3>
               <p>Comprehensive modeling services for surface water systems including rivers, streams, lakes, and constructed waterways.</p>
@@ -2660,7 +2612,7 @@ const ServicesPage = () => {
             
             <div className="service-card">
               <div className="service-icon-container">
-                <img src="/images/icons/catchment-modeling.svg" className="service-icon" alt="" />
+                <img src="images/icons/catchment-modeling.svg" alt="" className="service-icon" />
               </div>
               <h3>Groundwater Modeling</h3>
               <p>Specialized groundwater modeling services for resource management, contamination assessment, and remediation planning.</p>
@@ -2686,7 +2638,7 @@ const ServicesPage = () => {
             
             <div className="service-card">
               <div className="service-icon-container">
-                <img src="/images/icons/catchment-modeling.svg" className="service-icon" alt="" />
+                <img src="images/icons/catchment-modeling.svg" alt="" className="service-icon" />
               </div>
               <h3>Integrated Catchment Management</h3>
               <p>Holistic approaches to managing water resources at the catchment scale, balancing environmental, economic, and social objectives.</p>
@@ -2707,7 +2659,7 @@ const ServicesPage = () => {
           
           <div className="diagram-container">
             <h3>Integrated Catchment Modeling Approach</h3>
-            <img src="/images/diagrams/catchment-modeling-approach.svg" alt="Catchment Modeling Approach Diagram" />
+            <img src="images/diagrams/catchment-modeling-approach.svg" alt="Integrated catchment modeling approach showing surface water, groundwater and land use interactions" />
           </div>
         </section>
         
@@ -2718,7 +2670,7 @@ const ServicesPage = () => {
           <div className="service-grid">
             <div className="service-card">
               <div className="service-icon-container">
-                <img src="/images/icons/process-optimization.svg" className="service-icon" alt="" />
+                <img src="images/icons/process-optimization.svg" alt="" className="service-icon" />
               </div>
               <h3>Process Modeling & Simulation</h3>
               <p>Advanced modeling and simulation services for chemical and food processing operations to improve efficiency, product quality, and sustainability.</p>
@@ -2734,7 +2686,7 @@ const ServicesPage = () => {
             
             <div className="service-card">
               <div className="service-icon-container">
-                <img src="/images/icons/process-optimization.svg" className="service-icon" alt="" />
+                <img src="images/icons/process-optimization.svg" alt="" className="service-icon" />
               </div>
               <h3>Process Optimization</h3>
               <p>Systematic optimization of processing operations to enhance efficiency, reduce costs, and improve sustainability metrics.</p>
@@ -2751,7 +2703,7 @@ const ServicesPage = () => {
             
             <div className="service-card">
               <div className="service-icon-container">
-                <img src="/images/icons/bioprocess-engineering.svg" className="service-icon" alt="" />
+                <img src="images/icons/bioprocess-engineering.svg" alt="" className="service-icon" />
               </div>
               <h3>Bioprocess Engineering</h3>
               <p>Specialized services for biological processes in food, pharmaceutical, and biofuel applications.</p>
@@ -2769,7 +2721,7 @@ const ServicesPage = () => {
           
           <div className="diagram-container">
             <h3>Process Optimization Methodology</h3>
-            <img src="/images/diagrams/process-optimization-methodology.svg" alt="Process Optimization Methodology Diagram" />
+            <img src="images/diagrams/process-optimization-methodology.svg" alt="Process optimization methodology workflow showing data collection, modeling, optimization, validation and implementation" />
           </div>
         </section>
         
@@ -2799,11 +2751,11 @@ def create_projects_page():
 const ProjectsPage = () => {
   // Define icon mapping
   const techIconPaths = {
-    'Wastewater Treatment': '/images/icons/wastewater-treatment.svg',
-    'Water Reticulation': '/images/icons/water-reticulation.svg',
-    'Catchment Modeling': '/images/icons/catchment-modeling.svg',
-    'Process Optimization': '/images/icons/process-optimization.svg',
-    'Bioprocess Engineering': '/images/icons/bioprocess-engineering.svg'
+    'Wastewater Treatment': 'images/icons/wastewater-treatment.svg',
+    'Water Reticulation': 'images/icons/water-reticulation.svg',
+    'Catchment Modeling': 'images/icons/catchment-modeling.svg',
+    'Process Optimization': 'images/icons/process-optimization.svg',
+    'Bioprocess Engineering': 'images/icons/bioprocess-engineering.svg'
   };
   
   const projects = [
@@ -2924,7 +2876,11 @@ const ProjectsPage = () => {
           <div key={project.id} className={`project-full-card fade-in`} style={{animationDelay: `${index * 0.1}s`}}>
             <h2>
               {techIconPaths[project.category] && 
-                <img src={techIconPaths[project.category]} alt="" style={{width: '30px', height: '30px', marginRight: '10px', verticalAlign: 'middle'}} />
+                <img 
+                  src={techIconPaths[project.category]} 
+                  alt="" 
+                  style={{width: '30px', height: '30px', marginRight: '10px', verticalAlign: 'middle'}} 
+                />
               }
               {project.title}
             </h2>
@@ -3272,6 +3228,32 @@ const PublicationsPage = () => {
           </>
         ) : null}
       </section>
+
+      <style jsx>{`
+        .publications-filter {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 2rem;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+        
+        .filter-btn {
+          padding: 0.5rem 1rem;
+          border: 1px solid #1a5276;
+          background: none;
+          color: #1a5276;
+          border-radius: 20px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+          background-color: #1a5276;
+          color: white;
+        }
+      `}</style>
     </div>
   );
 };
@@ -3453,7 +3435,7 @@ const ContactPage = () => {
               </a>
               <a href="https://www.researchgate.net/profile/your-profile" target="_blank" rel="noopener noreferrer" className="social-link">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                  <path d="M19.586 0c-2.123 0-3.359 1.265-3.359 2.981v1.017h3.869v1.023h-3.869v10.34c1.14-.908 2.009-1.316 3.273-1.316 2.688 0 4.5 2.1 4.5 5.274 0 2.73-2.328 4.681-5.172 4.681-2.565 0-4.428-1.559-4.428-3.828 0-1.467.633-2.475 2.331-3.729v-11.371h-2.364v-1.074h2.364v-1.017c0-2.922 1.978-3.981 5.379-3.981h1.335v1h-.859zm-13.814 12.591c-3.022 0-5.772 2.19-5.772 5.473 0 3.147 2.35 5.136 5.772 5.136 2.819 0 5.266-1.74 5.266-5.136 0-3.333-2.85-5.473-5.266-5.473zm-.329 2.581c1.013 0 1.914.901 1.914 2.892s-.901 2.867-1.914 2.867c-1.264 0-2.074-.776-2.074-2.867 0-2.116.81-2.892 2.074-2.892zm11.252.484c-.859 0-1.351.226-2.271 1.174v5.273c.685.751 1.467 1.174 2.373 1.174 1.391 0 2.565-1.149 2.565-2.799 0-2.425-1.149-3.822-2.667-3.822z"/>
+                  <path d="M19.586 0c-2.123 0-3.359 1.265-3.359 2.981v1.017h3.869v1.023h-3.869v10.34c1.14-.908 2.009-1.316 3.273-1.316 2.688 0 4.5 2.1 4.5 5.274 0 2.73-2.328 4.681-5.172 4.681-2.565 0-4.428-1.559-4.428-3.828 0-1.467.633-2.475 2.331-3.729v-11.371h-2.364v-1.074h2.364v-1.017c0-2.922 1.978-3.981 5.379-3.981h1.335v1h-.859zm-13.814 12.591c-3.022 0-5.772 2.19-5.772 5.473 0 3.147 2.35 5.136 5.772 5.136 2.819 0 5.266-1.74 5.266-5.136 0-3.333-2.85-5.473-5.266-5.473zm-.329 2.581c1.013 0 1.914.901 1.914 2.892s-.901 2.867-1.914 2.867c-1.264 0-2.074-.776-2.074-2.867 0-2.116.81-2.892 2.074-2.892z"/>
                 </svg>
                 ResearchGate
               </a>
@@ -3726,54 +3708,6 @@ def create_netlify_toml():
         f.write(content)
     print("Created netlify.toml")
 
-def create_use_animation_hook():
-    """Create a custom hook for animations"""
-    content = """import { useEffect, useState } from 'react';
-
-// This custom hook handles the animation on scroll for components
-export const useAnimateOnScroll = (threshold = 0.2) => {
-  const [animatedElements, setAnimatedElements] = useState({});
-
-  useEffect(() => {
-    // Add scroll animation observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setAnimatedElements(prev => ({
-            ...prev,
-            [entry.target.id]: true
-          }));
-        }
-      });
-    }, { threshold });
-    
-    // Observe sections
-    const sections = document.querySelectorAll('.animate-on-scroll');
-    sections.forEach(section => {
-      observer.observe(section);
-    });
-    
-    return () => {
-      sections.forEach(section => {
-        observer.unobserve(section);
-      });
-    };
-  }, [threshold]);
-
-  return animatedElements;
-};
-
-export default useAnimateOnScroll;
-"""
-    
-    # Create the hooks directory if it doesn't exist
-    ensure_dir_exists('src/hooks')
-    
-    # Create the hook file
-    with open('src/hooks/useAnimateOnScroll.js', 'w', encoding='utf-8') as f:
-        f.write(content)
-    print("Created useAnimateOnScroll.js custom hook")
-
 def create_logo_favicon():
     """Create a favicon based on the logo"""
     favicon_svg = """<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
@@ -3861,9 +3795,6 @@ def main():
     create_background_images()
     create_logo_favicon()
     
-    # Create custom hooks
-    create_use_animation_hook()
-    
     # Create core React files
     create_app_js()
     create_index_js()
@@ -3900,15 +3831,14 @@ def main():
     print("   - Connect your GitHub repository")
     print("   - The netlify.toml file will configure the build settings automatically")
     
-    print("\nEnhanced features in this version:")
-    print("1. Optimized asset loading from public folder for better Netlify compatibility")
-    print("2. Custom SVG logos, icons, and diagrams for all service areas")
-    print("3. Visual process diagrams to illustrate complex environmental engineering processes")
-    print("4. Animated interface elements with scroll-triggered animations")
-    print("5. Enhanced styling with depth effects, gradients, and transitions")
-    print("6. Fixed the ContactPage ESLint error to ensure successful CI/CD deployment")
-    print("7. Mobile-responsive design with tailored mobile navigation")
-    print("8. SVG favicon and optimized performance")
+    print("\nOptimizations in this version:")
+    print("1. Fixed path issues by placing all static assets in the public folder")
+    print("2. Properly referenced assets with relative paths (without leading slash)")
+    print("3. Fixed ESLint error in ContactPage.js")
+    print("4. Added SVG favicon")
+    print("5. Optimized image loading")
+    print("6. Enhanced mobile responsiveness")
+    print("7. Improved design consistency")
 
 if __name__ == "__main__":
     main()

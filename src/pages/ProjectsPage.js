@@ -3,11 +3,11 @@ import React from 'react';
 const ProjectsPage = () => {
   // Define icon mapping
   const techIconPaths = {
-    'Wastewater Treatment': '/images/icons/wastewater-treatment.svg',
-    'Water Reticulation': '/images/icons/water-reticulation.svg',
-    'Catchment Modeling': '/images/icons/catchment-modeling.svg',
-    'Process Optimization': '/images/icons/process-optimization.svg',
-    'Bioprocess Engineering': '/images/icons/bioprocess-engineering.svg'
+    'Wastewater Treatment': 'images/icons/wastewater-treatment.svg',
+    'Water Reticulation': 'images/icons/water-reticulation.svg',
+    'Catchment Modeling': 'images/icons/catchment-modeling.svg',
+    'Process Optimization': 'images/icons/process-optimization.svg',
+    'Bioprocess Engineering': 'images/icons/bioprocess-engineering.svg'
   };
   
   const projects = [
@@ -128,7 +128,11 @@ const ProjectsPage = () => {
           <div key={project.id} className={`project-full-card fade-in`} style={{animationDelay: `${index * 0.1}s`}}>
             <h2>
               {techIconPaths[project.category] && 
-                <img src={techIconPaths[project.category]} alt="" style={{width: '30px', height: '30px', marginRight: '10px', verticalAlign: 'middle'}} />
+                <img 
+                  src={techIconPaths[project.category]} 
+                  alt="" 
+                  style={{width: '30px', height: '30px', marginRight: '10px', verticalAlign: 'middle'}} 
+                />
               }
               {project.title}
             </h2>

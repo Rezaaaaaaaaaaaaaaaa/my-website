@@ -1,0 +1,19 @@
+<svg width="1920" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a5276;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1920" height="300" fill="url(#grad1)" />
+  
+  <!-- Wave Patterns -->
+  <path d="M0,200 C320,150 640,250 960,200 C1280,150 1600,250 1920,200 L1920,300 L0,300 Z" fill="white" fill-opacity="0.1" />
+  <path d="M0,250 C320,200 640,300 960,250 C1280,200 1600,300 1920,250 L1920,300 L0,300 Z" fill="white" fill-opacity="0.2" />
+  
+  <!-- Flow Lines -->
+  <path d="M-100,80 C200,40 300,120 600,80 C900,40 1000,120 1300,80 C1600,40 1700,120 2000,80" stroke="white" stroke-opacity="0.1" stroke-width="10" fill="none" />
+  <path d="M-100,130 C200,90 300,170 600,130 C900,90 1000,170 1300,130 C1600,90 1700,170 2000,130" stroke="white" stroke-opacity="0.1" stroke-width="5" fill="none" />
+</svg>

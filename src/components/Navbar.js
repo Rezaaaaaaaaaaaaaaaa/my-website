@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import logo from '../assets/logos/main-logo.svg';
-import smallLogo from '../assets/logos/small-logo.svg';
+import { ReactComponent as Logo } from '../assets/logos/main-logo.svg';
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -23,10 +22,14 @@ const Navbar = () => {
     };
   }, []);
   
-  // Add scroll effect to navbar
+  // Add scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -47,10 +50,10 @@ const Navbar = () => {
   };
   
   return (
-    <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <img src={isMobile ? smallLogo : logo} alt="RMES Environmental Engineering" />
+          <Logo />
         </Link>
         
         {isMobile ? (

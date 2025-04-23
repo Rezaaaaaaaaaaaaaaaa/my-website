@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import logo from '../assets/logos/small-logo.svg';
+
+// Import service icons
+import { ReactComponent as WastewaterIcon } from '../assets/icons/wastewater-treatment.svg';
+import { ReactComponent as ReticulationIcon } from '../assets/icons/water-reticulation.svg';
+import { ReactComponent as CatchmentIcon } from '../assets/icons/catchment-modeling.svg';
+import { ReactComponent as ProcessIcon } from '../assets/icons/process-optimization.svg';
+import { ReactComponent as BioprocessIcon } from '../assets/icons/bioprocess-engineering.svg';
 
 const ContactPage = () => {
   // Form state
@@ -19,14 +25,15 @@ const ContactPage = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
   
-  // Services list for dropdown
+  // Services list for dropdown with icons
   const services = [
-    'Municipal Wastewater Treatment',
-    'Agricultural Wastewater Treatment',
-    'Water & Wastewater Reticulation Design',
-    'Catchment & Water Resource Modeling',
-    'Chemical & Food Processing Optimization',
-    'Other/Multiple Services'
+    { id: 'wastewater', name: 'Municipal Wastewater Treatment', icon: <WastewaterIcon /> },
+    { id: 'agricultural', name: 'Agricultural Wastewater Treatment', icon: <WastewaterIcon /> },
+    { id: 'reticulation', name: 'Water & Wastewater Reticulation Design', icon: <ReticulationIcon /> },
+    { id: 'catchment', name: 'Catchment & Water Resource Modeling', icon: <CatchmentIcon /> },
+    { id: 'processing', name: 'Chemical & Food Processing Optimization', icon: <ProcessIcon /> },
+    { id: 'bioprocess', name: 'Bioprocess Engineering', icon: <BioprocessIcon /> },
+    { id: 'other', name: 'Other/Multiple Services', icon: null }
   ];
   
   // Handle input changes
@@ -120,172 +127,66 @@ const ContactPage = () => {
   return (
     <div className="contact-page">
       <section className="page-header">
-        <h1>Contact Me</h1>
-        <p>Get in touch for collaborations, consultations, or inquiries about my services</p>
+        <div className="page-header-content">
+          <h1>Contact Me</h1>
+          <p>Get in touch for collaborations, consultations, or inquiries about my services</p>
+        </div>
       </section>
 
       <section className="contact-container">
         <div className="contact-info">
-          <div className="contact-logo" style={{ textAlign: 'center', marginBottom: '2rem' }}>
-            <img src={logo} alt="RMES Logo" style={{ width: '60px', height: '60px' }} />
-            <h2 style={{ marginTop: '1rem' }}>Contact Information</h2>
-          </div>
-          
+          <h2>Contact Information</h2>
           <div className="contact-details">
-            <div className="contact-item" style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              marginBottom: '1rem',
-              background: 'white',
-              padding: '1rem',
-              borderRadius: '8px',
-              boxShadow: '0 3px 10px rgba(0,0,0,0.08)'
-            }}>
-              <div style={{ marginRight: '1rem', color: '#1a5276' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-              </div>
-              <div>
-                <span className="contact-label" style={{ fontWeight: 'bold', display: 'block' }}>Email:</span>
-                <span className="contact-value">che.eng@live.com</span>
-              </div>
+            <div className="contact-item">
+              <span className="contact-label">Email:</span>
+              <span className="contact-value">che.eng@live.com</span>
             </div>
-            
-            <div className="contact-item" style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              marginBottom: '1rem',
-              background: 'white',
-              padding: '1rem',
-              borderRadius: '8px',
-              boxShadow: '0 3px 10px rgba(0,0,0,0.08)'
-            }}>
-              <div style={{ marginRight: '1rem', color: '#1a5276' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-              </div>
-              <div>
-                <span className="contact-label" style={{ fontWeight: 'bold', display: 'block' }}>Phone:</span>
-                <span className="contact-value">+642108052489</span>
-              </div>
+            <div className="contact-item">
+              <span className="contact-label">Phone:</span>
+              <span className="contact-value">+642108052489</span>
             </div>
-            
-            <div className="contact-item" style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              marginBottom: '1rem',
-              background: 'white',
-              padding: '1rem',
-              borderRadius: '8px',
-              boxShadow: '0 3px 10px rgba(0,0,0,0.08)'
-            }}>
-              <div style={{ marginRight: '1rem', color: '#1a5276' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-              </div>
-              <div>
-                <span className="contact-label" style={{ fontWeight: 'bold', display: 'block' }}>Based in:</span>
-                <span className="contact-value">New Zealand</span>
-              </div>
+            <div className="contact-item">
+              <span className="contact-label">Based in:</span>
+              <span className="contact-value">New Zealand</span>
             </div>
           </div>
 
-          <div className="services-info" style={{ margin: '2rem 0' }}>
-            <h3 style={{ color: '#1a5276', marginBottom: '1rem' }}>Consultancy Services</h3>
-            <ul style={{ listStyleType: 'disc', marginLeft: '1.5rem' }}>
+          <div className="services-info">
+            <h3>Consultancy Services</h3>
+            <ul>
               <li>Wastewater Treatment Design & Optimization</li>
               <li>Water & Wastewater Reticulation Design</li>
               <li>Catchment & Water Resource Modeling</li>
               <li>Chemical & Food Processing Optimization</li>
               <li>Environmental Compliance & Assessment</li>
             </ul>
+            <p>For detailed information about specific services, please visit the <a href="/services">Services</a> page.</p>
           </div>
 
-          <div className="social-links" style={{ margin: '2rem 0' }}>
-            <h3 style={{ color: '#1a5276', marginBottom: '1rem' }}>Professional Profiles</h3>
-            <div className="social-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-              <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" 
-                style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  background: 'white', 
-                  padding: '0.75rem', 
-                  borderRadius: '8px',
-                  color: '#0077B5',
-                  boxShadow: '0 3px 10px rgba(0,0,0,0.08)',
-                  transition: 'transform 0.3s ease'
-                }}
-                className="social-link hover-transform"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.5rem' }}>
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                  <rect x="2" y="9" width="4" height="12"></rect>
-                  <circle cx="4" cy="4" r="2"></circle>
+          <div className="social-links">
+            <h3>Professional Profiles</h3>
+            <div className="social-grid">
+              <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
                 LinkedIn
               </a>
-              <a href="https://www.researchgate.net/profile/your-profile" target="_blank" rel="noopener noreferrer" 
-                style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  background: 'white', 
-                  padding: '0.75rem', 
-                  borderRadius: '8px',
-                  color: '#00CCBB',
-                  boxShadow: '0 3px 10px rgba(0,0,0,0.08)',
-                  transition: 'transform 0.3s ease'
-                }}
-                className="social-link hover-transform"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.5rem' }}>
-                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              <a href="https://www.researchgate.net/profile/your-profile" target="_blank" rel="noopener noreferrer" className="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M19.586 0c-2.123 0-3.359 1.265-3.359 2.981v1.017h3.869v1.023h-3.869v10.34c1.14-.908 2.009-1.316 3.273-1.316 2.688 0 4.5 2.1 4.5 5.274 0 2.73-2.328 4.681-5.172 4.681-2.565 0-4.428-1.559-4.428-3.828 0-1.467.633-2.475 2.331-3.729v-11.371h-2.364v-1.074h2.364v-1.017c0-2.922 1.978-3.981 5.379-3.981h1.335v1h-.859zm-13.814 12.591c-3.022 0-5.772 2.19-5.772 5.473 0 3.147 2.35 5.136 5.772 5.136 2.819 0 5.266-1.74 5.266-5.136 0-3.333-2.85-5.473-5.266-5.473zm-.329 2.581c1.013 0 1.914.901 1.914 2.892s-.901 2.867-1.914 2.867c-1.264 0-2.074-.776-2.074-2.867 0-2.116.81-2.892 2.074-2.892zm11.252.484c-.859 0-1.351.226-2.271 1.174v5.273c.685.751 1.467 1.174 2.373 1.174 1.391 0 2.565-1.149 2.565-2.799 0-2.425-1.149-3.822-2.667-3.822z"/>
                 </svg>
                 ResearchGate
               </a>
-              <a href="https://scholar.google.com/citations?user=your-id" target="_blank" rel="noopener noreferrer" 
-                style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  background: 'white', 
-                  padding: '0.75rem', 
-                  borderRadius: '8px',
-                  color: '#4285F4',
-                  boxShadow: '0 3px 10px rgba(0,0,0,0.08)',
-                  transition: 'transform 0.3s ease'
-                }}
-                className="social-link hover-transform"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.5rem' }}>
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <circle cx="12" cy="12" r="4"></circle>
-                  <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line>
-                  <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line>
-                  <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line>
-                  <line x1="14.83" y1="9.17" x2="18.36" y2="5.64"></line>
-                  <line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line>
+              <a href="https://scholar.google.com/citations?user=your-id" target="_blank" rel="noopener noreferrer" className="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
                 </svg>
                 Google Scholar
               </a>
-              <a href="https://niwa.co.nz/profile" target="_blank" rel="noopener noreferrer" 
-                style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  background: 'white', 
-                  padding: '0.75rem', 
-                  borderRadius: '8px',
-                  color: '#0070C0',
-                  boxShadow: '0 3px 10px rgba(0,0,0,0.08)',
-                  transition: 'transform 0.3s ease'
-                }}
-                className="social-link hover-transform"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.5rem' }}>
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <a href="https://niwa.co.nz/profile" target="_blank" rel="noopener noreferrer" className="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 16.057v-3.057h2.994c-.059 1.143-.212 2.24-.456 3.279-.823-.12-1.674-.188-2.538-.222zm1.957 2.162c-.499 1.33-1.159 2.497-1.957 3.456v-3.62c.666.028 1.319.081 1.957.164zm-1.957-7.219v-3.015c.868-.034 1.721-.103 2.548-.224.238 1.027.389 2.111.446 3.239h-2.994zm0-5.014v-3.661c.806.969 1.471 2.15 1.971 3.496-.642.084-1.3.137-1.971.165zm2.703-3.267c1.237.496 2.354 1.228 3.29 2.146-.642.234-1.311.442-2.019.607-.344-.992-.775-1.91-1.271-2.753zm-7.241 13.56c-.244-1.039-.398-2.136-.456-3.279h2.994v3.057c-.865.034-1.714.102-2.538.222zm2.538 1.776v3.62c-.798-.959-1.458-2.126-1.957-3.456.638-.083 1.291-.136 1.957-.164zm-2.994-7.055c.057-1.128.207-2.212.446-3.239.827.121 1.68.19 2.548.224v3.015h-2.994zm1.024-5.179c.5-1.346 1.165-2.527 1.97-3.496v3.661c-.671-.028-1.329-.081-1.97-.165zm-2.005-.35c-.708-.165-1.377-.373-2.018-.607.937-.918 2.053-1.65 3.29-2.146-.496.844-.927 1.762-1.272 2.753zm-.549 1.918c-.264 1.151-.434 2.36-.492 3.611h-3.933c.165-1.658.739-3.197 1.617-4.518.88.361 1.816.67 2.808.907zm.009 9.262c-.988.236-1.92.542-2.797.9-.89-1.328-1.471-2.879-1.637-4.551h3.934c.058 1.265.231 2.488.5 3.651zm.553 1.917c.342.976.768 1.881 1.257 2.712-1.223-.49-2.326-1.211-3.256-2.115.636-.229 1.299-.435 1.999-.597zm9.924 0c.7.163 1.362.367 1.999.597-.931.903-2.034 1.625-3.257 2.116.489-.832.915-1.737 1.258-2.713zm.553-1.917c.27-1.163.442-2.386.501-3.651h3.934c-.167 1.672-.748 3.223-1.638 4.551-.877-.358-1.81-.664-2.797-.9zm.501-5.651c-.058-1.251-.229-2.46-.492-3.611.992-.237 1.929-.546 2.809-.907.877 1.321 1.451 2.86 1.616 4.518h-3.933z"/>
                 </svg>
                 NIWA Profile
               </a>
@@ -294,34 +195,21 @@ const ContactPage = () => {
         </div>
 
         <div className="contact-form-container">
-          <h2 style={{ color: '#1a5276', marginBottom: '1.5rem' }}>Send Me a Message</h2>
+          <h2>Send Me a Message</h2>
           
           {submitSuccess && (
             <div className="form-success">
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.5rem', color: '#155724' }}>
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-                Thank you for your message! I'll get back to you as soon as possible.
-              </div>
+              Thank you for your message! I'll get back to you as soon as possible.
             </div>
           )}
           
           {submitError && (
-            <div className="form-error" style={{ background: '#f8d7da', color: '#721c24', padding: '1rem', borderRadius: '4px', marginBottom: '1rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.5rem', color: '#721c24' }}>
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="8" x2="12" y2="12"></line>
-                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                </svg>
-                {submitError}
-              </div>
+            <div className="form-error">
+              {submitError}
             </div>
           )}
           
-          <form className="contact-form" onSubmit={handleSubmit} style={{ background: 'white', padding: '2rem', borderRadius: '8px', boxShadow: '0 5px 15px rgba(0,0,0,0.1)' }}>
+          <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name</label>
               <input 
@@ -330,6 +218,7 @@ const ContactPage = () => {
                 name="name" 
                 value={formData.name}
                 onChange={handleChange}
+                placeholder="Your name"
               />
               {formErrors.name && <span className="form-error">{formErrors.name}</span>}
             </div>
@@ -342,6 +231,7 @@ const ContactPage = () => {
                 name="email" 
                 value={formData.email}
                 onChange={handleChange}
+                placeholder="Your email address"
               />
               {formErrors.email && <span className="form-error">{formErrors.email}</span>}
             </div>
@@ -354,6 +244,7 @@ const ContactPage = () => {
                 name="subject" 
                 value={formData.subject}
                 onChange={handleChange}
+                placeholder="Message subject"
               />
               {formErrors.subject && <span className="form-error">{formErrors.subject}</span>}
             </div>
@@ -365,11 +256,12 @@ const ContactPage = () => {
                 name="service"
                 value={formData.service}
                 onChange={handleChange}
-                style={{ background: 'white' }}
               >
                 <option value="">-- Select a service --</option>
-                {services.map((service, index) => (
-                  <option key={index} value={service}>{service}</option>
+                {services.map(service => (
+                  <option key={service.id} value={service.name}>
+                    {service.name}
+                  </option>
                 ))}
               </select>
             </div>
@@ -391,23 +283,8 @@ const ContactPage = () => {
               type="submit" 
               className="btn primary-btn"
               disabled={isSubmitting}
-              style={{ width: '100%', marginTop: '1rem' }}
             >
-              {isSubmitting ? (
-                <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.5rem', animation: 'rotate 2s linear infinite' }}>
-                    <line x1="12" y1="2" x2="12" y2="6"></line>
-                    <line x1="12" y1="18" x2="12" y2="22"></line>
-                    <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
-                    <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
-                    <line x1="2" y1="12" x2="6" y2="12"></line>
-                    <line x1="18" y1="12" x2="22" y2="12"></line>
-                    <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
-                    <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
-                  </svg>
-                  Sending...
-                </span>
-              ) : 'Send Message'}
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
           </form>
         </div>

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const PublicationsPage = () => {
+  const [filter, setFilter] = useState('all');
+  
   const publications = [
     {
       id: 1,
@@ -171,6 +173,19 @@ const PublicationsPage = () => {
       abstract: "This technical manual provides step-by-step guidance for developing and implementing integrated water resource models to support regional planning decisions. The guide includes model selection criteria, data requirements, calibration approaches, and interpretation frameworks specifically adapted to New Zealand's regulatory and environmental context."
     }
   ];
+  
+  // Filter publications based on selected type
+  const filteredPublications = filter === 'all' 
+    ? publications 
+    : publications.filter(pub => pub.type === filter);
+  
+  // Count publications by type
+  const counts = {
+    all: publications.length,
+    journal: publications.filter(pub => pub.type === 'journal').length,
+    conference: publications.filter(pub => pub.type === 'conference').length,
+    technical: publications.filter(pub => pub.type === 'technical').length
+  };
 
   return (
     <div className="publications-page">
@@ -182,59 +197,135 @@ const PublicationsPage = () => {
       </section>
 
       <section className="publications-container">
-        <h2>Journal Articles</h2>
-        <div className="publications-list">
-          {publications.filter(pub => pub.type === 'journal').map(publication => (
-            <div key={publication.id} className="publication-card">
-              <h3>{publication.title}</h3>
-              <p className="publication-authors">{publication.authors} ({publication.year})</p>
-              <p className="publication-journal">
-                {publication.journal}, {publication.volume}, {publication.pages}
-              </p>
-              <p className="publication-abstract">
-                <strong>Abstract:</strong> {publication.abstract}
-              </p>
-              {publication.doi && (
-                <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener noreferrer" className="publication-link">
-                  DOI: {publication.doi}
-                </a>
-              )}
-            </div>
-          ))}
+        <div className="publications-filter">
+          <button 
+            className={`filter-btn ${filter === 'all' ? 'active' : ''}`} 
+            onClick={() => setFilter('all')}
+          >
+            All Publications ({counts.all})
+          </button>
+          <button 
+            className={`filter-btn ${filter === 'journal' ? 'active' : ''}`} 
+            onClick={() => setFilter('journal')}
+          >
+            Journal Articles ({counts.journal})
+          </button>
+          <button 
+            className={`filter-btn ${filter === 'conference' ? 'active' : ''}`} 
+            onClick={() => setFilter('conference')}
+          >
+            Conference Papers ({counts.conference})
+          </button>
+          <button 
+            className={`filter-btn ${filter === 'technical' ? 'active' : ''}`} 
+            onClick={() => setFilter('technical')}
+          >
+            Technical Reports ({counts.technical})
+          </button>
         </div>
+        
+        {filter === 'all' || filter === 'journal' ? (
+          <>
+            {filter === 'all' && <h2>Journal Articles</h2>}
+            <div className="publications-list">
+              {filteredPublications
+                .filter(pub => filter === 'all' ? pub.type === 'journal' : true)
+                .map((publication, index) => (
+                  <div key={publication.id} className="publication-card fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+                    <h3>{publication.title}</h3>
+                    <p className="publication-authors">{publication.authors} ({publication.year})</p>
+                    <p className="publication-journal">
+                      {publication.journal}, {publication.volume}, {publication.pages}
+                    </p>
+                    <p className="publication-abstract">
+                      <strong>Abstract:</strong> {publication.abstract}
+                    </p>
+                    {publication.doi && (
+                      <a 
+                        href={`https://doi.org/${publication.doi}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="publication-link"
+                      >
+                        DOI: {publication.doi}
+                      </a>
+                    )}
+                  </div>
+                ))}
+            </div>
+          </>
+        ) : null}
 
-        <h2>Conference Papers</h2>
-        <div className="publications-list">
-          {publications.filter(pub => pub.type === 'conference').map(publication => (
-            <div key={publication.id} className="publication-card">
-              <h3>{publication.title}</h3>
-              <p className="publication-authors">{publication.authors} ({publication.year})</p>
-              <p className="publication-conference">
-                {publication.conference}, {publication.location}
-              </p>
-              <p className="publication-abstract">
-                <strong>Abstract:</strong> {publication.abstract}
-              </p>
+        {filter === 'all' || filter === 'conference' ? (
+          <>
+            {filter === 'all' && <h2>Conference Papers</h2>}
+            <div className="publications-list">
+              {filteredPublications
+                .filter(pub => filter === 'all' ? pub.type === 'conference' : true)
+                .map((publication, index) => (
+                  <div key={publication.id} className="publication-card fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+                    <h3>{publication.title}</h3>
+                    <p className="publication-authors">{publication.authors} ({publication.year})</p>
+                    <p className="publication-conference">
+                      {publication.conference}, {publication.location}
+                    </p>
+                    <p className="publication-abstract">
+                      <strong>Abstract:</strong> {publication.abstract}
+                    </p>
+                  </div>
+                ))}
             </div>
-          ))}
-        </div>
+          </>
+        ) : null}
 
-        <h2>Technical Reports</h2>
-        <div className="publications-list">
-          {publications.filter(pub => pub.type === 'technical').map(publication => (
-            <div key={publication.id} className="publication-card">
-              <h3>{publication.title}</h3>
-              <p className="publication-authors">{publication.authors} ({publication.year})</p>
-              <p className="publication-publisher">
-                {publication.publisher}, {publication.reportNumber}, {publication.pages} pages
-              </p>
-              <p className="publication-abstract">
-                <strong>Abstract:</strong> {publication.abstract}
-              </p>
+        {filter === 'all' || filter === 'technical' ? (
+          <>
+            {filter === 'all' && <h2>Technical Reports</h2>}
+            <div className="publications-list">
+              {filteredPublications
+                .filter(pub => filter === 'all' ? pub.type === 'technical' : true)
+                .map((publication, index) => (
+                  <div key={publication.id} className="publication-card fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+                    <h3>{publication.title}</h3>
+                    <p className="publication-authors">{publication.authors} ({publication.year})</p>
+                    <p className="publication-publisher">
+                      {publication.publisher}, {publication.reportNumber}, {publication.pages} pages
+                    </p>
+                    <p className="publication-abstract">
+                      <strong>Abstract:</strong> {publication.abstract}
+                    </p>
+                  </div>
+                ))}
             </div>
-          ))}
-        </div>
+          </>
+        ) : null}
       </section>
+
+      <style jsx>{`
+        .publications-filter {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 2rem;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+        
+        .filter-btn {
+          padding: 0.5rem 1rem;
+          border: 1px solid #1a5276;
+          background: none;
+          color: #1a5276;
+          border-radius: 20px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+          background-color: #1a5276;
+          color: white;
+        }
+      `}</style>
     </div>
   );
 };

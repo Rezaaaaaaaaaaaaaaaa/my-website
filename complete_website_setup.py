@@ -2,9 +2,14 @@
 """
 Enhanced Portfolio Website Setup Script with Visual Elements
 
-This script creates all necessary files and folder structure for a React-based
-professional portfolio website for an Environmental Engineer with enhanced
-visual elements including logos, icons, and design improvements.
+This script creates a complete React-based professional portfolio website for an
+Environmental Engineer with enhanced visual elements, including:
+- Custom SVG logos and icons for each service category
+- Visual process diagrams
+- Attractive UI components
+- Responsive design elements
+
+The script optionally cleans the repository before creating new files.
 
 Usage:
 1. Save this script as 'enhanced_website_setup.py'
@@ -12,22 +17,69 @@ Usage:
 3. After running, install dependencies: npm install
 4. Start the development server: npm start
 5. Push to GitHub and deploy on Netlify
-
-The script generates a complete React website with:
-- Professional logo and icons
-- Improved visual design
-- Comprehensive consultancy services
-- Interactive UI elements
 """
 
 import os
 import sys
 import shutil
 import base64
+import json
+import argparse
+
+# Define command line arguments
+parser = argparse.ArgumentParser(description="Generate enhanced portfolio website")
+parser.add_argument('--clean', action='store_true', help='Clean repository before generating new files')
+parser.add_argument('--backup', action='store_true', help='Create backup of existing files before cleaning')
+args = parser.parse_args()
+
+def clean_repository():
+    """Clean the repository by removing generated files"""
+    print("\n=== Cleaning Repository ===\n")
+    
+    if args.backup:
+        # Create a backup directory
+        if not os.path.exists('backup'):
+            os.makedirs('backup')
+        
+        # Backup important files
+        if os.path.exists('src'):
+            if os.path.exists('backup/src'):
+                shutil.rmtree('backup/src')
+            shutil.copytree('src', 'backup/src')
+        
+        if os.path.exists('public'):
+            if os.path.exists('backup/public'):
+                shutil.rmtree('backup/public')
+            shutil.copytree('public', 'backup/public')
+        
+        # Backup config files
+        for file in ['.gitignore', 'package.json', 'netlify.toml']:
+            if os.path.exists(file):
+                shutil.copy2(file, f'backup/{file}')
+        
+        print("Created backup in 'backup' directory")
+    
+    # Directories to remove
+    directories = ['src', 'public', 'build']
+    
+    for directory in directories:
+        if os.path.exists(directory):
+            shutil.rmtree(directory)
+            print(f"Removed directory: {directory}")
+    
+    # Files to remove
+    files = ['package.json', 'package-lock.json', 'netlify.toml']
+    
+    for file in files:
+        if os.path.exists(file):
+            os.remove(file)
+            print(f"Removed file: {file}")
+    
+    print("Repository cleaned successfully")
 
 def create_directories():
     """Create the necessary directory structure"""
-    print("Creating directory structure...")
+    print("\n=== Creating Directory Structure ===\n")
     
     # Define directories to create
     directories = [
@@ -36,6 +88,11 @@ def create_directories():
         'src/pages',
         'src/assets',
         'src/assets/icons',
+        'src/assets/logos',
+        'src/assets/diagrams',
+        'src/assets/backgrounds',
+        'src/hooks',
+        'src/data',
         'public',
         'public/images'
     ]
@@ -45,8 +102,488 @@ def create_directories():
         os.makedirs(directory, exist_ok=True)
         print(f"Created directory: {directory}")
 
+def create_main_logo():
+    """Create the main logo SVG for the website"""
+    logo_content = """<svg width="200" height="60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo Background -->
+  <rect width="200" height="60" fill="#1a5276" rx="5" ry="5"/>
+  
+  <!-- Water Drop Icon -->
+  <path d="M30,15 C30,15 20,30 20,40 C20,45.5 24.5,50 30,50 C35.5,50 40,45.5 40,40 C40,30 30,15 30,15 Z" 
+        fill="#2980b9" stroke="#fff" stroke-width="1.5"/>
+  
+  <!-- Gear Icon for Engineering -->
+  <g transform="translate(155, 30) scale(0.6)">
+    <circle cx="0" cy="0" r="15" fill="#2980b9"/>
+    <path d="M0,-20 L3,-12 A12,12 0 0,1 8,-10 L15,-15 L20,-5 L13,0 A12,12 0 0,1 13,8 L20,13 L15,20 L8,13 A12,12 0 0,1 0,16 L-3,20 L-10,15 L-8,8 A12,12 0 0,1 -13,0 L-20,-5 L-15,-15 L-8,-10 A12,12 0 0,1 -3,-12 Z" 
+          fill="#2980b9" stroke="#fff" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="5" fill="#1a5276" stroke="#fff" stroke-width="1"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="55" y="35" font-family="Arial" font-size="22" font-weight="bold" fill="white">RMES</text>
+  <text x="55" y="50" font-family="Arial" font-size="10" fill="#e1f5fe">ENVIRONMENTAL ENGINEERING</text>
+</svg>"""
+
+    with open('src/assets/logos/main-logo.svg', 'w', encoding='utf-8') as f:
+        f.write(logo_content)
+    print("Created main logo SVG")
+
+def create_service_icons():
+    """Create SVG icons for different services"""
+    
+    # Wastewater Treatment Icon
+    wastewater_icon = """<svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="40" cy="40" r="38" fill="#e1f5fe" stroke="#1a5276" stroke-width="2"/>
+  
+  <!-- Wastewater Treatment Plant Icon -->
+  <g transform="translate(15, 20)">
+    <!-- Tank 1 -->
+    <rect x="0" y="10" width="10" height="30" fill="white" stroke="#1a5276" stroke-width="1.5"/>
+    <!-- Tank 2 -->
+    <rect x="15" y="10" width="10" height="30" fill="white" stroke="#1a5276" stroke-width="1.5"/>
+    <!-- Tank 3 (Circular) -->
+    <circle cx="40" cy="25" r="10" fill="white" stroke="#1a5276" stroke-width="1.5"/>
+    <!-- Pipes -->
+    <path d="M10,25 H15 M25,25 H30 C35,25 35,25 35,15" fill="none" stroke="#1a5276" stroke-width="1.5"/>
+    <!-- Inflow -->
+    <path d="M-5,25 H0" fill="none" stroke="#1a5276" stroke-width="1.5" stroke-dasharray="2,1"/>
+    <!-- Outflow -->
+    <path d="M50,25 H55" fill="none" stroke="#1a5276" stroke-width="1.5"/>
+    <!-- Bubbles in tanks -->
+    <circle cx="5" cy="30" r="1" fill="#1a5276"/>
+    <circle cx="5" cy="25" r="1" fill="#1a5276"/>
+    <circle cx="5" cy="20" r="1" fill="#1a5276"/>
+    <circle cx="20" cy="30" r="1" fill="#1a5276"/>
+    <circle cx="20" cy="25" r="1" fill="#1a5276"/>
+    <circle cx="20" cy="20" r="1" fill="#1a5276"/>
+  </g>
+</svg>"""
+    
+    # Water Reticulation Icon
+    reticulation_icon = """<svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="40" cy="40" r="38" fill="#e1f5fe" stroke="#1a5276" stroke-width="2"/>
+  
+  <!-- Water Distribution Network -->
+  <g transform="translate(15, 15)">
+    <!-- Main Pipe -->
+    <path d="M0,25 H50" fill="none" stroke="#1a5276" stroke-width="3"/>
+    
+    <!-- Branch Pipes -->
+    <path d="M10,25 V10 M10,10 H30 M30,10 V25" fill="none" stroke="#1a5276" stroke-width="2"/>
+    <path d="M20,25 V40 M20,40 H40 M40,40 V25" fill="none" stroke="#1a5276" stroke-width="2"/>
+    
+    <!-- Houses/End Points -->
+    <rect x="8" y="5" width="5" height="5" fill="#2980b9"/>
+    <rect x="28" y="5" width="5" height="5" fill="#2980b9"/>
+    <rect x="18" y="42" width="5" height="5" fill="#2980b9"/>
+    <rect x="38" y="42" width="5" height="5" fill="#2980b9"/>
+    
+    <!-- Flow Arrows -->
+    <path d="M5,22 L8,25 L5,28" fill="none" stroke="#2980b9" stroke-width="1"/>
+    <path d="M25,22 L28,25 L25,28" fill="none" stroke="#2980b9" stroke-width="1"/>
+  </g>
+</svg>"""
+
+    # Catchment Modeling Icon
+    catchment_icon = """<svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="40" cy="40" r="38" fill="#e1f5fe" stroke="#1a5276" stroke-width="2"/>
+  
+  <!-- Catchment Modeling -->
+  <g transform="translate(15, 15)">
+    <!-- Terrain -->
+    <path d="M0,40 C5,35 10,38 15,32 C20,26 25,30 30,25 C35,20 40,25 45,20 C50,15 50,15 50,15 V50 H0 Z" 
+          fill="#d5f5e3" stroke="#1a5276" stroke-width="1.5"/>
+    
+    <!-- River -->
+    <path d="M25,0 C20,5 30,10 20,15 C10,20 15,25 10,30 C5,35 10,40 5,45 C0,50 0,50 0,50" 
+          fill="none" stroke="#2980b9" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Rain Drops -->
+    <path d="M10,5 L8,10 M20,3 L18,8 M30,5 L28,10 M40,3 L38,8" 
+          stroke="#2980b9" stroke-width="1" stroke-linecap="round"/>
+    
+    <!-- GIS Grid Overlay -->
+    <path d="M0,10 H50 M0,20 H50 M0,30 H50 M0,40 H50 M10,0 V50 M20,0 V50 M30,0 V50 M40,0 V50" 
+          stroke="#1a5276" stroke-width="0.5" stroke-opacity="0.3" stroke-dasharray="2,2"/>
+  </g>
+</svg>"""
+
+    # Process Optimization Icon
+    process_icon = """<svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="40" cy="40" r="38" fill="#e1f5fe" stroke="#1a5276" stroke-width="2"/>
+  
+  <!-- Process Optimization -->
+  <g transform="translate(15, 20)">
+    <!-- Graph Axes -->
+    <path d="M0,40 H50 M0,0 V40" stroke="#1a5276" stroke-width="1.5"/>
+    
+    <!-- Process Optimization Curve -->
+    <path d="M0,40 C10,35 15,25 25,15 C35,5 40,10 50,0" 
+          fill="none" stroke="#2980b9" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Optimization Points -->
+    <circle cx="25" cy="15" r="3" fill="#1a5276"/>
+    <circle cx="40" cy="10" r="3" fill="#1a5276"/>
+    
+    <!-- Arrow for Improvement -->
+    <path d="M30,30 L40,5 L45,10" fill="none" stroke="#27ae60" stroke-width="1.5"/>
+    
+    <!-- Gears for Process -->
+    <g transform="translate(10, 25) scale(0.5)">
+      <circle cx="0" cy="0" r="10" fill="#1a5276"/>
+      <path d="M0,-15 L2,-8 C3,-8 5,-9 8,-8 L12,-12 L15,-5 L10,0 C10,2 10,5 12,8 L15,10 L10,15 L5,10 C3,10 0,12 -2,10 L-5,15 L-10,10 L-8,5 C-10,3 -12,0 -10,-3 L-15,-5 L-10,-12 L-5,-8 C-3,-9 -2,-8 0,-8 Z" 
+            fill="#2980b9" stroke="#fff" stroke-width="1"/>
+    </g>
+  </g>
+</svg>"""
+
+    bioprocess_icon = """<svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="40" cy="40" r="38" fill="#e1f5fe" stroke="#1a5276" stroke-width="2"/>
+  
+  <!-- Bioprocess Engineering Icon -->
+  <g transform="translate(20, 15)">
+    <!-- Lab Flask -->
+    <path d="M15,0 H25 V5 C25,5 40,35 40,45 C40,50 30,55 20,55 C10,55 0,50 0,45 C0,35 15,5 15,5 Z" 
+          fill="white" stroke="#1a5276" stroke-width="1.5"/>
+    
+    <!-- Liquid in Flask -->
+    <path d="M15,20 C15,20 5,35 5,45 C5,48 10,50 20,50 C30,50 35,48 35,45 C35,35 25,20 25,20 Z" 
+          fill="#2980b9" fill-opacity="0.6"/>
+    
+    <!-- Bubbles in Flask -->
+    <circle cx="15" cy="30" r="2" fill="white" fill-opacity="0.8"/>
+    <circle cx="25" cy="35" r="3" fill="white" fill-opacity="0.8"/>
+    <circle cx="20" cy="40" r="2.5" fill="white" fill-opacity="0.8"/>
+    <circle cx="12" cy="38" r="1.5" fill="white" fill-opacity="0.8"/>
+    <circle cx="28" cy="42" r="1" fill="white" fill-opacity="0.8"/>
+    
+    <!-- DNA Helix for Bioprocess -->
+    <path d="M30,10 C35,15 25,20 30,25 C35,30 25,35 30,40" 
+          fill="none" stroke="#27ae60" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M40,10 C35,15 45,20 40,25 C35,30 45,35 40,40" 
+          fill="none" stroke="#27ae60" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M30,12.5 H40 M30,17.5 H40 M30,22.5 H40 M30,27.5 H40 M30,32.5 H40 M30,37.5 H40" 
+          stroke="#27ae60" stroke-width="1" stroke-linecap="round"/>
+  </g>
+</svg>"""
+
+    # Save all icons
+    icons = {
+        'wastewater-treatment.svg': wastewater_icon,
+        'water-reticulation.svg': reticulation_icon,
+        'catchment-modeling.svg': catchment_icon,
+        'process-optimization.svg': process_icon,
+        'bioprocess-engineering.svg': bioprocess_icon
+    }
+    
+    for filename, content in icons.items():
+        with open(f'src/assets/icons/{filename}', 'w', encoding='utf-8') as f:
+            f.write(content)
+    
+    print(f"Created {len(icons)} service icons")
+
+def create_process_diagrams():
+    """Create process diagrams for various sections"""
+    
+    # Wastewater Treatment Process Diagram
+    wastewater_diagram = """<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="300" fill="#f9f9f9" rx="5" ry="5"/>
+  <text x="400" y="30" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold" fill="#1a5276">Municipal Wastewater Treatment Process</text>
+  
+  <!-- Process Flow Diagram -->
+  <!-- Boxes -->
+  <rect x="50" y="80" width="120" height="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2" rx="5" ry="5"/>
+  <rect x="240" y="80" width="120" height="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2" rx="5" ry="5"/>
+  <rect x="430" y="80" width="120" height="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2" rx="5" ry="5"/>
+  <rect x="620" y="80" width="120" height="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2" rx="5" ry="5"/>
+  
+  <!-- Circle for Secondary Treatment -->
+  <circle cx="300" cy="220" r="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2"/>
+  <circle cx="500" cy="220" r="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2"/>
+  
+  <!-- Connection Arrows -->
+  <path d="M170,110 H240 M360,110 H430 M550,110 H620" stroke="#1a5276" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M170,110 H205 V220 H240" stroke="#1a5276" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M360,220 H440" stroke="#1a5276" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M560,220 H680 V140" stroke="#1a5276" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Labels -->
+  <text x="110" y="110" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Preliminary</text>
+  <text x="110" y="126" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Treatment</text>
+  
+  <text x="300" y="110" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Primary</text>
+  <text x="300" y="126" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Treatment</text>
+  
+  <text x="490" y="110" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Tertiary</text>
+  <text x="490" y="126" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Treatment</text>
+  
+  <text x="680" y="110" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Disinfection</text>
+  <text x="680" y="126" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">& Discharge</text>
+  
+  <text x="300" y="220" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Aerobic</text>
+  <text x="300" y="236" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Secondary</text>
+  <text x="300" y="252" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Treatment</text>
+  
+  <text x="500" y="220" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Anaerobic</text>
+  <text x="500" y="236" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Secondary</text>
+  <text x="500" y="252" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Treatment</text>
+  
+  <!-- Markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1a5276"/>
+    </marker>
+  </defs>
+</svg>"""
+
+    # Catchment Modeling Diagram
+    catchment_diagram = """<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#f9f9f9" rx="5" ry="5"/>
+  <text x="400" y="30" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold" fill="#1a5276">Integrated Catchment Modeling Approach</text>
+  
+  <!-- Catchment Area Visualization -->
+  <!-- Topographic Map Background -->
+  <path d="M50,100 C100,70 150,120 200,90 C250,60 300,100 350,80 C400,60 450,90 500,70 C550,50 600,80 650,60 C700,40 750,70 750,70 
+           L750,350 L50,350 Z" 
+        fill="#e8f8f5" stroke="#1a5276" stroke-width="1"/>
+  
+  <!-- Contour Lines -->
+  <path d="M100,100 C150,120 200,90 250,110 C300,130 350,80 400,100 C450,120 500,70 550,90 C600,110 650,60 700,80" 
+        stroke="#1a5276" stroke-width="0.5" stroke-dasharray="3,2" fill="none"/>
+  <path d="M100,150 C150,170 200,140 250,160 C300,180 350,130 400,150 C450,170 500,120 550,140 C600,160 650,110 700,130" 
+        stroke="#1a5276" stroke-width="0.5" stroke-dasharray="3,2" fill="none"/>
+  <path d="M100,200 C150,220 200,190 250,210 C300,230 350,180 400,200 C450,220 500,170 550,190 C600,210 650,160 700,180" 
+        stroke="#1a5276" stroke-width="0.5" stroke-dasharray="3,2" fill="none"/>
+  <path d="M100,250 C150,270 200,240 250,260 C300,280 350,230 400,250 C450,270 500,220 550,240 C600,260 650,210 700,230" 
+        stroke="#1a5276" stroke-width="0.5" stroke-dasharray="3,2" fill="none"/>
+  <path d="M100,300 C150,320 200,290 250,310 C300,330 350,280 400,300 C450,320 500,270 550,290 C600,310 650,260 700,280" 
+        stroke="#1a5276" stroke-width="0.5" stroke-dasharray="3,2" fill="none"/>
+  
+  <!-- Rivers/Streams -->
+  <path d="M350,80 C325,120 375,160 350,200 C325,240 375,280 350,320 C325,350 350,350 350,350" 
+        stroke="#2980b9" stroke-width="4" fill="none"/>
+  <path d="M500,70 C475,100 525,130 500,160 C475,190 525,220 500,250 C475,280 525,310 500,340 C495,350 500,350 500,350" 
+        stroke="#2980b9" stroke-width="3" fill="none"/>
+  <path d="M200,90 C225,130 175,170 200,210 C225,250 175,290 200,330 C215,350 200,350 200,350" 
+        stroke="#2980b9" stroke-width="2" fill="none"/>
+  
+  <!-- Simulation Elements -->
+  <!-- Groundwater Arrows -->
+  <path d="M150,330 L170,310 M250,330 L230,310 M550,330 L570,310 M650,330 L630,310" 
+        stroke="#27ae60" stroke-width="1.5" marker-end="url(#groundwater-arrow)"/>
+  
+  <!-- Rainfall Indicators -->
+  <path d="M120,60 L110,80 M180,50 L170,70 M300,60 L290,80 M470,40 L460,60 M580,50 L570,70 M700,60 L690,80" 
+        stroke="#3498db" stroke-width="1" stroke-linecap="round"/>
+  
+  <!-- Monitoring Points -->
+  <circle cx="350" cy="200" r="6" fill="#e74c3c" stroke="#fff" stroke-width="1"/>
+  <circle cx="500" cy="250" r="6" fill="#e74c3c" stroke="#fff" stroke-width="1"/>
+  <circle cx="200" cy="210" r="6" fill="#e74c3c" stroke="#fff" stroke-width="1"/>
+  
+  <!-- Land Use Types -->
+  <rect x="100" y="130" width="30" height="30" fill="#f1c40f" fill-opacity="0.4" stroke="#1a5276" stroke-width="0.5"/>
+  <rect x="250" y="150" width="40" height="40" fill="#27ae60" fill-opacity="0.4" stroke="#1a5276" stroke-width="0.5"/>
+  <rect x="450" y="120" width="50" height="50" fill="#3498db" fill-opacity="0.3" stroke="#1a5276" stroke-width="0.5"/>
+  <rect x="600" y="140" width="35" height="35" fill="#e67e22" fill-opacity="0.4" stroke="#1a5276" stroke-width="0.5"/>
+  
+  <!-- Legend -->
+  <rect x="580" y="280" width="180" height="120" fill="white" stroke="#1a5276" stroke-width="1" rx="5" ry="5"/>
+  <text x="600" y="300" font-family="Arial" font-size="12" font-weight="bold" fill="#1a5276">Legend</text>
+  
+  <line x1="600" y1="315" x2="620" y2="315" stroke="#2980b9" stroke-width="3"/>
+  <text x="630" y="318" font-family="Arial" font-size="10" fill="#1a5276">Rivers/Streams</text>
+  
+  <path d="M600,335 L620,335" stroke="#27ae60" stroke-width="1.5" marker-end="url(#groundwater-arrow)"/>
+  <text x="630" y="338" font-family="Arial" font-size="10" fill="#1a5276">Groundwater Flow</text>
+  
+  <circle cx="610" cy="355" r="5" fill="#e74c3c" stroke="#fff" stroke-width="1"/>
+  <text x="630" y="358" font-family="Arial" font-size="10" fill="#1a5276">Monitoring Points</text>
+  
+  <rect x="600" y="370" width="10" height="10" fill="#f1c40f" fill-opacity="0.4" stroke="#1a5276" stroke-width="0.5"/>
+  <text x="630" y="378" font-family="Arial" font-size="10" fill="#1a5276">Agricultural Land</text>
+  
+  <rect x="600" y="390" width="10" height="10" fill="#27ae60" fill-opacity="0.4" stroke="#1a5276" stroke-width="0.5"/>
+  <text x="630" y="398" font-family="Arial" font-size="10" fill="#1a5276">Forest Cover</text>
+  
+  <!-- Markers -->
+  <defs>
+    <marker id="groundwater-arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#27ae60"/>
+    </marker>
+  </defs>
+</svg>"""
+
+    # Process Optimization Diagram
+    optimization_diagram = """<svg width="800" height="350" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="350" fill="#f9f9f9" rx="5" ry="5"/>
+  <text x="400" y="30" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold" fill="#1a5276">Process Optimization Methodology</text>
+  
+  <!-- Process Flow Diagram with Optimization Points -->
+  <!-- Main Flow -->
+  <rect x="100" y="80" width="120" height="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2" rx="5" ry="5"/>
+  <rect x="300" y="80" width="120" height="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2" rx="5" ry="5"/>
+  <rect x="500" y="80" width="120" height="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2" rx="5" ry="5"/>
+  <rect x="400" y="200" width="120" height="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2" rx="5" ry="5"/>
+  <rect x="200" y="200" width="120" height="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2" rx="5" ry="5"/>
+  
+  <!-- Arrows -->
+  <path d="M220,110 H300 M420,110 H500" stroke="#1a5276" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M360,140 L360,180 L320,180 L320,200" stroke="#1a5276" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M560,140 L560,180 L480,180 L480,200" stroke="#1a5276" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M400,230 H320" stroke="#1a5276" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M200,230 L160,230 L160,110 L100,110" stroke="#1a5276" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="5,3"/>
+  
+  <!-- Labels -->
+  <text x="160" y="110" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Data Collection</text>
+  <text x="360" y="110" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Process Modeling</text>
+  <text x="560" y="110" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Optimization</text>
+  <text x="260" y="230" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Implementation</text>
+  <text x="460" y="230" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Results Validation</text>
+  
+  <!-- Optimization Metrics -->
+  <rect x="50" y="290" width="700" height="40" fill="#e1f5fe" stroke="#1a5276" stroke-width="1" rx="5" ry="5"/>
+  
+  <!-- Key Performance Indicators -->
+  <text x="400" y="310" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Key Performance Indicators (KPIs):</text>
+  <text x="400" y="325" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Energy Efficiency • Cost Reduction • Process Yield • Environmental Impact • Quality Improvement</text>
+  
+  <!-- Optimization Points Highlights -->
+  <circle cx="360" cy="110" r="10" fill="#e74c3c" fill-opacity="0.6"/>
+  <circle cx="560" cy="110" r="10" fill="#e74c3c" fill-opacity="0.6"/>
+  <circle cx="260" cy="230" r="10" fill="#e74c3c" fill-opacity="0.6"/>
+  
+  <!-- Optimization Methods -->
+  <g transform="translate(620, 160)">
+    <rect x="0" y="0" width="150" height="100" fill="white" stroke="#1a5276" stroke-width="1" rx="5" ry="5"/>
+    <text x="75" y="20" font-family="Arial" font-size="12" text-anchor="middle" font-weight="bold" fill="#1a5276">Optimization Methods</text>
+    <text x="10" y="40" font-family="Arial" font-size="10" fill="#1a5276">• First-Principles Modeling</text>
+    <text x="10" y="55" font-family="Arial" font-size="10" fill="#1a5276">• Statistical Process Control</text>
+    <text x="10" y="70" font-family="Arial" font-size="10" fill="#1a5276">• Machine Learning</text>
+    <text x="10" y="85" font-family="Arial" font-size="10" fill="#1a5276">• Multi-objective Optimization</text>
+  </g>
+  
+  <!-- Markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1a5276"/>
+    </marker>
+  </defs>
+</svg>"""
+
+    # Save all diagrams
+    diagrams = {
+        'wastewater-treatment-process.svg': wastewater_diagram,
+        'catchment-modeling-approach.svg': catchment_diagram,
+        'process-optimization-methodology.svg': optimization_diagram
+    }
+    
+    for filename, content in diagrams.items():
+        with open(f'src/assets/diagrams/{filename}', 'w', encoding='utf-8') as f:
+            f.write(content)
+    
+    print(f"Created {len(diagrams)} process diagrams")
+
+def create_background_images():
+    """Create background images for different sections"""
+    
+    # Create a hero background SVG
+    hero_bg = """<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a5276;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Water Pattern -->
+    <pattern id="waterPattern" patternUnits="userSpaceOnUse" width="200" height="200" patternTransform="rotate(45)">
+      <path d="M-40,40 C-30,10 30,10 40,40 C50,70 10,90 0,60 C-10,30 -50,70 -40,40 Z" fill="#2980b9" fill-opacity="0.1" transform="translate(0,0)">
+        <animateTransform attributeName="transform" type="translate" from="0,0" to="200,0" dur="20s" repeatCount="indefinite" />
+      </path>
+      <path d="M-40,40 C-30,10 30,10 40,40 C50,70 10,90 0,60 C-10,30 -50,70 -40,40 Z" fill="#2980b9" fill-opacity="0.1" transform="translate(100,100)">
+        <animateTransform attributeName="transform" type="translate" from="100,100" to="300,100" dur="15s" repeatCount="indefinite" />
+      </path>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#grad1)" />
+  
+  <!-- Water Pattern Overlay -->
+  <rect width="1920" height="1080" fill="url(#waterPattern)" />
+  
+  <!-- Bottom Wave Shape -->
+  <path d="M0,980 C400,920 800,1020 1200,950 C1600,880 1920,950 1920,950 L1920,1080 L0,1080 Z" fill="white" fill-opacity="0.2" />
+  
+  <!-- Environmental Engineering Abstract Elements -->
+  <!-- Circular Rings -->
+  <circle cx="1700" cy="300" r="150" fill="none" stroke="white" stroke-width="2" stroke-opacity="0.1" />
+  <circle cx="1700" cy="300" r="100" fill="none" stroke="white" stroke-width="2" stroke-opacity="0.15" />
+  <circle cx="1700" cy="300" r="50" fill="none" stroke="white" stroke-width="2" stroke-opacity="0.2" />
+  
+  <!-- Grid Pattern -->
+  <path d="M100,100 H1820 M100,300 H1820 M100,500 H1820 M100,700 H1820 M100,900 H1820 M300,100 V980 M600,100 V980 M900,100 V980 M1200,100 V980 M1500,100 V980" stroke="white" stroke-width="1" stroke-opacity="0.05" />
+  
+  <!-- Molecular Structure -->
+  <g transform="translate(250, 250)">
+    <circle cx="0" cy="0" r="10" fill="white" fill-opacity="0.5" />
+    <circle cx="80" cy="0" r="10" fill="white" fill-opacity="0.5" />
+    <circle cx="40" cy="70" r="10" fill="white" fill-opacity="0.5" />
+    <circle cx="-40" cy="70" r="10" fill="white" fill-opacity="0.5" />
+    <circle cx="-80" cy="0" r="10" fill="white" fill-opacity="0.5" />
+    <circle cx="-40" cy="-70" r="10" fill="white" fill-opacity="0.5" />
+    <circle cx="40" cy="-70" r="10" fill="white" fill-opacity="0.5" />
+    
+    <line x1="0" y1="0" x2="80" y2="0" stroke="white" stroke-width="2" stroke-opacity="0.5" />
+    <line x1="0" y1="0" x2="40" y2="70" stroke="white" stroke-width="2" stroke-opacity="0.5" />
+    <line x1="0" y1="0" x2="-40" y2="70" stroke="white" stroke-width="2" stroke-opacity="0.5" />
+    <line x1="0" y1="0" x2="-80" y2="0" stroke="white" stroke-width="2" stroke-opacity="0.5" />
+    <line x1="0" y1="0" x2="-40" y2="-70" stroke="white" stroke-width="2" stroke-opacity="0.5" />
+    <line x1="0" y1="0" x2="40" y2="-70" stroke="white" stroke-width="2" stroke-opacity="0.5" />
+  </g>
+</svg>"""
+
+    # Services background
+    services_bg = """<svg width="1920" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a5276;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1920" height="300" fill="url(#grad1)" />
+  
+  <!-- Wave Patterns -->
+  <path d="M0,200 C320,150 640,250 960,200 C1280,150 1600,250 1920,200 L1920,300 L0,300 Z" fill="white" fill-opacity="0.1" />
+  <path d="M0,250 C320,200 640,300 960,250 C1280,200 1600,300 1920,250 L1920,300 L0,300 Z" fill="white" fill-opacity="0.2" />
+  
+  <!-- Flow Lines -->
+  <path d="M-100,80 C200,40 300,120 600,80 C900,40 1000,120 1300,80 C1600,40 1700,120 2000,80" stroke="white" stroke-opacity="0.1" stroke-width="10" fill="none" />
+  <path d="M-100,130 C200,90 300,170 600,130 C900,90 1000,170 1300,130 C1600,90 1700,170 2000,130" stroke="white" stroke-opacity="0.1" stroke-width="5" fill="none" />
+</svg>"""
+
+    # Save background images
+    with open('src/assets/backgrounds/hero-bg.svg', 'w', encoding='utf-8') as f:
+        f.write(hero_bg)
+    
+    with open('src/assets/backgrounds/services-bg.svg', 'w', encoding='utf-8') as f:
+        f.write(services_bg)
+    
+    # Create a JPEG version of the hero background (fallback)
+    # This is a 1x1 pixel blue JPEG
+    jpeg_data = "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAn/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AKVP/9k="
+    
+    # Decode and write the image data
+    with open('src/assets/backgrounds/hero-bg.jpg', 'wb') as f:
+        f.write(base64.b64decode(jpeg_data))
+    
+    print("Created background images")
+
 def create_app_js():
-    """Create the main App.js file with added ServicesPage route"""
+    """Create the main App.js file"""
     content = """import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -84,7 +621,7 @@ export default App;
 """
     with open('src/App.js', 'w', encoding='utf-8') as f:
         f.write(content)
-    print("Created App.js with ServicesPage route")
+    print("Created App.js")
 
 def create_index_js():
     """Create the index.js file"""
@@ -105,26 +642,8 @@ root.render(
     print("Created index.js")
 
 def create_app_css():
-    """Create the App.css file with enhanced styles and animations"""
+    """Create the App.css file with enhanced styles"""
     content = """/* App.css - Main styling for the portfolio website */
-
-/* Custom Properties (Variables) */
-:root {
-  --primary-color: #1a5276;
-  --primary-light: #2980b9;
-  --primary-dark: #154360;
-  --secondary-color: #27ae60;
-  --light-bg: #f9f9f9;
-  --white: #ffffff;
-  --dark-text: #333333;
-  --medium-text: #555555;
-  --light-text: #777777;
-  --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-  --hover-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-  --transition-speed: 0.3s;
-  --border-radius: 8px;
-  --border-radius-lg: 12px;
-}
 
 /* Reset & Base Styles */
 * {
@@ -136,9 +655,8 @@ def create_app_css():
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  color: var(--dark-text);
-  background-color: var(--light-bg);
-  overflow-x: hidden;
+  color: #333;
+  background-color: #f9f9f9;
 }
 
 .app-container {
@@ -153,136 +671,72 @@ body {
 
 h1, h2, h3, h4 {
   margin-bottom: 1rem;
-  line-height: 1.3;
 }
 
 a {
   text-decoration: none;
   color: inherit;
-  transition: color var(--transition-speed) ease;
 }
 
 ul {
   list-style: none;
 }
 
-/* Button Styles */
 .btn {
   display: inline-block;
-  padding: 0.85rem 1.8rem;
-  border-radius: var(--border-radius);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
   font-weight: 600;
   cursor: pointer;
-  transition: all var(--transition-speed) ease;
-  letter-spacing: 0.5px;
-  border: none;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+  transition: all 0.3s ease;
 }
 
 .primary-btn {
-  background-color: var(--primary-color);
-  color: var(--white);
-  box-shadow: 0 4px 12px rgba(26, 82, 118, 0.3);
+  background-color: #1a5276;
+  color: white;
+  box-shadow: 0 2px 5px rgba(26, 82, 118, 0.3);
 }
 
 .primary-btn:hover {
-  background-color: var(--primary-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(26, 82, 118, 0.4);
+  background-color: #154360;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(26, 82, 118, 0.4);
 }
 
 .secondary-btn {
   background-color: transparent;
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
-  box-shadow: 0 4px 12px rgba(26, 82, 118, 0.1);
+  color: #1a5276;
+  border: 2px solid #1a5276;
 }
 
 .secondary-btn:hover {
   background-color: rgba(26, 82, 118, 0.1);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(26, 82, 118, 0.2);
+  transform: translateY(-2px);
 }
 
-/* Section Styles */
 section {
-  padding: 5rem 2rem;
+  padding: 4rem 2rem;
 }
 
 section h2 {
   text-align: center;
-  font-size: 2.2rem;
-  margin-bottom: 3rem;
-  color: var(--primary-color);
-  position: relative;
-  padding-bottom: 1rem;
-}
-
-section h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background-color: var(--secondary-color);
-  border-radius: 3px;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #1a5276;
 }
 
 .section-cta {
   text-align: center;
-  margin-top: 3rem;
-}
-
-/* Card Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Logo Styles */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-}
-
-.logo-icon {
-  width: 36px;
-  height: 36px;
-}
-
-.logo-text {
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--primary-color);
+  margin-top: 2rem;
 }
 
 /* Navbar Styles */
 .navbar {
-  background-color: var(--white);
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
-  transition: all var(--transition-speed) ease;
-  padding: 0.8rem 0;
-}
-
-.navbar.scrolled {
-  padding: 0.5rem 0;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-container {
@@ -294,112 +748,108 @@ section h2::after {
   padding: 0.5rem 2rem;
 }
 
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo svg {
+  height: 40px;
+  width: auto;
+}
+
+.navbar-logo img {
+  height: 40px;
+  width: auto;
+}
+
 .nav-menu {
   display: flex;
 }
 
 .nav-item {
-  margin-left: 2rem;
+  margin-left: 1.5rem;
 }
 
 .nav-link {
   font-weight: 500;
-  color: var(--dark-text);
-  transition: all var(--transition-speed) ease;
-  padding: 0.5rem 0;
+  color: #333;
+  transition: all 0.3s ease;
   position: relative;
+  padding: 0.5rem 0;
 }
 
-.nav-link::after {
+.nav-link:hover {
+  color: #1a5276;
+}
+
+.nav-link.active {
+  color: #1a5276;
+}
+
+.nav-link.active::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 0;
+  width: 100%;
   height: 2px;
-  background-color: var(--primary-color);
-  transition: width var(--transition-speed) ease;
-}
-
-.nav-link:hover {
-  color: var(--primary-color);
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-.nav-link.active {
-  color: var(--primary-color);
-}
-
-.nav-link.active::after {
-  width: 100%;
+  background-color: #1a5276;
 }
 
 .mobile-menu-button {
   background: none;
   border: none;
-  color: var(--dark-text);
+  color: #1a5276;
   font-size: 1rem;
   cursor: pointer;
+  padding: 0.5rem;
   display: none;
 }
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  background: linear-gradient(135deg, #1a5276, #2980b9);
   background-size: cover;
   background-position: center;
-  color: var(--white);
+  color: white;
   text-align: center;
   padding: 8rem 2rem;
   position: relative;
   overflow: hidden;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('./assets/hero-pattern.svg');
-  background-size: cover;
-  opacity: 0.05;
-}
-
 .hero-with-image {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-              url('./assets/hero-bg.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+              url('../assets/backgrounds/hero-bg.svg');
+  background-size: cover;
 }
 
 .hero-content {
   max-width: 800px;
   margin: 0 auto;
   position: relative;
-  z-index: 1;
-  animation: fadeIn 1s ease-out;
+  z-index: 2;
 }
 
 .hero h1 {
   font-size: 3.5rem;
-  margin-bottom: 0.8rem;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero h2 {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   font-weight: 400;
-  margin-bottom: 1.8rem;
-  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero p {
-  font-size: 1.3rem;
-  margin-bottom: 2.5rem;
-  max-width: 700px;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -407,168 +857,165 @@ section h2::after {
 .hero-buttons {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 /* Expertise Section */
 .expertise {
-  background-color: var(--white);
-  position: relative;
+  background-color: white;
 }
 
 .expertise-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .expertise-card {
-  background-color: var(--light-bg);
-  padding: 2.5rem;
-  border-radius: var(--border-radius-lg);
-  transition: transform var(--transition-speed) ease, 
-              box-shadow var(--transition-speed) ease;
-  box-shadow: var(--card-shadow);
+  background-color: #f5f5f5;
+  padding: 2rem;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
-  animation: fadeIn 0.8s ease-out;
 }
 
 .expertise-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--hover-shadow);
-}
-
-.expertise-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  background-color: var(--primary-color);
-}
-
-.expertise-card-icon {
-  margin-bottom: 1rem;
-  width: 60px;
-  height: 60px;
-  color: var(--primary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .expertise-card h3 {
-  color: var(--primary-color);
-  font-size: 1.5rem;
-  margin-bottom: 1.2rem;
+  color: #1a5276;
+  font-size: 1.3rem;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+}
+
+.expertise-card h3 img,
+.expertise-card h3 svg {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
 }
 
 .expertise-card ul {
-  margin-top: 1.2rem;
+  margin-top: 1rem;
 }
 
 .expertise-card li {
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.5rem;
   position: relative;
-  padding-left: 1.8rem;
+  padding-left: 1.5rem;
 }
 
 .expertise-card li:before {
   content: "✓";
   position: absolute;
   left: 0;
-  color: var(--secondary-color);
-  font-weight: bold;
+  color: #27ae60;
+}
+
+.expertise-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #1a5276, #2980b9);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.expertise-card:hover::after {
+  transform: scaleX(1);
 }
 
 /* Projects Section */
 .featured-projects {
   background-color: #f5f9fc;
   position: relative;
+  overflow: hidden;
+}
+
+.featured-projects::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/backgrounds/services-bg.svg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
+  pointer-events: none;
 }
 
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2.5rem;
+  gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .project-card {
-  background-color: var(--white);
-  padding: 2.5rem;
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--card-shadow);
-  transition: transform var(--transition-speed) ease, 
-              box-shadow var(--transition-speed) ease;
-  position: relative;
-  overflow: hidden;
-  animation: fadeIn 0.8s ease-out;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border-top: 4px solid transparent;
 }
 
 .project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--hover-shadow);
-}
-
-.project-card-icon {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 1rem;
-  color: var(--primary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #1a5276;
 }
 
 .project-card h3 {
-  color: var(--primary-color);
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-  line-height: 1.4;
-}
-
-.project-card p {
-  color: var(--medium-text);
-  margin-bottom: 1.5rem;
+  color: #1a5276;
+  font-size: 1.3rem;
 }
 
 .project-metrics {
-  margin: 1.2rem 0;
+  margin: 1rem 0;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.5rem;
 }
 
 .project-metrics span {
   background-color: #e1f5fe;
-  padding: 0.7rem 1rem;
-  border-radius: var(--border-radius);
-  font-size: 0.95rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
   display: flex;
   align-items: center;
 }
 
 .project-metrics span::before {
-  content: "•";
-  margin-right: 0.5rem;
-  color: var(--primary-color);
+  content: '↑';
+  margin-right: 8px;
+  color: #27ae60;
   font-weight: bold;
 }
 
 .project-link {
   display: inline-block;
-  margin-top: auto;
-  color: var(--primary-color);
+  margin-top: 1rem;
+  color: #1a5276;
   font-weight: 600;
   position: relative;
-  padding-bottom: 3px;
+  padding-bottom: 2px;
 }
 
 .project-link::after {
@@ -578,10 +1025,10 @@ section h2::after {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: var(--primary-color);
+  background-color: #1a5276;
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform var(--transition-speed) ease;
+  transition: transform 0.3s ease;
 }
 
 .project-link:hover::after {
@@ -591,8 +1038,7 @@ section h2::after {
 
 /* Publications Section */
 .publications-preview {
-  background-color: var(--white);
-  position: relative;
+  background-color: white;
 }
 
 .publication-list {
@@ -601,36 +1047,122 @@ section h2::after {
 }
 
 .publication-item {
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border-left: 4px solid var(--primary-color);
-  background-color: var(--light-bg);
-  border-radius: 0 var(--border-radius) var(--border-radius) 0;
-  transition: transform var(--transition-speed) ease, 
-              box-shadow var(--transition-speed) ease;
-  box-shadow: var(--card-shadow);
-  animation: fadeIn 0.8s ease-out;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #1a5276;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
 }
 
 .publication-item:hover {
   transform: translateX(5px);
-  box-shadow: var(--hover-shadow);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .publication-item h3 {
-  font-size: 1.3rem;
-  color: var(--dark-text);
-  margin-bottom: 0.7rem;
+  font-size: 1.2rem;
+  color: #333;
 }
 
 .publication-item p {
-  color: var(--medium-text);
+  color: #666;
+}
+
+/* Services Preview Section */
+.services-preview {
+  background-color: #f5f9fc;
+  position: relative;
+}
+
+.services-preview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/backgrounds/services-bg.svg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.service-preview-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.service-preview-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1.5rem;
+}
+
+.service-preview-card h3 {
+  color: #1a5276;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.service-preview-card p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.service-link {
+  display: inline-block;
+  color: #1a5276;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 2px;
+  margin-top: auto;
+}
+
+.service-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #1a5276;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.service-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /* Contact CTA */
 .contact-cta {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-  color: var(--white);
+  background: linear-gradient(135deg, #1a5276, #2980b9);
+  color: white;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -643,47 +1175,48 @@ section h2::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('./assets/cta-pattern.svg');
+  background-image: url('../assets/backgrounds/services-bg.svg');
   background-size: cover;
-  opacity: 0.05;
+  background-position: center;
+  opacity: 0.1;
+  pointer-events: none;
 }
 
 .contact-cta-content {
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 .contact-cta h2 {
-  color: var(--white);
+  color: white;
 }
 
 .contact-cta p {
   max-width: 700px;
-  margin: 0 auto 2.5rem auto;
-  font-size: 1.2rem;
+  margin: 0 auto 2rem auto;
+  font-size: 1.1rem;
 }
 
 .contact-cta .btn {
-  background-color: var(--white);
-  color: var(--primary-color);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  color: #1a5276;
 }
 
 .contact-cta .btn:hover {
   background-color: #f5f5f5;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Page Header */
 .page-header {
-  background-color: var(--primary-color);
-  background-image: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-  color: var(--white);
+  background-color: #1a5276;
+  background-image: url('../assets/backgrounds/services-bg.svg');
+  background-size: cover;
+  color: white;
   text-align: center;
   padding: 5rem 2rem;
   position: relative;
-  overflow: hidden;
 }
 
 .page-header::before {
@@ -693,24 +1226,22 @@ section h2::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('./assets/header-pattern.svg');
-  background-size: cover;
-  opacity: 0.05;
+  background-color: rgba(26, 82, 118, 0.8);
 }
 
 .page-header-content {
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 .page-header h1 {
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .page-header p {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   max-width: 700px;
   margin: 0 auto;
 }
@@ -719,54 +1250,27 @@ section h2::after {
 .projects-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 3rem 2rem;
 }
 
 .project-full-card {
-  background-color: var(--white);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--card-shadow);
-  padding: 2.5rem;
-  margin-bottom: 3rem;
-  transition: transform var(--transition-speed) ease, 
-              box-shadow var(--transition-speed) ease;
-  animation: fadeIn 0.8s ease-out;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  border-left: 5px solid #1a5276;
 }
 
 .project-full-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--hover-shadow);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .project-description {
   font-size: 1.2rem;
-  color: var(--medium-text);
-  margin-bottom: 2rem;
-}
-
-.project-details h3,
-.project-metrics-container h3,
-.project-technologies h3 {
-  color: var(--primary-color);
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
-  position: relative;
-  padding-left: 1.5rem;
-}
-
-.project-details h3::before,
-.project-metrics-container h3::before,
-.project-technologies h3::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 5px;
-  height: 20px;
-  background-color: var(--secondary-color);
-  border-radius: 3px;
+  color: #555;
+  margin-bottom: 1.5rem;
 }
 
 .metrics-grid {
@@ -778,46 +1282,34 @@ section h2::after {
 
 .metric-item {
   background-color: #f5f9fc;
-  padding: 1.2rem;
-  border-radius: var(--border-radius);
-  transition: transform var(--transition-speed) ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
 .metric-item:hover {
   transform: translateY(-3px);
-}
-
-.metric-label {
-  font-weight: 600;
-  color: var(--primary-color);
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.metric-value {
-  color: var(--medium-text);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
 }
 
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
+  gap: 0.5rem;
   margin-top: 1rem;
 }
 
 .tech-tag {
   background-color: #e1f5fe;
-  color: var(--primary-dark);
-  padding: 0.6rem 1.2rem;
+  color: #0277bd;
+  padding: 0.5rem 1rem;
   border-radius: 20px;
-  font-size: 0.95rem;
-  transition: all var(--transition-speed) ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
 }
 
 .tech-tag:hover {
-  background-color: #bde5fd;
+  background-color: #b3e5fc;
   transform: translateY(-2px);
 }
 
@@ -825,85 +1317,49 @@ section h2::after {
 .publications-container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 4rem 2rem;
-}
-
-.publications-container h2 {
-  color: var(--primary-color);
-  margin-top: 3rem;
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
-  position: relative;
-  padding-left: 2rem;
-  text-align: left;
-}
-
-.publications-container h2::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 8px;
-  height: 30px;
-  background-color: var(--secondary-color);
-  border-radius: 4px;
-}
-
-.publications-container h2::after {
-  display: none;
+  padding: 3rem 2rem;
 }
 
 .publication-card {
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border-left: 4px solid var(--primary-color);
-  background-color: var(--white);
-  border-radius: 0 var(--border-radius) var(--border-radius) 0;
-  box-shadow: var(--card-shadow);
-  transition: transform var(--transition-speed) ease, 
-              box-shadow var(--transition-speed) ease;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #1a5276;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
 }
 
 .publication-card:hover {
   transform: translateX(5px);
-  box-shadow: var(--hover-shadow);
-}
-
-.publication-card h3 {
-  color: var(--dark-text);
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .publication-authors {
-  color: var(--medium-text);
-  margin-bottom: 0.8rem;
+  color: #555;
+  font-style: italic;
+  margin-bottom: 0.5rem;
 }
 
-.publication-journal,
+.publication-journal, 
 .publication-conference,
 .publication-publisher {
-  color: var(--light-text);
-  margin-bottom: 1.2rem;
-  font-style: italic;
+  color: #1a5276;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
 .publication-abstract {
-  color: var(--medium-text);
+  color: #666;
   margin-bottom: 1rem;
 }
 
 .publication-link {
   display: inline-block;
-  color: var(--primary-color);
-  font-weight: 600;
-  margin-top: 0.5rem;
-  transition: color var(--transition-speed) ease;
+  color: #1a5276;
+  transition: all 0.3s ease;
 }
 
 .publication-link:hover {
-  color: var(--primary-light);
+  color: #2980b9;
   text-decoration: underline;
 }
 
@@ -911,43 +1367,54 @@ section h2::after {
 .services-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 3rem 2rem;
 }
 
 .service-category {
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
 }
 
 .service-category h2 {
-  color: var(--primary-color);
-  border-bottom: 2px solid var(--primary-color);
-  padding-bottom: 0.8rem;
+  color: #1a5276;
+  border-bottom: 2px solid #1a5276;
+  padding-bottom: 0.5rem;
   margin-bottom: 2rem;
-  text-align: left;
-  font-size: 1.8rem;
+  position: relative;
+  display: inline-block;
 }
 
 .service-category h2::after {
-  display: none;
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 50%;
+  height: 2px;
+  background-color: #2980b9;
 }
 
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .service-card {
-  background-color: var(--white);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--card-shadow);
-  padding: 2.5rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
   height: 100%;
-  transition: transform var(--transition-speed) ease, 
-              box-shadow var(--transition-speed) ease;
+  transition: all 0.3s ease;
+  border-top: 4px solid #1a5276;
   position: relative;
   overflow: hidden;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .service-card::before {
@@ -955,208 +1422,216 @@ section h2::after {
   position: absolute;
   top: 0;
   left: 0;
-  width: 5px;
-  height: 100%;
-  background-color: var(--primary-color);
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #1a5276, #2980b9);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s ease;
 }
 
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--hover-shadow);
+.service-card:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .service-card h3 {
-  color: var(--primary-color);
-  margin-bottom: 1.5rem;
-  font-size: 1.5rem;
+  color: #1a5276;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
 }
 
-.service-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  min-width: 50px;
-  color: var(--primary-color);
+.service-card h3 img, 
+.service-card h3 svg {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
 }
 
 .service-card h4 {
-  color: var(--primary-dark);
-  margin: 1.5rem 0 0.8rem 0;
-  font-size: 1.2rem;
-  position: relative;
-  padding-left: 1.2rem;
-}
-
-.service-card h4::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 5px;
-  height: 18px;
-  background-color: var(--secondary-color);
-  border-radius: 3px;
+  color: #1a5276;
+  margin: 1.5rem 0 0.5rem 0;
+  font-size: 1.1rem;
 }
 
 .service-card p {
-  color: var(--medium-text);
-  margin-bottom: 1.2rem;
+  color: #555;
+  margin-bottom: 1rem;
 }
 
 .service-card ul {
-  margin-left: 0;
+  margin-left: 1rem;
 }
 
 .service-card li {
-  margin-bottom: 0.7rem;
-  list-style-type: none;
-  margin-left: 1.5rem;
+  margin-bottom: 0.8rem;
+  list-style-type: disc;
+  margin-left: 1rem;
   position: relative;
-  padding-left: 0.5rem;
 }
 
-.service-card li::before {
-  content: "•";
-  position: absolute;
-  left: -1.5rem;
-  color: var(--secondary-color);
-  font-size: 1.5rem;
-  line-height: 1;
+.service-card li strong {
+  color: #1a5276;
+}
+
+.service-icon-container {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  background-color: #e1f5fe;
+  border-radius: 50%;
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
 }
 
 .full-width-service {
-  grid-column: 1 / -1;
   background-color: #f5f9fc;
-  padding: 2.5rem;
-  border-radius: var(--border-radius-lg);
-  margin-bottom: 3rem;
-  box-shadow: var(--card-shadow);
-  border-left: 5px solid var(--primary-color);
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-left: 5px solid #1a5276;
+  transition: all 0.3s ease;
+}
+
+.full-width-service:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
 }
 
 .process-steps {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  margin: 2rem 0;
+  margin-top: 1.5rem;
 }
 
 .process-step {
-  background-color: var(--white);
-  border-radius: var(--border-radius);
-  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
   flex: 1;
-  min-width: 280px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-  transition: transform var(--transition-speed) ease;
+  min-width: 250px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
 .process-step:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.process-step::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #1a5276, #2980b9);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s ease;
+}
+
+.process-step:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .step-number {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color: var(--primary-color);
-  color: var(--white);
+  width: 30px;
+  height: 30px;
+  background-color: #1a5276;
+  color: white;
   border-radius: 50%;
   text-align: center;
-  line-height: 1;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   font-weight: 600;
-  font-size: 1.2rem;
-  box-shadow: 0 3px 8px rgba(26, 82, 118, 0.3);
+}
+
+.diagram-container {
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.diagram-container h3 {
+  color: #1a5276;
+  margin-bottom: 1.5rem;
+}
+
+.diagram-container svg,
+.diagram-container img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.diagram-container svg:hover,
+.diagram-container img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* Contact Page */
 .contact-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 3rem 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
 }
 
 .contact-info {
-  background-color: var(--white);
-  padding: 2.5rem;
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--card-shadow);
-  height: fit-content;
-}
-
-.contact-info h2 {
-  color: var(--primary-color);
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
-  position: relative;
-  padding-bottom: 0.8rem;
-}
-
-.contact-info h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background-color: var(--secondary-color);
-  border-radius: 3px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .contact-details {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .contact-item {
-  margin-bottom: 1.2rem;
   display: flex;
-  align-items: flex-start;
-}
-
-.contact-icon {
-  margin-right: 1rem;
-  color: var(--primary-color);
-  min-width: 24px;
+  margin-bottom: 1rem;
+  align-items: center;
 }
 
 .contact-label {
   font-weight: 600;
-  color: var(--dark-text);
-  margin-right: 0.5rem;
+  width: 80px;
+  color: #1a5276;
 }
 
 .contact-value {
-  color: var(--medium-text);
+  color: #555;
 }
 
-.services-info,
-.social-links {
-  margin-top: 2rem;
-}
-
-.services-info h3,
-.social-links h3 {
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
+.services-info {
+  margin-bottom: 2rem;
 }
 
 .services-info ul {
-  margin-bottom: 1.5rem;
+  margin-top: 1rem;
 }
 
 .services-info li {
@@ -1165,61 +1640,48 @@ section h2::after {
   padding-left: 1.5rem;
 }
 
-.services-info li::before {
+.services-info li:before {
   content: "✓";
   position: absolute;
   left: 0;
-  color: var(--secondary-color);
+  color: #27ae60;
+}
+
+.social-links h3 {
+  margin-bottom: 1rem;
 }
 
 .social-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-top: 1rem;
 }
 
 .social-link {
-  background-color: #f5f9fc;
-  color: var(--primary-color);
-  padding: 0.8rem 1.2rem;
-  border-radius: var(--border-radius);
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: all var(--transition-speed) ease;
+  color: #1a5276;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .social-link:hover {
-  background-color: var(--primary-color);
-  color: var(--white);
-  transform: translateY(-3px);
+  color: #2980b9;
+  transform: translateX(3px);
+}
+
+.social-link svg,
+.social-link img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
 }
 
 .contact-form-container {
-  background-color: var(--white);
-  padding: 2.5rem;
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--card-shadow);
-}
-
-.contact-form-container h2 {
-  color: var(--primary-color);
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
-  position: relative;
-  padding-bottom: 0.8rem;
-}
-
-.contact-form-container h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background-color: var(--secondary-color);
-  border-radius: 3px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .contact-form {
@@ -1234,28 +1696,28 @@ section h2::after {
 }
 
 .form-group label {
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.5rem;
   font-weight: 500;
-  color: var(--dark-text);
+  color: #333;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select {
-  padding: 1rem;
+  padding: 0.85rem;
   border: 1px solid #ddd;
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   font-family: inherit;
   font-size: 1rem;
-  transition: all var(--transition-speed) ease;
+  transition: all 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
   outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(26, 82, 118, 0.2);
+  border-color: #1a5276;
+  box-shadow: 0 0 0 2px rgba(26, 82, 118, 0.2);
 }
 
 .form-error {
@@ -1267,175 +1729,220 @@ section h2::after {
 .form-success {
   background-color: #d4edda;
   color: #155724;
-  padding: 1.2rem;
-  border-radius: var(--border-radius);
+  padding: 1rem;
+  border-radius: 4px;
   margin-bottom: 1.5rem;
-  border-left: 4px solid #28a745;
+  display: flex;
+  align-items: center;
+}
+
+.form-success::before {
+  content: '✓';
+  display: inline-block;
+  color: #155724;
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.contact-form button {
+  padding: 1rem;
+  font-size: 1.1rem;
 }
 
 /* Footer */
 .footer {
-  background-color: var(--primary-dark);
-  color: var(--white);
-  padding: 4rem 2rem 2rem;
+  background-color: #1a5276;
+  color: white;
+  padding: 3rem 2rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/backgrounds/services-bg.svg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  pointer-events: none;
 }
 
 .footer-content {
   max-width: 1200px;
   margin: 0 auto;
-}
-
-.footer-main {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 3rem;
-  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .footer-logo {
   margin-bottom: 1.5rem;
 }
 
-.footer-about p {
-  opacity: 0.8;
-  margin-bottom: 1.5rem;
+.footer-logo img,
+.footer-logo svg {
+  height: 40px;
+  width: auto;
 }
 
-.footer-heading {
-  color: var(--white);
-  margin-bottom: 1.5rem;
-  font-size: 1.3rem;
+.footer-links {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+  gap: 2rem;
+}
+
+.footer-link {
+  color: white;
+  transition: all 0.3s ease;
   position: relative;
-  padding-bottom: 0.8rem;
+  padding-bottom: 3px;
 }
 
-.footer-heading::after {
+.footer-link::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 40px;
-  height: 3px;
-  background-color: var(--secondary-color);
-  border-radius: 3px;
-}
-
-.footer-links-group {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.footer-link {
-  color: rgba(255, 255, 255, 0.8);
-  transition: all var(--transition-speed) ease;
-  display: inline-block;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
 }
 
 .footer-link:hover {
-  color: var(--white);
-  transform: translateX(5px);
+  opacity: 0.9;
 }
 
-.footer-contact-item {
+.footer-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.social-icons {
   display: flex;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-  color: rgba(255, 255, 255, 0.8);
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
 }
 
-.footer-contact-icon {
-  margin-right: 0.8rem;
-  color: var(--secondary-color);
-  min-width: 24px;
-}
-
-.footer-divider {
-  height: 1px;
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   background-color: rgba(255, 255, 255, 0.1);
-  margin: 2rem 0;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+.social-icons svg,
+.social-icons img {
+  width: 20px;
+  height: 20px;
+  fill: white;
 }
 
 .footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.footer-copyright {
-  font-size: 0.95rem;
-  opacity: 0.7;
-}
-
-.footer-social {
-  display: flex;
-  gap: 1rem;
-}
-
-.footer-social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: var(--white);
-  transition: all var(--transition-speed) ease;
-}
-
-.footer-social-link:hover {
-  background-color: var(--secondary-color);
-  transform: translateY(-3px);
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
 }
 
 /* Not Found Page */
 .not-found {
   text-align: center;
   padding: 6rem 2rem;
-  background-color: var(--white);
-  border-radius: var(--border-radius-lg);
-  max-width: 800px;
-  margin: 4rem auto;
-  box-shadow: var(--card-shadow);
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
 }
 
 .not-found h1 {
-  font-size: 6rem;
-  color: var(--primary-color);
+  font-size: 8rem;
+  color: #1a5276;
+  margin-bottom: 0;
   line-height: 1;
-  margin-bottom: 0.5rem;
+  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .not-found h2 {
   font-size: 2rem;
-  color: var(--dark-text);
-  margin-bottom: 1.5rem;
+  color: #333;
+  margin-bottom: 2rem;
 }
 
 .not-found p {
   font-size: 1.2rem;
-  color: var(--medium-text);
-  margin-bottom: 2.5rem;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.not-found .btn {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  section {
-    padding: 4rem 1.5rem;
-  }
-  
-  .contact-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .hero-buttons {
-    flex-direction: column;
+  .navbar-container {
+    padding: 1rem;
   }
   
   .mobile-menu-button {
@@ -1446,21 +1953,40 @@ section h2::after {
     display: none;
   }
   
-  .mobile-menu {
+  .nav-menu.mobile-menu {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%;
-    background-color: var(--white);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    right: 0;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
   
   .nav-item {
-    margin-left: 0;
+    margin: 0.5rem 0;
+  }
+  
+  .hero {
+    padding: 5rem 1rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero h2 {
+    font-size: 1.3rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+  }
+  
+  .contact-container {
+    grid-template-columns: 1fr;
   }
   
   .service-grid {
@@ -1471,481 +1997,40 @@ section h2::after {
     flex-direction: column;
   }
   
-  .footer-main {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .footer-bottom {
-    flex-direction: column;
-    text-align: center;
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 }
 
 @media (max-width: 480px) {
+  section {
+    padding: 3rem 1rem;
+  }
+  
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   
-  .hero h2 {
-    font-size: 1.4rem;
-  }
-  
-  section h2 {
-    font-size: 1.8rem;
+  .expertise-grid,
+  .project-grid {
+    grid-template-columns: 1fr;
   }
   
   .not-found h1 {
-    font-size: 4rem;
+    font-size: 5rem;
   }
 }
 """
     with open('src/App.css', 'w', encoding='utf-8') as f:
         f.write(content)
-    print("Created enhanced App.css with improved styling and animations")
-
-def create_logo_svg():
-    """Create a professional logo SVG"""
-    content = """<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M18 3C9.716 3 3 9.716 3 18C3 26.284 9.716 33 18 33C26.284 33 33 26.284 33 18C33 9.716 26.284 3 18 3Z" fill="#1a5276"/>
-  <path d="M18 7C12.48 7 8 11.48 8 17C8 22.52 12.48 27 18 27C23.52 27 28 22.52 28 17C28 11.48 23.52 7 18 7Z" fill="#2980b9"/>
-  <path d="M22 13.5C22 15.985 20.206 18 18 18C15.794 18 14 15.985 14 13.5C14 11.015 15.794 9 18 9C20.206 9 22 11.015 22 13.5Z" fill="#1a5276"/>
-  <path d="M12 20L24 20L18 29L12 20Z" fill="#27ae60"/>
-  <path d="M14 17.5L22 17.5L18 24L14 17.5Z" fill="#2980b9"/>
-</svg>"""
-    
-    with open('src/assets/logo.svg', 'w', encoding='utf-8') as f:
-        f.write(content)
-    print("Created logo.svg")
-
-def create_pattern_svgs():
-    """Create pattern SVGs for background elements"""
-    
-    # Hero pattern
-    hero_pattern = """<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <path d="M0 0h100v100H0z" fill="none"/>
-  <path d="M20 20c10 0 10 10 20 10s10-10 20-10 10 10 20 10" stroke="#fff" stroke-width="1" fill="none"/>
-  <path d="M20 40c10 0 10 10 20 10s10-10 20-10 10 10 20 10" stroke="#fff" stroke-width="1" fill="none"/>
-  <path d="M20 60c10 0 10 10 20 10s10-10 20-10 10 10 20 10" stroke="#fff" stroke-width="1" fill="none"/>
-  <path d="M20 80c10 0 10 10 20 10s10-10 20-10 10 10 20 10" stroke="#fff" stroke-width="1" fill="none"/>
-  <path d="M0 10c10 0 10 10 20 10s10-10 20-10 10 10 20 10 10-10 20-10" stroke="#fff" stroke-width="1" fill="none"/>
-  <path d="M0 30c10 0 10 10 20 10s10-10 20-10 10 10 20 10 10-10 20-10" stroke="#fff" stroke-width="1" fill="none"/>
-  <path d="M0 50c10 0 10 10 20 10s10-10 20-10 10 10 20 10 10-10 20-10" stroke="#fff" stroke-width="1" fill="none"/>
-  <path d="M0 70c10 0 10 10 20 10s10-10 20-10 10 10 20 10 10-10 20-10" stroke="#fff" stroke-width="1" fill="none"/>
-  <path d="M0 90c10 0 10 10 20 10s10-10 20-10 10 10 20 10 10-10 20-10" stroke="#fff" stroke-width="1" fill="none"/>
-</svg>"""
-    
-    # CTA pattern
-    cta_pattern = """<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <path d="M0 0h100v100H0z" fill="none"/>
-  <circle cx="10" cy="10" r="2" fill="#fff"/>
-  <circle cx="30" cy="10" r="2" fill="#fff"/>
-  <circle cx="50" cy="10" r="2" fill="#fff"/>
-  <circle cx="70" cy="10" r="2" fill="#fff"/>
-  <circle cx="90" cy="10" r="2" fill="#fff"/>
-  <circle cx="10" cy="30" r="2" fill="#fff"/>
-  <circle cx="30" cy="30" r="2" fill="#fff"/>
-  <circle cx="50" cy="30" r="2" fill="#fff"/>
-  <circle cx="70" cy="30" r="2" fill="#fff"/>
-  <circle cx="90" cy="30" r="2" fill="#fff"/>
-  <circle cx="10" cy="50" r="2" fill="#fff"/>
-  <circle cx="30" cy="50" r="2" fill="#fff"/>
-  <circle cx="50" cy="50" r="2" fill="#fff"/>
-  <circle cx="70" cy="50" r="2" fill="#fff"/>
-  <circle cx="90" cy="50" r="2" fill="#fff"/>
-  <circle cx="10" cy="70" r="2" fill="#fff"/>
-  <circle cx="30" cy="70" r="2" fill="#fff"/>
-  <circle cx="50" cy="70" r="2" fill="#fff"/>
-  <circle cx="70" cy="70" r="2" fill="#fff"/>
-  <circle cx="90" cy="70" r="2" fill="#fff"/>
-  <circle cx="10" cy="90" r="2" fill="#fff"/>
-  <circle cx="30" cy="90" r="2" fill="#fff"/>
-  <circle cx="50" cy="90" r="2" fill="#fff"/>
-  <circle cx="70" cy="90" r="2" fill="#fff"/>
-  <circle cx="90" cy="90" r="2" fill="#fff"/>
-</svg>"""
-    
-    # Header pattern
-    header_pattern = """<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <path d="M0 0h100v100H0z" fill="none"/>
-  <path d="M25 25h50v50H25z" stroke="#fff" stroke-width="1" fill="none"/>
-  <path d="M20 20h60v60H20z" stroke="#fff" stroke-width="1" fill="none"/>
-  <path d="M15 15h70v70H15z" stroke="#fff" stroke-width="1" fill="none"/>
-  <path d="M10 10h80v80H10z" stroke="#fff" stroke-width="1" fill="none"/>
-  <path d="M5 5h90v90H5z" stroke="#fff" stroke-width="1" fill="none"/>
-</svg>"""
-    
-    with open('src/assets/hero-pattern.svg', 'w', encoding='utf-8') as f:
-        f.write(hero_pattern)
-    
-    with open('src/assets/cta-pattern.svg', 'w', encoding='utf-8') as f:
-        f.write(cta_pattern)
-    
-    with open('src/assets/header-pattern.svg', 'w', encoding='utf-8') as f:
-        f.write(header_pattern)
-    
-    print("Created pattern SVGs for visual enhancement")
-
-def create_service_icons():
-    """Create service-specific SVG icons"""
-    
-    # Municipal wastewater icon
-    municipal_icon = """<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M25 5C13.954 5 5 13.954 5 25C5 36.046 13.954 45 25 45C36.046 45 45 36.046 45 25C45 13.954 36.046 5 25 5Z" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 25C15 19.477 19.477 15 25 15C30.523 15 35 19.477 35 25" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 25L18 29L22 25L26 29L30 25L34 29" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 33L18 37L22 33L26 37L30 33L34 37" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <rect x="22" y="9" width="6" height="3" rx="1.5" fill="#1a5276"/>
-  <path d="M12 20L16 20L16 15" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M38 20L34 20L34 15" stroke="#1a5276" stroke-width="2" fill="none"/>
-</svg>"""
-    
-    # Agricultural wastewater icon
-    agricultural_icon = """<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M5 35H45V45H5V35Z" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M5 35C5 25 15 25 15 15C15 10.029 11.971 5 7 5" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 35C15 25 25 25 25 15C25 10.029 21.971 5 17 5" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M25 35C25 25 35 25 35 15C35 10.029 31.971 5 27 5" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M35 35C35 25 45 25 45 15C45 10.029 41.971 5 37 5" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <rect x="10" y="38" width="2" height="4" rx="1" fill="#1a5276"/>
-  <rect x="20" y="38" width="2" height="4" rx="1" fill="#1a5276"/>
-  <rect x="30" y="38" width="2" height="4" rx="1" fill="#1a5276"/>
-  <rect x="40" y="38" width="2" height="4" rx="1" fill="#1a5276"/>
-  <path d="M7 12L9 16L5 16L7 12Z" fill="#27ae60"/>
-  <path d="M17 10L19 14L15 14L17 10Z" fill="#27ae60"/>
-  <path d="M27 8L29 12L25 12L27 8Z" fill="#27ae60"/>
-  <path d="M37 10L39 14L35 14L37 10Z" fill="#27ae60"/>
-</svg>"""
-    
-    # Reticulation icon
-    reticulation_icon = """<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M5 15H45V35H5V15Z" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M10 15V10H20V15" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M30 15V10H40V15" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M10 35V40H20V35" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M30 35V40H40V35" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <circle cx="15" cy="25" r="5" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <circle cx="35" cy="25" r="5" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M20 25H30" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M25 10V15" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M25 35V40" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 20L15 10" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
-  <path d="M35 20L35 10" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
-  <path d="M15 30L15 40" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
-  <path d="M35 30L35 40" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
-</svg>"""
-    
-    # Catchment modeling icon
-    catchment_icon = """<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M5 5V45H45" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M10 35L15 25L20 30L25 15L30 20L35 10L40 15" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M10 40C10 37.791 12.239 36 15 36C17.761 36 20 37.791 20 40" stroke="#27ae60" stroke-width="2" fill="none"/>
-  <path d="M20 40C20 37.791 22.239 36 25 36C27.761 36 30 37.791 30 40" stroke="#27ae60" stroke-width="2" fill="none"/>
-  <path d="M30 40C30 37.791 32.239 36 35 36C37.761 36 40 37.791 40 40" stroke="#27ae60" stroke-width="2" fill="none"/>
-  <circle cx="15" cy="25" r="2" fill="#1a5276"/>
-  <circle cx="25" cy="15" r="2" fill="#1a5276"/>
-  <circle cx="35" cy="10" r="2" fill="#1a5276"/>
-</svg>"""
-    
-    # Chemical processing icon
-    chemical_icon = """<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M20 5H30V15L35 25V45H15V25L20 15V5Z" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 30H35" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 38H35" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M24 5V12" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M27 5V12" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <circle cx="20" cy="20" r="2" fill="#27ae60"/>
-  <circle cx="30" cy="25" r="2" fill="#27ae60"/>
-  <circle cx="25" cy="35" r="2" fill="#27ae60"/>
-  <circle cx="18" cy="42" r="2" fill="#27ae60"/>
-  <circle cx="32" cy="42" r="2" fill="#27ae60"/>
-</svg>"""
-    
-    with open('src/assets/icons/municipal-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(municipal_icon)
-    
-    with open('src/assets/icons/agricultural-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(agricultural_icon)
-    
-    with open('src/assets/icons/reticulation-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(reticulation_icon)
-    
-    with open('src/assets/icons/catchment-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(catchment_icon)
-    
-    with open('src/assets/icons/chemical-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(chemical_icon)
-    
-    print("Created service-specific SVG icons")
-
-def create_expertise_icons():
-    """Create expertise area SVG icons"""
-    
-    # Environmental Engineering icon
-    env_icon = """<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M30 5C16.193 5 5 16.193 5 30C5 43.807 16.193 55 30 55C43.807 55 55 43.807 55 30C55 16.193 43.807 5 30 5Z" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M30 15C21.716 15 15 21.716 15 30C15 38.284 21.716 45 30 45C38.284 45 45 38.284 45 30C45 21.716 38.284 15 30 15Z" fill="#e1f5fe"/>
-  <path d="M30 20L33.09 26.5H40.27L34.59 30.5L37.68 37L30 33L22.32 37L25.41 30.5L19.73 26.5H26.91L30 20Z" fill="#27ae60"/>
-  <path d="M20 15C16.686 15 14 12.314 14 9C14 5.686 16.686 3 20 3C23.314 3 26 5.686 26 9C26 12.314 23.314 15 20 15Z" fill="#e1f5fe"/>
-  <path d="M42 54C38.686 54 36 51.314 36 48C36 44.686 38.686 42 42 42C45.314 42 48 44.686 48 48C48 51.314 45.314 54 42 54Z" fill="#e1f5fe"/>
-  <path d="M10 42C8.343 42 7 40.657 7 39C7 37.343 8.343 36 10 36C11.657 36 13 37.343 13 39C13 40.657 11.657 42 10 42Z" fill="#e1f5fe"/>
-  <path d="M48 20C46.343 20 45 18.657 45 17C45 15.343 46.343 14 48 14C49.657 14 51 15.343 51 17C51 18.657 49.657 20 48 20Z" fill="#e1f5fe"/>
-</svg>"""
-    
-    # Bioprocess Engineering icon
-    bio_icon = """<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M15 5H45V45C45 50.523 40.523 55 35 55H25C19.477 55 15 50.523 15 45V5Z" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 15H45" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 25H45" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 35H45" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 45H45" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M25 55V45" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M35 55V45" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <circle cx="30" cy="10" r="3" fill="#27ae60"/>
-  <circle cx="30" cy="20" r="3" fill="#27ae60"/>
-  <circle cx="30" cy="30" r="3" fill="#27ae60"/>
-  <circle cx="30" cy="40" r="3" fill="#27ae60"/>
-  <path d="M20 5V15" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
-  <path d="M30 5V15" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
-  <path d="M40 5V15" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
-</svg>"""
-    
-    # Modeling & Analysis icon
-    modeling_icon = """<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M5 5V55H55" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M10 45L20 30L30 40L40 20L50 25" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <circle cx="20" cy="30" r="3" fill="#27ae60"/>
-  <circle cx="30" cy="40" r="3" fill="#27ae60"/>
-  <circle cx="40" cy="20" r="3" fill="#27ae60"/>
-  <rect x="50" y="15" width="2" height="20" rx="1" fill="#e1f5fe"/>
-  <rect x="45" y="20" width="2" height="10" rx="1" fill="#e1f5fe"/>
-  <rect x="40" y="25" width="2" height="5" rx="1" fill="#e1f5fe"/>
-  <rect x="55" y="25" width="2" height="5" rx="1" fill="#e1f5fe"/>
-  <rect x="35" y="20" width="2" height="10" rx="1" fill="#e1f5fe"/>
-  <path d="M10 20L15 15L20 20L25 15L30 20" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
-</svg>"""
-    
-    with open('src/assets/icons/environmental-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(env_icon)
-    
-    with open('src/assets/icons/bioprocess-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(bio_icon)
-    
-    with open('src/assets/icons/modeling-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(modeling_icon)
-    
-    print("Created expertise area SVG icons")
-
-def create_project_icons():
-    """Create project-specific SVG icons"""
-    
-    # Nitrate removal icon
-    nitrate_icon = """<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="5" y="15" width="40" height="30" rx="2" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M5 20H45" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 15V10C15 7.239 17.239 5 20 5H30C32.761 5 35 7.239 35 10V15" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M20 30L25 25L30 30" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M25 25V40" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <rect x="15" y="35" width="20" height="5" rx="2.5" fill="#e1f5fe"/>
-  <path d="M10 25H15L17 35H8L10 25Z" fill="#27ae60"/>
-  <path d="M33 25H38L40 35H31L33 25Z" fill="#27ae60"/>
-</svg>"""
-    
-    # UASB technology icon
-    uasb_icon = """<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M10 5H40V45H10V5Z" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M10 15H40" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M10 35H40" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M25 5V15" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 45V50" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M35 45V50" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 15L20 35" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M35 15L30 35" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <circle cx="17.5" cy="22.5" r="2.5" fill="#27ae60"/>
-  <circle cx="20" cy="27.5" r="2.5" fill="#27ae60"/>
-  <circle cx="32.5" cy="22.5" r="2.5" fill="#27ae60"/>
-  <circle cx="30" cy="27.5" r="2.5" fill="#27ae60"/>
-  <rect x="20" y="35" width="10" height="5" rx="2.5" fill="#e1f5fe"/>
-</svg>"""
-    
-    # Catchment modeling icon
-    catchment_model_icon = """<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M5 5V45H45" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M10 40C10 38.343 11.343 37 13 37C14.657 37 16 38.343 16 40" stroke="#27ae60" stroke-width="2" fill="none"/>
-  <path d="M19 40C19 38.343 20.343 37 22 37C23.657 37 25 38.343 25 40" stroke="#27ae60" stroke-width="2" fill="none"/>
-  <path d="M28 40C28 38.343 29.343 37 31 37C32.657 37 34 38.343 34 40" stroke="#27ae60" stroke-width="2" fill="none"/>
-  <path d="M37 40C37 38.343 38.343 37 40 37C41.657 37 43 38.343 43 40" stroke="#27ae60" stroke-width="2" fill="none"/>
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M13 10V35H10V10H13Z" fill="#e1f5fe"/>
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M22 15V35H19V15H22Z" fill="#e1f5fe"/>
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M31 20V35H28V20H31Z" fill="#e1f5fe"/>
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M40 25V35H37V25H40Z" fill="#e1f5fe"/>
-  <path d="M10 30L15 20L20 25L25 10L30 15L35 5L40 10" stroke="#1a5276" stroke-width="2" fill="none"/>
-</svg>"""
-    
-    # MBR technology icon
-    mbr_icon = """<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="5" y="10" width="40" height="30" rx="2" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M5 20H45" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M25 10V40" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <circle cx="15" cy="30" r="5" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <circle cx="35" cy="30" r="5" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 12L12 5" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M35 12L38 5" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 38L12 45" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M35 38L38 45" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 15L15 5" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
-  <path d="M35 15L35 5" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
-  <path d="M15 35L15 45" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
-  <path d="M35 35L35 45" stroke="#1a5276" stroke-width="2" fill="none" stroke-dasharray="2 2"/>
-  <circle cx="15" cy="30" r="2" fill="#27ae60"/>
-  <circle cx="35" cy="30" r="2" fill="#27ae60"/>
-</svg>"""
-    
-    # Water reticulation icon
-    reticulation_project_icon = """<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M5 15H10L15 5H35L40 15H45" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M5 15V45H45V15" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 25H35" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M15 35H35" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M25 15V45" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <circle cx="15" cy="25" r="2" fill="#27ae60"/>
-  <circle cx="35" cy="25" r="2" fill="#27ae60"/>
-  <circle cx="15" cy="35" r="2" fill="#27ae60"/>
-  <circle cx="35" cy="35" r="2" fill="#27ae60"/>
-  <circle cx="25" cy="25" r="2" fill="#27ae60"/>
-  <circle cx="25" cy="35" r="2" fill="#27ae60"/>
-  <path d="M10 45L10 50" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M40 45L40 50" stroke="#1a5276" stroke-width="2" fill="none"/>
-</svg>"""
-    
-    with open('src/assets/icons/nitrate-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(nitrate_icon)
-    
-    with open('src/assets/icons/uasb-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(uasb_icon)
-    
-    with open('src/assets/icons/catchment-model-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(catchment_model_icon)
-    
-    with open('src/assets/icons/mbr-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(mbr_icon)
-    
-    with open('src/assets/icons/reticulation-project-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(reticulation_project_icon)
-    
-    print("Created project-specific SVG icons")
-
-def create_contact_icons():
-    """Create contact information SVG icons"""
-    
-    # Email icon
-    email_icon = """<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="#1a5276" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <path d="M22 6L12 13L2 6" stroke="#1a5276" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-</svg>"""
-    
-    # Phone icon
-    phone_icon = """<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M22 16.92V19.92C22 20.4704 21.7893 20.9996 21.4142 21.3746C21.0391 21.7497 20.5099 21.9605 19.96 21.96C18.44 21.96 16.96 21.73 15.56 21.27C14.2341 20.8327 13.0024 20.1638 11.92 19.29C9.36209 17.4075 7.2721 14.983 5.83 12.14C5.27 10.71 4.97 9.2 4.97 7.65C4.96891 7.10087 5.17905 6.57229 5.5532 6.19703C5.92734 5.82178 6.45532 5.61038 7.004 5.61H10.004C10.456 5.60553 10.894 5.75894 11.242 6.04271C11.5899 6.32647 11.8289 6.72247 11.914 7.16C12.074 8.01 12.333 8.83 12.684 9.61C12.8251 9.91305 12.8684 10.2512 12.8089 10.5798C12.7494 10.9084 12.5899 11.2108 12.354 11.45L11.03 12.77C12.3336 14.8639 14.1361 16.6664 16.23 17.97L17.55 16.65C17.7892 16.4141 18.0916 16.2546 18.4202 16.1951C18.7488 16.1356 19.087 16.1789 19.39 16.32C20.1684 16.6707 20.9867 16.9293 21.83 17.09C22.2748 17.1764 22.6752 17.4227 22.9586 17.7786C23.242 18.1345 23.3893 18.5812 23.38 19.04L22 16.92Z" stroke="#1a5276" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-</svg>"""
-    
-    # Location icon
-    location_icon = """<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="#1a5276" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#1a5276" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-</svg>"""
-    
-    # LinkedIn icon
-    linkedin_icon = """<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="#1a5276" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <path d="M6 9H2V21H6V9Z" stroke="#1a5276" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z" stroke="#1a5276" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-</svg>"""
-    
-    # ResearchGate icon
-    researchgate_icon = """<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M8 7H10V17H8V7Z" stroke="#1a5276" stroke-width="1.5" fill="none"/>
-  <path d="M12 7H16C16.5304 7 17.0391 7.21071 17.4142 7.58579C17.7893 7.96086 18 8.46957 18 9V15C18 15.5304 17.7893 16.0391 17.4142 16.4142C17.0391 16.7893 16.5304 17 16 17H12V7Z" stroke="#1a5276" stroke-width="1.5" fill="none"/>
-  <path d="M12 12H16" stroke="#1a5276" stroke-width="1.5" fill="none"/>
-</svg>"""
-    
-    # Google Scholar icon
-    scholar_icon = """<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M5 5H19C20.1046 5 21 5.89543 21 7V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17V7C3 5.89543 3.89543 5 5 5Z" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M7 9H17" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M7 13H12" stroke="#1a5276" stroke-width="2" fill="none"/>
-  <path d="M7 16H9" stroke="#1a5276" stroke-width="2" fill="none"/>
-</svg>"""
-    
-    with open('src/assets/icons/email-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(email_icon)
-    
-    with open('src/assets/icons/phone-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(phone_icon)
-    
-    with open('src/assets/icons/location-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(location_icon)
-    
-    with open('src/assets/icons/linkedin-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(linkedin_icon)
-    
-    with open('src/assets/icons/researchgate-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(researchgate_icon)
-    
-    with open('src/assets/icons/scholar-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(scholar_icon)
-    
-    print("Created contact information SVG icons")
-
-def create_social_icons():
-    """Create social media SVG icons for footer"""
-    
-    # LinkedIn icon
-    linkedin_icon = """<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <path d="M6 9H2V21H6V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-</svg>"""
-    
-    # Twitter/X icon
-    twitter_icon = """<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M22 4C22 4 21.3 6.1 20 7.4C21.6 17.4 10.6 24.7 2 19C4.2 19.1 6.4 18.4 8 17C3 15.5 0.5 9.6 3 5C5.2 7.6 8.6 9.1 12 9C11.1 4.8 16 2.4 19 5.2C20.1 5.2 22 4 22 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-</svg>"""
-    
-    # ResearchGate icon
-    researchgate_icon = """<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="currentColor" stroke-width="2" fill="none"/>
-  <path d="M8 7H10V17H8V7Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-  <path d="M12 7H16C16.5304 7 17.0391 7.21071 17.4142 7.58579C17.7893 7.96086 18 8.46957 18 9V15C18 15.5304 17.7893 16.0391 17.4142 16.4142C17.0391 16.7893 16.5304 17 16 17H12V7Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-  <path d="M12 12H16" stroke="currentColor" stroke-width="1.5" fill="none"/>
-</svg>"""
-    
-    # Email icon
-    email_icon = """<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-</svg>"""
-    
-    with open('src/assets/icons/linkedin-social-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(linkedin_icon)
-    
-    with open('src/assets/icons/twitter-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(twitter_icon)
-    
-    with open('src/assets/icons/researchgate-social-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(researchgate_icon)
-    
-    with open('src/assets/icons/email-social-icon.svg', 'w', encoding='utf-8') as f:
-        f.write(email_icon)
-    
-    print("Created social media SVG icons for footer")
+    print("Created enhanced App.css")
 
 def create_navbar_component():
-    """Create the Navbar component with logo and improved styling"""
+    """Create the Navbar component with logo"""
     content = """import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ReactComponent as Logo } from '../assets/logo.svg';
+import { ReactComponent as Logo } from '../assets/logos/main-logo.svg';
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -1967,7 +2052,7 @@ const Navbar = () => {
     };
   }, []);
   
-  // Detect scrolling for navbar style change
+  // Add scroll effect
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -1997,9 +2082,8 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
-        <Link to="/" className="logo">
-          <Logo className="logo-icon" />
-          <span className="logo-text">RMES</span>
+        <Link to="/" className="navbar-logo">
+          <Logo />
         </Link>
         
         {isMobile ? (
@@ -2103,14 +2187,10 @@ export default Navbar;
     print("Created enhanced Navbar.js component with logo")
 
 def create_footer_component():
-    """Create the Footer component with improved layout and icons"""
+    """Create the Footer component with logo and social icons"""
     content = """import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from '../assets/logo.svg';
-import { ReactComponent as LinkedInIcon } from '../assets/icons/linkedin-social-icon.svg';
-import { ReactComponent as TwitterIcon } from '../assets/icons/twitter-icon.svg';
-import { ReactComponent as ResearchGateIcon } from '../assets/icons/researchgate-social-icon.svg';
-import { ReactComponent as EmailIcon } from '../assets/icons/email-social-icon.svg';
+import { ReactComponent as Logo } from '../assets/logos/main-logo.svg';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -2118,85 +2198,53 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <div className="footer-main">
-          <div className="footer-about">
-            <div className="footer-logo logo">
-              <Logo className="logo-icon" />
-              <span className="logo-text" style={{ color: 'white' }}>RMES</span>
-            </div>
-            <p>Specializing in innovative water treatment solutions, sustainable technology design, environmental impact assessment, and advanced process optimization.</p>
-          </div>
-          
-          <div className="footer-nav">
-            <h3 className="footer-heading">Navigation</h3>
-            <div className="footer-links-group">
-              <Link to="/" className="footer-link">Home</Link>
-              <Link to="/services" className="footer-link">Services</Link>
-              <Link to="/projects" className="footer-link">Projects</Link>
-              <Link to="/publications" className="footer-link">Publications</Link>
-              <Link to="/contact" className="footer-link">Contact</Link>
-            </div>
-          </div>
-          
-          <div className="footer-services">
-            <h3 className="footer-heading">Services</h3>
-            <div className="footer-links-group">
-              <Link to="/services" className="footer-link">Wastewater Treatment</Link>
-              <Link to="/services" className="footer-link">Water Reticulation</Link>
-              <Link to="/services" className="footer-link">Catchment Modeling</Link>
-              <Link to="/services" className="footer-link">Process Optimization</Link>
-            </div>
-          </div>
-          
-          <div className="footer-contact">
-            <h3 className="footer-heading">Contact</h3>
-            <div className="footer-contact-item">
-              <EmailIcon className="footer-contact-icon" />
-              <span>che.eng@live.com</span>
-            </div>
-            <div className="footer-contact-item">
-              <span>+642108052489</span>
-            </div>
-            <div className="footer-contact-item">
-              <span>New Zealand</span>
-            </div>
-          </div>
+        <div className="footer-logo">
+          <Logo />
         </div>
         
-        <div className="footer-divider"></div>
+        <div className="footer-links">
+          <Link to="/" className="footer-link">Home</Link>
+          <Link to="/services" className="footer-link">Services</Link>
+          <Link to="/projects" className="footer-link">Projects</Link>
+          <Link to="/publications" className="footer-link">Publications</Link>
+          <Link to="/contact" className="footer-link">Contact</Link>
+        </div>
+        
+        <div className="social-icons">
+          <a 
+            href="https://www.linkedin.com/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </a>
+          <a 
+            href="https://www.researchgate.net/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="ResearchGate Profile"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.586 0c-2.123 0-3.359 1.265-3.359 2.981v1.017h3.869v1.023h-3.869v10.34c1.14-.908 2.009-1.316 3.273-1.316 2.688 0 4.5 2.1 4.5 5.274 0 2.73-2.328 4.681-5.172 4.681-2.565 0-4.428-1.559-4.428-3.828 0-1.467.633-2.475 2.331-3.729v-11.371h-2.364v-1.074h2.364v-1.017c0-2.922 1.978-3.981 5.379-3.981h1.335v1h-.859zm-13.814 12.591c-3.022 0-5.772 2.19-5.772 5.473 0 3.147 2.35 5.136 5.772 5.136 2.819 0 5.266-1.74 5.266-5.136 0-3.333-2.85-5.473-5.266-5.473zm-.329 2.581c1.013 0 1.914.901 1.914 2.892s-.901 2.867-1.914 2.867c-1.264 0-2.074-.776-2.074-2.867 0-2.116.81-2.892 2.074-2.892zm11.252.484c-.859 0-1.351.226-2.271 1.174v5.273c.685.751 1.467 1.174 2.373 1.174 1.391 0 2.565-1.149 2.565-2.799 0-2.425-1.149-3.822-2.667-3.822z"/>
+            </svg>
+          </a>
+          <a 
+            href="https://scholar.google.com/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="Google Scholar Profile"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+            </svg>
+          </a>
+        </div>
         
         <div className="footer-bottom">
-          <p className="footer-copyright">&copy; {currentYear} Dr. Reza Moghaddam. All rights reserved.</p>
-          
-          <div className="footer-social">
-            <a 
-              href="https://www.linkedin.com/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="footer-social-link"
-              aria-label="LinkedIn Profile"
-            >
-              <LinkedInIcon />
-            </a>
-            <a 
-              href="https://twitter.com/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="footer-social-link"
-              aria-label="Twitter Profile"
-            >
-              <TwitterIcon />
-            </a>
-            <a 
-              href="https://www.researchgate.net/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="footer-social-link"
-              aria-label="ResearchGate Profile"
-            >
-              <ResearchGateIcon />
-            </a>
-          </div>
+          <p>&copy; {currentYear} Dr. Reza Moghaddam. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -2207,22 +2255,30 @@ export default Footer;
 """
     with open('src/components/Footer.js', 'w', encoding='utf-8') as f:
         f.write(content)
-    print("Created enhanced Footer.js component with icons and improved layout")
+    print("Created enhanced Footer.js component with logo and social icons")
 
 def create_home_page():
-    """Create the HomePage component with icons and improved styling"""
+    """Create the HomePage component with visual elements"""
     content = """import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import heroImage from '../assets/hero-bg.jpg';
-import { ReactComponent as EnvironmentalIcon } from '../assets/icons/environmental-icon.svg';
-import { ReactComponent as BioprocessIcon } from '../assets/icons/bioprocess-icon.svg';
-import { ReactComponent as ModelingIcon } from '../assets/icons/modeling-icon.svg';
-import { ReactComponent as NitrateIcon } from '../assets/icons/nitrate-icon.svg';
-import { ReactComponent as UasbIcon } from '../assets/icons/uasb-icon.svg';
-import { ReactComponent as CatchmentModelIcon } from '../assets/icons/catchment-model-icon.svg';
+import heroImage from '../assets/backgrounds/hero-bg.svg';
+
+// Import service icons
+import { ReactComponent as WastewaterIcon } from '../assets/icons/wastewater-treatment.svg';
+import { ReactComponent as ReticulationIcon } from '../assets/icons/water-reticulation.svg';
+import { ReactComponent as CatchmentIcon } from '../assets/icons/catchment-modeling.svg';
+import { ReactComponent as ProcessIcon } from '../assets/icons/process-optimization.svg';
+import { ReactComponent as BioprocessIcon } from '../assets/icons/bioprocess-engineering.svg';
 
 const HomePage = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [animatedElements, setAnimatedElements] = useState({
+    hero: false,
+    expertise: false,
+    projects: false,
+    services: false,
+    publications: false
+  });
   
   useEffect(() => {
     // Check if the hero image exists by trying to load it
@@ -2231,9 +2287,38 @@ const HomePage = () => {
     img.onerror = () => setImageLoaded(false);
     img.src = heroImage;
     
+    // Add scroll animation observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setAnimatedElements(prev => ({
+            ...prev,
+            [entry.target.id]: true
+          }));
+        }
+      });
+    }, { threshold: 0.2 });
+    
+    // Observe sections
+    const sections = document.querySelectorAll('.animate-on-scroll');
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+    
+    // Set hero animation immediately
+    setTimeout(() => {
+      setAnimatedElements(prev => ({
+        ...prev,
+        hero: true
+      }));
+    }, 300);
+    
     return () => {
       img.onload = null;
       img.onerror = null;
+      sections.forEach(section => {
+        observer.unobserve(section);
+      });
     };
   }, []);
 
@@ -2241,7 +2326,7 @@ const HomePage = () => {
     <div className="home-page">
       {/* Hero Section */}
       <section className={`hero ${imageLoaded ? 'hero-with-image' : ''}`}>
-        <div className="hero-content">
+        <div className={`hero-content ${animatedElements.hero ? 'fade-in' : ''}`}>
           <h1>Dr. Reza Moghaddam</h1>
           <h2>Environmental & Bioprocess Engineer</h2>
           <p>Specializing in innovative water treatment solutions, sustainable technology design, environmental impact assessment, and advanced process optimization.</p>
@@ -2253,12 +2338,11 @@ const HomePage = () => {
       </section>
 
       {/* Expertise Section */}
-      <section className="expertise">
-        <h2>Areas of Expertise</h2>
+      <section id="expertise" className="expertise animate-on-scroll">
+        <h2 className={animatedElements.expertise ? 'slide-up' : ''}>Areas of Expertise</h2>
         <div className="expertise-grid">
-          <div className="expertise-card">
-            <EnvironmentalIcon className="expertise-card-icon" />
-            <h3>Environmental Engineering</h3>
+          <div className={`expertise-card ${animatedElements.expertise ? 'slide-in-left' : ''}`}>
+            <h3><WastewaterIcon /> Environmental Engineering</h3>
             <ul>
               <li>Municipal & Agricultural Wastewater Treatment</li>
               <li>Denitrifying Bioreactors</li>
@@ -2266,9 +2350,8 @@ const HomePage = () => {
               <li>Water & Wastewater Reticulation Design</li>
             </ul>
           </div>
-          <div className="expertise-card">
-            <BioprocessIcon className="expertise-card-icon" />
-            <h3>Bioprocess Engineering</h3>
+          <div className={`expertise-card ${animatedElements.expertise ? 'slide-up' : ''}`}>
+            <h3><BioprocessIcon /> Bioprocess Engineering</h3>
             <ul>
               <li>Aerobic & Anaerobic Treatment Systems</li>
               <li>Bioreactor Design & Optimization</li>
@@ -2276,9 +2359,8 @@ const HomePage = () => {
               <li>Scale-up Methodology</li>
             </ul>
           </div>
-          <div className="expertise-card">
-            <ModelingIcon className="expertise-card-icon" />
-            <h3>Modeling & Analysis</h3>
+          <div className={`expertise-card ${animatedElements.expertise ? 'slide-in-right' : ''}`}>
+            <h3><CatchmentIcon /> Modeling & Analysis</h3>
             <ul>
               <li>Catchment & Water Resource Modeling</li>
               <li>Chemical & Food Processing Optimization</li>
@@ -2289,12 +2371,45 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Services Preview Section */}
+      <section id="services" className="services-preview animate-on-scroll">
+        <h2 className={animatedElements.services ? 'slide-up' : ''}>Consultancy Services</h2>
+        <div className="services-grid">
+          <div className={`service-preview-card ${animatedElements.services ? 'slide-in-left' : ''}`}>
+            <WastewaterIcon className="service-icon" />
+            <h3>Wastewater Treatment</h3>
+            <p>Comprehensive design and optimization services for municipal and agricultural wastewater systems including innovative aerobic and anaerobic technologies.</p>
+            <Link to="/services" className="service-link">Learn More</Link>
+          </div>
+          <div className={`service-preview-card ${animatedElements.services ? 'slide-up' : ''}`}>
+            <ReticulationIcon className="service-icon" />
+            <h3>Water Reticulation</h3>
+            <p>Expert design services for water distribution and wastewater collection networks from small-scale developments to municipal systems.</p>
+            <Link to="/services" className="service-link">Learn More</Link>
+          </div>
+          <div className={`service-preview-card ${animatedElements.services ? 'slide-in-right' : ''}`}>
+            <CatchmentIcon className="service-icon" />
+            <h3>Catchment Modeling</h3>
+            <p>Advanced surface and groundwater modeling services for water resource management, water quality assessment, and regulatory compliance.</p>
+            <Link to="/services" className="service-link">Learn More</Link>
+          </div>
+          <div className={`service-preview-card ${animatedElements.services ? 'slide-in-left' : ''}`}>
+            <ProcessIcon className="service-icon" />
+            <h3>Process Optimization</h3>
+            <p>Systematic optimization of processing operations to enhance efficiency, reduce costs, and improve sustainability metrics.</p>
+            <Link to="/services" className="service-link">Learn More</Link>
+          </div>
+        </div>
+        <div className="section-cta">
+          <Link to="/services" className="btn primary-btn">Explore All Services</Link>
+        </div>
+      </section>
+
       {/* Featured Projects Section */}
-      <section className="featured-projects">
-        <h2>Featured Projects</h2>
+      <section id="projects" className="featured-projects animate-on-scroll">
+        <h2 className={animatedElements.projects ? 'slide-up' : ''}>Featured Projects</h2>
         <div className="project-grid">
-          <div className="project-card">
-            <NitrateIcon className="project-card-icon" />
+          <div className={`project-card ${animatedElements.projects ? 'slide-in-left' : ''}`}>
             <h3>Enhanced Nitrate Removal in Woodchip Bioreactors</h3>
             <p>Implementation of carbon dosing techniques to improve nitrate removal efficiency in agricultural drainage systems.</p>
             <div className="project-metrics">
@@ -2303,8 +2418,7 @@ const HomePage = () => {
             </div>
             <Link to="/projects" className="project-link">Learn More</Link>
           </div>
-          <div className="project-card">
-            <UasbIcon className="project-card-icon" />
+          <div className={`project-card ${animatedElements.projects ? 'slide-up' : ''}`}>
             <h3>Municipal WWTP Optimization Using UASB Technology</h3>
             <p>Implementation of Upflow Anaerobic Sludge Blanket (UASB) reactors for enhanced energy efficiency in wastewater treatment.</p>
             <div className="project-metrics">
@@ -2313,8 +2427,7 @@ const HomePage = () => {
             </div>
             <Link to="/projects" className="project-link">Learn More</Link>
           </div>
-          <div className="project-card">
-            <CatchmentModelIcon className="project-card-icon" />
+          <div className={`project-card ${animatedElements.projects ? 'slide-in-right' : ''}`}>
             <h3>Catchment Modeling for Agricultural Runoff Mitigation</h3>
             <p>Comprehensive modeling of surface and groundwater interactions to optimize placement of water quality interventions.</p>
             <div className="project-metrics">
@@ -2329,35 +2442,15 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Services Preview */}
-      <section className="publications-preview">
-        <h2>Consultancy Services</h2>
-        <div className="publication-list">
-          <div className="publication-item">
-            <h3>Advanced Wastewater Treatment Design & Optimization</h3>
-            <p>Specialized consulting for municipal and agricultural wastewater systems using innovative aerobic and anaerobic technologies.</p>
-            <Link to="/services" className="project-link">Learn More</Link>
-          </div>
-          <div className="publication-item">
-            <h3>Catchment Modeling & Water Resource Management</h3>
-            <p>Comprehensive surface and groundwater quality/quantity modeling for sustainable resource planning and regulatory compliance.</p>
-            <Link to="/services" className="project-link">Learn More</Link>
-          </div>
-        </div>
-        <div className="section-cta">
-          <Link to="/services" className="btn primary-btn">Explore All Services</Link>
-        </div>
-      </section>
-
       {/* Publications Preview */}
-      <section className="publications-preview">
-        <h2>Recent Publications</h2>
+      <section id="publications" className="publications-preview animate-on-scroll">
+        <h2 className={animatedElements.publications ? 'slide-up' : ''}>Recent Publications</h2>
         <div className="publication-list">
-          <div className="publication-item">
+          <div className={`publication-item ${animatedElements.publications ? 'slide-in-left' : ''}`}>
             <h3>Flow analysis and hydraulic performance of denitrifying bioreactors under different carbon dosing treatments</h3>
             <p>Journal of Environmental Management, 2023</p>
           </div>
-          <div className="publication-item">
+          <div className={`publication-item ${animatedElements.publications ? 'slide-in-right' : ''}`}>
             <h3>Constant carbon dosing of a pilot-scale denitrifying bioreactor to improve nitrate removal from agricultural tile drainage</h3>
             <p>Ecological Engineering, 2023</p>
           </div>
@@ -2383,17 +2476,24 @@ export default HomePage;
 """
     with open('src/pages/HomePage.js', 'w', encoding='utf-8') as f:
         f.write(content)
-    print("Created enhanced HomePage.js with icons and improved styling")
+    print("Created enhanced HomePage.js with visual elements and animations")
 
 def create_services_page():
-    """Create the ServicesPage component with icons and improved styling"""
+    """Create the ServicesPage component with visual elements and diagrams"""
     content = """import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as MunicipalIcon } from '../assets/icons/municipal-icon.svg';
-import { ReactComponent as AgriculturalIcon } from '../assets/icons/agricultural-icon.svg';
-import { ReactComponent as ReticulationIcon } from '../assets/icons/reticulation-icon.svg';
-import { ReactComponent as CatchmentIcon } from '../assets/icons/catchment-icon.svg';
-import { ReactComponent as ChemicalIcon } from '../assets/icons/chemical-icon.svg';
+
+// Import service icons
+import { ReactComponent as WastewaterIcon } from '../assets/icons/wastewater-treatment.svg';
+import { ReactComponent as ReticulationIcon } from '../assets/icons/water-reticulation.svg';
+import { ReactComponent as CatchmentIcon } from '../assets/icons/catchment-modeling.svg';
+import { ReactComponent as ProcessIcon } from '../assets/icons/process-optimization.svg';
+import { ReactComponent as BioprocessIcon } from '../assets/icons/bioprocess-engineering.svg';
+
+// Import diagrams
+import { ReactComponent as WastewaterDiagram } from '../assets/diagrams/wastewater-treatment-process.svg';
+import { ReactComponent as CatchmentDiagram } from '../assets/diagrams/catchment-modeling-approach.svg';
+import { ReactComponent as ProcessDiagram } from '../assets/diagrams/process-optimization-methodology.svg';
 
 const ServicesPage = () => {
   return (
@@ -2412,10 +2512,10 @@ const ServicesPage = () => {
           
           <div className="service-grid">
             <div className="service-card">
-              <h3>
-                <MunicipalIcon className="service-icon" />
-                Municipal Wastewater Treatment
-              </h3>
+              <div className="service-icon-container">
+                <WastewaterIcon className="service-icon" />
+              </div>
+              <h3>Municipal Wastewater Treatment</h3>
               <p>Comprehensive design and optimization services for municipal wastewater treatment facilities, focusing on efficiency, compliance, and sustainability.</p>
               
               <h4>Aerobic Treatment Systems</h4>
@@ -2436,10 +2536,10 @@ const ServicesPage = () => {
             </div>
             
             <div className="service-card">
-              <h3>
-                <AgriculturalIcon className="service-icon" />
-                Agricultural Wastewater Treatment
-              </h3>
+              <div className="service-icon-container">
+                <BioprocessIcon className="service-icon" />
+              </div>
+              <h3>Agricultural Wastewater Treatment</h3>
               <p>Specialized solutions for agricultural wastewater focusing on nutrient recovery, contaminant removal, and regulatory compliance.</p>
               
               <h4>Nutrient Removal Systems</h4>
@@ -2459,6 +2559,11 @@ const ServicesPage = () => {
               <p>All agricultural systems are designed for compliance with New Zealand's National Environmental Standards for Freshwater (NES-F) and regional regulations.</p>
             </div>
           </div>
+          
+          <div className="diagram-container">
+            <h3>Municipal Wastewater Treatment Process</h3>
+            <WastewaterDiagram />
+          </div>
         </section>
         
         {/* Water and Wastewater Reticulation */}
@@ -2466,10 +2571,10 @@ const ServicesPage = () => {
           <h2>Water & Wastewater Reticulation Design</h2>
           
           <div className="full-width-service">
-            <h3>
+            <div className="service-icon-container">
               <ReticulationIcon className="service-icon" />
-              Comprehensive Reticulation Network Design
-            </h3>
+            </div>
+            <h3>Comprehensive Reticulation Network Design</h3>
             <p>Expert design services for water distribution and wastewater collection systems, from small-scale developments to municipal networks.</p>
             
             <div className="process-steps">
@@ -2511,10 +2616,10 @@ const ServicesPage = () => {
           
           <div className="service-grid">
             <div className="service-card">
-              <h3>
+              <div className="service-icon-container">
                 <CatchmentIcon className="service-icon" />
-                Surface Water Modeling
-              </h3>
+              </div>
+              <h3>Surface Water Modeling</h3>
               <p>Comprehensive modeling services for surface water systems including rivers, streams, lakes, and constructed waterways.</p>
               
               <h4>Hydrological Modeling</h4>
@@ -2537,10 +2642,10 @@ const ServicesPage = () => {
             </div>
             
             <div className="service-card">
-              <h3>
+              <div className="service-icon-container">
                 <CatchmentIcon className="service-icon" />
-                Groundwater Modeling
-              </h3>
+              </div>
+              <h3>Groundwater Modeling</h3>
               <p>Specialized groundwater modeling services for resource management, contamination assessment, and remediation planning.</p>
               
               <h4>Quantity Modeling</h4>
@@ -2563,10 +2668,10 @@ const ServicesPage = () => {
             </div>
             
             <div className="service-card">
-              <h3>
+              <div className="service-icon-container">
                 <CatchmentIcon className="service-icon" />
-                Integrated Catchment Management
-              </h3>
+              </div>
+              <h3>Integrated Catchment Management</h3>
               <p>Holistic approaches to managing water resources at the catchment scale, balancing environmental, economic, and social objectives.</p>
               
               <h4>Services Include:</h4>
@@ -2582,6 +2687,11 @@ const ServicesPage = () => {
               <p>Our integrated modeling approaches help clients navigate complex regulatory frameworks while achieving sustainable water resource management goals.</p>
             </div>
           </div>
+          
+          <div className="diagram-container">
+            <h3>Integrated Catchment Modeling Approach</h3>
+            <CatchmentDiagram />
+          </div>
         </section>
         
         {/* Chemical and Food Processing Section */}
@@ -2590,10 +2700,10 @@ const ServicesPage = () => {
           
           <div className="service-grid">
             <div className="service-card">
-              <h3>
-                <ChemicalIcon className="service-icon" />
-                Process Modeling & Simulation
-              </h3>
+              <div className="service-icon-container">
+                <ProcessIcon className="service-icon" />
+              </div>
+              <h3>Process Modeling & Simulation</h3>
               <p>Advanced modeling and simulation services for chemical and food processing operations to improve efficiency, product quality, and sustainability.</p>
               
               <h4>Modeling Approaches:</h4>
@@ -2606,10 +2716,10 @@ const ServicesPage = () => {
             </div>
             
             <div className="service-card">
-              <h3>
-                <ChemicalIcon className="service-icon" />
-                Process Optimization
-              </h3>
+              <div className="service-icon-container">
+                <ProcessIcon className="service-icon" />
+              </div>
+              <h3>Process Optimization</h3>
               <p>Systematic optimization of processing operations to enhance efficiency, reduce costs, and improve sustainability metrics.</p>
               
               <h4>Optimization Services:</h4>
@@ -2623,10 +2733,10 @@ const ServicesPage = () => {
             </div>
             
             <div className="service-card">
-              <h3>
-                <ChemicalIcon className="service-icon" />
-                Bioprocess Engineering
-              </h3>
+              <div className="service-icon-container">
+                <BioprocessIcon className="service-icon" />
+              </div>
+              <h3>Bioprocess Engineering</h3>
               <p>Specialized services for biological processes in food, pharmaceutical, and biofuel applications.</p>
               
               <h4>Bioprocess Services:</h4>
@@ -2638,6 +2748,11 @@ const ServicesPage = () => {
                 <li><strong>Enzyme Production & Application:</strong> Optimizing enzymatic processes for food and industrial applications.</li>
               </ul>
             </div>
+          </div>
+          
+          <div className="diagram-container">
+            <h3>Process Optimization Methodology</h3>
+            <ProcessDiagram />
           </div>
         </section>
         
@@ -2658,35 +2773,45 @@ export default ServicesPage;
 """
     with open('src/pages/ServicesPage.js', 'w', encoding='utf-8') as f:
         f.write(content)
-    print("Created enhanced ServicesPage.js with icons and improved styling")
+    print("Created enhanced ServicesPage.js with visual elements and diagrams")
 
 def create_projects_page():
-    """Create the ProjectsPage component with icons and improved styling"""
+    """Create the ProjectsPage component with enhanced visuals"""
     content = """import React from 'react';
-import { ReactComponent as NitrateIcon } from '../assets/icons/nitrate-icon.svg';
-import { ReactComponent as UasbIcon } from '../assets/icons/uasb-icon.svg';
-import { ReactComponent as CatchmentModelIcon } from '../assets/icons/catchment-model-icon.svg';
-import { ReactComponent as MbrIcon } from '../assets/icons/mbr-icon.svg';
-import { ReactComponent as ReticulationProjectIcon } from '../assets/icons/reticulation-project-icon.svg';
+
+// Import service icons for project tags
+import { ReactComponent as WastewaterIcon } from '../assets/icons/wastewater-treatment.svg';
+import { ReactComponent as ReticulationIcon } from '../assets/icons/water-reticulation.svg';
+import { ReactComponent as CatchmentIcon } from '../assets/icons/catchment-modeling.svg';
+import { ReactComponent as ProcessIcon } from '../assets/icons/process-optimization.svg';
+import { ReactComponent as BioprocessIcon } from '../assets/icons/bioprocess-engineering.svg';
 
 const ProjectsPage = () => {
+  // Define icon mapping
+  const techIcons = {
+    'Wastewater Treatment': <WastewaterIcon />,
+    'Water Reticulation': <ReticulationIcon />,
+    'Catchment Modeling': <CatchmentIcon />,
+    'Process Optimization': <ProcessIcon />,
+    'Bioprocess Engineering': <BioprocessIcon />
+  };
+  
   const projects = [
     {
       id: 1,
       title: "Enhanced Nitrate Removal in Woodchip Bioreactors",
-      icon: <NitrateIcon />,
       description: "Implementation of carbon dosing techniques to improve nitrate removal efficiency in agricultural drainage systems.",
       details: "This project focused on optimizing the nitrate removal capacity of woodchip bioreactors through strategic carbon supplementation. By implementing a controlled dosing system, we were able to enhance denitrification rates while maintaining operational simplicity.",
       metrics: {
         efficiencyImprovement: "30%",
         costReduction: "25%"
       },
-      technologies: ["Denitrifying Bioreactors", "Carbon Dosing Systems", "Water Quality Monitoring", "Agricultural Drainage"]
+      technologies: ["Denitrifying Bioreactors", "Carbon Dosing Systems", "Water Quality Monitoring", "Agricultural Drainage"],
+      category: "Wastewater Treatment"
     },
     {
       id: 2,
       title: "Municipal WWTP Optimization Using UASB Technology",
-      icon: <UasbIcon />,
       description: "Implementation of Upflow Anaerobic Sludge Blanket (UASB) reactors for enhanced energy efficiency in municipal wastewater treatment.",
       details: "This project involved redesigning an existing municipal wastewater treatment plant to incorporate UASB technology, significantly reducing energy consumption while enabling biogas recovery. The anaerobic treatment stage was optimized for New Zealand's climate conditions and municipal wastewater characteristics.",
       metrics: {
@@ -2694,12 +2819,12 @@ const ProjectsPage = () => {
         operationalCost: "35% reduction",
         effluenceQuality: "Met all regulatory requirements"
       },
-      technologies: ["UASB Reactors", "Biogas Recovery", "Process Control Systems", "Effluent Polishing"]
+      technologies: ["UASB Reactors", "Biogas Recovery", "Process Control Systems", "Effluent Polishing"],
+      category: "Wastewater Treatment"
     },
     {
       id: 3,
       title: "Catchment Modeling for Agricultural Runoff Mitigation",
-      icon: <CatchmentModelIcon />,
       description: "Comprehensive modeling of surface and groundwater interactions to optimize placement of water quality interventions.",
       details: "This project utilized integrated surface-groundwater modeling to identify optimal locations for implementing water quality treatment systems across an agricultural catchment. The model incorporated land use, soil characteristics, groundwater flow patterns, and surface water dynamics to maximize the effectiveness of mitigation measures.",
       metrics: {
@@ -2707,24 +2832,24 @@ const ProjectsPage = () => {
         implementationEfficiency: "60% improvement",
         costSavings: "38% compared to conventional approaches"
       },
-      technologies: ["MODFLOW", "MIKE SHE", "GIS Analysis", "Python-based Data Integration", "Best Management Practice Optimization"]
+      technologies: ["MODFLOW", "MIKE SHE", "GIS Analysis", "Python-based Data Integration", "Best Management Practice Optimization"],
+      category: "Catchment Modeling"
     },
     {
       id: 4,
       title: "Aquatic Mitigation Systems for NES-F Compliance",
-      icon: <NitrateIcon />,
       description: "Development of cost-effective mitigation systems for agricultural runoff treatment compliant with NZ regulations.",
       details: "This project involved designing and implementing mitigation systems that help farmers comply with New Zealand's National Environmental Standards for Freshwater (NES-F). The systems were designed with cost-effectiveness and practical implementation in mind.",
       metrics: {
         implementationCost: "20% lower than alternatives",
         treatmentEfficiency: "85% contaminant removal"
       },
-      technologies: ["Constructed Wetlands", "Filter Systems", "Regulatory Compliance", "Cost-Benefit Analysis"]
+      technologies: ["Constructed Wetlands", "Filter Systems", "Regulatory Compliance", "Cost-Benefit Analysis"],
+      category: "Wastewater Treatment"
     },
     {
       id: 5,
       title: "Membrane Bioreactor Implementation for Water Reuse",
-      icon: <MbrIcon />,
       description: "Design and implementation of MBR technology for advanced wastewater treatment and water reuse applications.",
       details: "This project involved the design and installation of a Membrane Bioreactor (MBR) system to upgrade an existing treatment facility for water reuse applications. The MBR technology was selected for its superior effluent quality and reliability, enabling the treated water to be safely reused for irrigation and industrial processes.",
       metrics: {
@@ -2732,12 +2857,12 @@ const ProjectsPage = () => {
         contaminantRemoval: ">99% for suspended solids and pathogens",
         energyEfficiency: "Optimized with 25% reduction over initial design"
       },
-      technologies: ["Membrane Bioreactors", "Ultrafiltration", "Process Automation", "Water Reuse Systems"]
+      technologies: ["Membrane Bioreactors", "Ultrafiltration", "Process Automation", "Water Reuse Systems"],
+      category: "Wastewater Treatment"
     },
     {
       id: 6,
       title: "Food Processing Wastewater Treatment Optimization",
-      icon: <UasbIcon />,
       description: "Process analysis and optimization for a dairy processing facility's wastewater treatment system.",
       details: "This project involved comprehensive modeling and optimization of a dairy processing facility's wastewater treatment system. By implementing a combination of anaerobic pre-treatment and enhanced nutrient removal systems, we were able to significantly improve treatment efficiency while reducing operational costs and generating biogas for energy recovery.",
       metrics: {
@@ -2745,12 +2870,12 @@ const ProjectsPage = () => {
         bioenergyProduction: "Generated 35% of facility's energy needs",
         complianceViolations: "Reduced to zero over monitoring period"
       },
-      technologies: ["Anaerobic Digestion", "EGSB Reactors", "Nutrient Removal Systems", "Process Integration", "Energy Recovery"]
+      technologies: ["Anaerobic Digestion", "EGSB Reactors", "Nutrient Removal Systems", "Process Integration", "Energy Recovery"],
+      category: "Process Optimization"
     },
     {
       id: 7,
       title: "Water Reticulation Design for Rural Community",
-      icon: <ReticulationProjectIcon />,
       description: "Comprehensive design of a water supply and distribution system for a rural community with challenging topography.",
       details: "This project involved the design of a complete water supply and distribution system for a rural community of 2,500 residents spread across challenging terrain. The system incorporated multiple pressure zones, booster pumping stations, and storage reservoirs to ensure reliable water delivery while minimizing energy consumption and maintenance requirements.",
       metrics: {
@@ -2758,19 +2883,20 @@ const ProjectsPage = () => {
         energyEfficiency: "40% reduction compared to conventional design",
         waterLoss: "Reduced to <5% through pressure management and leak detection"
       },
-      technologies: ["Hydraulic Modeling", "Pressure Zone Design", "SCADA Integration", "Energy Optimization", "Asset Management Planning"]
+      technologies: ["Hydraulic Modeling", "Pressure Zone Design", "SCADA Integration", "Energy Optimization", "Asset Management Planning"],
+      category: "Water Reticulation"
     },
     {
       id: 8,
       title: "Bioethanol Production Optimization",
-      icon: <ChemicalIcon />,
       description: "Process optimization for bioethanol production using industrial and traditional Saccharomyces cerevisiae strains.",
       details: "This research compared different yeast strains for bioethanol production and optimized fermentation conditions to maximize yield while maintaining process sustainability.",
       metrics: {
         yieldIncrease: "25%",
         processEfficiency: "20% improvement"
       },
-      technologies: ["Bioethanol Production", "Fermentation Technology", "Process Optimization", "Sustainable Energy"]
+      technologies: ["Bioethanol Production", "Fermentation Technology", "Process Optimization", "Sustainable Energy"],
+      category: "Bioprocess Engineering"
     }
   ];
 
@@ -2784,10 +2910,12 @@ const ProjectsPage = () => {
       </section>
 
       <section className="projects-container">
-        {projects.map(project => (
-          <div key={project.id} className="project-full-card">
+        {projects.map((project, index) => (
+          <div key={project.id} className={`project-full-card fade-in`} style={{animationDelay: `${index * 0.1}s`}}>
             <h2>
-              <span className="project-icon">{project.icon}</span>
+              {techIcons[project.category] && 
+                <span className="project-icon">{techIcons[project.category]}</span>
+              }
               {project.title}
             </h2>
             <p className="project-description">{project.description}</p>
@@ -2828,13 +2956,15 @@ export default ProjectsPage;
 """
     with open('src/pages/ProjectsPage.js', 'w', encoding='utf-8') as f:
         f.write(content)
-    print("Created enhanced ProjectsPage.js with icons and improved styling")
+    print("Created enhanced ProjectsPage.js with visual elements")
 
 def create_publications_page():
-    """Create the PublicationsPage component with improved styling"""
-    content = """import React from 'react';
+    """Create the PublicationsPage component"""
+    content = """import React, { useState } from 'react';
 
 const PublicationsPage = () => {
+  const [filter, setFilter] = useState('all');
+  
   const publications = [
     {
       id: 1,
@@ -3005,6 +3135,19 @@ const PublicationsPage = () => {
       abstract: "This technical manual provides step-by-step guidance for developing and implementing integrated water resource models to support regional planning decisions. The guide includes model selection criteria, data requirements, calibration approaches, and interpretation frameworks specifically adapted to New Zealand's regulatory and environmental context."
     }
   ];
+  
+  // Filter publications based on selected type
+  const filteredPublications = filter === 'all' 
+    ? publications 
+    : publications.filter(pub => pub.type === filter);
+  
+  // Count publications by type
+  const counts = {
+    all: publications.length,
+    journal: publications.filter(pub => pub.type === 'journal').length,
+    conference: publications.filter(pub => pub.type === 'conference').length,
+    technical: publications.filter(pub => pub.type === 'technical').length
+  };
 
   return (
     <div className="publications-page">
@@ -3016,59 +3159,135 @@ const PublicationsPage = () => {
       </section>
 
       <section className="publications-container">
-        <h2>Journal Articles</h2>
-        <div className="publications-list">
-          {publications.filter(pub => pub.type === 'journal').map(publication => (
-            <div key={publication.id} className="publication-card">
-              <h3>{publication.title}</h3>
-              <p className="publication-authors">{publication.authors} ({publication.year})</p>
-              <p className="publication-journal">
-                {publication.journal}, {publication.volume}, {publication.pages}
-              </p>
-              <p className="publication-abstract">
-                <strong>Abstract:</strong> {publication.abstract}
-              </p>
-              {publication.doi && (
-                <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener noreferrer" className="publication-link">
-                  DOI: {publication.doi}
-                </a>
-              )}
-            </div>
-          ))}
+        <div className="publications-filter">
+          <button 
+            className={`filter-btn ${filter === 'all' ? 'active' : ''}`} 
+            onClick={() => setFilter('all')}
+          >
+            All Publications ({counts.all})
+          </button>
+          <button 
+            className={`filter-btn ${filter === 'journal' ? 'active' : ''}`} 
+            onClick={() => setFilter('journal')}
+          >
+            Journal Articles ({counts.journal})
+          </button>
+          <button 
+            className={`filter-btn ${filter === 'conference' ? 'active' : ''}`} 
+            onClick={() => setFilter('conference')}
+          >
+            Conference Papers ({counts.conference})
+          </button>
+          <button 
+            className={`filter-btn ${filter === 'technical' ? 'active' : ''}`} 
+            onClick={() => setFilter('technical')}
+          >
+            Technical Reports ({counts.technical})
+          </button>
         </div>
+        
+        {filter === 'all' || filter === 'journal' ? (
+          <>
+            {filter === 'all' && <h2>Journal Articles</h2>}
+            <div className="publications-list">
+              {filteredPublications
+                .filter(pub => filter === 'all' ? pub.type === 'journal' : true)
+                .map((publication, index) => (
+                  <div key={publication.id} className="publication-card fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+                    <h3>{publication.title}</h3>
+                    <p className="publication-authors">{publication.authors} ({publication.year})</p>
+                    <p className="publication-journal">
+                      {publication.journal}, {publication.volume}, {publication.pages}
+                    </p>
+                    <p className="publication-abstract">
+                      <strong>Abstract:</strong> {publication.abstract}
+                    </p>
+                    {publication.doi && (
+                      <a 
+                        href={`https://doi.org/${publication.doi}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="publication-link"
+                      >
+                        DOI: {publication.doi}
+                      </a>
+                    )}
+                  </div>
+                ))}
+            </div>
+          </>
+        ) : null}
 
-        <h2>Conference Papers</h2>
-        <div className="publications-list">
-          {publications.filter(pub => pub.type === 'conference').map(publication => (
-            <div key={publication.id} className="publication-card">
-              <h3>{publication.title}</h3>
-              <p className="publication-authors">{publication.authors} ({publication.year})</p>
-              <p className="publication-conference">
-                {publication.conference}, {publication.location}
-              </p>
-              <p className="publication-abstract">
-                <strong>Abstract:</strong> {publication.abstract}
-              </p>
+        {filter === 'all' || filter === 'conference' ? (
+          <>
+            {filter === 'all' && <h2>Conference Papers</h2>}
+            <div className="publications-list">
+              {filteredPublications
+                .filter(pub => filter === 'all' ? pub.type === 'conference' : true)
+                .map((publication, index) => (
+                  <div key={publication.id} className="publication-card fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+                    <h3>{publication.title}</h3>
+                    <p className="publication-authors">{publication.authors} ({publication.year})</p>
+                    <p className="publication-conference">
+                      {publication.conference}, {publication.location}
+                    </p>
+                    <p className="publication-abstract">
+                      <strong>Abstract:</strong> {publication.abstract}
+                    </p>
+                  </div>
+                ))}
             </div>
-          ))}
-        </div>
+          </>
+        ) : null}
 
-        <h2>Technical Reports</h2>
-        <div className="publications-list">
-          {publications.filter(pub => pub.type === 'technical').map(publication => (
-            <div key={publication.id} className="publication-card">
-              <h3>{publication.title}</h3>
-              <p className="publication-authors">{publication.authors} ({publication.year})</p>
-              <p className="publication-publisher">
-                {publication.publisher}, {publication.reportNumber}, {publication.pages} pages
-              </p>
-              <p className="publication-abstract">
-                <strong>Abstract:</strong> {publication.abstract}
-              </p>
+        {filter === 'all' || filter === 'technical' ? (
+          <>
+            {filter === 'all' && <h2>Technical Reports</h2>}
+            <div className="publications-list">
+              {filteredPublications
+                .filter(pub => filter === 'all' ? pub.type === 'technical' : true)
+                .map((publication, index) => (
+                  <div key={publication.id} className="publication-card fade-in" style={{animationDelay: `${index * 0.1}s`}}>
+                    <h3>{publication.title}</h3>
+                    <p className="publication-authors">{publication.authors} ({publication.year})</p>
+                    <p className="publication-publisher">
+                      {publication.publisher}, {publication.reportNumber}, {publication.pages} pages
+                    </p>
+                    <p className="publication-abstract">
+                      <strong>Abstract:</strong> {publication.abstract}
+                    </p>
+                  </div>
+                ))}
             </div>
-          ))}
-        </div>
+          </>
+        ) : null}
       </section>
+
+      <style jsx>{`
+        .publications-filter {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 2rem;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+        
+        .filter-btn {
+          padding: 0.5rem 1rem;
+          border: 1px solid #1a5276;
+          background: none;
+          color: #1a5276;
+          border-radius: 20px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+          background-color: #1a5276;
+          color: white;
+        }
+      `}</style>
     </div>
   );
 };
@@ -3077,17 +3296,18 @@ export default PublicationsPage;
 """
     with open('src/pages/PublicationsPage.js', 'w', encoding='utf-8') as f:
         f.write(content)
-    print("Created enhanced PublicationsPage.js with improved styling")
+    print("Created enhanced PublicationsPage.js with filtering functionality")
 
 def create_contact_page():
-    """Create the ContactPage component with icons and improved styling"""
+    """Create the ContactPage component with fixed ESLint error and enhanced visuals"""
     content = """import React, { useState } from 'react';
-import { ReactComponent as EmailIcon } from '../assets/icons/email-icon.svg';
-import { ReactComponent as PhoneIcon } from '../assets/icons/phone-icon.svg';
-import { ReactComponent as LocationIcon } from '../assets/icons/location-icon.svg';
-import { ReactComponent as LinkedInIcon } from '../assets/icons/linkedin-icon.svg';
-import { ReactComponent as ResearchGateIcon } from '../assets/icons/researchgate-icon.svg';
-import { ReactComponent as ScholarIcon } from '../assets/icons/scholar-icon.svg';
+
+// Import service icons
+import { ReactComponent as WastewaterIcon } from '../assets/icons/wastewater-treatment.svg';
+import { ReactComponent as ReticulationIcon } from '../assets/icons/water-reticulation.svg';
+import { ReactComponent as CatchmentIcon } from '../assets/icons/catchment-modeling.svg';
+import { ReactComponent as ProcessIcon } from '../assets/icons/process-optimization.svg';
+import { ReactComponent as BioprocessIcon } from '../assets/icons/bioprocess-engineering.svg';
 
 const ContactPage = () => {
   // Form state
@@ -3107,14 +3327,15 @@ const ContactPage = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
   
-  // Services list for dropdown
+  // Services list for dropdown with icons
   const services = [
-    'Municipal Wastewater Treatment',
-    'Agricultural Wastewater Treatment',
-    'Water & Wastewater Reticulation Design',
-    'Catchment & Water Resource Modeling',
-    'Chemical & Food Processing Optimization',
-    'Other/Multiple Services'
+    { id: 'wastewater', name: 'Municipal Wastewater Treatment', icon: <WastewaterIcon /> },
+    { id: 'agricultural', name: 'Agricultural Wastewater Treatment', icon: <WastewaterIcon /> },
+    { id: 'reticulation', name: 'Water & Wastewater Reticulation Design', icon: <ReticulationIcon /> },
+    { id: 'catchment', name: 'Catchment & Water Resource Modeling', icon: <CatchmentIcon /> },
+    { id: 'processing', name: 'Chemical & Food Processing Optimization', icon: <ProcessIcon /> },
+    { id: 'bioprocess', name: 'Bioprocess Engineering', icon: <BioprocessIcon /> },
+    { id: 'other', name: 'Other/Multiple Services', icon: null }
   ];
   
   // Handle input changes
@@ -3219,25 +3440,16 @@ const ContactPage = () => {
           <h2>Contact Information</h2>
           <div className="contact-details">
             <div className="contact-item">
-              <EmailIcon className="contact-icon" />
-              <div>
-                <span className="contact-label">Email:</span>
-                <span className="contact-value">che.eng@live.com</span>
-              </div>
+              <span className="contact-label">Email:</span>
+              <span className="contact-value">che.eng@live.com</span>
             </div>
             <div className="contact-item">
-              <PhoneIcon className="contact-icon" />
-              <div>
-                <span className="contact-label">Phone:</span>
-                <span className="contact-value">+642108052489</span>
-              </div>
+              <span className="contact-label">Phone:</span>
+              <span className="contact-value">+642108052489</span>
             </div>
             <div className="contact-item">
-              <LocationIcon className="contact-icon" />
-              <div>
-                <span className="contact-label">Based in:</span>
-                <span className="contact-value">New Zealand</span>
-              </div>
+              <span className="contact-label">Based in:</span>
+              <span className="contact-value">New Zealand</span>
             </div>
           </div>
 
@@ -3257,16 +3469,28 @@ const ContactPage = () => {
             <h3>Professional Profiles</h3>
             <div className="social-grid">
               <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="social-link">
-                <LinkedInIcon />
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
                 LinkedIn
               </a>
               <a href="https://www.researchgate.net/profile/your-profile" target="_blank" rel="noopener noreferrer" className="social-link">
-                <ResearchGateIcon />
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M19.586 0c-2.123 0-3.359 1.265-3.359 2.981v1.017h3.869v1.023h-3.869v10.34c1.14-.908 2.009-1.316 3.273-1.316 2.688 0 4.5 2.1 4.5 5.274 0 2.73-2.328 4.681-5.172 4.681-2.565 0-4.428-1.559-4.428-3.828 0-1.467.633-2.475 2.331-3.729v-11.371h-2.364v-1.074h2.364v-1.017c0-2.922 1.978-3.981 5.379-3.981h1.335v1h-.859zm-13.814 12.591c-3.022 0-5.772 2.19-5.772 5.473 0 3.147 2.35 5.136 5.772 5.136 2.819 0 5.266-1.74 5.266-5.136 0-3.333-2.85-5.473-5.266-5.473zm-.329 2.581c1.013 0 1.914.901 1.914 2.892s-.901 2.867-1.914 2.867c-1.264 0-2.074-.776-2.074-2.867 0-2.116.81-2.892 2.074-2.892zm11.252.484c-.859 0-1.351.226-2.271 1.174v5.273c.685.751 1.467 1.174 2.373 1.174 1.391 0 2.565-1.149 2.565-2.799 0-2.425-1.149-3.822-2.667-3.822z"/>
+                </svg>
                 ResearchGate
               </a>
               <a href="https://scholar.google.com/citations?user=your-id" target="_blank" rel="noopener noreferrer" className="social-link">
-                <ScholarIcon />
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+                </svg>
                 Google Scholar
+              </a>
+              <a href="https://niwa.co.nz/profile" target="_blank" rel="noopener noreferrer" className="social-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 16.057v-3.057h2.994c-.059 1.143-.212 2.24-.456 3.279-.823-.12-1.674-.188-2.538-.222zm1.957 2.162c-.499 1.33-1.159 2.497-1.957 3.456v-3.62c.666.028 1.319.081 1.957.164zm-1.957-7.219v-3.015c.868-.034 1.721-.103 2.548-.224.238 1.027.389 2.111.446 3.239h-2.994zm0-5.014v-3.661c.806.969 1.471 2.15 1.971 3.496-.642.084-1.3.137-1.971.165zm2.703-3.267c1.237.496 2.354 1.228 3.29 2.146-.642.234-1.311.442-2.019.607-.344-.992-.775-1.91-1.271-2.753zm-7.241 13.56c-.244-1.039-.398-2.136-.456-3.279h2.994v3.057c-.865.034-1.714.102-2.538.222zm2.538 1.776v3.62c-.798-.959-1.458-2.126-1.957-3.456.638-.083 1.291-.136 1.957-.164zm-2.994-7.055c.057-1.128.207-2.212.446-3.239.827.121 1.68.19 2.548.224v3.015h-2.994zm1.024-5.179c.5-1.346 1.165-2.527 1.97-3.496v3.661c-.671-.028-1.329-.081-1.97-.165zm-2.005-.35c-.708-.165-1.377-.373-2.018-.607.937-.918 2.053-1.65 3.29-2.146-.496.844-.927 1.762-1.272 2.753zm-.549 1.918c-.264 1.151-.434 2.36-.492 3.611h-3.933c.165-1.658.739-3.197 1.617-4.518.88.361 1.816.67 2.808.907zm.009 9.262c-.988.236-1.92.542-2.797.9-.89-1.328-1.471-2.879-1.637-4.551h3.934c.058 1.265.231 2.488.5 3.651zm.553 1.917c.342.976.768 1.881 1.257 2.712-1.223-.49-2.326-1.211-3.256-2.115.636-.229 1.299-.435 1.999-.597zm9.924 0c.7.163 1.362.367 1.999.597-.931.903-2.034 1.625-3.257 2.116.489-.832.915-1.737 1.258-2.713zm.553-1.917c.27-1.163.442-2.386.501-3.651h3.934c-.167 1.672-.748 3.223-1.638 4.551-.877-.358-1.81-.664-2.797-.9zm.501-5.651c-.058-1.251-.229-2.46-.492-3.611.992-.237 1.929-.546 2.809-.907.877 1.321 1.451 2.86 1.616 4.518h-3.933z"/>
+                </svg>
+                NIWA Profile
               </a>
             </div>
           </div>
@@ -3296,6 +3520,7 @@ const ContactPage = () => {
                 name="name" 
                 value={formData.name}
                 onChange={handleChange}
+                placeholder="Your name"
               />
               {formErrors.name && <span className="form-error">{formErrors.name}</span>}
             </div>
@@ -3308,6 +3533,7 @@ const ContactPage = () => {
                 name="email" 
                 value={formData.email}
                 onChange={handleChange}
+                placeholder="Your email address"
               />
               {formErrors.email && <span className="form-error">{formErrors.email}</span>}
             </div>
@@ -3320,6 +3546,7 @@ const ContactPage = () => {
                 name="subject" 
                 value={formData.subject}
                 onChange={handleChange}
+                placeholder="Message subject"
               />
               {formErrors.subject && <span className="form-error">{formErrors.subject}</span>}
             </div>
@@ -3333,8 +3560,10 @@ const ContactPage = () => {
                 onChange={handleChange}
               >
                 <option value="">-- Select a service --</option>
-                {services.map((service, index) => (
-                  <option key={index} value={service}>{service}</option>
+                {services.map(service => (
+                  <option key={service.id} value={service.name}>
+                    {service.name}
+                  </option>
                 ))}
               </select>
             </div>
@@ -3370,10 +3599,10 @@ export default ContactPage;
 """
     with open('src/pages/ContactPage.js', 'w', encoding='utf-8') as f:
         f.write(content)
-    print("Created enhanced ContactPage.js with icons and improved styling")
+    print("Created enhanced ContactPage.js with fixed ESLint error and visual elements")
 
 def create_not_found_page():
-    """Create a 404 Not Found page with improved styling"""
+    """Create a 404 Not Found page"""
     content = """import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -3392,10 +3621,10 @@ export default NotFoundPage;
 """
     with open('src/pages/NotFoundPage.js', 'w', encoding='utf-8') as f:
         f.write(content)
-    print("Created enhanced NotFoundPage.js with improved styling")
+    print("Created NotFoundPage.js")
 
 def create_index_html():
-    """Create the index.html file with enhanced metadata"""
+    """Create the index.html file"""
     content = """<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -3409,25 +3638,8 @@ def create_index_html():
     />
     <meta name="keywords" content="Environmental Engineering, Bioprocess Engineering, Water Treatment, Wastewater Treatment, Bioreactors, Nitrate Removal, Catchment Modeling, Process Optimization, New Zealand" />
     <meta name="author" content="Dr. Reza Moghaddam" />
-    
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="Reza Moghaddam | Environmental Engineer & Consultant" />
-    <meta property="og:description" content="Specializing in innovative water treatment solutions, catchment modeling, and process optimization with professional consultancy services." />
-    <meta property="og:type" content="website" />
-    
     <title>Reza Moghaddam | Environmental Engineer & Consultant</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Custom styles -->
-    <style>
-      body {
-        font-family: 'Inter', sans-serif;
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -3437,7 +3649,7 @@ def create_index_html():
 """
     with open('public/index.html', 'w', encoding='utf-8') as f:
         f.write(content)
-    print("Created enhanced index.html with better metadata and fonts")
+    print("Created enhanced index.html with font preloading")
 
 def create_package_json():
     """Create the package.json file with ESLint configuration for CI/CD"""
@@ -3537,72 +3749,147 @@ def create_netlify_toml():
         f.write(content)
     print("Created netlify.toml")
 
-def create_placeholder_image():
-    """Create a placeholder hero background image"""
-    # Create a simple blue gradient SVG as a fallback
-    svg_content = """<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1920" height="1080" fill="url(#paint0_linear_1_2)"/>
-  <path opacity="0.1" d="M0 0H1920V1080H0V0Z" fill="#FFFFFF"/>
-  <path opacity="0.05" d="M960 0L1920 1080H0L960 0Z" fill="#FFFFFF"/>
-  <path opacity="0.05" d="M960 1080L0 0H1920L960 1080Z" fill="#FFFFFF"/>
-  <circle cx="960" cy="540" r="200" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="50"/>
-  <circle cx="960" cy="540" r="400" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="50"/>
-  <circle cx="960" cy="540" r="600" stroke="#FFFFFF" stroke-opacity="0.03" stroke-width="50"/>
-  <defs>
-    <linearGradient id="paint0_linear_1_2" x1="0" y1="0" x2="1920" y2="1080" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1A5276"/>
-      <stop offset="1" stop-color="#2980B9"/>
-    </linearGradient>
-  </defs>
-</svg>"""
-    
-    # Save as both SVG and convert to minimal JPEG for the hero background
-    with open('src/assets/hero-bg.svg', 'w', encoding='utf-8') as f:
-        f.write(svg_content)
-    
-    # Create a minimal JPEG as a fallback (embedded base64 data)
-    # This is a 1x1 pixel blue JPEG
-    jpeg_data = "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAn/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AKVP/9k="
-    
-    # Decode and write the image data
-    with open('src/assets/hero-bg.jpg', 'wb') as f:
-        f.write(base64.b64decode(jpeg_data))
-    
-    print("Created enhanced hero background images")
+def create_use_animation_hook():
+    """Create a custom hook for animations"""
+    content = """import { useEffect, useState } from 'react';
 
-def create_favicon():
+// This custom hook handles the animation on scroll for components
+export const useAnimateOnScroll = (threshold = 0.2) => {
+  const [animatedElements, setAnimatedElements] = useState({});
+
+  useEffect(() => {
+    // Add scroll animation observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setAnimatedElements(prev => ({
+            ...prev,
+            [entry.target.id]: true
+          }));
+        }
+      });
+    }, { threshold });
+    
+    // Observe sections
+    const sections = document.querySelectorAll('.animate-on-scroll');
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+    
+    return () => {
+      sections.forEach(section => {
+        observer.unobserve(section);
+      });
+    };
+  }, [threshold]);
+
+  return animatedElements;
+};
+
+export default useAnimateOnScroll;
+"""
+    
+    # Create the hooks directory if it doesn't exist
+    os.makedirs('src/hooks', exist_ok=True)
+    
+    # Create the hook file
+    with open('src/hooks/useAnimateOnScroll.js', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("Created useAnimateOnScroll.js custom hook")
+
+def create_logo_favicon():
     """Create a favicon based on the logo"""
-    # Simplified version of the logo for favicon
-    favicon_svg = """<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M16 2C8.268 2 2 8.268 2 16C2 23.732 8.268 30 16 30C23.732 30 30 23.732 30 16C30 8.268 23.732 2 16 2Z" fill="#1a5276"/>
-  <path d="M16 6C10.477 6 6 10.477 6 16C6 21.523 10.477 26 16 26C21.523 26 26 21.523 26 16C26 10.477 21.523 6 16 6Z" fill="#2980b9"/>
-  <path d="M20 12C20 14.209 18.209 16 16 16C13.791 16 12 14.209 12 12C12 9.791 13.791 8 16 8C18.209 8 20 9.791 20 12Z" fill="#1a5276"/>
-  <path d="M10 19L22 19L16 28L10 19Z" fill="#27ae60"/>
-  <path d="M12 16.5L20 16.5L16 23L12 16.5Z" fill="#2980b9"/>
+    favicon_svg = """<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo Background -->
+  <rect width="64" height="64" fill="#1a5276" rx="5" ry="5"/>
+  
+  <!-- Letters -->
+  <text x="32" y="40" font-family="Arial" font-size="28" font-weight="bold" text-anchor="middle" fill="white">RM</text>
+  
+  <!-- Water Drop Icon -->
+  <path d="M18,12 C18,12 14,18 14,22 C14,25 16,27 18,27 C20,27 22,25 22,22 C22,18 18,12 18,12 Z" 
+        fill="#2980b9" stroke="#fff" stroke-width="1" opacity="0.8"/>
 </svg>"""
     
+    # Create the favicon file
     with open('public/favicon.svg', 'w', encoding='utf-8') as f:
         f.write(favicon_svg)
-    
     print("Created favicon.svg")
+
+def create_readme():
+    """Create a README.md file"""
+    content = """# Dr. Reza Moghaddam - Environmental Engineering Portfolio
+
+This is a professional portfolio website for Dr. Reza Moghaddam, an Environmental and Bioprocess Engineer specializing in:
+
+- Water and wastewater treatment systems
+- Aerobic and anaerobic treatment technologies
+- Water and wastewater reticulation design
+- Catchment modeling
+- Process optimization
+
+## Project Structure
+
+The website is built with React and includes the following key features:
+
+- Professional visual design with custom SVG icons and diagrams
+- Responsive layout for all device sizes
+- Detailed consultancy services sections
+- Projects portfolio
+- Publications listing
+- Contact form
+
+## Local Development
+
+To run this project locally:
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start the development server: `npm start`
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Deployment
+
+This project is set up for easy deployment on Netlify:
+
+1. Push to GitHub
+2. Connect your GitHub repository to Netlify
+3. The `netlify.toml` file will handle the configuration automatically
+
+## Built With
+
+- React - Frontend library
+- React Router - Navigation
+- CSS - Custom styling
+
+## Credits
+
+Designed and developed by [Your Name]
+"""
+    with open('README.md', 'w', encoding='utf-8') as f:
+        f.write(content)
+    print("Created README.md")
 
 def main():
     """Main function that orchestrates the website creation"""
     print("\n=== Creating Enhanced React Portfolio Website with Visual Elements ===\n")
     
+    # Clean repository if specified
+    if args.clean:
+        clean_repository()
+    
     # Create directory structure
     create_directories()
     
-    # Create visual assets and icons
-    create_logo_svg()
-    create_pattern_svgs()
+    # Create visual assets
+    create_main_logo()
     create_service_icons()
-    create_expertise_icons()
-    create_project_icons()
-    create_contact_icons()
-    create_social_icons()
-    create_placeholder_image()
-    create_favicon()
+    create_process_diagrams()
+    create_background_images()
+    create_logo_favicon()
+    
+    # Create custom hooks
+    create_use_animation_hook()
     
     # Create core React files
     create_app_js()
@@ -3626,29 +3913,30 @@ def main():
     create_package_json()
     create_gitignore()
     create_netlify_toml()
+    create_readme()
     
-    print("\n=== Enhanced Website with Visual Elements Created Successfully! ===\n")
+    print("\n=== Enhanced Website Structure Created Successfully! ===\n")
     print("Next steps:")
     print("1. Run 'npm install' to install dependencies")
     print("2. Run 'npm start' to preview the website locally")
     print("3. Push to GitHub:")
     print("   git add .")
-    print("   git commit -m \"Enhanced website with visual elements and improved design\"")
+    print("   git commit -m \"Enhanced website with visual elements and consultancy services\"")
     print("   git push origin main")
     print("4. Deploy to Netlify:")
-    print("   - Your site will automatically deploy from GitHub")
+    print("   - Connect your GitHub repository")
+    print("   - The netlify.toml file will configure the build settings automatically")
     
-    print("\nEnhanced visual elements in this version:")
-    print("1. Custom SVG logo and favicon")
-    print("2. Service-specific icons for all consultancy services")
-    print("3. Visual indicators for expertise areas")
-    print("4. Project icons to represent different technologies")
-    print("5. Contact and social media icons")
-    print("6. Background patterns and enhanced visual design")
-    print("7. Improved typography with Google Fonts")
-    print("8. Animation effects for better user experience")
-    print("9. Responsive design improvements for all screen sizes")
-    print("10. Scrolling effects for the navigation bar")
+    print("\nEnhanced features in this version:")
+    print("1. Custom SVG logos, icons, and diagrams for all service areas")
+    print("2. Visual process diagrams to illustrate complex environmental engineering processes")
+    print("3. Animated interface elements with scroll-triggered animations")
+    print("4. Enhanced styling with depth effects, gradients, and transitions")
+    print("5. Fixed the ContactPage ESLint error to ensure successful CI/CD deployment")
+    print("6. Mobile-responsive design with tailored mobile navigation")
+    print("7. Organized file structure with reusable visual assets")
+    print("8. Custom React hook for animation functionality")
+    print("9. SVG favicon and optimized performance")
 
 if __name__ == "__main__":
     main()

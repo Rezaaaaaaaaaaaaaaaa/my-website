@@ -1,0 +1,22 @@
+<svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="40" cy="40" r="38" fill="#e1f5fe" stroke="#1a5276" stroke-width="2"/>
+  
+  <!-- Catchment Modeling -->
+  <g transform="translate(15, 15)">
+    <!-- Terrain -->
+    <path d="M0,40 C5,35 10,38 15,32 C20,26 25,30 30,25 C35,20 40,25 45,20 C50,15 50,15 50,15 V50 H0 Z" 
+          fill="#d5f5e3" stroke="#1a5276" stroke-width="1.5"/>
+    
+    <!-- River -->
+    <path d="M25,0 C20,5 30,10 20,15 C10,20 15,25 10,30 C5,35 10,40 5,45 C0,50 0,50 0,50" 
+          fill="none" stroke="#2980b9" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Rain Drops -->
+    <path d="M10,5 L8,10 M20,3 L18,8 M30,5 L28,10 M40,3 L38,8" 
+          stroke="#2980b9" stroke-width="1" stroke-linecap="round"/>
+    
+    <!-- GIS Grid Overlay -->
+    <path d="M0,10 H50 M0,20 H50 M0,30 H50 M0,40 H50 M10,0 V50 M20,0 V50 M30,0 V50 M40,0 V50" 
+          stroke="#1a5276" stroke-width="0.5" stroke-opacity="0.3" stroke-dasharray="2,2"/>
+  </g>
+</svg>

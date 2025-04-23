@@ -1,0 +1,26 @@
+<svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="40" cy="40" r="38" fill="#e1f5fe" stroke="#1a5276" stroke-width="2"/>
+  
+  <!-- Wastewater Treatment Plant Icon -->
+  <g transform="translate(15, 20)">
+    <!-- Tank 1 -->
+    <rect x="0" y="10" width="10" height="30" fill="white" stroke="#1a5276" stroke-width="1.5"/>
+    <!-- Tank 2 -->
+    <rect x="15" y="10" width="10" height="30" fill="white" stroke="#1a5276" stroke-width="1.5"/>
+    <!-- Tank 3 (Circular) -->
+    <circle cx="40" cy="25" r="10" fill="white" stroke="#1a5276" stroke-width="1.5"/>
+    <!-- Pipes -->
+    <path d="M10,25 H15 M25,25 H30 C35,25 35,25 35,15" fill="none" stroke="#1a5276" stroke-width="1.5"/>
+    <!-- Inflow -->
+    <path d="M-5,25 H0" fill="none" stroke="#1a5276" stroke-width="1.5" stroke-dasharray="2,1"/>
+    <!-- Outflow -->
+    <path d="M50,25 H55" fill="none" stroke="#1a5276" stroke-width="1.5"/>
+    <!-- Bubbles in tanks -->
+    <circle cx="5" cy="30" r="1" fill="#1a5276"/>
+    <circle cx="5" cy="25" r="1" fill="#1a5276"/>
+    <circle cx="5" cy="20" r="1" fill="#1a5276"/>
+    <circle cx="20" cy="30" r="1" fill="#1a5276"/>
+    <circle cx="20" cy="25" r="1" fill="#1a5276"/>
+    <circle cx="20" cy="20" r="1" fill="#1a5276"/>
+  </g>
+</svg>

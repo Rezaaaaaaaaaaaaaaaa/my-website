@@ -1,0 +1,49 @@
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="300" fill="#f9f9f9" rx="5" ry="5"/>
+  <text x="400" y="30" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold" fill="#1a5276">Municipal Wastewater Treatment Process</text>
+  
+  <!-- Process Flow Diagram -->
+  <!-- Boxes -->
+  <rect x="50" y="80" width="120" height="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2" rx="5" ry="5"/>
+  <rect x="240" y="80" width="120" height="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2" rx="5" ry="5"/>
+  <rect x="430" y="80" width="120" height="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2" rx="5" ry="5"/>
+  <rect x="620" y="80" width="120" height="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2" rx="5" ry="5"/>
+  
+  <!-- Circle for Secondary Treatment -->
+  <circle cx="300" cy="220" r="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2"/>
+  <circle cx="500" cy="220" r="60" fill="#e1f5fe" stroke="#1a5276" stroke-width="2"/>
+  
+  <!-- Connection Arrows -->
+  <path d="M170,110 H240 M360,110 H430 M550,110 H620" stroke="#1a5276" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M170,110 H205 V220 H240" stroke="#1a5276" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M360,220 H440" stroke="#1a5276" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M560,220 H680 V140" stroke="#1a5276" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Labels -->
+  <text x="110" y="110" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Preliminary</text>
+  <text x="110" y="126" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Treatment</text>
+  
+  <text x="300" y="110" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Primary</text>
+  <text x="300" y="126" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Treatment</text>
+  
+  <text x="490" y="110" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Tertiary</text>
+  <text x="490" y="126" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Treatment</text>
+  
+  <text x="680" y="110" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Disinfection</text>
+  <text x="680" y="126" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">& Discharge</text>
+  
+  <text x="300" y="220" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Aerobic</text>
+  <text x="300" y="236" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Secondary</text>
+  <text x="300" y="252" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Treatment</text>
+  
+  <text x="500" y="220" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Anaerobic</text>
+  <text x="500" y="236" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Secondary</text>
+  <text x="500" y="252" font-family="Arial" font-size="12" text-anchor="middle" fill="#1a5276">Treatment</text>
+  
+  <!-- Markers -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1a5276"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logos/small-logo.svg';
+import { ReactComponent as Logo } from '../assets/logos/main-logo.svg';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,8 +9,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-logo">
-          <img src={logo} alt="RMES Logo" className="footer-logo-img" />
-          <p>Environmental Engineering Excellence</p>
+          <Logo />
         </div>
         
         <div className="footer-links">
@@ -21,43 +20,37 @@ const Footer = () => {
           <Link to="/contact" className="footer-link">Contact</Link>
         </div>
         
-        <div className="social-links">
+        <div className="social-icons">
           <a 
             href="https://www.linkedin.com/" 
             target="_blank" 
-            rel="noopener noreferrer" 
-            className="footer-link social-icon"
+            rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            <span>LinkedIn</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
           </a>
           <a 
             href="https://www.researchgate.net/" 
             target="_blank" 
-            rel="noopener noreferrer" 
-            className="footer-link social-icon"
+            rel="noopener noreferrer"
             aria-label="ResearchGate Profile"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-            <span>ResearchGate</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.586 0c-2.123 0-3.359 1.265-3.359 2.981v1.017h3.869v1.023h-3.869v10.34c1.14-.908 2.009-1.316 3.273-1.316 2.688 0 4.5 2.1 4.5 5.274 0 2.73-2.328 4.681-5.172 4.681-2.565 0-4.428-1.559-4.428-3.828 0-1.467.633-2.475 2.331-3.729v-11.371h-2.364v-1.074h2.364v-1.017c0-2.922 1.978-3.981 5.379-3.981h1.335v1h-.859zm-13.814 12.591c-3.022 0-5.772 2.19-5.772 5.473 0 3.147 2.35 5.136 5.772 5.136 2.819 0 5.266-1.74 5.266-5.136 0-3.333-2.85-5.473-5.266-5.473zm-.329 2.581c1.013 0 1.914.901 1.914 2.892s-.901 2.867-1.914 2.867c-1.264 0-2.074-.776-2.074-2.867 0-2.116.81-2.892 2.074-2.892zm11.252.484c-.859 0-1.351.226-2.271 1.174v5.273c.685.751 1.467 1.174 2.373 1.174 1.391 0 2.565-1.149 2.565-2.799 0-2.425-1.149-3.822-2.667-3.822z"/>
+            </svg>
           </a>
           <a 
             href="https://scholar.google.com/" 
             target="_blank" 
-            rel="noopener noreferrer" 
-            className="footer-link social-icon"
+            rel="noopener noreferrer"
             aria-label="Google Scholar Profile"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line><line x1="14.83" y1="9.17" x2="18.36" y2="5.64"></line><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line></svg>
-            <span>Scholar</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+            </svg>
           </a>
-        </div>
-        
-        <div className="footer-contact">
-          <p><strong>Email:</strong> che.eng@live.com</p>
-          <p><strong>Phone:</strong> +642108052489</p>
-          <p><strong>Location:</strong> New Zealand</p>
         </div>
         
         <div className="footer-bottom">

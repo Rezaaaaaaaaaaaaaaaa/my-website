@@ -1,15 +1,20 @@
 <svg width="200" height="60" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#1a5276;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <g>
-    <path d="M30,10 C17.3,10 7,20.3 7,33 C7,45.7 17.3,56 30,56 C42.7,56 53,45.7 53,33 C53,20.3 42.7,10 30,10 Z M30,50 C20.6,50 13,42.4 13,33 C13,23.6 20.6,16 30,16 C39.4,16 47,23.6 47,33 C47,42.4 39.4,50 30,50 Z" fill="url(#logo-gradient)"/>
-    <path d="M30,20 L30,33 L40,38" stroke="#1a5276" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <circle cx="30" cy="33" r="3" fill="#1a5276"/>
-    <text x="65" y="30" font-family="Arial" font-size="18" font-weight="bold" fill="#1a5276">RMES</text>
-    <text x="65" y="48" font-family="Arial" font-size="10" fill="#555">Environmental Engineering</text>
+  <!-- Logo Background -->
+  <rect width="200" height="60" fill="#1a5276" rx="5" ry="5"/>
+  
+  <!-- Water Drop Icon -->
+  <path d="M30,15 C30,15 20,30 20,40 C20,45.5 24.5,50 30,50 C35.5,50 40,45.5 40,40 C40,30 30,15 30,15 Z" 
+        fill="#2980b9" stroke="#fff" stroke-width="1.5"/>
+  
+  <!-- Gear Icon for Engineering -->
+  <g transform="translate(155, 30) scale(0.6)">
+    <circle cx="0" cy="0" r="15" fill="#2980b9"/>
+    <path d="M0,-20 L3,-12 A12,12 0 0,1 8,-10 L15,-15 L20,-5 L13,0 A12,12 0 0,1 13,8 L20,13 L15,20 L8,13 A12,12 0 0,1 0,16 L-3,20 L-10,15 L-8,8 A12,12 0 0,1 -13,0 L-20,-5 L-15,-15 L-8,-10 A12,12 0 0,1 -3,-12 Z" 
+          fill="#2980b9" stroke="#fff" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="5" fill="#1a5276" stroke="#fff" stroke-width="1"/>
   </g>
+  
+  <!-- Text -->
+  <text x="55" y="35" font-family="Arial" font-size="22" font-weight="bold" fill="white">RMES</text>
+  <text x="55" y="50" font-family="Arial" font-size="10" fill="#e1f5fe">ENVIRONMENTAL ENGINEERING</text>
 </svg>

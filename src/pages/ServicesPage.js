@@ -1,18 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// Import service icons
-import { ReactComponent as WastewaterIcon } from '../assets/icons/wastewater-treatment.svg';
-import { ReactComponent as ReticulationIcon } from '../assets/icons/water-reticulation.svg';
-import { ReactComponent as CatchmentIcon } from '../assets/icons/catchment-modeling.svg';
-import { ReactComponent as ProcessIcon } from '../assets/icons/process-optimization.svg';
-import { ReactComponent as BioprocessIcon } from '../assets/icons/bioprocess-engineering.svg';
-
-// Import diagrams
-import { ReactComponent as WastewaterDiagram } from '../assets/diagrams/wastewater-treatment-process.svg';
-import { ReactComponent as CatchmentDiagram } from '../assets/diagrams/catchment-modeling-approach.svg';
-import { ReactComponent as ProcessDiagram } from '../assets/diagrams/process-optimization-methodology.svg';
-
 const ServicesPage = () => {
   return (
     <div className="services-page">
@@ -31,7 +19,7 @@ const ServicesPage = () => {
           <div className="service-grid">
             <div className="service-card">
               <div className="service-icon-container">
-                <WastewaterIcon className="service-icon" />
+                <img src="/images/icons/wastewater-treatment.svg" className="service-icon" alt="" />
               </div>
               <h3>Municipal Wastewater Treatment</h3>
               <p>Comprehensive design and optimization services for municipal wastewater treatment facilities, focusing on efficiency, compliance, and sustainability.</p>
@@ -55,7 +43,7 @@ const ServicesPage = () => {
             
             <div className="service-card">
               <div className="service-icon-container">
-                <BioprocessIcon className="service-icon" />
+                <img src="/images/icons/bioprocess-engineering.svg" className="service-icon" alt="" />
               </div>
               <h3>Agricultural Wastewater Treatment</h3>
               <p>Specialized solutions for agricultural wastewater focusing on nutrient recovery, contaminant removal, and regulatory compliance.</p>
@@ -80,7 +68,7 @@ const ServicesPage = () => {
           
           <div className="diagram-container">
             <h3>Municipal Wastewater Treatment Process</h3>
-            <WastewaterDiagram />
+            <img src="/images/diagrams/wastewater-treatment-process.svg" alt="Wastewater Treatment Process Diagram" />
           </div>
         </section>
         
@@ -90,7 +78,7 @@ const ServicesPage = () => {
           
           <div className="full-width-service">
             <div className="service-icon-container">
-              <ReticulationIcon className="service-icon" />
+              <img src="/images/icons/water-reticulation.svg" className="service-icon" alt="" />
             </div>
             <h3>Comprehensive Reticulation Network Design</h3>
             <p>Expert design services for water distribution and wastewater collection systems, from small-scale developments to municipal networks.</p>
@@ -135,7 +123,7 @@ const ServicesPage = () => {
           <div className="service-grid">
             <div className="service-card">
               <div className="service-icon-container">
-                <CatchmentIcon className="service-icon" />
+                <img src="/images/icons/catchment-modeling.svg" className="service-icon" alt="" />
               </div>
               <h3>Surface Water Modeling</h3>
               <p>Comprehensive modeling services for surface water systems including rivers, streams, lakes, and constructed waterways.</p>
@@ -161,7 +149,7 @@ const ServicesPage = () => {
             
             <div className="service-card">
               <div className="service-icon-container">
-                <CatchmentIcon className="service-icon" />
+                <img src="/images/icons/catchment-modeling.svg" className="service-icon" alt="" />
               </div>
               <h3>Groundwater Modeling</h3>
               <p>Specialized groundwater modeling services for resource management, contamination assessment, and remediation planning.</p>
@@ -187,7 +175,7 @@ const ServicesPage = () => {
             
             <div className="service-card">
               <div className="service-icon-container">
-                <CatchmentIcon className="service-icon" />
+                <img src="/images/icons/catchment-modeling.svg" className="service-icon" alt="" />
               </div>
               <h3>Integrated Catchment Management</h3>
               <p>Holistic approaches to managing water resources at the catchment scale, balancing environmental, economic, and social objectives.</p>
@@ -208,7 +196,7 @@ const ServicesPage = () => {
           
           <div className="diagram-container">
             <h3>Integrated Catchment Modeling Approach</h3>
-            <CatchmentDiagram />
+            <img src="/images/diagrams/catchment-modeling-approach.svg" alt="Catchment Modeling Approach Diagram" />
           </div>
         </section>
         
@@ -219,7 +207,7 @@ const ServicesPage = () => {
           <div className="service-grid">
             <div className="service-card">
               <div className="service-icon-container">
-                <ProcessIcon className="service-icon" />
+                <img src="/images/icons/process-optimization.svg" className="service-icon" alt="" />
               </div>
               <h3>Process Modeling & Simulation</h3>
               <p>Advanced modeling and simulation services for chemical and food processing operations to improve efficiency, product quality, and sustainability.</p>
@@ -235,7 +223,7 @@ const ServicesPage = () => {
             
             <div className="service-card">
               <div className="service-icon-container">
-                <ProcessIcon className="service-icon" />
+                <img src="/images/icons/process-optimization.svg" className="service-icon" alt="" />
               </div>
               <h3>Process Optimization</h3>
               <p>Systematic optimization of processing operations to enhance efficiency, reduce costs, and improve sustainability metrics.</p>
@@ -252,7 +240,7 @@ const ServicesPage = () => {
             
             <div className="service-card">
               <div className="service-icon-container">
-                <BioprocessIcon className="service-icon" />
+                <img src="/images/icons/bioprocess-engineering.svg" className="service-icon" alt="" />
               </div>
               <h3>Bioprocess Engineering</h3>
               <p>Specialized services for biological processes in food, pharmaceutical, and biofuel applications.</p>
@@ -270,7 +258,7 @@ const ServicesPage = () => {
           
           <div className="diagram-container">
             <h3>Process Optimization Methodology</h3>
-            <ProcessDiagram />
+            <img src="/images/diagrams/process-optimization-methodology.svg" alt="Process Optimization Methodology Diagram" />
           </div>
         </section>
         

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from '../assets/logos/main-logo.svg';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,7 +8,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-logo">
-          <Logo />
+          <img src="/images/logos/main-logo.svg" alt="RMES Logo" />
         </div>
         
         <div className="footer-links">

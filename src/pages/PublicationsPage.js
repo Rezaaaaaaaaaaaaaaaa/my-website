@@ -300,32 +300,6 @@ const PublicationsPage = () => {
           </>
         ) : null}
       </section>
-
-      <style jsx>{`
-        .publications-filter {
-          display: flex;
-          justify-content: center;
-          margin-bottom: 2rem;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-        }
-        
-        .filter-btn {
-          padding: 0.5rem 1rem;
-          border: 1px solid #1a5276;
-          background: none;
-          color: #1a5276;
-          border-radius: 20px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-        
-        .filter-btn:hover,
-        .filter-btn.active {
-          background-color: #1a5276;
-          color: white;
-        }
-      `}</style>
     </div>
   );
 };

@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import heroImage from '../assets/backgrounds/hero-bg.svg';
-
-// Import service icons
-import { ReactComponent as WastewaterIcon } from '../assets/icons/wastewater-treatment.svg';
-import { ReactComponent as ReticulationIcon } from '../assets/icons/water-reticulation.svg';
-import { ReactComponent as CatchmentIcon } from '../assets/icons/catchment-modeling.svg';
-import { ReactComponent as ProcessIcon } from '../assets/icons/process-optimization.svg';
-import { ReactComponent as BioprocessIcon } from '../assets/icons/bioprocess-engineering.svg';
 
 const HomePage = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -24,7 +16,7 @@ const HomePage = () => {
     const img = new Image();
     img.onload = () => setImageLoaded(true);
     img.onerror = () => setImageLoaded(false);
-    img.src = heroImage;
+    img.src = '/images/backgrounds/hero-bg.svg';
     
     // Add scroll animation observer
     const observer = new IntersectionObserver((entries) => {
@@ -81,7 +73,10 @@ const HomePage = () => {
         <h2 className={animatedElements.expertise ? 'slide-up' : ''}>Areas of Expertise</h2>
         <div className="expertise-grid">
           <div className={`expertise-card ${animatedElements.expertise ? 'slide-in-left' : ''}`}>
-            <h3><WastewaterIcon /> Environmental Engineering</h3>
+            <h3>
+              <img src="/images/icons/wastewater-treatment.svg" alt="" />
+              Environmental Engineering
+            </h3>
             <ul>
               <li>Municipal & Agricultural Wastewater Treatment</li>
               <li>Denitrifying Bioreactors</li>
@@ -90,7 +85,10 @@ const HomePage = () => {
             </ul>
           </div>
           <div className={`expertise-card ${animatedElements.expertise ? 'slide-up' : ''}`}>
-            <h3><BioprocessIcon /> Bioprocess Engineering</h3>
+            <h3>
+              <img src="/images/icons/bioprocess-engineering.svg" alt="" />
+              Bioprocess Engineering
+            </h3>
             <ul>
               <li>Aerobic & Anaerobic Treatment Systems</li>
               <li>Bioreactor Design & Optimization</li>
@@ -99,7 +97,10 @@ const HomePage = () => {
             </ul>
           </div>
           <div className={`expertise-card ${animatedElements.expertise ? 'slide-in-right' : ''}`}>
-            <h3><CatchmentIcon /> Modeling & Analysis</h3>
+            <h3>
+              <img src="/images/icons/catchment-modeling.svg" alt="" />
+              Modeling & Analysis
+            </h3>
             <ul>
               <li>Catchment & Water Resource Modeling</li>
               <li>Chemical & Food Processing Optimization</li>
@@ -115,25 +116,25 @@ const HomePage = () => {
         <h2 className={animatedElements.services ? 'slide-up' : ''}>Consultancy Services</h2>
         <div className="services-grid">
           <div className={`service-preview-card ${animatedElements.services ? 'slide-in-left' : ''}`}>
-            <WastewaterIcon className="service-icon" />
+            <img src="/images/icons/wastewater-treatment.svg" className="service-icon" alt="" />
             <h3>Wastewater Treatment</h3>
             <p>Comprehensive design and optimization services for municipal and agricultural wastewater systems including innovative aerobic and anaerobic technologies.</p>
             <Link to="/services" className="service-link">Learn More</Link>
           </div>
           <div className={`service-preview-card ${animatedElements.services ? 'slide-up' : ''}`}>
-            <ReticulationIcon className="service-icon" />
+            <img src="/images/icons/water-reticulation.svg" className="service-icon" alt="" />
             <h3>Water Reticulation</h3>
             <p>Expert design services for water distribution and wastewater collection networks from small-scale developments to municipal systems.</p>
             <Link to="/services" className="service-link">Learn More</Link>
           </div>
           <div className={`service-preview-card ${animatedElements.services ? 'slide-in-right' : ''}`}>
-            <CatchmentIcon className="service-icon" />
+            <img src="/images/icons/catchment-modeling.svg" className="service-icon" alt="" />
             <h3>Catchment Modeling</h3>
             <p>Advanced surface and groundwater modeling services for water resource management, water quality assessment, and regulatory compliance.</p>
             <Link to="/services" className="service-link">Learn More</Link>
           </div>
           <div className={`service-preview-card ${animatedElements.services ? 'slide-in-left' : ''}`}>
-            <ProcessIcon className="service-icon" />
+            <img src="/images/icons/process-optimization.svg" className="service-icon" alt="" />
             <h3>Process Optimization</h3>
             <p>Systematic optimization of processing operations to enhance efficiency, reduce costs, and improve sustainability metrics.</p>
             <Link to="/services" className="service-link">Learn More</Link>

@@ -1,20 +1,13 @@
 import React from 'react';
 
-// Import service icons for project tags
-import { ReactComponent as WastewaterIcon } from '../assets/icons/wastewater-treatment.svg';
-import { ReactComponent as ReticulationIcon } from '../assets/icons/water-reticulation.svg';
-import { ReactComponent as CatchmentIcon } from '../assets/icons/catchment-modeling.svg';
-import { ReactComponent as ProcessIcon } from '../assets/icons/process-optimization.svg';
-import { ReactComponent as BioprocessIcon } from '../assets/icons/bioprocess-engineering.svg';
-
 const ProjectsPage = () => {
   // Define icon mapping
-  const techIcons = {
-    'Wastewater Treatment': <WastewaterIcon />,
-    'Water Reticulation': <ReticulationIcon />,
-    'Catchment Modeling': <CatchmentIcon />,
-    'Process Optimization': <ProcessIcon />,
-    'Bioprocess Engineering': <BioprocessIcon />
+  const techIconPaths = {
+    'Wastewater Treatment': '/images/icons/wastewater-treatment.svg',
+    'Water Reticulation': '/images/icons/water-reticulation.svg',
+    'Catchment Modeling': '/images/icons/catchment-modeling.svg',
+    'Process Optimization': '/images/icons/process-optimization.svg',
+    'Bioprocess Engineering': '/images/icons/bioprocess-engineering.svg'
   };
   
   const projects = [
@@ -134,8 +127,8 @@ const ProjectsPage = () => {
         {projects.map((project, index) => (
           <div key={project.id} className={`project-full-card fade-in`} style={{animationDelay: `${index * 0.1}s`}}>
             <h2>
-              {techIcons[project.category] && 
-                <span className="project-icon">{techIcons[project.category]}</span>
+              {techIconPaths[project.category] && 
+                <img src={techIconPaths[project.category]} alt="" style={{width: '30px', height: '30px', marginRight: '10px', verticalAlign: 'middle'}} />
               }
               {project.title}
             </h2>

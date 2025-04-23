@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ReactComponent as Logo } from '../assets/logos/main-logo.svg';
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -53,7 +52,7 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <Logo />
+          <img src="/images/logos/main-logo.svg" alt="RMES Logo" />
         </Link>
         
         {isMobile ? (

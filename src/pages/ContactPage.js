@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
 
-// Import service icons
-import { ReactComponent as WastewaterIcon } from '../assets/icons/wastewater-treatment.svg';
-import { ReactComponent as ReticulationIcon } from '../assets/icons/water-reticulation.svg';
-import { ReactComponent as CatchmentIcon } from '../assets/icons/catchment-modeling.svg';
-import { ReactComponent as ProcessIcon } from '../assets/icons/process-optimization.svg';
-import { ReactComponent as BioprocessIcon } from '../assets/icons/bioprocess-engineering.svg';
-
 const ContactPage = () => {
   // Form state
   const [formData, setFormData] = useState({
@@ -27,13 +20,13 @@ const ContactPage = () => {
   
   // Services list for dropdown with icons
   const services = [
-    { id: 'wastewater', name: 'Municipal Wastewater Treatment', icon: <WastewaterIcon /> },
-    { id: 'agricultural', name: 'Agricultural Wastewater Treatment', icon: <WastewaterIcon /> },
-    { id: 'reticulation', name: 'Water & Wastewater Reticulation Design', icon: <ReticulationIcon /> },
-    { id: 'catchment', name: 'Catchment & Water Resource Modeling', icon: <CatchmentIcon /> },
-    { id: 'processing', name: 'Chemical & Food Processing Optimization', icon: <ProcessIcon /> },
-    { id: 'bioprocess', name: 'Bioprocess Engineering', icon: <BioprocessIcon /> },
-    { id: 'other', name: 'Other/Multiple Services', icon: null }
+    { id: 'wastewater', name: 'Municipal Wastewater Treatment' },
+    { id: 'agricultural', name: 'Agricultural Wastewater Treatment' },
+    { id: 'reticulation', name: 'Water & Wastewater Reticulation Design' },
+    { id: 'catchment', name: 'Catchment & Water Resource Modeling' },
+    { id: 'processing', name: 'Chemical & Food Processing Optimization' },
+    { id: 'bioprocess', name: 'Bioprocess Engineering' },
+    { id: 'other', name: 'Other/Multiple Services' }
   ];
   
   // Handle input changes

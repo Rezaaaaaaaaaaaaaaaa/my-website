@@ -1,0 +1,76 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#f9f9f9" rx="5" ry="5"/>
+  <text x="400" y="30" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold" fill="#1a5276">Integrated Catchment Modeling Approach</text>
+  
+  <!-- Catchment Area Visualization -->
+  <!-- Topographic Map Background -->
+  <path d="M50,100 C100,70 150,120 200,90 C250,60 300,100 350,80 C400,60 450,90 500,70 C550,50 600,80 650,60 C700,40 750,70 750,70 
+           L750,350 L50,350 Z" 
+        fill="#e8f8f5" stroke="#1a5276" stroke-width="1"/>
+  
+  <!-- Contour Lines -->
+  <path d="M100,100 C150,120 200,90 250,110 C300,130 350,80 400,100 C450,120 500,70 550,90 C600,110 650,60 700,80" 
+        stroke="#1a5276" stroke-width="0.5" stroke-dasharray="3,2" fill="none"/>
+  <path d="M100,150 C150,170 200,140 250,160 C300,180 350,130 400,150 C450,170 500,120 550,140 C600,160 650,110 700,130" 
+        stroke="#1a5276" stroke-width="0.5" stroke-dasharray="3,2" fill="none"/>
+  <path d="M100,200 C150,220 200,190 250,210 C300,230 350,180 400,200 C450,220 500,170 550,190 C600,210 650,160 700,180" 
+        stroke="#1a5276" stroke-width="0.5" stroke-dasharray="3,2" fill="none"/>
+  <path d="M100,250 C150,270 200,240 250,260 C300,280 350,230 400,250 C450,270 500,220 550,240 C600,260 650,210 700,230" 
+        stroke="#1a5276" stroke-width="0.5" stroke-dasharray="3,2" fill="none"/>
+  <path d="M100,300 C150,320 200,290 250,310 C300,330 350,280 400,300 C450,320 500,270 550,290 C600,310 650,260 700,280" 
+        stroke="#1a5276" stroke-width="0.5" stroke-dasharray="3,2" fill="none"/>
+  
+  <!-- Rivers/Streams -->
+  <path d="M350,80 C325,120 375,160 350,200 C325,240 375,280 350,320 C325,350 350,350 350,350" 
+        stroke="#2980b9" stroke-width="4" fill="none"/>
+  <path d="M500,70 C475,100 525,130 500,160 C475,190 525,220 500,250 C475,280 525,310 500,340 C495,350 500,350 500,350" 
+        stroke="#2980b9" stroke-width="3" fill="none"/>
+  <path d="M200,90 C225,130 175,170 200,210 C225,250 175,290 200,330 C215,350 200,350 200,350" 
+        stroke="#2980b9" stroke-width="2" fill="none"/>
+  
+  <!-- Simulation Elements -->
+  <!-- Groundwater Arrows -->
+  <path d="M150,330 L170,310 M250,330 L230,310 M550,330 L570,310 M650,330 L630,310" 
+        stroke="#27ae60" stroke-width="1.5" marker-end="url(#groundwater-arrow)"/>
+  
+  <!-- Rainfall Indicators -->
+  <path d="M120,60 L110,80 M180,50 L170,70 M300,60 L290,80 M470,40 L460,60 M580,50 L570,70 M700,60 L690,80" 
+        stroke="#3498db" stroke-width="1" stroke-linecap="round"/>
+  
+  <!-- Monitoring Points -->
+  <circle cx="350" cy="200" r="6" fill="#e74c3c" stroke="#fff" stroke-width="1"/>
+  <circle cx="500" cy="250" r="6" fill="#e74c3c" stroke="#fff" stroke-width="1"/>
+  <circle cx="200" cy="210" r="6" fill="#e74c3c" stroke="#fff" stroke-width="1"/>
+  
+  <!-- Land Use Types -->
+  <rect x="100" y="130" width="30" height="30" fill="#f1c40f" fill-opacity="0.4" stroke="#1a5276" stroke-width="0.5"/>
+  <rect x="250" y="150" width="40" height="40" fill="#27ae60" fill-opacity="0.4" stroke="#1a5276" stroke-width="0.5"/>
+  <rect x="450" y="120" width="50" height="50" fill="#3498db" fill-opacity="0.3" stroke="#1a5276" stroke-width="0.5"/>
+  <rect x="600" y="140" width="35" height="35" fill="#e67e22" fill-opacity="0.4" stroke="#1a5276" stroke-width="0.5"/>
+  
+  <!-- Legend -->
+  <rect x="580" y="280" width="180" height="120" fill="white" stroke="#1a5276" stroke-width="1" rx="5" ry="5"/>
+  <text x="600" y="300" font-family="Arial" font-size="12" font-weight="bold" fill="#1a5276">Legend</text>
+  
+  <line x1="600" y1="315" x2="620" y2="315" stroke="#2980b9" stroke-width="3"/>
+  <text x="630" y="318" font-family="Arial" font-size="10" fill="#1a5276">Rivers/Streams</text>
+  
+  <path d="M600,335 L620,335" stroke="#27ae60" stroke-width="1.5" marker-end="url(#groundwater-arrow)"/>
+  <text x="630" y="338" font-family="Arial" font-size="10" fill="#1a5276">Groundwater Flow</text>
+  
+  <circle cx="610" cy="355" r="5" fill="#e74c3c" stroke="#fff" stroke-width="1"/>
+  <text x="630" y="358" font-family="Arial" font-size="10" fill="#1a5276">Monitoring Points</text>
+  
+  <rect x="600" y="370" width="10" height="10" fill="#f1c40f" fill-opacity="0.4" stroke="#1a5276" stroke-width="0.5"/>
+  <text x="630" y="378" font-family="Arial" font-size="10" fill="#1a5276">Agricultural Land</text>
+  
+  <rect x="600" y="390" width="10" height="10" fill="#27ae60" fill-opacity="0.4" stroke="#1a5276" stroke-width="0.5"/>
+  <text x="630" y="398" font-family="Arial" font-size="10" fill="#1a5276">Forest Cover</text>
+  
+  <!-- Markers -->
+  <defs>
+    <marker id="groundwater-arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#27ae60"/>
+    </marker>
+  </defs>
+</svg>

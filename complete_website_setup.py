@@ -1,6 +1,8 @@
+
+
 #!/usr/bin/env python3
 """
-Enhanced Portfolio Website Setup Script with Visual Elements
+Optimized Portfolio Website Setup Script with Visual Elements
 
 This script creates a complete React-based professional portfolio website for an
 Environmental Engineer with enhanced visual elements, including:
@@ -9,11 +11,12 @@ Environmental Engineer with enhanced visual elements, including:
 - Attractive UI components
 - Responsive design elements
 
-The script optionally cleans the repository before creating new files.
+The script uses a production-ready approach with assets in the public folder
+for maximum compatibility with all deployment platforms.
 
 Usage:
-1. Save this script as 'enhanced_website_setup.py'
-2. Run: python enhanced_website_setup.py
+1. Save this script as 'optimized_website_setup.py'
+2. Run: python optimized_website_setup.py
 3. After running, install dependencies: npm install
 4. Start the development server: npm start
 5. Push to GitHub and deploy on Netlify
@@ -27,10 +30,15 @@ import json
 import argparse
 
 # Define command line arguments
-parser = argparse.ArgumentParser(description="Generate enhanced portfolio website")
+parser = argparse.ArgumentParser(description="Generate optimized portfolio website")
 parser.add_argument('--clean', action='store_true', help='Clean repository before generating new files')
 parser.add_argument('--backup', action='store_true', help='Create backup of existing files before cleaning')
 args = parser.parse_args()
+
+def ensure_dir_exists(directory):
+    """Ensure a directory exists, creating it if necessary"""
+    os.makedirs(directory, exist_ok=True)
+    return directory
 
 def clean_repository():
     """Clean the repository by removing generated files"""
@@ -38,8 +46,7 @@ def clean_repository():
     
     if args.backup:
         # Create a backup directory
-        if not os.path.exists('backup'):
-            os.makedirs('backup')
+        ensure_dir_exists('backup')
         
         # Backup important files
         if os.path.exists('src'):
@@ -86,20 +93,19 @@ def create_directories():
         'src',
         'src/components',
         'src/pages',
-        'src/assets',
-        'src/assets/icons',
-        'src/assets/logos',
-        'src/assets/diagrams',
-        'src/assets/backgrounds',
         'src/hooks',
         'src/data',
         'public',
-        'public/images'
+        'public/images',
+        'public/images/logos',
+        'public/images/icons',
+        'public/images/diagrams',
+        'public/images/backgrounds'
     ]
     
     # Create directories
     for directory in directories:
-        os.makedirs(directory, exist_ok=True)
+        ensure_dir_exists(directory)
         print(f"Created directory: {directory}")
 
 def create_main_logo():
@@ -125,7 +131,8 @@ def create_main_logo():
   <text x="55" y="50" font-family="Arial" font-size="10" fill="#e1f5fe">ENVIRONMENTAL ENGINEERING</text>
 </svg>"""
 
-    with open('src/assets/logos/main-logo.svg', 'w', encoding='utf-8') as f:
+    # Save in public folder for better compatibility
+    with open('public/images/logos/main-logo.svg', 'w', encoding='utf-8') as f:
         f.write(logo_content)
     print("Created main logo SVG")
 
@@ -268,7 +275,7 @@ def create_service_icons():
   </g>
 </svg>"""
 
-    # Save all icons
+    # Save all icons in public folder for better compatibility
     icons = {
         'wastewater-treatment.svg': wastewater_icon,
         'water-reticulation.svg': reticulation_icon,
@@ -278,7 +285,7 @@ def create_service_icons():
     }
     
     for filename, content in icons.items():
-        with open(f'src/assets/icons/{filename}', 'w', encoding='utf-8') as f:
+        with open(f'public/images/icons/{filename}', 'w', encoding='utf-8') as f:
             f.write(content)
     
     print(f"Created {len(icons)} service icons")
@@ -472,7 +479,7 @@ def create_process_diagrams():
   </defs>
 </svg>"""
 
-    # Save all diagrams
+    # Save all diagrams in public folder
     diagrams = {
         'wastewater-treatment-process.svg': wastewater_diagram,
         'catchment-modeling-approach.svg': catchment_diagram,
@@ -480,7 +487,7 @@ def create_process_diagrams():
     }
     
     for filename, content in diagrams.items():
-        with open(f'src/assets/diagrams/{filename}', 'w', encoding='utf-8') as f:
+        with open(f'public/images/diagrams/{filename}', 'w', encoding='utf-8') as f:
             f.write(content)
     
     print(f"Created {len(diagrams)} process diagrams")
@@ -566,10 +573,10 @@ def create_background_images():
 </svg>"""
 
     # Save background images
-    with open('src/assets/backgrounds/hero-bg.svg', 'w', encoding='utf-8') as f:
+    with open('public/images/backgrounds/hero-bg.svg', 'w', encoding='utf-8') as f:
         f.write(hero_bg)
     
-    with open('src/assets/backgrounds/services-bg.svg', 'w', encoding='utf-8') as f:
+    with open('public/images/backgrounds/services-bg.svg', 'w', encoding='utf-8') as f:
         f.write(services_bg)
     
     # Create a JPEG version of the hero background (fallback)
@@ -577,7 +584,7 @@ def create_background_images():
     jpeg_data = "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAn/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AKVP/9k="
     
     # Decode and write the image data
-    with open('src/assets/backgrounds/hero-bg.jpg', 'wb') as f:
+    with open('public/images/backgrounds/hero-bg.jpg', 'wb') as f:
         f.write(base64.b64decode(jpeg_data))
     
     print("Created background images")
@@ -653,7 +660,7 @@ def create_app_css():
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #333;
   background-color: #f9f9f9;
@@ -821,7 +828,7 @@ section h2 {
 
 .hero-with-image {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-              url('../assets/backgrounds/hero-bg.svg');
+              url('/images/backgrounds/hero-bg.svg');
   background-size: cover;
 }
 
@@ -949,7 +956,7 @@ section h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../assets/backgrounds/services-bg.svg');
+  background-image: url('/images/backgrounds/services-bg.svg');
   background-size: cover;
   background-position: center;
   opacity: 0.05;
@@ -1081,7 +1088,7 @@ section h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../assets/backgrounds/services-bg.svg');
+  background-image: url('/images/backgrounds/services-bg.svg');
   background-size: cover;
   background-position: center;
   opacity: 0.1;
@@ -1175,7 +1182,7 @@ section h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../assets/backgrounds/services-bg.svg');
+  background-image: url('/images/backgrounds/services-bg.svg');
   background-size: cover;
   background-position: center;
   opacity: 0.1;
@@ -1211,7 +1218,7 @@ section h2 {
 /* Page Header */
 .page-header {
   background-color: #1a5276;
-  background-image: url('../assets/backgrounds/services-bg.svg');
+  background-image: url('/images/backgrounds/services-bg.svg');
   background-size: cover;
   color: white;
   text-align: center;
@@ -1318,6 +1325,30 @@ section h2 {
   max-width: 1000px;
   margin: 0 auto;
   padding: 3rem 2rem;
+}
+
+.publications-filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #1a5276;
+  background: none;
+  color: #1a5276;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: #1a5276;
+  color: white;
 }
 
 .publication-card {
@@ -1767,7 +1798,7 @@ section h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../assets/backgrounds/services-bg.svg');
+  background-image: url('/images/backgrounds/services-bg.svg');
   background-size: cover;
   background-position: center;
   opacity: 0.1;
@@ -2030,7 +2061,6 @@ def create_navbar_component():
     """Create the Navbar component with logo"""
     content = """import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ReactComponent as Logo } from '../assets/logos/main-logo.svg';
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -2083,7 +2113,7 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <Logo />
+          <img src="/images/logos/main-logo.svg" alt="RMES Logo" />
         </Link>
         
         {isMobile ? (
@@ -2185,12 +2215,10 @@ export default Navbar;
     with open('src/components/Navbar.js', 'w', encoding='utf-8') as f:
         f.write(content)
     print("Created enhanced Navbar.js component with logo")
-
 def create_footer_component():
     """Create the Footer component with logo and social icons"""
     content = """import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from '../assets/logos/main-logo.svg';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -2199,7 +2227,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-logo">
-          <Logo />
+          <img src="/images/logos/main-logo.svg" alt="RMES Logo" />
         </div>
         
         <div className="footer-links">
@@ -2261,14 +2289,6 @@ def create_home_page():
     """Create the HomePage component with visual elements"""
     content = """import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import heroImage from '../assets/backgrounds/hero-bg.svg';
-
-// Import service icons
-import { ReactComponent as WastewaterIcon } from '../assets/icons/wastewater-treatment.svg';
-import { ReactComponent as ReticulationIcon } from '../assets/icons/water-reticulation.svg';
-import { ReactComponent as CatchmentIcon } from '../assets/icons/catchment-modeling.svg';
-import { ReactComponent as ProcessIcon } from '../assets/icons/process-optimization.svg';
-import { ReactComponent as BioprocessIcon } from '../assets/icons/bioprocess-engineering.svg';
 
 const HomePage = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -2285,7 +2305,7 @@ const HomePage = () => {
     const img = new Image();
     img.onload = () => setImageLoaded(true);
     img.onerror = () => setImageLoaded(false);
-    img.src = heroImage;
+    img.src = '/images/backgrounds/hero-bg.svg';
     
     // Add scroll animation observer
     const observer = new IntersectionObserver((entries) => {
@@ -2342,7 +2362,10 @@ const HomePage = () => {
         <h2 className={animatedElements.expertise ? 'slide-up' : ''}>Areas of Expertise</h2>
         <div className="expertise-grid">
           <div className={`expertise-card ${animatedElements.expertise ? 'slide-in-left' : ''}`}>
-            <h3><WastewaterIcon /> Environmental Engineering</h3>
+            <h3>
+              <img src="/images/icons/wastewater-treatment.svg" alt="" />
+              Environmental Engineering
+            </h3>
             <ul>
               <li>Municipal & Agricultural Wastewater Treatment</li>
               <li>Denitrifying Bioreactors</li>
@@ -2351,7 +2374,10 @@ const HomePage = () => {
             </ul>
           </div>
           <div className={`expertise-card ${animatedElements.expertise ? 'slide-up' : ''}`}>
-            <h3><BioprocessIcon /> Bioprocess Engineering</h3>
+            <h3>
+              <img src="/images/icons/bioprocess-engineering.svg" alt="" />
+              Bioprocess Engineering
+            </h3>
             <ul>
               <li>Aerobic & Anaerobic Treatment Systems</li>
               <li>Bioreactor Design & Optimization</li>
@@ -2360,7 +2386,10 @@ const HomePage = () => {
             </ul>
           </div>
           <div className={`expertise-card ${animatedElements.expertise ? 'slide-in-right' : ''}`}>
-            <h3><CatchmentIcon /> Modeling & Analysis</h3>
+            <h3>
+              <img src="/images/icons/catchment-modeling.svg" alt="" />
+              Modeling & Analysis
+            </h3>
             <ul>
               <li>Catchment & Water Resource Modeling</li>
               <li>Chemical & Food Processing Optimization</li>
@@ -2376,25 +2405,25 @@ const HomePage = () => {
         <h2 className={animatedElements.services ? 'slide-up' : ''}>Consultancy Services</h2>
         <div className="services-grid">
           <div className={`service-preview-card ${animatedElements.services ? 'slide-in-left' : ''}`}>
-            <WastewaterIcon className="service-icon" />
+            <img src="/images/icons/wastewater-treatment.svg" className="service-icon" alt="" />
             <h3>Wastewater Treatment</h3>
             <p>Comprehensive design and optimization services for municipal and agricultural wastewater systems including innovative aerobic and anaerobic technologies.</p>
             <Link to="/services" className="service-link">Learn More</Link>
           </div>
           <div className={`service-preview-card ${animatedElements.services ? 'slide-up' : ''}`}>
-            <ReticulationIcon className="service-icon" />
+            <img src="/images/icons/water-reticulation.svg" className="service-icon" alt="" />
             <h3>Water Reticulation</h3>
             <p>Expert design services for water distribution and wastewater collection networks from small-scale developments to municipal systems.</p>
             <Link to="/services" className="service-link">Learn More</Link>
           </div>
           <div className={`service-preview-card ${animatedElements.services ? 'slide-in-right' : ''}`}>
-            <CatchmentIcon className="service-icon" />
+            <img src="/images/icons/catchment-modeling.svg" className="service-icon" alt="" />
             <h3>Catchment Modeling</h3>
             <p>Advanced surface and groundwater modeling services for water resource management, water quality assessment, and regulatory compliance.</p>
             <Link to="/services" className="service-link">Learn More</Link>
           </div>
           <div className={`service-preview-card ${animatedElements.services ? 'slide-in-left' : ''}`}>
-            <ProcessIcon className="service-icon" />
+            <img src="/images/icons/process-optimization.svg" className="service-icon" alt="" />
             <h3>Process Optimization</h3>
             <p>Systematic optimization of processing operations to enhance efficiency, reduce costs, and improve sustainability metrics.</p>
             <Link to="/services" className="service-link">Learn More</Link>
@@ -2483,18 +2512,6 @@ def create_services_page():
     content = """import React from 'react';
 import { Link } from 'react-router-dom';
 
-// Import service icons
-import { ReactComponent as WastewaterIcon } from '../assets/icons/wastewater-treatment.svg';
-import { ReactComponent as ReticulationIcon } from '../assets/icons/water-reticulation.svg';
-import { ReactComponent as CatchmentIcon } from '../assets/icons/catchment-modeling.svg';
-import { ReactComponent as ProcessIcon } from '../assets/icons/process-optimization.svg';
-import { ReactComponent as BioprocessIcon } from '../assets/icons/bioprocess-engineering.svg';
-
-// Import diagrams
-import { ReactComponent as WastewaterDiagram } from '../assets/diagrams/wastewater-treatment-process.svg';
-import { ReactComponent as CatchmentDiagram } from '../assets/diagrams/catchment-modeling-approach.svg';
-import { ReactComponent as ProcessDiagram } from '../assets/diagrams/process-optimization-methodology.svg';
-
 const ServicesPage = () => {
   return (
     <div className="services-page">
@@ -2513,7 +2530,7 @@ const ServicesPage = () => {
           <div className="service-grid">
             <div className="service-card">
               <div className="service-icon-container">
-                <WastewaterIcon className="service-icon" />
+                <img src="/images/icons/wastewater-treatment.svg" className="service-icon" alt="" />
               </div>
               <h3>Municipal Wastewater Treatment</h3>
               <p>Comprehensive design and optimization services for municipal wastewater treatment facilities, focusing on efficiency, compliance, and sustainability.</p>
@@ -2537,7 +2554,7 @@ const ServicesPage = () => {
             
             <div className="service-card">
               <div className="service-icon-container">
-                <BioprocessIcon className="service-icon" />
+                <img src="/images/icons/bioprocess-engineering.svg" className="service-icon" alt="" />
               </div>
               <h3>Agricultural Wastewater Treatment</h3>
               <p>Specialized solutions for agricultural wastewater focusing on nutrient recovery, contaminant removal, and regulatory compliance.</p>
@@ -2562,7 +2579,7 @@ const ServicesPage = () => {
           
           <div className="diagram-container">
             <h3>Municipal Wastewater Treatment Process</h3>
-            <WastewaterDiagram />
+            <img src="/images/diagrams/wastewater-treatment-process.svg" alt="Wastewater Treatment Process Diagram" />
           </div>
         </section>
         
@@ -2572,7 +2589,7 @@ const ServicesPage = () => {
           
           <div className="full-width-service">
             <div className="service-icon-container">
-              <ReticulationIcon className="service-icon" />
+              <img src="/images/icons/water-reticulation.svg" className="service-icon" alt="" />
             </div>
             <h3>Comprehensive Reticulation Network Design</h3>
             <p>Expert design services for water distribution and wastewater collection systems, from small-scale developments to municipal networks.</p>
@@ -2617,7 +2634,7 @@ const ServicesPage = () => {
           <div className="service-grid">
             <div className="service-card">
               <div className="service-icon-container">
-                <CatchmentIcon className="service-icon" />
+                <img src="/images/icons/catchment-modeling.svg" className="service-icon" alt="" />
               </div>
               <h3>Surface Water Modeling</h3>
               <p>Comprehensive modeling services for surface water systems including rivers, streams, lakes, and constructed waterways.</p>
@@ -2643,7 +2660,7 @@ const ServicesPage = () => {
             
             <div className="service-card">
               <div className="service-icon-container">
-                <CatchmentIcon className="service-icon" />
+                <img src="/images/icons/catchment-modeling.svg" className="service-icon" alt="" />
               </div>
               <h3>Groundwater Modeling</h3>
               <p>Specialized groundwater modeling services for resource management, contamination assessment, and remediation planning.</p>
@@ -2669,7 +2686,7 @@ const ServicesPage = () => {
             
             <div className="service-card">
               <div className="service-icon-container">
-                <CatchmentIcon className="service-icon" />
+                <img src="/images/icons/catchment-modeling.svg" className="service-icon" alt="" />
               </div>
               <h3>Integrated Catchment Management</h3>
               <p>Holistic approaches to managing water resources at the catchment scale, balancing environmental, economic, and social objectives.</p>
@@ -2690,7 +2707,7 @@ const ServicesPage = () => {
           
           <div className="diagram-container">
             <h3>Integrated Catchment Modeling Approach</h3>
-            <CatchmentDiagram />
+            <img src="/images/diagrams/catchment-modeling-approach.svg" alt="Catchment Modeling Approach Diagram" />
           </div>
         </section>
         
@@ -2701,7 +2718,7 @@ const ServicesPage = () => {
           <div className="service-grid">
             <div className="service-card">
               <div className="service-icon-container">
-                <ProcessIcon className="service-icon" />
+                <img src="/images/icons/process-optimization.svg" className="service-icon" alt="" />
               </div>
               <h3>Process Modeling & Simulation</h3>
               <p>Advanced modeling and simulation services for chemical and food processing operations to improve efficiency, product quality, and sustainability.</p>
@@ -2717,7 +2734,7 @@ const ServicesPage = () => {
             
             <div className="service-card">
               <div className="service-icon-container">
-                <ProcessIcon className="service-icon" />
+                <img src="/images/icons/process-optimization.svg" className="service-icon" alt="" />
               </div>
               <h3>Process Optimization</h3>
               <p>Systematic optimization of processing operations to enhance efficiency, reduce costs, and improve sustainability metrics.</p>
@@ -2734,7 +2751,7 @@ const ServicesPage = () => {
             
             <div className="service-card">
               <div className="service-icon-container">
-                <BioprocessIcon className="service-icon" />
+                <img src="/images/icons/bioprocess-engineering.svg" className="service-icon" alt="" />
               </div>
               <h3>Bioprocess Engineering</h3>
               <p>Specialized services for biological processes in food, pharmaceutical, and biofuel applications.</p>
@@ -2752,7 +2769,7 @@ const ServicesPage = () => {
           
           <div className="diagram-container">
             <h3>Process Optimization Methodology</h3>
-            <ProcessDiagram />
+            <img src="/images/diagrams/process-optimization-methodology.svg" alt="Process Optimization Methodology Diagram" />
           </div>
         </section>
         
@@ -2779,21 +2796,14 @@ def create_projects_page():
     """Create the ProjectsPage component with enhanced visuals"""
     content = """import React from 'react';
 
-// Import service icons for project tags
-import { ReactComponent as WastewaterIcon } from '../assets/icons/wastewater-treatment.svg';
-import { ReactComponent as ReticulationIcon } from '../assets/icons/water-reticulation.svg';
-import { ReactComponent as CatchmentIcon } from '../assets/icons/catchment-modeling.svg';
-import { ReactComponent as ProcessIcon } from '../assets/icons/process-optimization.svg';
-import { ReactComponent as BioprocessIcon } from '../assets/icons/bioprocess-engineering.svg';
-
 const ProjectsPage = () => {
   // Define icon mapping
-  const techIcons = {
-    'Wastewater Treatment': <WastewaterIcon />,
-    'Water Reticulation': <ReticulationIcon />,
-    'Catchment Modeling': <CatchmentIcon />,
-    'Process Optimization': <ProcessIcon />,
-    'Bioprocess Engineering': <BioprocessIcon />
+  const techIconPaths = {
+    'Wastewater Treatment': '/images/icons/wastewater-treatment.svg',
+    'Water Reticulation': '/images/icons/water-reticulation.svg',
+    'Catchment Modeling': '/images/icons/catchment-modeling.svg',
+    'Process Optimization': '/images/icons/process-optimization.svg',
+    'Bioprocess Engineering': '/images/icons/bioprocess-engineering.svg'
   };
   
   const projects = [
@@ -2913,8 +2923,8 @@ const ProjectsPage = () => {
         {projects.map((project, index) => (
           <div key={project.id} className={`project-full-card fade-in`} style={{animationDelay: `${index * 0.1}s`}}>
             <h2>
-              {techIcons[project.category] && 
-                <span className="project-icon">{techIcons[project.category]}</span>
+              {techIconPaths[project.category] && 
+                <img src={techIconPaths[project.category]} alt="" style={{width: '30px', height: '30px', marginRight: '10px', verticalAlign: 'middle'}} />
               }
               {project.title}
             </h2>
@@ -3262,32 +3272,6 @@ const PublicationsPage = () => {
           </>
         ) : null}
       </section>
-
-      <style jsx>{`
-        .publications-filter {
-          display: flex;
-          justify-content: center;
-          margin-bottom: 2rem;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-        }
-        
-        .filter-btn {
-          padding: 0.5rem 1rem;
-          border: 1px solid #1a5276;
-          background: none;
-          color: #1a5276;
-          border-radius: 20px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-        
-        .filter-btn:hover,
-        .filter-btn.active {
-          background-color: #1a5276;
-          color: white;
-        }
-      `}</style>
     </div>
   );
 };
@@ -3301,13 +3285,6 @@ export default PublicationsPage;
 def create_contact_page():
     """Create the ContactPage component with fixed ESLint error and enhanced visuals"""
     content = """import React, { useState } from 'react';
-
-// Import service icons
-import { ReactComponent as WastewaterIcon } from '../assets/icons/wastewater-treatment.svg';
-import { ReactComponent as ReticulationIcon } from '../assets/icons/water-reticulation.svg';
-import { ReactComponent as CatchmentIcon } from '../assets/icons/catchment-modeling.svg';
-import { ReactComponent as ProcessIcon } from '../assets/icons/process-optimization.svg';
-import { ReactComponent as BioprocessIcon } from '../assets/icons/bioprocess-engineering.svg';
 
 const ContactPage = () => {
   // Form state
@@ -3329,13 +3306,13 @@ const ContactPage = () => {
   
   // Services list for dropdown with icons
   const services = [
-    { id: 'wastewater', name: 'Municipal Wastewater Treatment', icon: <WastewaterIcon /> },
-    { id: 'agricultural', name: 'Agricultural Wastewater Treatment', icon: <WastewaterIcon /> },
-    { id: 'reticulation', name: 'Water & Wastewater Reticulation Design', icon: <ReticulationIcon /> },
-    { id: 'catchment', name: 'Catchment & Water Resource Modeling', icon: <CatchmentIcon /> },
-    { id: 'processing', name: 'Chemical & Food Processing Optimization', icon: <ProcessIcon /> },
-    { id: 'bioprocess', name: 'Bioprocess Engineering', icon: <BioprocessIcon /> },
-    { id: 'other', name: 'Other/Multiple Services', icon: null }
+    { id: 'wastewater', name: 'Municipal Wastewater Treatment' },
+    { id: 'agricultural', name: 'Agricultural Wastewater Treatment' },
+    { id: 'reticulation', name: 'Water & Wastewater Reticulation Design' },
+    { id: 'catchment', name: 'Catchment & Water Resource Modeling' },
+    { id: 'processing', name: 'Chemical & Food Processing Optimization' },
+    { id: 'bioprocess', name: 'Bioprocess Engineering' },
+    { id: 'other', name: 'Other/Multiple Services' }
   ];
   
   // Handle input changes
@@ -3629,7 +3606,7 @@ def create_index_html():
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/images/logos/main-logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#1a5276" />
     <meta
@@ -3790,7 +3767,7 @@ export default useAnimateOnScroll;
 """
     
     # Create the hooks directory if it doesn't exist
-    os.makedirs('src/hooks', exist_ok=True)
+    ensure_dir_exists('src/hooks')
     
     # Create the hook file
     with open('src/hooks/useAnimateOnScroll.js', 'w', encoding='utf-8') as f:
@@ -3812,7 +3789,7 @@ def create_logo_favicon():
 </svg>"""
     
     # Create the favicon file
-    with open('public/favicon.svg', 'w', encoding='utf-8') as f:
+    with open('public/images/logos/favicon.svg', 'w', encoding='utf-8') as f:
         f.write(favicon_svg)
     print("Created favicon.svg")
 
@@ -3861,10 +3838,6 @@ This project is set up for easy deployment on Netlify:
 - React - Frontend library
 - React Router - Navigation
 - CSS - Custom styling
-
-## Credits
-
-Designed and developed by [Your Name]
 """
     with open('README.md', 'w', encoding='utf-8') as f:
         f.write(content)
@@ -3872,7 +3845,7 @@ Designed and developed by [Your Name]
 
 def main():
     """Main function that orchestrates the website creation"""
-    print("\n=== Creating Enhanced React Portfolio Website with Visual Elements ===\n")
+    print("\n=== Creating Optimized React Portfolio Website with Visual Elements ===\n")
     
     # Clean repository if specified
     if args.clean:
@@ -3915,7 +3888,7 @@ def main():
     create_netlify_toml()
     create_readme()
     
-    print("\n=== Enhanced Website Structure Created Successfully! ===\n")
+    print("\n=== Optimized Website Structure Created Successfully! ===\n")
     print("Next steps:")
     print("1. Run 'npm install' to install dependencies")
     print("2. Run 'npm start' to preview the website locally")
@@ -3928,15 +3901,14 @@ def main():
     print("   - The netlify.toml file will configure the build settings automatically")
     
     print("\nEnhanced features in this version:")
-    print("1. Custom SVG logos, icons, and diagrams for all service areas")
-    print("2. Visual process diagrams to illustrate complex environmental engineering processes")
-    print("3. Animated interface elements with scroll-triggered animations")
-    print("4. Enhanced styling with depth effects, gradients, and transitions")
-    print("5. Fixed the ContactPage ESLint error to ensure successful CI/CD deployment")
-    print("6. Mobile-responsive design with tailored mobile navigation")
-    print("7. Organized file structure with reusable visual assets")
-    print("8. Custom React hook for animation functionality")
-    print("9. SVG favicon and optimized performance")
+    print("1. Optimized asset loading from public folder for better Netlify compatibility")
+    print("2. Custom SVG logos, icons, and diagrams for all service areas")
+    print("3. Visual process diagrams to illustrate complex environmental engineering processes")
+    print("4. Animated interface elements with scroll-triggered animations")
+    print("5. Enhanced styling with depth effects, gradients, and transitions")
+    print("6. Fixed the ContactPage ESLint error to ensure successful CI/CD deployment")
+    print("7. Mobile-responsive design with tailored mobile navigation")
+    print("8. SVG favicon and optimized performance")
 
 if __name__ == "__main__":
     main()

@@ -41,7 +41,3 @@ This project is set up for easy deployment on Netlify:
 - React - Frontend library
 - React Router - Navigation
 - CSS - Custom styling
-
-## Credits
-
-Designed and developed by [Your Name]

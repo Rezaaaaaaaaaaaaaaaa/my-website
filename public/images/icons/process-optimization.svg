@@ -1,0 +1,27 @@
+<svg width="80" height="80" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="40" cy="40" r="38" fill="#e1f5fe" stroke="#1a5276" stroke-width="2"/>
+  
+  <!-- Process Optimization -->
+  <g transform="translate(15, 20)">
+    <!-- Graph Axes -->
+    <path d="M0,40 H50 M0,0 V40" stroke="#1a5276" stroke-width="1.5"/>
+    
+    <!-- Process Optimization Curve -->
+    <path d="M0,40 C10,35 15,25 25,15 C35,5 40,10 50,0" 
+          fill="none" stroke="#2980b9" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Optimization Points -->
+    <circle cx="25" cy="15" r="3" fill="#1a5276"/>
+    <circle cx="40" cy="10" r="3" fill="#1a5276"/>
+    
+    <!-- Arrow for Improvement -->
+    <path d="M30,30 L40,5 L45,10" fill="none" stroke="#27ae60" stroke-width="1.5"/>
+    
+    <!-- Gears for Process -->
+    <g transform="translate(10, 25) scale(0.5)">
+      <circle cx="0" cy="0" r="10" fill="#1a5276"/>
+      <path d="M0,-15 L2,-8 C3,-8 5,-9 8,-8 L12,-12 L15,-5 L10,0 C10,2 10,5 12,8 L15,10 L10,15 L5,10 C3,10 0,12 -2,10 L-5,15 L-10,10 L-8,5 C-10,3 -12,0 -10,-3 L-15,-5 L-10,-12 L-5,-8 C-3,-9 -2,-8 0,-8 Z" 
+            fill="#2980b9" stroke="#fff" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom';
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   
   // Detect if we're on a mobile device
@@ -21,23 +20,6 @@ const Navbar = () => {
     };
   }, []);
   
-  // Add scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-  
   // Check if a link is active based on current location
   const isActive = (path) => {
     return location.pathname === path;
@@ -49,10 +31,10 @@ const Navbar = () => {
   };
   
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <img src="images/logos/main-logo.svg" alt="RMES Environmental Engineering" />
+          RMES
         </Link>
         
         {isMobile ? (
@@ -78,15 +60,6 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link 
-                    to="/services" 
-                    className={`nav-link ${isActive('/services') ? 'active' : ''}`}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Services
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link 
                     to="/projects" 
                     className={`nav-link ${isActive('/projects') ? 'active' : ''}`}
                     onClick={() => setMobileMenuOpen(false)}
@@ -101,6 +74,15 @@ const Navbar = () => {
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Publications
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link 
+                    to="/consulting" 
+                    className={`nav-link ${isActive('/consulting') ? 'active' : ''}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Consulting
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -123,11 +105,6 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/services" className={`nav-link ${isActive('/services') ? 'active' : ''}`}>
-                Services
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link to="/projects" className={`nav-link ${isActive('/projects') ? 'active' : ''}`}>
                 Projects
               </Link>
@@ -135,6 +112,11 @@ const Navbar = () => {
             <li className="nav-item">
               <Link to="/publications" className={`nav-link ${isActive('/publications') ? 'active' : ''}`}>
                 Publications
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/consulting" className={`nav-link ${isActive('/consulting') ? 'active' : ''}`}>
+                Consulting
               </Link>
             </li>
             <li className="nav-item">

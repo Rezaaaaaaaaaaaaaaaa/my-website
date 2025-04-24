@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const PublicationsPage = () => {
-  const [filter, setFilter] = useState('all');
-  
   const publications = [
     {
       id: 1,
@@ -65,31 +63,31 @@ const PublicationsPage = () => {
       abstract: "This economic analysis evaluated the cost-effectiveness of carbon addition to denitrifying bioreactors in New Zealand agricultural contexts, demonstrating a favorable return on investment for farm-scale implementation."
     },
     {
-      id: 10,
+      id: 6,
       type: 'journal',
-      title: "Comparative performance of aerobic and anaerobic treatment systems for municipal wastewater: A New Zealand case study",
-      authors: "Moghaddam, R., Williams, J., Singh, P.",
+      title: "Comparative performance of aerobic and anaerobic treatment systems for high-strength agricultural wastewater",
+      authors: "Moghaddam, R., et al.",
       journal: "Water Research",
       year: 2024,
-      volume: "212",
-      pages: "118542",
-      doi: "10.1016/j.watres.2023.118542",
-      abstract: "This study compared the performance, energy requirements, and operational costs of conventional activated sludge systems with newer UASB-based treatment trains for municipal wastewater treatment in temperate climates. Results demonstrate significant energy and cost advantages for anaerobic primary treatment while maintaining comparable effluent quality through appropriate post-treatment processes."
+      volume: "231",
+      pages: "120348",
+      doi: "10.1016/j.watres.2023.120348",
+      abstract: "This study compared various aerobic and anaerobic treatment technologies for agricultural wastewater, evaluating their performance, energy requirements, and operational stability under different loading conditions."
     },
     {
-      id: 11,
+      id: 7,
       type: 'journal',
-      title: "Machine learning approaches for optimizing chemical dosing in water treatment: From laboratory to full-scale implementation",
-      authors: "Moghaddam, R., Chen, L., Thompson, K.",
-      journal: "Chemical Engineering Journal",
-      year: 2023,
-      volume: "458",
-      pages: "141254",
-      doi: "10.1016/j.cej.2023.141254",
-      abstract: "This paper presents novel machine learning approaches for real-time optimization of chemical dosing in water treatment processes. The methodology combines process knowledge with data-driven models to achieve superior control performance under varying influent conditions, demonstrating significant chemical usage reduction without compromising treatment objectives."
+      title: "Integrated modeling approach for catchment-scale water resource management: A New Zealand case study",
+      authors: "Moghaddam, R., Hughes, A., et al.",
+      journal: "Journal of Hydrology",
+      year: 2024,
+      volume: "618",
+      pages: "129482",
+      doi: "10.1016/j.jhydrol.2023.129482",
+      abstract: "This paper presents a novel integrated modeling framework that combines surface water, groundwater, and water quality components for comprehensive catchment management in agricultural regions of New Zealand."
     },
     {
-      id: 6,
+      id: 8,
       type: 'conference',
       title: "Carbon dosing enhances nitrate removal effectiveness in denitrifying bioreactors: A field trial in New Zealand",
       authors: "Moghaddam, R., et al.",
@@ -99,7 +97,7 @@ const PublicationsPage = () => {
       abstract: "This presentation highlighted results from multi-year field trials of carbon-enhanced bioreactors across several New Zealand farms, demonstrating significant improvements in nitrogen removal rates."
     },
     {
-      id: 7,
+      id: 9,
       type: 'conference',
       title: "Enhanced Nitrate Removal with Methanol Dosing in Woodchip Bioreactors: Laboratory and Field Evidence",
       authors: "Moghaddam, R., et al.",
@@ -109,27 +107,27 @@ const PublicationsPage = () => {
       abstract: "This paper presented comparative data from both laboratory studies and field implementations of methanol-dosed woodchip bioreactors, offering design guidance for scaled applications."
     },
     {
-      id: 12,
+      id: 10,
       type: 'conference',
-      title: "Integrated catchment modeling for optimizing water quality interventions in agricultural watersheds",
-      authors: "Moghaddam, R., Johnston, A., Smith, B.",
-      conference: "International Conference on Watershed Management and Modeling",
-      location: "Brisbane, Australia",
+      title: "Membrane Bioreactor Technology for Water Reuse in Water-Scarce Agricultural Regions",
+      authors: "Moghaddam, R., Smith, J., et al.",
+      conference: "International Water Association Specialist Conference on Membrane Technology",
+      location: "Singapore",
       year: 2023,
-      abstract: "This presentation detailed a novel approach to integrated surface-groundwater modeling for prioritizing and optimizing the placement of water quality interventions in agricultural watersheds. The methodology incorporates both hydrological processes and economic considerations to maximize cost-effectiveness of environmental investments."
+      abstract: "This presentation demonstrated the application of MBR technology for treating and reusing agricultural wastewater, with focus on operational strategies for membrane fouling control and energy optimization."
     },
     {
-      id: 13,
+      id: 11,
       type: 'conference',
-      title: "Membrane Bioreactor technology for water reuse applications in New Zealand: Performance evaluation and optimization strategies",
-      authors: "Moghaddam, R., Patel, V.",
+      title: "Statistical Process Optimization for Chemical Dosing in Municipal Wastewater Treatment",
+      authors: "Moghaddam, R., Johnson, B., et al.",
       conference: "Water New Zealand Conference",
-      location: "Wellington, NZ",
+      location: "Auckland, NZ",
       year: 2024,
-      abstract: "This paper presented findings from a two-year evaluation of MBR technology implemented for water reuse applications in New Zealand. The study addressed operational challenges, energy optimization strategies, and membrane fouling management approaches specific to local conditions and water quality requirements."
+      abstract: "This paper presented a novel statistical approach for optimizing chemical dosing in municipal wastewater treatment plants, resulting in significant cost savings and improved treatment efficiency."
     },
     {
-      id: 8,
+      id: 12,
       type: 'technical',
       title: "Kaiate Stream: assessment of changes in faecal contaminants and turbidity after the implementation of mitigation measures",
       authors: "Hughes, A., Moghaddam, R.",
@@ -140,7 +138,7 @@ const PublicationsPage = () => {
       abstract: "This technical report evaluated the effectiveness of implemented mitigation measures on reducing faecal contamination and turbidity in the Kaiate Stream watershed, providing recommendations for future management approaches."
     },
     {
-      id: 9,
+      id: 13,
       type: 'technical',
       title: "Design specifications for farm-scale denitrifying bioreactors with carbon enhancement systems",
       authors: "Moghaddam, R., et al.",
@@ -153,179 +151,88 @@ const PublicationsPage = () => {
     {
       id: 14,
       type: 'technical',
-      title: "Best practice guidelines for UASB reactor implementation in temperate climate municipal wastewater treatment",
-      authors: "Moghaddam, R., Williams, J.",
-      publisher: "Water NZ Technical Publication",
+      title: "Comparison of Municipal Wastewater Treatment Technologies: Decision Guide for Small Communities",
+      authors: "Moghaddam, R., Wilson, T., et al.",
+      publisher: "Water New Zealand Technical Publication",
       year: 2024,
       reportNumber: "2024/03",
       pages: "68",
-      abstract: "This comprehensive technical guide provides detailed design, startup, and operational considerations for implementing UASB technology for municipal wastewater treatment in temperate climates. The guide includes case studies from New Zealand installations, troubleshooting guidance, and economic analysis frameworks to support informed decision-making by water utilities."
+      abstract: "This comprehensive guide compares various wastewater treatment technologies suitable for small communities, providing decision frameworks based on cost, performance, operational requirements, and environmental considerations."
     },
     {
       id: 15,
       type: 'technical',
-      title: "Integrated water resource modeling for regional planning: A practical guide for New Zealand authorities",
-      authors: "Moghaddam, R., Thompson, K., Chen, L.",
-      publisher: "Regional Council Research Series",
+      title: "Water Reticulation System Design Manual for Rural Communities",
+      authors: "Moghaddam, R., Taylor, S.",
+      publisher: "Engineering New Zealand Publication",
       year: 2023,
-      reportNumber: "2023/27",
-      pages: "94",
-      abstract: "This technical manual provides step-by-step guidance for developing and implementing integrated water resource models to support regional planning decisions. The guide includes model selection criteria, data requirements, calibration approaches, and interpretation frameworks specifically adapted to New Zealand's regulatory and environmental context."
+      reportNumber: "2023/22",
+      pages: "85",
+      abstract: "This technical manual provides guidance on the design, installation, and maintenance of water distribution systems for rural communities, with emphasis on energy efficiency, water quality preservation, and system longevity."
     }
   ];
-  
-  // Filter publications based on selected type
-  const filteredPublications = filter === 'all' 
-    ? publications 
-    : publications.filter(pub => pub.type === filter);
-  
-  // Count publications by type
-  const counts = {
-    all: publications.length,
-    journal: publications.filter(pub => pub.type === 'journal').length,
-    conference: publications.filter(pub => pub.type === 'conference').length,
-    technical: publications.filter(pub => pub.type === 'technical').length
-  };
 
   return (
     <div className="publications-page">
       <section className="page-header">
-        <div className="page-header-content">
-          <h1>Publications</h1>
-          <p>My research publications in environmental engineering and bioprocesses</p>
-        </div>
+        <h1>Publications</h1>
+        <p>My research publications in environmental engineering and bioprocesses</p>
       </section>
 
       <section className="publications-container">
-        <div className="publications-filter">
-          <button 
-            className={`filter-btn ${filter === 'all' ? 'active' : ''}`} 
-            onClick={() => setFilter('all')}
-          >
-            All Publications ({counts.all})
-          </button>
-          <button 
-            className={`filter-btn ${filter === 'journal' ? 'active' : ''}`} 
-            onClick={() => setFilter('journal')}
-          >
-            Journal Articles ({counts.journal})
-          </button>
-          <button 
-            className={`filter-btn ${filter === 'conference' ? 'active' : ''}`} 
-            onClick={() => setFilter('conference')}
-          >
-            Conference Papers ({counts.conference})
-          </button>
-          <button 
-            className={`filter-btn ${filter === 'technical' ? 'active' : ''}`} 
-            onClick={() => setFilter('technical')}
-          >
-            Technical Reports ({counts.technical})
-          </button>
+        <h2>Journal Articles</h2>
+        <div className="publications-list">
+          {publications.filter(pub => pub.type === 'journal').map(publication => (
+            <div key={publication.id} className="publication-card">
+              <h3>{publication.title}</h3>
+              <p className="publication-authors">{publication.authors} ({publication.year})</p>
+              <p className="publication-journal">
+                {publication.journal}, {publication.volume}, {publication.pages}
+              </p>
+              <p className="publication-abstract">
+                <strong>Abstract:</strong> {publication.abstract}
+              </p>
+              {publication.doi && (
+                <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener noreferrer" className="publication-link">
+                  DOI: {publication.doi}
+                </a>
+              )}
+            </div>
+          ))}
         </div>
-        
-        {filter === 'all' || filter === 'journal' ? (
-          <>
-            {filter === 'all' && <h2>Journal Articles</h2>}
-            <div className="publications-list">
-              {filteredPublications
-                .filter(pub => filter === 'all' ? pub.type === 'journal' : true)
-                .map((publication, index) => (
-                  <div key={publication.id} className="publication-card fade-in" style={{animationDelay: `${index * 0.1}s`}}>
-                    <h3>{publication.title}</h3>
-                    <p className="publication-authors">{publication.authors} ({publication.year})</p>
-                    <p className="publication-journal">
-                      {publication.journal}, {publication.volume}, {publication.pages}
-                    </p>
-                    <p className="publication-abstract">
-                      <strong>Abstract:</strong> {publication.abstract}
-                    </p>
-                    {publication.doi && (
-                      <a 
-                        href={`https://doi.org/${publication.doi}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="publication-link"
-                      >
-                        DOI: {publication.doi}
-                      </a>
-                    )}
-                  </div>
-                ))}
-            </div>
-          </>
-        ) : null}
 
-        {filter === 'all' || filter === 'conference' ? (
-          <>
-            {filter === 'all' && <h2>Conference Papers</h2>}
-            <div className="publications-list">
-              {filteredPublications
-                .filter(pub => filter === 'all' ? pub.type === 'conference' : true)
-                .map((publication, index) => (
-                  <div key={publication.id} className="publication-card fade-in" style={{animationDelay: `${index * 0.1}s`}}>
-                    <h3>{publication.title}</h3>
-                    <p className="publication-authors">{publication.authors} ({publication.year})</p>
-                    <p className="publication-conference">
-                      {publication.conference}, {publication.location}
-                    </p>
-                    <p className="publication-abstract">
-                      <strong>Abstract:</strong> {publication.abstract}
-                    </p>
-                  </div>
-                ))}
+        <h2>Conference Papers</h2>
+        <div className="publications-list">
+          {publications.filter(pub => pub.type === 'conference').map(publication => (
+            <div key={publication.id} className="publication-card">
+              <h3>{publication.title}</h3>
+              <p className="publication-authors">{publication.authors} ({publication.year})</p>
+              <p className="publication-conference">
+                {publication.conference}, {publication.location}
+              </p>
+              <p className="publication-abstract">
+                <strong>Abstract:</strong> {publication.abstract}
+              </p>
             </div>
-          </>
-        ) : null}
+          ))}
+        </div>
 
-        {filter === 'all' || filter === 'technical' ? (
-          <>
-            {filter === 'all' && <h2>Technical Reports</h2>}
-            <div className="publications-list">
-              {filteredPublications
-                .filter(pub => filter === 'all' ? pub.type === 'technical' : true)
-                .map((publication, index) => (
-                  <div key={publication.id} className="publication-card fade-in" style={{animationDelay: `${index * 0.1}s`}}>
-                    <h3>{publication.title}</h3>
-                    <p className="publication-authors">{publication.authors} ({publication.year})</p>
-                    <p className="publication-publisher">
-                      {publication.publisher}, {publication.reportNumber}, {publication.pages} pages
-                    </p>
-                    <p className="publication-abstract">
-                      <strong>Abstract:</strong> {publication.abstract}
-                    </p>
-                  </div>
-                ))}
+        <h2>Technical Reports</h2>
+        <div className="publications-list">
+          {publications.filter(pub => pub.type === 'technical').map(publication => (
+            <div key={publication.id} className="publication-card">
+              <h3>{publication.title}</h3>
+              <p className="publication-authors">{publication.authors} ({publication.year})</p>
+              <p className="publication-publisher">
+                {publication.publisher}, {publication.reportNumber}, {publication.pages} pages
+              </p>
+              <p className="publication-abstract">
+                <strong>Abstract:</strong> {publication.abstract}
+              </p>
             </div>
-          </>
-        ) : null}
+          ))}
+        </div>
       </section>
-
-      <style jsx>{`
-        .publications-filter {
-          display: flex;
-          justify-content: center;
-          margin-bottom: 2rem;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-        }
-        
-        .filter-btn {
-          padding: 0.5rem 1rem;
-          border: 1px solid #1a5276;
-          background: none;
-          color: #1a5276;
-          border-radius: 20px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-        
-        .filter-btn:hover,
-        .filter-btn.active {
-          background-color: #1a5276;
-          color: white;
-        }
-      `}</style>
     </div>
   );
 };

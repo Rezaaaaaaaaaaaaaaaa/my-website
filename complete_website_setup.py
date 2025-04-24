@@ -1955,22 +1955,30 @@ const ContactPage = () => {
     
     // Set submitting state
     setIsSubmitting(true);
+    // Clear any previous error message
+    setSubmitError('');
     
     // Simulate form submission (would be replaced with actual API call)
     setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 5000);
+      try {
+        setIsSubmitting(false);
+        setSubmitSuccess(true);
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setSubmitSuccess(false);
+        }, 5000);
+      } catch (error) {
+        // Handle any potential errors
+        setIsSubmitting(false);
+        setSubmitError('Failed to send message. Please try again later.');
+      }
     }, 1500);
   };
 

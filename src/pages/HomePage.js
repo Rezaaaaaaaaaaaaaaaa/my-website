@@ -25,7 +25,7 @@ const HomePage = () => {
         <div className="hero-content">
           <h1>Dr. Reza Moghaddam</h1>
           <h2>Environmental & Bioprocess Engineer</h2>
-          <p>Specializing in innovative water treatment solutions, sustainable technology design, and environmental impact assessment.</p>
+          <p>Specializing in innovative water treatment solutions, catchment modeling, and sustainable technology design with proven experience in research and industry.</p>
           <div className="hero-buttons">
             <Link to="/projects" className="btn primary-btn">View Projects</Link>
             <Link to="/consulting" className="btn primary-btn">Consulting Services</Link>
@@ -45,6 +45,8 @@ const HomePage = () => {
               <li>Denitrifying Bioreactors</li>
               <li>Agricultural Impact Mitigation</li>
               <li>NZ Environmental Regulations</li>
+              <li>Catchment Modeling & Analysis</li>
+              <li>Resource Consent Applications</li>
             </ul>
           </div>
           <div className="expertise-card">
@@ -54,6 +56,8 @@ const HomePage = () => {
               <li>Bioethanol Production</li>
               <li>Fermentation Process Control</li>
               <li>Scale-up Methodology</li>
+              <li>Advanced Process Optimization</li>
+              <li>Waste Recovery & Repurposing</li>
             </ul>
           </div>
           <div className="expertise-card">
@@ -63,6 +67,8 @@ const HomePage = () => {
               <li>Life Cycle Assessment</li>
               <li>Data Analysis (Python, R)</li>
               <li>Scientific Publication</li>
+              <li>Groundwater & Surface Water Modeling</li>
+              <li>GIS & Spatial Analysis</li>
             </ul>
           </div>
         </div>
@@ -87,6 +93,15 @@ const HomePage = () => {
             <div className="project-metrics">
               <span>Implementation Cost: 20% lower than alternatives</span>
               <span>Treatment Efficiency: 85% contaminant removal</span>
+            </div>
+            <Link to="/projects" className="project-link">Learn More</Link>
+          </div>
+          <div className="project-card">
+            <h3>Catchment Water Quality & Quantity Modeling</h3>
+            <p>Comprehensive modeling and analysis of agricultural catchments with calibration of hydrological models.</p>
+            <div className="project-metrics">
+              <span>Data Points: Over 10,000 collected</span>
+              <span>Model Accuracy: 95% prediction rate</span>
             </div>
             <Link to="/projects" className="project-link">Learn More</Link>
           </div>
@@ -119,20 +134,29 @@ const HomePage = () => {
         <h2>Consulting Services</h2>
         <div className="project-grid">
           <div className="project-card">
-            <h3>Municipal Wastewater Treatment Design</h3>
-            <p>Custom designs for municipal treatment systems with aerobic and anaerobic processes tailored to your specific needs.</p>
+            <h3>Groundwater & Surface Water Modeling</h3>
+            <p>Expert analysis and modeling of groundwater flow, solute transport, and surface water systems for sustainable water resource management.</p>
             <div className="project-metrics">
-              <span>Efficiency: Optimized for local conditions</span>
-              <span>Compliance: Meets all regulatory requirements</span>
+              <span>Compliance: NPS-FM 2020 & NES-F</span>
+              <span>Advanced Tools: HEC-HMS, HEC-RAS, GIS</span>
             </div>
             <Link to="/consulting" className="project-link">Learn More</Link>
           </div>
           <div className="project-card">
-            <h3>Catchment & Water Resource Modeling</h3>
-            <p>Comprehensive modeling of surface and groundwater systems using advanced computational techniques.</p>
+            <h3>Wastewater Treatment Design</h3>
+            <p>Custom designs for municipal and agricultural wastewater treatment systems with aerobic and anaerobic processes tailored to specific needs.</p>
             <div className="project-metrics">
-              <span>Data-driven: Uses local climate and terrain data</span>
-              <span>Predictive: Projects future conditions and impacts</span>
+              <span>Efficiency: Optimized for local conditions</span>
+              <span>Cost-Benefit: Full lifecycle analysis</span>
+            </div>
+            <Link to="/consulting" className="project-link">Learn More</Link>
+          </div>
+          <div className="project-card">
+            <h3>Environmental Impact Assessment</h3>
+            <p>Comprehensive assessment of environmental impacts with regulatory compliance for water resource projects and infrastructure.</p>
+            <div className="project-metrics">
+              <span>Regulatory Framework: RMA, NPS-FM, NES-F</span>
+              <span>Stakeholder Engagement: Multi-level approach</span>
             </div>
             <Link to="/consulting" className="project-link">Learn More</Link>
           </div>

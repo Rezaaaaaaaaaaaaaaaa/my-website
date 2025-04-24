@@ -69,6 +69,15 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link 
+                    to="/consulting" 
+                    className={`nav-link ${isActive('/consulting') ? 'active' : ''}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Consulting
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link 
                     to="/publications" 
                     className={`nav-link ${isActive('/publications') ? 'active' : ''}`}
                     onClick={() => setMobileMenuOpen(false)}
@@ -78,11 +87,11 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link 
-                    to="/consulting" 
-                    className={`nav-link ${isActive('/consulting') ? 'active' : ''}`}
+                    to="/resume" 
+                    className={`nav-link ${isActive('/resume') ? 'active' : ''}`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Consulting
+                    Resume
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -110,13 +119,18 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
+              <Link to="/consulting" className={`nav-link ${isActive('/consulting') ? 'active' : ''}`}>
+                Consulting
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link to="/publications" className={`nav-link ${isActive('/publications') ? 'active' : ''}`}>
                 Publications
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/consulting" className={`nav-link ${isActive('/consulting') ? 'active' : ''}`}>
-                Consulting
+              <Link to="/resume" className={`nav-link ${isActive('/resume') ? 'active' : ''}`}>
+                Resume
               </Link>
             </li>
             <li className="nav-item">

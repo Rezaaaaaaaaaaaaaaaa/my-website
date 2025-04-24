@@ -10,8 +10,9 @@ const Footer = () => {
         <div className="footer-links">
           <Link to="/" className="footer-link">Home</Link>
           <Link to="/projects" className="footer-link">Projects</Link>
-          <Link to="/publications" className="footer-link">Publications</Link>
           <Link to="/consulting" className="footer-link">Consulting</Link>
+          <Link to="/publications" className="footer-link">Publications</Link>
+          <Link to="/resume" className="footer-link">Resume</Link>
           <Link to="/contact" className="footer-link">Contact</Link>
         </div>
         
@@ -42,6 +43,15 @@ const Footer = () => {
             aria-label="Google Scholar Profile"
           >
             Google Scholar
+          </a>
+          <a 
+            href="https://niwa.co.nz/profile" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="footer-link"
+            aria-label="NIWA Profile"
+          >
+            NIWA Profile
           </a>
         </div>
         

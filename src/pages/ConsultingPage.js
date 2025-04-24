@@ -10,9 +10,149 @@ const ConsultingPage = () => {
       </section>
 
       <div className="consulting-container">
+        {/* Hydrogeology Section */}
+        <section className="service-category">
+          <h2>Hydrogeology Analysis & Modeling</h2>
+          <div className="service-grid">
+            <div className="service-card">
+              <h3>Groundwater Flow Modeling</h3>
+              <p>
+                Comprehensive groundwater flow modeling and analysis using advanced numerical methods to understand aquifer systems and water resource sustainability.
+              </p>
+              <p>
+                These models provide crucial information for water allocation decisions, environmental impact assessments, and long-term resource planning.
+              </p>
+              <ul className="service-features">
+                <li>3D aquifer characterization and modeling</li>
+                <li>Calibration with field measurements</li>
+                <li>Pumping test analysis and interpretation</li>
+                <li>Sustainable yield assessment</li>
+              </ul>
+            </div>
+
+            <div className="service-card">
+              <h3>Solute Transport & Contamination</h3>
+              <p>
+                Modeling the fate and transport of contaminants in groundwater systems to assess risks and develop remediation strategies.
+              </p>
+              <p>
+                Understanding contaminant movement is essential for protecting drinking water sources, meeting regulatory requirements, and designing effective cleanup approaches.
+              </p>
+              <ul className="service-features">
+                <li>Nitrate transport and attenuation</li>
+                <li>Agricultural contaminant migration</li>
+                <li>Risk assessment for sensitive receptors</li>
+                <li>Compliance with NPS-FM and NES-F</li>
+              </ul>
+            </div>
+
+            <div className="service-card">
+              <h3>Groundwater-Surface Water Interaction</h3>
+              <p>
+                Analysis of the complex relationship between groundwater and surface water systems, including stream depletion effects and recharge processes.
+              </p>
+              <p>
+                This integrated approach is vital for holistic water resource management and understanding cumulative environmental impacts.
+              </p>
+              <ul className="service-features">
+                <li>Stream depletion assessment</li>
+                <li>Baseflow contribution analysis</li>
+                <li>Wetland hydrology</li>
+                <li>Water balance modeling</li>
+              </ul>
+            </div>
+
+            <div className="service-card">
+              <h3>Dewatering & Interference Effects</h3>
+              <p>
+                Assessment of dewatering requirements for construction projects and potential interference effects on existing groundwater users and ecosystems.
+              </p>
+              <p>
+                Proper dewatering design ensures construction project success while minimizing environmental impacts and conflicts with other water users.
+              </p>
+              <ul className="service-features">
+                <li>Dewatering system design</li>
+                <li>Impact assessment on neighboring bores</li>
+                <li>Monitoring program development</li>
+                <li>Mitigation strategy planning</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Catchment Hydrology Section */}
+        <section className="service-category">
+          <h2>Catchment Hydrology Analysis & Modeling</h2>
+          <div className="service-grid">
+            <div className="service-card">
+              <h3>Rainfall-Runoff Modeling</h3>
+              <p>
+                Development of rainfall-runoff models to simulate catchment response to precipitation events and assess water resource availability.
+              </p>
+              <p>
+                These models are essential for flood prediction, water allocation planning, and evaluating the impacts of land use changes on water resources.
+              </p>
+              <ul className="service-features">
+                <li>HEC-HMS and SWMM implementation</li>
+                <li>Calibration with measured flow data</li>
+                <li>Event-based and continuous simulation</li>
+                <li>Climate change scenario analysis</li>
+              </ul>
+            </div>
+
+            <div className="service-card">
+              <h3>Water Quality Modeling</h3>
+              <p>
+                Comprehensive modeling of water quality parameters in catchments to identify pollution sources and evaluate mitigation strategies.
+              </p>
+              <p>
+                Water quality models help in developing targeted interventions to improve stream health and meet regulatory requirements for freshwater management.
+              </p>
+              <ul className="service-features">
+                <li>CLUES model calibration and application</li>
+                <li>Nutrient loading and transport</li>
+                <li>Sediment erosion and deposition</li>
+                <li>Point and non-point source analysis</li>
+              </ul>
+            </div>
+
+            <div className="service-card">
+              <h3>Flood Assessment</h3>
+              <p>
+                Detailed flood modeling and risk assessment to identify vulnerable areas and evaluate mitigation options for flood protection.
+              </p>
+              <p>
+                Flood studies provide critical information for infrastructure planning, emergency management, and land use decision-making to enhance community resilience.
+              </p>
+              <ul className="service-features">
+                <li>Hydraulic modeling (HEC-RAS)</li>
+                <li>Flood extent and depth mapping</li>
+                <li>Climate change impact assessment</li>
+                <li>Mitigation option evaluation</li>
+              </ul>
+            </div>
+
+            <div className="service-card">
+              <h3>Agricultural Systems Analysis</h3>
+              <p>
+                Modeling and analysis of agricultural systems to optimize productivity while minimizing environmental impacts on water resources.
+              </p>
+              <p>
+                This integrated approach helps farmers and regulators balance production goals with environmental protection requirements.
+              </p>
+              <ul className="service-features">
+                <li>Irrigation efficiency assessment</li>
+                <li>Nutrient leaching modeling</li>
+                <li>Farm system optimization</li>
+                <li>NES-F compliance evaluation</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         {/* Wastewater Treatment Section */}
         <section className="service-category">
-          <h2>Municipal Wastewater Treatment</h2>
+          <h2>Municipal & Agricultural Wastewater Treatment</h2>
           <div className="service-grid">
             <div className="service-card">
               <h3>Activated Sludge Systems</h3>
@@ -77,42 +217,10 @@ const ConsultingPage = () => {
                 <li>Integration with aerobic polishing stages</li>
               </ul>
             </div>
-
-            <div className="service-card">
-              <h3>Constructed Wetlands</h3>
-              <p>
-                Design of natural treatment systems using engineered wetlands for sustainable wastewater treatment, particularly suitable for small communities.
-              </p>
-              <p>
-                Constructed wetlands leverage natural processes to treat wastewater with minimal energy input, creating valuable habitat while providing effective treatment.
-              </p>
-              <ul className="service-features">
-                <li>Horizontal and vertical flow wetland design</li>
-                <li>Plant species selection for local climate</li>
-                <li>Hybrid systems for enhanced performance</li>
-                <li>Seasonal operation optimization</li>
-              </ul>
-            </div>
-
-            <div className="service-card">
-              <h3>Tertiary Treatment & Advanced Oxidation</h3>
-              <p>
-                Implementation of advanced treatment technologies for contaminant removal beyond conventional treatment capabilities.
-              </p>
-              <p>
-                These processes target micropollutants, emerging contaminants, and pathogen reduction for sensitive receiving environments or water reuse applications.
-              </p>
-              <ul className="service-features">
-                <li>UV disinfection system sizing</li>
-                <li>Ozonation process design</li>
-                <li>Advanced filtration (micro, ultra, nanofiltration)</li>
-                <li>Chemical oxidation process optimization</li>
-              </ul>
-            </div>
           </div>
         </section>
 
-        {/* Agricultural Wastewater Section */}
+        {/* Agricultural Solutions Section */}
         <section className="service-category">
           <h2>Agricultural Wastewater Solutions</h2>
           <div className="service-grid">
@@ -149,34 +257,34 @@ const ConsultingPage = () => {
             </div>
 
             <div className="service-card">
-              <h3>Vegetated Buffer Strips & Riparian Zones</h3>
+              <h3>Constructed Wetlands</h3>
               <p>
-                Design of vegetated buffer systems to intercept and treat agricultural runoff before it reaches water bodies.
+                Design of natural treatment systems using engineered wetlands for sustainable wastewater treatment, particularly suitable for farm settings.
               </p>
               <p>
-                These nature-based solutions filter sediment, absorb nutrients, and provide habitat while protecting water resources from agricultural impacts.
+                Constructed wetlands leverage natural processes to treat wastewater with minimal energy input, creating valuable habitat while providing effective treatment.
               </p>
               <ul className="service-features">
-                <li>Species selection for maximum treatment efficiency</li>
-                <li>Hydraulic design for optimal flow distribution</li>
-                <li>Integration with farm management practices</li>
-                <li>Multi-functional design for ecosystem services</li>
+                <li>Horizontal and vertical flow wetland design</li>
+                <li>Plant species selection for local climate</li>
+                <li>Hybrid systems for enhanced performance</li>
+                <li>Seasonal operation optimization</li>
               </ul>
             </div>
 
             <div className="service-card">
-              <h3>Settling Basins & Sediment Traps</h3>
+              <h3>NES-F Compliance Solutions</h3>
               <p>
-                Engineered basins designed to remove suspended solids and associated contaminants from agricultural runoff.
+                Comprehensive solutions for agricultural operations to achieve compliance with New Zealand's National Environmental Standards for Freshwater (NES-F).
               </p>
               <p>
-                These systems slow water flow to allow particles to settle out, protecting downstream water quality and reducing maintenance requirements for other treatment systems.
+                These tailored approaches help farmers meet regulatory requirements while maintaining agricultural productivity and efficiency.
               </p>
               <ul className="service-features">
-                <li>Hydrodynamic modeling for optimal performance</li>
-                <li>Integration with existing farm drainage</li>
-                <li>Sediment removal and management planning</li>
-                <li>Enhanced designs for phosphorus removal</li>
+                <li>Farm environmental plan development</li>
+                <li>Mitigation system selection and design</li>
+                <li>Cost-benefit analysis for compliance options</li>
+                <li>Consent application support</li>
               </ul>
             </div>
           </div>
@@ -245,63 +353,63 @@ const ConsultingPage = () => {
           </div>
         </section>
 
-        {/* Catchment Modeling Section */}
+        {/* Environmental Management Section */}
         <section className="service-category">
-          <h2>Catchment & Water Resource Modeling</h2>
+          <h2>Environmental Management & Compliance</h2>
           <div className="full-service-card">
             <p>
-              Advanced modeling services for surface water, groundwater, and integrated water resources. Our modeling approach combines cutting-edge simulation tools with extensive field data to provide accurate predictions and effective management strategies for water quantity and quality challenges.
+              Expert guidance on environmental compliance and management for water resource projects, with in-depth knowledge of New Zealand's regulatory framework including the Resource Management Act (RMA), National Policy Statement for Freshwater Management (NPS-FM), and National Environmental Standards for Freshwater (NES-F).
             </p>
             <div className="service-grid">
               <div className="service-card">
-                <h3>Surface Water Hydrology Modeling</h3>
+                <h3>Resource Consent Applications</h3>
                 <p>
-                  Comprehensive modeling of catchment runoff dynamics, flood routing, and water balance analysis.
+                  Preparation and management of resource consent applications for water takes, discharges, and land use activities under the RMA.
                 </p>
                 <ul className="service-features">
-                  <li>Rainfall-runoff modeling (HEC-HMS, SWMM)</li>
-                  <li>Flood prediction and mapping</li>
-                  <li>Climate change scenario analysis</li>
-                  <li>Land use change impact assessment</li>
+                  <li>Assessment of Environmental Effects (AEE)</li>
+                  <li>Stakeholder consultation management</li>
+                  <li>Technical reporting and expert evidence</li>
+                  <li>Consent condition negotiation</li>
                 </ul>
               </div>
 
               <div className="service-card">
-                <h3>Groundwater Flow & Transport Models</h3>
+                <h3>Compliance Monitoring & Reporting</h3>
                 <p>
-                  Detailed modeling of aquifer systems for sustainable management and contamination assessment.
+                  Development and implementation of monitoring programs to ensure ongoing compliance with consent conditions and regulatory requirements.
                 </p>
                 <ul className="service-features">
-                  <li>3D aquifer characterization</li>
-                  <li>Contaminant fate and transport</li>
-                  <li>Wellfield design and safe yield assessment</li>
-                  <li>Seawater intrusion analysis</li>
+                  <li>Water quality monitoring design</li>
+                  <li>Data analysis and interpretation</li>
+                  <li>Compliance reporting</li>
+                  <li>Non-compliance mitigation planning</li>
                 </ul>
               </div>
 
               <div className="service-card">
-                <h3>Water Quality Modeling</h3>
+                <h3>Erosion & Sediment Control</h3>
                 <p>
-                  Simulation of contaminant sources, transport, and fate in surface and groundwater systems.
+                  Design of effective erosion and sediment control measures for construction and land development projects to protect water resources.
                 </p>
                 <ul className="service-features">
-                  <li>Nutrient loading and transport</li>
-                  <li>Sediment erosion and deposition</li>
-                  <li>Point and non-point source modeling</li>
-                  <li>TMDL development support</li>
+                  <li>Erosion and Sediment Control Plans (ESCP)</li>
+                  <li>Chemical treatment design</li>
+                  <li>Site monitoring and maintenance planning</li>
+                  <li>Staff training and capacity building</li>
                 </ul>
               </div>
 
               <div className="service-card">
-                <h3>Integrated Watershed Management</h3>
+                <h3>Strategic Environmental Planning</h3>
                 <p>
-                  Holistic modeling approaches that combine hydrologic, water quality, and ecological considerations.
+                  Development of long-term environmental strategies that balance development goals with sustainability objectives and regulatory compliance.
                 </p>
                 <ul className="service-features">
-                  <li>Surface-groundwater interaction</li>
-                  <li>Ecosystem response modeling</li>
-                  <li>Multi-objective management strategies</li>
-                  <li>Stakeholder engagement and visualization</li>
+                  <li>Policy and plan development</li>
+                  <li>Environmental risk assessment</li>
+                  <li>Climate change adaptation planning</li>
+                  <li>Stakeholder engagement facilitation</li>
                 </ul>
               </div>
             </div>
@@ -317,28 +425,15 @@ const ConsultingPage = () => {
             </p>
             <div className="service-grid">
               <div className="service-card">
-                <h3>Computational Fluid Dynamics (CFD)</h3>
+                <h3>Bioethanol Production Optimization</h3>
                 <p>
-                  Advanced simulation of fluid flow, heat transfer, and chemical reactions in process equipment.
+                  Process optimization for bioethanol production facilities to maximize yield and efficiency while minimizing costs and environmental impacts.
                 </p>
                 <ul className="service-features">
-                  <li>Mixer and reactor design optimization</li>
-                  <li>Multiphase flow modeling</li>
-                  <li>Heat exchanger performance enhancement</li>
-                  <li>Scale-up analysis and validation</li>
-                </ul>
-              </div>
-
-              <div className="service-card">
-                <h3>Statistical Process Optimization</h3>
-                <p>
-                  Data-driven approaches to identify optimal operating conditions and control strategies.
-                </p>
-                <ul className="service-features">
-                  <li>Design of Experiments (DOE)</li>
-                  <li>Response surface methodology</li>
-                  <li>Multivariate statistical process control</li>
-                  <li>Robustness and sensitivity analysis</li>
+                  <li>Fermentation kinetics modeling</li>
+                  <li>Yeast strain selection and evaluation</li>
+                  <li>Process parameter optimization</li>
+                  <li>Scale-up strategy development</li>
                 </ul>
               </div>
 
@@ -356,15 +451,28 @@ const ConsultingPage = () => {
               </div>
 
               <div className="service-card">
-                <h3>Bioprocess Optimization</h3>
+                <h3>Statistical Process Optimization</h3>
                 <p>
-                  Specialized modeling for fermentation, enzymatic, and other biological processes in food and pharmaceutical applications.
+                  Data-driven approaches to identify optimal operating conditions and control strategies for improved process performance.
                 </p>
                 <ul className="service-features">
-                  <li>Fermentation kinetics modeling</li>
-                  <li>Scale-up methodology development</li>
-                  <li>Batch process improvement</li>
-                  <li>Product quality and consistency enhancement</li>
+                  <li>Design of Experiments (DOE)</li>
+                  <li>Response surface methodology</li>
+                  <li>Multivariate statistical process control</li>
+                  <li>Robustness and sensitivity analysis</li>
+                </ul>
+              </div>
+
+              <div className="service-card">
+                <h3>Waste Valorization & Circular Economy</h3>
+                <p>
+                  Development of innovative approaches to convert process waste streams into valuable products, improving economic and environmental sustainability.
+                </p>
+                <ul className="service-features">
+                  <li>Waste characterization and opportunity assessment</li>
+                  <li>Process development for waste conversion</li>
+                  <li>Techno-economic analysis</li>
+                  <li>Market analysis for derived products</li>
                 </ul>
               </div>
             </div>
@@ -374,7 +482,7 @@ const ConsultingPage = () => {
         {/* Call to Action */}
         <div className="consulting-cta">
           <h3>Need Specialized Environmental Engineering Solutions?</h3>
-          <p>I provide customized consulting services tailored to your specific challenges and requirements. With expertise spanning municipal systems, agricultural applications, and industrial processes, I can develop efficient, sustainable solutions for your water and environmental needs.</p>
+          <p>I provide customized consulting services tailored to your specific challenges and requirements. With expertise spanning hydrogeology, catchment modeling, wastewater treatment, and process optimization, I can develop efficient, sustainable solutions for your water and environmental needs.</p>
           <Link to="/contact" className="btn primary-btn">Request a Consultation</Link>
         </div>
       </div>

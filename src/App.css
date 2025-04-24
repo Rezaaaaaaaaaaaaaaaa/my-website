@@ -128,6 +128,41 @@ section h2 {
   border-bottom: 2px solid #1a5276;
 }
 
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #1a5276;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-button {
+    display: block;
+  }
+  
+  .nav-menu {
+    display: none;
+  }
+  
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+  }
+  
+  .mobile-menu .nav-item {
+    margin: 0.5rem 0;
+  }
+}
+
 /* Hero Section */
 .hero {
   /* Use a gradient fallback if image is not available */
@@ -604,6 +639,156 @@ section h2 {
   margin: 0 auto 2rem auto;
 }
 
+/* Resume Page Styles */
+.resume-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.resume-section {
+  margin-bottom: 3rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+}
+
+.resume-section h2 {
+  color: #1a5276;
+  margin-bottom: 1.5rem;
+  text-align: left;
+  border-bottom: 2px solid #1a5276;
+  padding-bottom: 0.5rem;
+}
+
+.experience-item, .education-item {
+  margin-bottom: 2.5rem;
+}
+
+.experience-header, .education-header {
+  margin-bottom: 1rem;
+}
+
+.experience-header h3, .education-header h3 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.experience-company, .education-institution, .experience-date, .education-date {
+  color: #666;
+  font-style: italic;
+}
+
+.experience-date, .education-date {
+  font-weight: 600;
+  color: #1a5276;
+}
+
+.experience-responsibilities, .education-details {
+  margin-bottom: 1.5rem;
+}
+
+.experience-responsibilities li, .education-details li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.experience-responsibilities li:before, .education-details li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #1a5276;
+}
+
+.experience-achievements h4, .education-details strong {
+  color: #1a5276;
+  margin-bottom: 0.5rem;
+}
+
+.experience-achievements ul {
+  margin-left: 1rem;
+}
+
+.experience-achievements li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.experience-achievements li:before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  color: #27ae60;
+}
+
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.skills-category h3 {
+  color: #1a5276;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.skills-list li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.skills-list li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #27ae60;
+}
+
+.publications-container h3 {
+  color: #1a5276;
+  margin: 1.5rem 0 1rem 0;
+}
+
+.publications-list {
+  margin-left: 1.5rem;
+}
+
+.publications-list li {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.professional-development-list li, .languages-list li {
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.professional-development-list li:before, .languages-list li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #1a5276;
+}
+
+.resume-download {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.resume-download h3 {
+  margin-bottom: 0.5rem;
+}
+
+.resume-download p {
+  margin-bottom: 1.5rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .contact-container {
@@ -614,11 +799,19 @@ section h2 {
     flex-direction: column;
   }
   
-  .nav-menu {
-    margin-top: 1rem;
-  }
-  
   .service-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
   }
 }

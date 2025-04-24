@@ -128,13 +128,13 @@ const ContactPage = () => {
           <div className="social-links">
             <h3>Professional Profiles</h3>
             <div className="social-grid">
-              <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="social-link">
+              <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="social-link">
                 LinkedIn
               </a>
-              <a href="https://www.researchgate.net/profile/your-profile" target="_blank" rel="noopener noreferrer" className="social-link">
+              <a href="https://www.researchgate.net/" target="_blank" rel="noopener noreferrer" className="social-link">
                 ResearchGate
               </a>
-              <a href="https://scholar.google.com/citations?user=your-id" target="_blank" rel="noopener noreferrer" className="social-link">
+              <a href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer" className="social-link">
                 Google Scholar
               </a>
               <a href="https://niwa.co.nz/profile" target="_blank" rel="noopener noreferrer" className="social-link">
@@ -147,11 +147,13 @@ const ContactPage = () => {
             <h3>Consulting Services</h3>
             <p>I offer expert consulting in:</p>
             <ul className="service-features">
+              <li>Hydrogeology Analysis & Modeling</li>
+              <li>Catchment Hydrology & Water Quality</li>
               <li>Municipal & Agricultural Wastewater Treatment</li>
               <li>Water & Wastewater Reticulation Design</li>
-              <li>Catchment & Water Resource Modeling</li>
+              <li>Environmental Management & Compliance</li>
               <li>Chemical & Food Processing Optimization</li>
-              <li>Environmental Impact Assessment</li>
+              <li>Resource Consent Applications (RMA, NES-F)</li>
             </ul>
             <p className="mt-3">Request a consultation by filling out the form.</p>
           </div>

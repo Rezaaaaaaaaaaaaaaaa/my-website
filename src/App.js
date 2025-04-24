@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
 import PublicationsPage from './pages/PublicationsPage';
 import ConsultingPage from './pages/ConsultingPage';
+import ResumePage from './pages/ResumePage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
 import './App.css';
@@ -21,6 +22,7 @@ function App() {
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/publications" element={<PublicationsPage />} />
             <Route path="/consulting" element={<ConsultingPage />} />
+            <Route path="/resume" element={<ResumePage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

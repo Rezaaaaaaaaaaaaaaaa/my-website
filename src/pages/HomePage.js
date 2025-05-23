@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import heroImage from '../assets/hero-bg.jpg';
+import { FaFlask, FaWater, FaChartLine, FaProjectDiagram, FaBook, FaHandshake } from 'react-icons/fa';
 
 const HomePage = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
-  
+
   useEffect(() => {
     // Check if the hero image exists by trying to load it
     const img = new Image();
     img.onload = () => setImageLoaded(true);
     img.onerror = () => setImageLoaded(false);
     img.src = heroImage;
-    
+
     return () => {
       img.onload = null;
       img.onerror = null;
@@ -39,6 +40,9 @@ const HomePage = () => {
         <h2>Areas of Expertise</h2>
         <div className="expertise-grid">
           <div className="expertise-card">
+            <div className="expertise-icon">
+              <FaWater size={40} />
+            </div>
             <h3>Environmental Engineering</h3>
             <ul>
               <li>Water & Wastewater Treatment</li>
@@ -50,6 +54,9 @@ const HomePage = () => {
             </ul>
           </div>
           <div className="expertise-card">
+            <div className="expertise-icon">
+              <FaFlask size={40} />
+            </div>
             <h3>Bioprocess Engineering</h3>
             <ul>
               <li>Bioreactor Design & Optimization</li>
@@ -61,6 +68,9 @@ const HomePage = () => {
             </ul>
           </div>
           <div className="expertise-card">
+            <div className="expertise-icon">
+              <FaChartLine size={40} />
+            </div>
             <h3>Analysis & Research</h3>
             <ul>
               <li>Techno-Economic Analysis</li>
@@ -79,6 +89,9 @@ const HomePage = () => {
         <h2>Featured Projects</h2>
         <div className="project-grid">
           <div className="project-card">
+            <div className="project-icon">
+              <FaProjectDiagram size={32} />
+            </div>
             <h3>Enhanced Nitrate Removal in Woodchip Bioreactors</h3>
             <p>Implementation of carbon dosing techniques to improve nitrate removal efficiency in agricultural drainage systems.</p>
             <div className="project-metrics">
@@ -88,6 +101,9 @@ const HomePage = () => {
             <Link to="/projects" className="project-link">Learn More</Link>
           </div>
           <div className="project-card">
+            <div className="project-icon">
+              <FaWater size={32} />
+            </div>
             <h3>Aquatic Mitigation Systems for NES-F Compliance</h3>
             <p>Development of cost-effective mitigation systems for agricultural runoff treatment compliant with NZ regulations.</p>
             <div className="project-metrics">
@@ -97,6 +113,9 @@ const HomePage = () => {
             <Link to="/projects" className="project-link">Learn More</Link>
           </div>
           <div className="project-card">
+            <div className="project-icon">
+              <FaChartLine size={32} />
+            </div>
             <h3>Catchment Water Quality & Quantity Modeling</h3>
             <p>Comprehensive modeling and analysis of agricultural catchments with calibration of hydrological models.</p>
             <div className="project-metrics">
@@ -116,10 +135,16 @@ const HomePage = () => {
         <h2>Recent Publications</h2>
         <div className="publication-list">
           <div className="publication-item">
+            <div className="publication-icon">
+              <FaBook size={24} />
+            </div>
             <h3>Flow analysis and hydraulic performance of denitrifying bioreactors under different carbon dosing treatments</h3>
             <p>Journal of Environmental Management, 2023</p>
           </div>
           <div className="publication-item">
+            <div className="publication-icon">
+              <FaBook size={24} />
+            </div>
             <h3>Constant carbon dosing of a pilot-scale denitrifying bioreactor to improve nitrate removal from agricultural tile drainage</h3>
             <p>Ecological Engineering, 2023</p>
           </div>
@@ -134,6 +159,9 @@ const HomePage = () => {
         <h2>Consulting Services</h2>
         <div className="project-grid">
           <div className="project-card">
+            <div className="project-icon">
+              <FaWater size={32} />
+            </div>
             <h3>Groundwater & Surface Water Modeling</h3>
             <p>Expert analysis and modeling of groundwater flow, solute transport, and surface water systems for sustainable water resource management.</p>
             <div className="project-metrics">
@@ -143,6 +171,9 @@ const HomePage = () => {
             <Link to="/consulting" className="project-link">Learn More</Link>
           </div>
           <div className="project-card">
+            <div className="project-icon">
+              <FaFlask size={32} />
+            </div>
             <h3>Wastewater Treatment Design</h3>
             <p>Custom designs for municipal and agricultural wastewater treatment systems with aerobic and anaerobic processes tailored to specific needs.</p>
             <div className="project-metrics">
@@ -152,6 +183,9 @@ const HomePage = () => {
             <Link to="/consulting" className="project-link">Learn More</Link>
           </div>
           <div className="project-card">
+            <div className="project-icon">
+              <FaChartLine size={32} />
+            </div>
             <h3>Environmental Impact Assessment</h3>
             <p>Comprehensive assessment of environmental impacts with regulatory compliance for water resource projects and infrastructure.</p>
             <div className="project-metrics">
@@ -168,6 +202,9 @@ const HomePage = () => {
 
       {/* Contact CTA */}
       <section className="contact-cta">
+        <div className="contact-icon">
+          <FaHandshake size={48} />
+        </div>
         <h2>Interested in Collaboration?</h2>
         <p>I'm always open to discussing research projects, consulting opportunities, or innovative solutions for environmental challenges.</p>
         <Link to="/contact" className="btn primary-btn">Get in Touch</Link>

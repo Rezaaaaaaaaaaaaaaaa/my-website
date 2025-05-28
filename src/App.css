@@ -8,10 +8,10 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   color: #333;
-  background-color: #f9f9f9;
+  background-color: #f8f9fa; /* Updated body background */
 }
 
 .app-container {
@@ -26,8 +26,25 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6 {
   margin-bottom: 1rem;
+  font-family: 'Poppins', sans-serif; /* Ensures Poppins for all headings */
+}
+
+h1 { font-size: 2.5rem; line-height: 1.2; font-weight: 700; }
+h2 { font-size: 2rem; line-height: 1.3; font-weight: 600; }
+h3 { font-size: 1.5rem; line-height: 1.4; font-weight: 600; }
+h4 { font-size: 1.25rem; line-height: 1.4; font-weight: 600; }
+h5 { font-size: 1.1rem; line-height: 1.5; font-weight: 600; }
+h6 { font-size: 1rem; line-height: 1.5; font-weight: 600; }
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem; /* Added for consistent spacing */
 }
 
 a {
@@ -37,6 +54,18 @@ a {
 
 ul {
   list-style: none;
+}
+
+li {
+  line-height: 1.6;
+  /* Assuming li elements will contain text or elements that resolve to p-like font-size by default */
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Prevents bottom spacing issues and allows easier margin control */
 }
 
 .btn {
@@ -71,13 +100,20 @@ ul {
   transform: translateY(-2px);
 }
 
+/* General section utility from index.css */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem; /* General padding, can be overridden by more specific sections */
+}
+
 section {
   padding: 4rem 2rem;
 }
 
 section h2 {
   text-align: center;
-  font-size: 2rem;
+  /* font-size, font-weight, line-height will be inherited from global h2 */
   margin-bottom: 2rem;
   color: #1a5276;
   position: relative;
@@ -202,8 +238,9 @@ section h2::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, rgba(26, 82, 118, 0.9), rgba(41, 128, 185, 0.9));
+  background: linear-gradient(45deg, rgba(26, 82, 118, 0.85), rgba(41, 128, 185, 0.85)); /* Opacity reduced */
   z-index: 1;
+  mix-blend-mode: multiply; /* Added blend mode */
 }
 
 .hero-with-image {
@@ -220,14 +257,17 @@ section h2::after {
 }
 
 .hero h1 {
-  font-size: 3.5rem;
+  font-size: 3rem; /* Adjusted from 3.5rem */
+  line-height: 1.2; /* Added for consistency */
+  font-weight: 700; /* Ensured */
   margin-bottom: 0.5rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .hero h2 {
-  font-size: 1.8rem;
-  font-weight: 400;
+  font-size: 1.75rem; /* Adjusted from 1.8rem */
+  line-height: 1.3; /* Added for consistency */
+  font-weight: 400; /* Kept as per previous analysis for visual hierarchy */
   margin-bottom: 1.5rem;
   color: white;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
@@ -243,11 +283,44 @@ section h2::after {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
+  flex-wrap: wrap; /* Added for better responsiveness */
+}
+
+/* Generic Card Styles from index.css */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px; /* Standardized */
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Standardized */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Standardized */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Standardized */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Standardized */
+}
+
+.card h3 {
+  color: #1a5276;
+  margin-bottom: 1rem;
+  /* font-size, font-weight, line-height will be inherited from global h3 */
+}
+
+.card-icon { /* Assuming this is for an <img> or <svg> tag */
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
 }
 
 /* Expertise Section */
 .expertise {
-  background-color: white;
+  background-color: #f0f2f5; /* Updated expertise background */
 }
 
 .expertise-grid {
@@ -262,7 +335,8 @@ section h2::after {
   background-color: #f5f5f5;
   padding: 2rem;
   border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Standardized */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Standardized */
   position: relative;
   overflow: hidden;
 }
@@ -278,8 +352,8 @@ section h2::after {
 }
 
 .expertise-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px); /* Standardized */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Standardized */
 }
 
 .expertise-icon {
@@ -291,8 +365,9 @@ section h2::after {
 
 .expertise-card h3 {
   color: #1a5276;
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */ /* Removed to inherit from global h3 (1.5rem) */
   text-align: center;
+  /* font-size, font-weight, line-height will be inherited from global h3 */
 }
 
 .expertise-card ul {
@@ -330,8 +405,8 @@ section h2::after {
   background-color: white;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Standardized */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Standardized */
   position: relative;
   overflow: hidden;
 }
@@ -347,8 +422,8 @@ section h2::after {
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px); /* Standardized */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Standardized */
 }
 
 .project-icon {
@@ -360,9 +435,10 @@ section h2::after {
 
 .project-card h3 {
   color: #1a5276;
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */ /* Removed to inherit from global h3 (1.5rem) */
   margin-bottom: 1rem;
   text-align: center;
+  /* font-size, font-weight, line-height will be inherited from global h3 */
 }
 
 .project-metrics {
@@ -403,7 +479,7 @@ section h2::after {
 
 /* Publications Section */
 .publications-preview {
-  background-color: #f5f5f5;
+  background-color: #f0f2f5; /* Updated publications-preview background */
 }
 
 .publication-list {
@@ -416,12 +492,13 @@ section h2::after {
   padding: 2rem;
   border-radius: 12px;
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Standardized */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Standardized */
 }
 
 .publication-item:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px); /* Standardized */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Standardized */
 }
 
 .publication-icon {
@@ -433,8 +510,9 @@ section h2::after {
 
 .publication-item h3 {
   color: #1a5276;
-  font-size: 1.2rem;
+  /* font-size: 1.2rem; */ /* Removed to inherit from global h3 (1.5rem) */
   margin-bottom: 0.5rem;
+  /* font-size, font-weight, line-height will be inherited from global h3 */
 }
 
 .publication-item p {
@@ -461,7 +539,9 @@ section h2::after {
 
 .contact-cta h2 {
   color: white;
-  font-size: 2.5rem;
+  font-size: 2.5rem; /* Aligns with h1 spec */
+  font-weight: 700;   /* Aligns with h1 spec */
+  line-height: 1.2;   /* Aligns with h1 spec */
   margin-bottom: 1rem;
 }
 
@@ -513,10 +593,16 @@ section h2::after {
 
 .project-full-card {
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 12px; /* Standardized */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Standardized */
   padding: 2rem;
   margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Standardized */
+}
+
+.project-full-card:hover {
+  transform: translateY(-5px); /* Standardized */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Standardized */
 }
 
 .project-description {
@@ -564,7 +650,10 @@ section h2::after {
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   border-left: 4px solid #1a5276;
-  background-color: #f9f9f9;
+  background-color: #f0f2f5; /* Updated publication-card background */
+  border-radius: 8px; /* Added */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03); /* Added */
+  /* No hover transform for this one, keeping it simpler */
 }
 
 /* Contact Page */
@@ -701,14 +790,15 @@ section h2::after {
 
 .service-card {
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 12px; /* Standardized */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Standardized */
   padding: 2rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Standardized */
 }
 
 .service-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px); /* Standardized */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Standardized */
 }
 
 .service-card h3 {
@@ -773,9 +863,15 @@ section h2::after {
 .resume-section {
   margin-bottom: 3rem;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 12px; /* Standardized */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Standardized */
   padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Standardized */
+}
+
+.resume-section:hover {
+  transform: translateY(-5px); /* Standardized */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Standardized */
 }
 
 .resume-section h2 {
@@ -868,7 +964,8 @@ section h2::after {
 .skills-category h3 {
   color: #1a5276;
   margin-bottom: 1rem;
-  font-size: 1.2rem;
+  /* font-size: 1.2rem; */ /* Removed to inherit from global h3 (1.5rem) */
+  /* font-size, font-weight, line-height will be inherited from global h3 */
 }
 
 .skills-list li {
@@ -949,12 +1046,16 @@ section h2::after {
     grid-template-columns: 1fr;
   }
 
+  .card-grid { /* From index.css, for generic card grid */
+    grid-template-columns: 1fr;
+  }
+
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.5rem; /* Matches global h1, good for responsive */
   }
 
   .hero h2 {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Matches global h3, good for responsive */
   }
 
   section {
@@ -963,5 +1064,18 @@ section h2::after {
 
   .contact-cta {
     padding: 4rem 1rem;
+  }
+
+  .projects-container,
+  .publications-container,
+  .consulting-container,
+  .resume-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .navbar-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }

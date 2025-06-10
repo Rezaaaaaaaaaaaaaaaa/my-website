@@ -4,34 +4,37 @@ import { Link, useLocation } from 'react-router-dom';
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   
-  // Detect if we're on a mobile device
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth >= 768) {
+        setMobileMenuOpen(false);
+      }
     };
     
-    handleResize(); // Initial check
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    
+    handleResize();
     window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll);
     
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
   
-  // Check if a link is active based on current location
-  const isActive = (path) => {
-    return location.pathname === path;
-  };
+  const isActive = (path) => location.pathname === path;
   
-  // Toggle mobile menu
-  const toggleMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
+  const toggleMenu = () => setMobileMenuOpen(!mobileMenuOpen);
   
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
           RMES
@@ -44,7 +47,7 @@ const Navbar = () => {
               onClick={toggleMenu}
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? 'Close' : 'Menu'}
+              {mobileMenuOpen ? '✕' : '☰'}
             </button>
             
             {mobileMenuOpen && (

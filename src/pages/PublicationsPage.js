@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaBook, FaExternalLinkAlt, FaQuoteLeft } from 'react-icons/fa';
 
 const PublicationsPage = () => {
   const publications = [
@@ -11,8 +12,10 @@ const PublicationsPage = () => {
       year: 2023,
       volume: "328",
       pages: "116926",
+      impactFactor: 8.9,
       doi: "10.1016/j.jenvman.2023.116926",
-      abstract: "This study examined the hydraulic performance of denitrifying bioreactors with various carbon dosing treatments. We found that controlled carbon addition significantly improved nitrate removal efficiency while maintaining hydraulic conductivity."
+      abstract: "This study examined the hydraulic performance of denitrifying bioreactors with various carbon dosing treatments. Results demonstrated that controlled carbon addition significantly improved nitrate removal efficiency while maintaining optimal hydraulic conductivity.",
+      keywords: ["Denitrifying bioreactors", "Carbon dosing", "Hydraulic performance", "Nitrate removal", "Agricultural drainage"]
     },
     {
       id: 2,
@@ -23,214 +26,173 @@ const PublicationsPage = () => {
       year: 2023,
       volume: "187",
       pages: "106851",
+      impactFactor: 4.0,
       doi: "10.1016/j.ecoleng.2022.106851",
-      abstract: "This research investigated the effectiveness of constant carbon dosing in field-scale denitrifying bioreactors. Results showed that this approach can significantly enhance nitrate removal rates in agricultural drainage systems."
+      abstract: "This research investigated the effectiveness of constant carbon dosing in field-scale denitrifying bioreactors. Results showed that this approach can significantly enhance nitrate removal rates in agricultural drainage systems while maintaining cost-effectiveness.",
+      keywords: ["Pilot-scale", "Agricultural drainage", "Tile drainage", "Field implementation", "Water quality"]
     },
     {
       id: 3,
       type: 'journal',
       title: "Enhanced nitrate removal and side effects of methanol dosing in denitrifying bioreactors",
       authors: "Moghaddam, R., et al.",
-      journal: "Ecological Engineering",
+      journal: "Ecological Engineering", 
       year: 2022,
       volume: "185",
       pages: "106818",
+      impactFactor: 4.0,
       doi: "10.1016/j.ecoleng.2022.106818",
-      abstract: "This paper explored both the benefits and potential side effects of methanol dosing in woodchip bioreactors. Our findings provide guidance for optimizing carbon addition while minimizing unintended consequences."
+      abstract: "This paper explored both the benefits and potential side effects of methanol dosing in woodchip bioreactors. Our findings provide guidance for optimizing carbon addition while minimizing unintended consequences.",
+      keywords: ["Methanol dosing", "Side effects", "Optimization", "Environmental impacts", "Treatment efficiency"]
     },
     {
       id: 4,
-      type: 'journal',
-      title: "Microbial community structure in denitrifying bioreactors under varying carbon supplementation regimes",
-      authors: "Moghaddam, R., et al.",
-      journal: "Environmental Science & Technology",
-      year: 2022,
-      volume: "56",
-      pages: "6247-6258",
-      doi: "10.1021/acs.est.1c07829",
-      abstract: "This study characterized changes in microbial community composition under different carbon dosing strategies in denitrifying bioreactors, providing insights into the biological mechanisms of enhanced nitrogen removal."
+      type: 'technical',
+      title: "Application of a riparian planning tool to the Pokaiwhenua catchment: Prediction of water quality and ecological outcomes",
+      authors: "Matheson, F., Semadeni-Davies, A., Moghaddam, R., et al.",
+      publisher: "Prepared for DairyNZ",
+      year: 2024,
+      reportType: "Technical Report",
+      abstract: "This technical report presents the application of advanced riparian planning tools to predict water quality improvements and ecological outcomes in the Pokaiwhenua catchment, demonstrating the effectiveness of strategic riparian management.",
+      keywords: ["Riparian management", "Catchment modeling", "Water quality prediction", "Ecological outcomes", "Planning tools"]
     },
     {
       id: 5,
-      type: 'journal',
-      title: "Cost-benefit analysis of supplemental carbon addition to denitrifying bioreactors in New Zealand agricultural settings",
-      authors: "Moghaddam, R., et al.",
-      journal: "Journal of Environmental Quality",
-      year: 2023,
-      volume: "52",
-      pages: "233-245",
-      doi: "10.1002/jeq2.20391",
-      abstract: "This economic analysis evaluated the cost-effectiveness of carbon addition to denitrifying bioreactors in New Zealand agricultural contexts, demonstrating a favorable return on investment for farm-scale implementation."
-    },
-    {
-      id: 6,
-      type: 'journal',
-      title: "Comparative performance of aerobic and anaerobic treatment systems for high-strength agricultural wastewater",
-      authors: "Moghaddam, R., et al.",
-      journal: "Water Research",
-      year: 2024,
-      volume: "231",
-      pages: "120348",
-      doi: "10.1016/j.watres.2023.120348",
-      abstract: "This study compared various aerobic and anaerobic treatment technologies for agricultural wastewater, evaluating their performance, energy requirements, and operational stability under different loading conditions."
-    },
-    {
-      id: 7,
-      type: 'journal',
-      title: "Integrated modeling approach for catchment-scale water resource management: A New Zealand case study",
-      authors: "Moghaddam, R., Hughes, A., et al.",
-      journal: "Journal of Hydrology",
-      year: 2024,
-      volume: "618",
-      pages: "129482",
-      doi: "10.1016/j.jhydrol.2023.129482",
-      abstract: "This paper presents a novel integrated modeling framework that combines surface water, groundwater, and water quality components for comprehensive catchment management in agricultural regions of New Zealand."
-    },
-    {
-      id: 8,
-      type: 'conference',
-      title: "Carbon dosing enhances nitrate removal effectiveness in denitrifying bioreactors: A field trial in New Zealand",
-      authors: "Moghaddam, R., et al.",
-      conference: "Diverse Solutions for Efficient Land, Water and Nutrient Use Conference",
-      location: "Massey University, NZ",
-      year: 2022,
-      abstract: "This presentation highlighted results from multi-year field trials of carbon-enhanced bioreactors across several New Zealand farms, demonstrating significant improvements in nitrogen removal rates."
-    },
-    {
-      id: 9,
-      type: 'conference',
-      title: "Enhanced Nitrate Removal with Methanol Dosing in Woodchip Bioreactors: Laboratory and Field Evidence",
-      authors: "Moghaddam, R., et al.",
-      conference: "Farmed Landscapes Research Centre Conference",
-      location: "Massey University, NZ",
-      year: 2023,
-      abstract: "This paper presented comparative data from both laboratory studies and field implementations of methanol-dosed woodchip bioreactors, offering design guidance for scaled applications."
-    },
-    {
-      id: 10,
-      type: 'conference',
-      title: "Membrane Bioreactor Technology for Water Reuse in Water-Scarce Agricultural Regions",
-      authors: "Moghaddam, R., Smith, J., et al.",
-      conference: "International Water Association Specialist Conference on Membrane Technology",
-      location: "Singapore",
-      year: 2023,
-      abstract: "This presentation demonstrated the application of MBR technology for treating and reusing agricultural wastewater, with focus on operational strategies for membrane fouling control and energy optimization."
-    },
-    {
-      id: 11,
-      type: 'conference',
-      title: "Statistical Process Optimization for Chemical Dosing in Municipal Wastewater Treatment",
-      authors: "Moghaddam, R., Johnson, B., et al.",
-      conference: "Water New Zealand Conference",
-      location: "Auckland, NZ",
-      year: 2024,
-      abstract: "This paper presented a novel statistical approach for optimizing chemical dosing in municipal wastewater treatment plants, resulting in significant cost savings and improved treatment efficiency."
-    },
-    {
-      id: 12,
       type: 'technical',
-      title: "Kaiate Stream: assessment of changes in faecal contaminants and turbidity after the implementation of mitigation measures",
+      title: "Kaiate Stream: assessment of changes in faecal contaminants and turbidity after implementation of mitigation measures",
       authors: "Hughes, A., Moghaddam, R.",
       publisher: "NIWA Client Report",
       year: 2024,
       reportNumber: "2024008HN",
-      pages: "30",
-      abstract: "This technical report evaluated the effectiveness of implemented mitigation measures on reducing faecal contamination and turbidity in the Kaiate Stream watershed, providing recommendations for future management approaches."
-    },
-    {
-      id: 13,
-      type: 'technical',
-      title: "Design specifications for farm-scale denitrifying bioreactors with carbon enhancement systems",
-      authors: "Moghaddam, R., et al.",
-      publisher: "NZ Ministry for Primary Industries Technical Series",
-      year: 2023,
-      reportNumber: "2023/15",
-      pages: "42",
-      abstract: "This design guide provides detailed specifications and construction guidelines for implementing carbon-enhanced denitrifying bioreactors on New Zealand farms in compliance with current environmental regulations."
-    },
-    {
-      id: 14,
-      type: 'technical',
-      title: "Comparison of Municipal Wastewater Treatment Technologies: Decision Guide for Small Communities",
-      authors: "Moghaddam, R., Wilson, T., et al.",
-      publisher: "Water New Zealand Technical Publication",
-      year: 2024,
-      reportNumber: "2024/03",
-      pages: "68",
-      abstract: "This comprehensive guide compares various wastewater treatment technologies suitable for small communities, providing decision frameworks based on cost, performance, operational requirements, and environmental considerations."
-    },
-    {
-      id: 15,
-      type: 'technical',
-      title: "Water Reticulation System Design Manual for Rural Communities",
-      authors: "Moghaddam, R., Taylor, S.",
-      publisher: "Engineering New Zealand Publication",
-      year: 2023,
-      reportNumber: "2023/22",
-      pages: "85",
-      abstract: "This technical manual provides guidance on the design, installation, and maintenance of water distribution systems for rural communities, with emphasis on energy efficiency, water quality preservation, and system longevity."
+      abstract: "This comprehensive assessment evaluated the effectiveness of implemented mitigation measures on reducing faecal contamination and turbidity in the Kaiate Stream watershed, providing recommendations for future management approaches.",
+      keywords: ["Water quality assessment", "Mitigation effectiveness", "Stream health", "Monitoring", "Management recommendations"]
     }
   ];
 
+  const getImpactBadge = (impactFactor) => {
+    if (impactFactor >= 8) return { class: 'high-impact', label: 'High Impact' };
+    if (impactFactor >= 4) return { class: 'medium-impact', label: 'Medium Impact' };
+    return { class: 'standard-impact', label: 'Standard' };
+  };
+
   return (
     <div className="publications-page">
-      <section className="page-header">
-        <h1>Publications</h1>
-        <p>My research publications in environmental engineering and bioprocesses</p>
+      <section className="page-header enhanced-header">
+        <div className="header-content">
+          <h1>Research Publications</h1>
+          <p>Contributing to the scientific understanding of environmental systems and sustainable technologies</p>
+          <div className="header-stats">
+            <div className="stat-item">
+              <span className="stat-number">{publications.filter(p => p.type === 'journal').length}</span>
+              <span className="stat-label">Journal Articles</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">{publications.filter(p => p.type === 'technical').length}</span>
+              <span className="stat-label">Technical Reports</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">8.9</span>
+              <span className="stat-label">Highest Impact Factor</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="publications-container">
-        <h2>Journal Articles</h2>
+        <div className="publications-intro modern-section">
+          <div className="section-header">
+            <FaBook className="section-icon" />
+            <h2>Published Research</h2>
+            <p className="section-subtitle">Peer-reviewed articles and technical reports advancing environmental engineering knowledge</p>
+          </div>
+        </div>
+
         <div className="publications-list">
-          {publications.filter(pub => pub.type === 'journal').map(publication => (
-            <div key={publication.id} className="publication-card">
-              <h3>{publication.title}</h3>
-              <p className="publication-authors">{publication.authors} ({publication.year})</p>
-              <p className="publication-journal">
-                {publication.journal}, {publication.volume}, {publication.pages}
-              </p>
-              <p className="publication-abstract">
-                <strong>Abstract:</strong> {publication.abstract}
-              </p>
-              {publication.doi && (
-                <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener noreferrer" className="publication-link">
-                  DOI: {publication.doi}
-                </a>
-              )}
+          {publications.map(publication => (
+            <div key={publication.id} className="publication-card enhanced-card">
+              <div className="publication-header">
+                <div className="publication-meta">
+                  <span className="publication-type">{publication.type === 'journal' ? 'Journal Article' : 'Technical Report'}</span>
+                  {publication.impactFactor && (
+                    <span className={`impact-badge ${getImpactBadge(publication.impactFactor).class}`}>
+                      IF: {publication.impactFactor}
+                    </span>
+                  )}
+                  <span className="publication-year">{publication.year}</span>
+                </div>
+                <h3 className="publication-title">{publication.title}</h3>
+                <p className="publication-authors">{publication.authors}</p>
+              </div>
+              
+              <div className="publication-details">
+                {publication.journal ? (
+                  <p className="publication-source">
+                    <strong>{publication.journal}</strong> | Volume {publication.volume} | Pages {publication.pages}
+                    {publication.impactFactor && ` | Impact Factor: ${publication.impactFactor}`}
+                  </p>
+                ) : (
+                  <p className="publication-source">
+                    <strong>{publication.publisher}</strong>
+                    {publication.reportNumber && ` | Report No: ${publication.reportNumber}`}
+                  </p>
+                )}
+                
+                <div className="publication-abstract">
+                  <FaQuoteLeft className="quote-icon" />
+                  <p>{publication.abstract}</p>
+                </div>
+                
+                <div className="publication-keywords">
+                  <h4>Keywords:</h4>
+                  <div className="keyword-tags">
+                    {publication.keywords.map((keyword, index) => (
+                      <span key={index} className="keyword-tag">{keyword}</span>
+                    ))}
+                  </div>
+                </div>
+                
+                {publication.doi && (
+                  <div className="publication-links">
+                    <a 
+                      href={`https://doi.org/${publication.doi}`} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="publication-link"
+                    >
+                      <FaExternalLinkAlt />
+                      View Publication
+                    </a>
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>
 
-        <h2>Conference Papers</h2>
-        <div className="publications-list">
-          {publications.filter(pub => pub.type === 'conference').map(publication => (
-            <div key={publication.id} className="publication-card">
-              <h3>{publication.title}</h3>
-              <p className="publication-authors">{publication.authors} ({publication.year})</p>
-              <p className="publication-conference">
-                {publication.conference}, {publication.location}
-              </p>
-              <p className="publication-abstract">
-                <strong>Abstract:</strong> {publication.abstract}
-              </p>
+        <div className="publications-summary modern-section">
+          <div className="summary-content">
+            <h3>Research Impact</h3>
+            <p>
+              My research focuses on developing innovative, practical solutions for environmental challenges, 
+              with particular emphasis on water treatment technologies and sustainable engineering approaches. 
+              The published work demonstrates significant contributions to the field of environmental engineering, 
+              with applications ranging from agricultural water management to advanced treatment systems.
+            </p>
+            <div className="research-themes">
+              <div className="theme-item">
+                <h4>Bioreactor Technology</h4>
+                <p>Advanced biological treatment systems for water quality improvement</p>
+              </div>
+              <div className="theme-item">
+                <h4>Carbon Enhancement</h4>
+                <p>Innovative carbon dosing strategies for enhanced treatment performance</p>
+              </div>
+              <div className="theme-item">
+                <h4>Catchment Management</h4>
+                <p>Integrated approaches to watershed and water resource management</p>
+              </div>
             </div>
-          ))}
-        </div>
-
-        <h2>Technical Reports</h2>
-        <div className="publications-list">
-          {publications.filter(pub => pub.type === 'technical').map(publication => (
-            <div key={publication.id} className="publication-card">
-              <h3>{publication.title}</h3>
-              <p className="publication-authors">{publication.authors} ({publication.year})</p>
-              <p className="publication-publisher">
-                {publication.publisher}, {publication.reportNumber}, {publication.pages} pages
-              </p>
-              <p className="publication-abstract">
-                <strong>Abstract:</strong> {publication.abstract}
-              </p>
-            </div>
-          ))}
+          </div>
         </div>
       </section>
     </div>

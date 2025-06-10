@@ -1,489 +1,888 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { 
+  FaWater, 
+  FaFlask, 
+  FaChartLine, 
+  FaLeaf, 
+  FaCogs, 
+  FaGlobe, 
+  FaLightbulb,
+  FaMicroscope,
+  FaIndustry,
+  FaRecycle,
+  FaTree,
+  FaShieldAlt,
+  FaRobot,
+  FaDatabase,
+  FaMapMarkedAlt,
+  FaUsers,
+  FaCloudRain,
+  FaHandHoldingWater,
+  FaSeedling,
+  FaChartArea,
+  FaMountain,
+  FaCity,
+  FaBuilding,
+  FaLayerGroup,
+  FaSearchLocation,
+  FaBrain,
+  FaNetworkWired,
+  FaGlasses,
+  FaAtom,
+  FaCompass
+} from 'react-icons/fa';
 
 const ConsultingPage = () => {
   return (
     <div className="consulting-page">
-      <section className="page-header">
-        <h1>Consulting Services</h1>
-        <p>Specialized environmental engineering services for municipalities, agriculture, and industry</p>
+      <section className="page-header enhanced-header">
+        <div className="header-background">
+          <div className="floating-icons">
+            <FaWater className="floating-icon icon-1" />
+            <FaLeaf className="floating-icon icon-2" />
+            <FaFlask className="floating-icon icon-3" />
+            <FaGlobe className="floating-icon icon-4" />
+            <FaCogs className="floating-icon icon-5" />
+            <FaLightbulb className="floating-icon icon-6" />
+            <FaRobot className="floating-icon icon-7" />
+            <FaTree className="floating-icon icon-8" />
+          </div>
+        </div>
+        <div className="header-content">
+          <h1>Advanced Environmental Consulting Services</h1>
+          <p>Cutting-edge solutions combining environmental science, engineering innovation, and sustainable technology</p>
+          <div className="header-stats">
+            <div className="stat-item">
+              <span className="stat-number">15+</span>
+              <span className="stat-label">Service Areas</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">50+</span>
+              <span className="stat-label">Projects Completed</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">10+</span>
+              <span className="stat-label">Publications</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <div className="consulting-container">
-        {/* Hydrogeology Section */}
-        <section className="service-category">
-          <h2>Hydrogeology Analysis & Modeling</h2>
+        {/* Environmental Systems Modeling & Sustainable Engineering */}
+        <section className="service-category modern-section">
+          <div className="section-header">
+            <FaChartArea className="section-icon" />
+            <h2>Environmental Systems Modeling & Sustainable Engineering</h2>
+            <p className="section-subtitle">Advanced computational approaches for environmental challenges</p>
+          </div>
           <div className="service-grid">
-            <div className="service-card">
-              <h3>Groundwater Flow Modeling</h3>
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaLayerGroup className="service-icon" />
+                <h3>Integrated Watershed Modeling & Simulation</h3>
+              </div>
               <p>
-                Comprehensive groundwater flow modeling and analysis using advanced numerical methods to understand aquifer systems and water resource sustainability.
+                Comprehensive watershed modeling that works like a digital crystal ball - predicting how water moves, 
+                transforms, and impacts ecosystems across entire catchments.
               </p>
               <p>
-                These models provide crucial information for water allocation decisions, environmental impact assessments, and long-term resource planning.
+                These sophisticated models integrate surface water, groundwater, land use, and climate data to provide 
+                holistic insights for sustainable water resource management.
               </p>
               <ul className="service-features">
-                <li>3D aquifer characterization and modeling</li>
-                <li>Calibration with field measurements</li>
-                <li>Pumping test analysis and interpretation</li>
-                <li>Sustainable yield assessment</li>
+                <li>Multi-scale catchment simulation (farm to regional scale)</li>
+                <li>Surface water-groundwater interaction modeling</li>
+                <li>Land use change impact assessment</li>
+                <li>Water balance and allocation optimization</li>
+                <li>Nutrient cycling and transport modeling</li>
               </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">SWAT</span>
+                <span className="tech-badge">MIKE SHE</span>
+                <span className="tech-badge">HEC-HMS</span>
+                <span className="tech-badge">Python</span>
+              </div>
             </div>
 
-            <div className="service-card">
-              <h3>Solute Transport & Contamination</h3>
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaChartLine className="service-icon" />
+                <h3>Advanced Hydraulic & Hydrologic Analysis</h3>
+              </div>
               <p>
-                Modeling the fate and transport of contaminants in groundwater systems to assess risks and develop remediation strategies.
+                Hydraulic analysis that functions like an engineer's X-ray vision - seeing through complex water 
+                systems to understand flow patterns, pressure dynamics, and system performance.
               </p>
               <p>
-                Understanding contaminant movement is essential for protecting drinking water sources, meeting regulatory requirements, and designing effective cleanup approaches.
+                From pipe networks to river systems, these analyses ensure optimal design and operation 
+                of water infrastructure.
               </p>
               <ul className="service-features">
-                <li>Nitrate transport and attenuation</li>
-                <li>Agricultural contaminant migration</li>
-                <li>Risk assessment for sensitive receptors</li>
-                <li>Compliance with NPS-FM and NES-F</li>
+                <li>Water distribution network analysis</li>
+                <li>River and stream hydraulics</li>
+                <li>Flood modeling and risk assessment</li>
+                <li>Pump system optimization</li>
+                <li>Pressure management strategies</li>
               </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">HEC-RAS</span>
+                <span className="tech-badge">EPANET</span>
+                <span className="tech-badge">SWMM</span>
+                <span className="tech-badge">Matlab</span>
+              </div>
             </div>
 
-            <div className="service-card">
-              <h3>Groundwater-Surface Water Interaction</h3>
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaBrain className="service-icon" />
+                <h3>Predictive Environmental Quality Assessment</h3>
+              </div>
               <p>
-                Analysis of the complex relationship between groundwater and surface water systems, including stream depletion effects and recharge processes.
+                AI-powered environmental forecasting that acts like a weather prediction system for water quality - 
+                anticipating problems before they become critical issues.
               </p>
               <p>
-                This integrated approach is vital for holistic water resource management and understanding cumulative environmental impacts.
+                Machine learning algorithms analyze environmental data patterns to provide early warnings 
+                and optimize management strategies.
               </p>
               <ul className="service-features">
-                <li>Stream depletion assessment</li>
-                <li>Baseflow contribution analysis</li>
-                <li>Wetland hydrology</li>
-                <li>Water balance modeling</li>
+                <li>Water quality prediction models</li>
+                <li>Early warning systems for contamination</li>
+                <li>Trend analysis and forecasting</li>
+                <li>Automated monitoring optimization</li>
+                <li>Risk-based management strategies</li>
               </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Machine Learning</span>
+                <span className="tech-badge">Python</span>
+                <span className="tech-badge">R</span>
+                <span className="tech-badge">TensorFlow</span>
+              </div>
             </div>
 
-            <div className="service-card">
-              <h3>Dewatering & Interference Effects</h3>
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaDatabase className="service-icon" />
+                <h3>Digital Twin Development for Water Systems</h3>
+              </div>
               <p>
-                Assessment of dewatering requirements for construction projects and potential interference effects on existing groundwater users and ecosystems.
+                Digital twin technology that creates a virtual mirror of your water infrastructure - 
+                think of it as building a smart, learning replica that evolves with your real system.
               </p>
               <p>
-                Proper dewatering design ensures construction project success while minimizing environmental impacts and conflicts with other water users.
+                These digital replicas enable predictive maintenance, scenario testing, and 
+                optimization without disrupting actual operations.
               </p>
               <ul className="service-features">
-                <li>Dewatering system design</li>
-                <li>Impact assessment on neighboring bores</li>
-                <li>Monitoring program development</li>
-                <li>Mitigation strategy planning</li>
+                <li>Real-time system monitoring and control</li>
+                <li>Predictive maintenance scheduling</li>
+                <li>Operational optimization algorithms</li>
+                <li>Scenario planning and risk assessment</li>
+                <li>Performance benchmarking and improvement</li>
               </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">IoT Integration</span>
+                <span className="tech-badge">Cloud Computing</span>
+                <span className="tech-badge">Digital Twins</span>
+                <span className="tech-badge">SCADA</span>
+              </div>
+            </div>
+
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaSeedling className="service-icon" />
+                <h3>Nature-Based Solution Development</h3>
+              </div>
+              <p>
+                Nature-based engineering that works like partnering with ecosystems - using natural processes 
+                to solve environmental challenges while providing multiple co-benefits.
+              </p>
+              <p>
+                These solutions harness the power of natural systems to treat water, manage floods, 
+                and enhance biodiversity simultaneously.
+              </p>
+              <ul className="service-features">
+                <li>Constructed wetland design and optimization</li>
+                <li>Bioretention and rain garden systems</li>
+                <li>Living shoreline restoration</li>
+                <li>Green roof and wall systems</li>
+                <li>Ecosystem service valuation</li>
+              </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Ecological Design</span>
+                <span className="tech-badge">Phytoremediation</span>
+                <span className="tech-badge">SUDS</span>
+                <span className="tech-badge">Ecosystem Services</span>
+              </div>
+            </div>
+
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaTree className="service-icon" />
+                <h3>Green Infrastructure Implementation</h3>
+              </div>
+              <p>
+                Green infrastructure that functions like nature's own utility system - providing essential 
+                services while enhancing community livability and environmental health.
+              </p>
+              <p>
+                Integrated solutions that manage stormwater, improve air quality, reduce urban heat, 
+                and create valuable community spaces.
+              </p>
+              <ul className="service-features">
+                <li>Urban forest water management</li>
+                <li>Permeable pavement systems</li>
+                <li>Bioswale design and installation</li>
+                <li>Green corridor planning</li>
+                <li>Multi-benefit optimization</li>
+              </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">LID Design</span>
+                <span className="tech-badge">Urban Planning</span>
+                <span className="tech-badge">GIS Analysis</span>
+                <span className="tech-badge">Sustainability</span>
+              </div>
+            </div>
+
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaLeaf className="service-icon" />
+                <h3>Ecological Engineering Approaches</h3>
+              </div>
+              <p>
+                Ecological engineering that operates like ecosystem rehabilitation - restoring natural 
+                functions while providing engineered performance for human needs.
+              </p>
+              <p>
+                Sustainable solutions that work with natural processes to create self-maintaining, 
+                resilient systems that improve over time.
+              </p>
+              <ul className="service-features">
+                <li>Stream restoration and naturalization</li>
+                <li>Wetland construction and enhancement</li>
+                <li>Riparian buffer design</li>
+                <li>Habitat connectivity planning</li>
+                <li>Adaptive ecosystem management</li>
+              </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Restoration Ecology</span>
+                <span className="tech-badge">Habitat Design</span>
+                <span className="tech-badge">Adaptive Management</span>
+                <span className="tech-badge">Bioengineering</span>
+              </div>
+            </div>
+
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaShieldAlt className="service-icon" />
+                <h3>Resilient System Design for Climate Adaptation</h3>
+              </div>
+              <p>
+                Climate-resilient infrastructure that works like an adaptive immune system - evolving 
+                and strengthening in response to changing environmental conditions.
+              </p>
+              <p>
+                Forward-thinking designs that not only withstand future climate scenarios but 
+                actually improve performance under stress.
+              </p>
+              <ul className="service-features">
+                <li>Climate change vulnerability assessment</li>
+                <li>Adaptive infrastructure design</li>
+                <li>Extreme weather preparedness</li>
+                <li>System redundancy and flexibility</li>
+                <li>Long-term sustainability planning</li>
+              </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Climate Modeling</span>
+                <span className="tech-badge">Risk Assessment</span>
+                <span className="tech-badge">Adaptive Design</span>
+                <span className="tech-badge">Resilience Planning</span>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Catchment Hydrology Section */}
-        <section className="service-category">
-          <h2>Catchment Hydrology Analysis & Modeling</h2>
+        {/* Water Treatment Technology & Process Engineering */}
+        <section className="service-category modern-section">
+          <div className="section-header">
+            <FaFlask className="section-icon" />
+            <h2>Water Treatment Technology & Process Engineering</h2>
+            <p className="section-subtitle">Advanced treatment systems for municipal and industrial applications</p>
+          </div>
           <div className="service-grid">
-            <div className="service-card">
-              <h3>Rainfall-Runoff Modeling</h3>
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaCogs className="service-icon" />
+                <h3>Treatment System Design & Optimization</h3>
+              </div>
               <p>
-                Development of rainfall-runoff models to simulate catchment response to precipitation events and assess water resource availability.
+                Water treatment design that functions like a precision medicine approach - customizing 
+                treatment strategies to match specific water quality challenges and regulatory requirements.
               </p>
               <p>
-                These models are essential for flood prediction, water allocation planning, and evaluating the impacts of land use changes on water resources.
+                From concept to commissioning, comprehensive design services that optimize performance, 
+                efficiency, and long-term sustainability.
               </p>
               <ul className="service-features">
-                <li>HEC-HMS and SWMM implementation</li>
-                <li>Calibration with measured flow data</li>
-                <li>Event-based and continuous simulation</li>
-                <li>Climate change scenario analysis</li>
+                <li>Process selection and sizing</li>
+                <li>Energy efficiency optimization</li>
+                <li>Automation and control design</li>
+                <li>Life cycle cost analysis</li>
+                <li>Performance monitoring systems</li>
               </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Process Design</span>
+                <span className="tech-badge">AutoCAD</span>
+                <span className="tech-badge">Process Modeling</span>
+                <span className="tech-badge">Energy Optimization</span>
+              </div>
             </div>
 
-            <div className="service-card">
-              <h3>Water Quality Modeling</h3>
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaAtom className="service-icon" />
+                <h3>Innovative Contaminant Removal Strategies</h3>
+              </div>
               <p>
-                Comprehensive modeling of water quality parameters in catchments to identify pollution sources and evaluate mitigation strategies.
+                Contaminant removal that works like a molecular-level security system - identifying and 
+                eliminating specific pollutants with precision and efficiency.
               </p>
               <p>
-                Water quality models help in developing targeted interventions to improve stream health and meet regulatory requirements for freshwater management.
+                Advanced treatment technologies targeting emerging contaminants, micropollutants, 
+                and challenging water quality issues.
               </p>
               <ul className="service-features">
-                <li>CLUES model calibration and application</li>
-                <li>Nutrient loading and transport</li>
-                <li>Sediment erosion and deposition</li>
-                <li>Point and non-point source analysis</li>
+                <li>Advanced oxidation processes</li>
+                <li>Membrane technology applications</li>
+                <li>Electrochemical treatment methods</li>
+                <li>Biological contaminant removal</li>
+                <li>Nutrient recovery and removal</li>
               </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Advanced Treatment</span>
+                <span className="tech-badge">Membrane Technology</span>
+                <span className="tech-badge">Electrochemistry</span>
+                <span className="tech-badge">Biotechnology</span>
+              </div>
             </div>
 
-            <div className="service-card">
-              <h3>Flood Assessment</h3>
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaGlasses className="service-icon" />
+                <h3>Water Quality Management Frameworks</h3>
+              </div>
               <p>
-                Detailed flood modeling and risk assessment to identify vulnerable areas and evaluate mitigation options for flood protection.
+                Water quality management that operates like a comprehensive health monitoring system - 
+                continuously tracking, analyzing, and maintaining optimal water conditions.
               </p>
               <p>
-                Flood studies provide critical information for infrastructure planning, emergency management, and land use decision-making to enhance community resilience.
+                Integrated frameworks that ensure consistent water quality through monitoring, 
+                analysis, and adaptive management strategies.
               </p>
               <ul className="service-features">
-                <li>Hydraulic modeling (HEC-RAS)</li>
-                <li>Flood extent and depth mapping</li>
-                <li>Climate change impact assessment</li>
-                <li>Mitigation option evaluation</li>
+                <li>Water safety plan development</li>
+                <li>Multi-barrier treatment approaches</li>
+                <li>Real-time quality monitoring</li>
+                <li>Regulatory compliance management</li>
+                <li>Risk assessment and mitigation</li>
               </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Quality Management</span>
+                <span className="tech-badge">Monitoring Systems</span>
+                <span className="tech-badge">Risk Assessment</span>
+                <span className="tech-badge">Compliance</span>
+              </div>
             </div>
 
-            <div className="service-card">
-              <h3>Agricultural Systems Analysis</h3>
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaNetworkWired className="service-icon" />
+                <h3>Decentralized Treatment Solutions</h3>
+              </div>
               <p>
-                Modeling and analysis of agricultural systems to optimize productivity while minimizing environmental impacts on water resources.
+                Decentralized treatment that works like a distributed network - bringing treatment 
+                capabilities closer to where they're needed while maintaining system-wide efficiency.
               </p>
               <p>
-                This integrated approach helps farmers and regulators balance production goals with environmental protection requirements.
+                Small-scale, community-based treatment systems that provide flexibility, resilience, 
+                and cost-effective solutions for diverse applications.
               </p>
               <ul className="service-features">
-                <li>Irrigation efficiency assessment</li>
-                <li>Nutrient leaching modeling</li>
-                <li>Farm system optimization</li>
-                <li>NES-F compliance evaluation</li>
+                <li>Package treatment plant design</li>
+                <li>On-site wastewater systems</li>
+                <li>Community-scale solutions</li>
+                <li>Remote monitoring capabilities</li>
+                <li>Modular and scalable designs</li>
               </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Decentralized Systems</span>
+                <span className="tech-badge">Package Plants</span>
+                <span className="tech-badge">Remote Monitoring</span>
+                <span className="tech-badge">Modular Design</span>
+              </div>
+            </div>
+
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaFlask className="service-icon" />
+                <h3>Bioprocess Engineering & Optimization</h3>
+              </div>
+              <p>
+                Bioprocess engineering that functions like conducting a microbial orchestra - optimizing 
+                biological processes to achieve maximum treatment efficiency and resource recovery.
+              </p>
+              <p>
+                Advanced biological treatment systems that harness the power of microorganisms 
+                for sustainable water treatment and resource recovery.
+              </p>
+              <ul className="service-features">
+                <li>Bioreactor design and optimization</li>
+                <li>Microbial community management</li>
+                <li>Fermentation process control</li>
+                <li>Biogas production and utilization</li>
+                <li>Biological nutrient removal</li>
+              </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Bioreactor Design</span>
+                <span className="tech-badge">Fermentation</span>
+                <span className="tech-badge">Biogas</span>
+                <span className="tech-badge">Microbiology</span>
+              </div>
+            </div>
+
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaRecycle className="service-icon" />
+                <h3>Resource Recovery System Development</h3>
+              </div>
+              <p>
+                Resource recovery that works like urban mining - extracting valuable resources from 
+                waste streams to create circular, sustainable treatment systems.
+              </p>
+              <p>
+                Innovative approaches that transform waste treatment facilities into resource 
+                recovery centers, generating energy, nutrients, and clean water.
+              </p>
+              <ul className="service-features">
+                <li>Nutrient recovery and reuse</li>
+                <li>Energy generation from waste</li>
+                <li>Water reuse and recycling</li>
+                <li>Biosolids management and valorization</li>
+                <li>Circular economy integration</li>
+              </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Resource Recovery</span>
+                <span className="tech-badge">Circular Economy</span>
+                <span className="tech-badge">Energy Recovery</span>
+                <span className="tech-badge">Nutrient Recovery</span>
+              </div>
+            </div>
+
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaIndustry className="service-icon" />
+                <h3>Industrial Ecology Implementation</h3>
+              </div>
+              <p>
+                Industrial ecology that operates like a natural ecosystem - where waste from one 
+                process becomes input for another, creating efficient, sustainable industrial networks.
+              </p>
+              <p>
+                Systems thinking approaches that optimize resource use across industrial facilities 
+                and create symbiotic relationships between different processes.
+              </p>
+              <ul className="service-features">
+                <li>Industrial symbiosis development</li>
+                <li>Waste stream optimization</li>
+                <li>Material flow analysis</li>
+                <li>Eco-industrial park planning</li>
+                <li>Sustainability metrics development</li>
+              </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Industrial Ecology</span>
+                <span className="tech-badge">Symbiosis</span>
+                <span className="tech-badge">Material Flow</span>
+                <span className="tech-badge">Sustainability</span>
+              </div>
+            </div>
+
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaRecycle className="service-icon" />
+                <h3>Circular Economy Approaches</h3>
+              </div>
+              <p>
+                Circular economy design that functions like nature's own recycling system - eliminating 
+                waste by designing processes where every output becomes a valuable input.
+              </p>
+              <p>
+                Comprehensive strategies that redesign industrial and municipal systems to minimize 
+                waste, maximize resource efficiency, and create regenerative processes.
+              </p>
+              <ul className="service-features">
+                <li>Circular design principles</li>
+                <li>Life cycle assessment</li>
+                <li>Waste elimination strategies</li>
+                <li>Product-as-a-service models</li>
+                <li>Regenerative system design</li>
+              </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Circular Design</span>
+                <span className="tech-badge">LCA</span>
+                <span className="tech-badge">Zero Waste</span>
+                <span className="tech-badge">Regenerative</span>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Wastewater Treatment Section */}
-        <section className="service-category">
-          <h2>Municipal & Agricultural Wastewater Treatment</h2>
+        {/* Geospatial Analysis & Technical Expertise */}
+        <section className="service-category modern-section">
+          <div className="section-header">
+            <FaMapMarkedAlt className="section-icon" />
+            <h2>Geospatial Analysis & Technical Expertise</h2>
+            <p className="section-subtitle">Advanced spatial analysis and data science for environmental applications</p>
+          </div>
           <div className="service-grid">
-            <div className="service-card">
-              <h3>Activated Sludge Systems</h3>
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaGlobe className="service-icon" />
+                <h3>Environmental Spatial Modeling</h3>
+              </div>
               <p>
-                Complete design and optimization of activated sludge systems, the most common aerobic biological treatment process for municipal wastewater.
+                Environmental spatial modeling that works like Google Earth for environmental data - 
+                revealing hidden patterns, relationships, and trends across landscapes and watersheds.
               </p>
               <p>
-                These systems use microorganisms to break down organic matter in the presence of oxygen, making them highly effective for BOD removal and nitrification.
+                Advanced GIS applications that transform spatial data into actionable insights 
+                for environmental management and decision-making.
               </p>
               <ul className="service-features">
-                <li>Conventional, extended aeration, and sequencing batch reactor (SBR) variants</li>
-                <li>Optimized aeration systems for energy efficiency</li>
-                <li>Sludge management and digestion planning</li>
-                <li>Nitrification and denitrification process enhancement</li>
+                <li>3D environmental visualization</li>
+                <li>Spatial pattern analysis</li>
+                <li>Multi-criteria decision analysis</li>
+                <li>Remote sensing applications</li>
+                <li>Spatial interpolation and modeling</li>
               </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">ArcGIS</span>
+                <span className="tech-badge">QGIS</span>
+                <span className="tech-badge">Remote Sensing</span>
+                <span className="tech-badge">Spatial Analysis</span>
+              </div>
             </div>
 
-            <div className="service-card">
-              <h3>MBBR (Moving Bed Biofilm Reactor)</h3>
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaChartLine className="service-icon" />
+                <h3>Multi-Dimensional Data Visualization</h3>
+              </div>
               <p>
-                Design and implementation of MBBR systems that utilize biofilm carriers to maximize treatment capacity in a smaller footprint.
+                Data visualization that functions like a translator for complex information - converting 
+                multidimensional environmental data into clear, intuitive visual stories.
               </p>
               <p>
-                MBBR technology combines the benefits of both activated sludge and biofilm processes, allowing for higher removal rates per unit volume and more stability against shock loads.
+                Interactive dashboards and visualizations that make complex environmental data 
+                accessible to stakeholders and decision-makers.
               </p>
               <ul className="service-features">
-                <li>Carrier selection and loading optimization</li>
-                <li>Hybrid MBBR-activated sludge designs</li>
-                <li>Retrofit solutions for existing plants</li>
-                <li>Multi-stage configurations for enhanced nutrient removal</li>
+                <li>Interactive dashboard development</li>
+                <li>3D data visualization</li>
+                <li>Time-series analysis and display</li>
+                <li>Statistical graphics and charts</li>
+                <li>Web-based visualization platforms</li>
               </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Tableau</span>
+                <span className="tech-badge">Python</span>
+                <span className="tech-badge">R</span>
+                <span className="tech-badge">D3.js</span>
+              </div>
             </div>
 
-            <div className="service-card">
-              <h3>Membrane Bioreactors (MBR)</h3>
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaSearchLocation className="service-icon" />
+                <h3>Land-Water Interaction Analysis</h3>
+              </div>
               <p>
-                Advanced MBR system design that combines biological treatment with membrane filtration for superior effluent quality.
+                Land-water analysis that operates like an ecosystem detective - investigating the 
+                complex relationships between terrestrial and aquatic systems.
               </p>
               <p>
-                MBRs produce exceptionally clean effluent suitable for reuse applications, while operating at higher biomass concentrations in a smaller footprint than conventional systems.
+                Comprehensive analysis of how land use, topography, and human activities 
+                influence water resources and ecosystem health.
               </p>
               <ul className="service-features">
-                <li>Hollow fiber, flat sheet, and tubular membrane selection</li>
-                <li>Fouling control and cleaning regimen development</li>
-                <li>Energy optimization strategies</li>
-                <li>Water reuse integration planning</li>
+                <li>Watershed delineation and characterization</li>
+                <li>Land use change impact assessment</li>
+                <li>Riparian zone analysis</li>
+                <li>Hydrologic connectivity mapping</li>
+                <li>Ecosystem service quantification</li>
               </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Watershed Analysis</span>
+                <span className="tech-badge">Land Use Modeling</span>
+                <span className="tech-badge">Ecosystem Services</span>
+                <span className="tech-badge">Connectivity</span>
+              </div>
             </div>
 
-            <div className="service-card">
-              <h3>UASB (Upflow Anaerobic Sludge Blanket)</h3>
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaMountain className="service-icon" />
+                <h3>Terrain & Hydrologic Feature Characterization</h3>
+              </div>
               <p>
-                Specialized design of anaerobic treatment systems that convert organic pollutants to biogas while consuming minimal energy.
+                Terrain analysis that works like a topographic scanner - precisely mapping and 
+                analyzing landscape features that control water flow and environmental processes.
               </p>
               <p>
-                UASB reactors are particularly effective for high-strength wastewater and operate without aeration, generating valuable biogas and producing minimal sludge compared to aerobic systems.
+                Detailed characterization of topographic and hydrologic features that influence 
+                water movement, erosion, and ecosystem function.
               </p>
               <ul className="service-features">
-                <li>Granular sludge development strategies</li>
-                <li>Biogas collection and utilization systems</li>
-                <li>Process stability enhancement</li>
-                <li>Integration with aerobic polishing stages</li>
+                <li>Digital elevation model analysis</li>
+                <li>Flow direction and accumulation</li>
+                <li>Slope and aspect analysis</li>
+                <li>Stream network delineation</li>
+                <li>Geomorphological assessment</li>
               </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">DEM Analysis</span>
+                <span className="tech-badge">Hydrology Tools</span>
+                <span className="tech-badge">Geomorphology</span>
+                <span className="tech-badge">Flow Analysis</span>
+              </div>
+            </div>
+
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaRobot className="service-icon" />
+                <h3>Data Science for Environmental Applications</h3>
+              </div>
+              <p>
+                Environmental data science that functions like an AI environmental consultant - 
+                using machine learning and advanced analytics to extract insights from complex datasets.
+              </p>
+              <p>
+                Cutting-edge data science techniques applied to environmental challenges, 
+                from prediction and optimization to pattern recognition and decision support.
+              </p>
+              <ul className="service-features">
+                <li>Machine learning model development</li>
+                <li>Big data processing and analysis</li>
+                <li>Predictive modeling and forecasting</li>
+                <li>Automated data pipelines</li>
+                <li>Statistical analysis and interpretation</li>
+              </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Python</span>
+                <span className="tech-badge">R</span>
+                <span className="tech-badge">Machine Learning</span>
+                <span className="tech-badge">Big Data</span>
+              </div>
+            </div>
+
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaMicroscope className="service-icon" />
+                <h3>Research Methodology & Experimental Design</h3>
+              </div>
+              <p>
+                Research design that operates like a scientific GPS - guiding research projects 
+                along the most efficient path to valid, reliable, and meaningful results.
+              </p>
+              <p>
+                Rigorous experimental design and statistical approaches that maximize the value 
+                of research investments and ensure scientifically sound conclusions.
+              </p>
+              <ul className="service-features">
+                <li>Experimental design optimization</li>
+                <li>Statistical power analysis</li>
+                <li>Quality assurance protocols</li>
+                <li>Data collection strategies</li>
+                <li>Publication and peer review support</li>
+              </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">DOE</span>
+                <span className="tech-badge">Statistics</span>
+                <span className="tech-badge">QA/QC</span>
+                <span className="tech-badge">Research Design</span>
+              </div>
+            </div>
+
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaBuilding className="service-icon" />
+                <h3>Environmental Regulatory Framework Navigation</h3>
+              </div>
+              <p>
+                Regulatory navigation that works like a legal compass - guiding projects through 
+                complex environmental regulations to achieve compliance efficiently and effectively.
+              </p>
+              <p>
+                Expert guidance through New Zealand's environmental regulatory landscape, 
+                from consent applications to compliance monitoring and reporting.
+              </p>
+              <ul className="service-features">
+                <li>RMA consent application support</li>
+                <li>NPS-FM and NES-F compliance</li>
+                <li>Environmental impact assessment</li>
+                <li>Regulatory risk assessment</li>
+                <li>Stakeholder engagement facilitation</li>
+              </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">RMA</span>
+                <span className="tech-badge">NPS-FM</span>
+                <span className="tech-badge">NES-F</span>
+                <span className="tech-badge">Compliance</span>
+              </div>
+            </div>
+
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaCompass className="service-icon" />
+                <h3>Indigenous Environmental Management Principles</h3>
+              </div>
+              <p>
+                Indigenous management that functions like traditional navigation - using time-tested 
+                wisdom and cultural knowledge to guide contemporary environmental decision-making.
+              </p>
+              <p>
+                Culturally grounded approaches that honor indigenous knowledge systems while 
+                integrating modern environmental science and technology.
+              </p>
+              <ul className="service-features">
+                <li>Te Mana o te Wai implementation</li>
+                <li>Cultural impact assessment</li>
+                <li>Traditional knowledge integration</li>
+                <li>Community engagement and consultation</li>
+                <li>Culturally appropriate monitoring</li>
+              </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Te Mana o te Wai</span>
+                <span className="tech-badge">Cultural Assessment</span>
+                <span className="tech-badge">Traditional Knowledge</span>
+                <span className="tech-badge">Community Engagement</span>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Agricultural Solutions Section */}
-        <section className="service-category">
-          <h2>Agricultural Wastewater Solutions</h2>
+        {/* Technical Tools & Software Expertise */}
+        <section className="service-category modern-section">
+          <div className="section-header">
+            <FaCogs className="section-icon" />
+            <h2>Technical Tools & Software Expertise</h2>
+            <p className="section-subtitle">Advanced computational tools for environmental analysis and modeling</p>
+          </div>
           <div className="service-grid">
-            <div className="service-card">
-              <h3>Anaerobic Digesters for Farm Waste</h3>
-              <p>
-                Custom-designed anaerobic digestion systems specifically for agricultural waste streams including manure and crop residues.
-              </p>
-              <p>
-                These systems convert agricultural waste into biogas for energy production while stabilizing waste and reducing odor, creating multiple value streams from waste materials.
-              </p>
-              <ul className="service-features">
-                <li>Complete mix, plug flow, and covered lagoon designs</li>
-                <li>Co-digestion optimization for enhanced biogas production</li>
-                <li>Digestate management and nutrient recovery</li>
-                <li>Farm-scale energy integration planning</li>
-              </ul>
+            <div className="service-card enhanced-card tool-card">
+              <div className="card-header">
+                <FaWater className="service-icon" />
+                <h3>Modeling Software</h3>
+              </div>
+              <div className="tool-categories">
+                <div className="tool-category">
+                  <h4>Stormwater Management</h4>
+                  <div className="technology-badges">
+                    <span className="tech-badge">SWMM</span>
+                    <span className="tech-badge">pySWMM</span>
+                  </div>
+                </div>
+                <div className="tool-category">
+                  <h4>Water Distribution</h4>
+                  <div className="technology-badges">
+                    <span className="tech-badge">EPANET</span>
+                  </div>
+                </div>
+                <div className="tool-category">
+                  <h4>River Analysis</h4>
+                  <div className="technology-badges">
+                    <span className="tech-badge">HEC-RAS</span>
+                  </div>
+                </div>
+                <div className="tool-category">
+                  <h4>Groundwater Modeling</h4>
+                  <div className="technology-badges">
+                    <span className="tech-badge">MODFLOW</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="service-card">
-              <h3>Woodchip Bioreactors with Carbon Enhancement</h3>
-              <p>
-                Innovative denitrifying bioreactors specialized for removing nitrate from agricultural drainage, with carbon enhancement systems.
-              </p>
-              <p>
-                These passive treatment systems intercept tile drainage and use woodchips as a carbon source for denitrifying bacteria, with supplemental carbon dosing for performance enhancement.
-              </p>
-              <ul className="service-features">
-                <li>Site-specific sizing and hydraulic design</li>
-                <li>Carbon dosing system integration</li>
-                <li>Performance monitoring setup</li>
-                <li>Maintenance and renewal planning</li>
-              </ul>
-            </div>
-
-            <div className="service-card">
-              <h3>Constructed Wetlands</h3>
-              <p>
-                Design of natural treatment systems using engineered wetlands for sustainable wastewater treatment, particularly suitable for farm settings.
-              </p>
-              <p>
-                Constructed wetlands leverage natural processes to treat wastewater with minimal energy input, creating valuable habitat while providing effective treatment.
-              </p>
-              <ul className="service-features">
-                <li>Horizontal and vertical flow wetland design</li>
-                <li>Plant species selection for local climate</li>
-                <li>Hybrid systems for enhanced performance</li>
-                <li>Seasonal operation optimization</li>
-              </ul>
-            </div>
-
-            <div className="service-card">
-              <h3>NES-F Compliance Solutions</h3>
-              <p>
-                Comprehensive solutions for agricultural operations to achieve compliance with New Zealand's National Environmental Standards for Freshwater (NES-F).
-              </p>
-              <p>
-                These tailored approaches help farmers meet regulatory requirements while maintaining agricultural productivity and efficiency.
-              </p>
-              <ul className="service-features">
-                <li>Farm environmental plan development</li>
-                <li>Mitigation system selection and design</li>
-                <li>Cost-benefit analysis for compliance options</li>
-                <li>Consent application support</li>
-              </ul>
+            <div className="service-card enhanced-card tool-card">
+              <div className="card-header">
+                <FaChartLine className="service-icon" />
+                <h3>Data Analysis & Programming</h3>
+              </div>
+              <div className="tool-categories">
+                <div className="tool-category">
+                  <h4>Python Ecosystem</h4>
+                  <div className="technology-badges">
+                    <span className="tech-badge">Pandas</span>
+                    <span className="tech-badge">NumPy</span>
+                    <span className="tech-badge">Matplotlib</span>
+                    <span className="tech-badge">SciPy</span>
+                  </div>
+                </div>
+                <div className="tool-category">
+                  <h4>Statistical Computing</h4>
+                  <div className="technology-badges">
+                    <span className="tech-badge">R</span>
+                  </div>
+                </div>
+                <div className="tool-category">
+                  <h4>Spatial Analysis</h4>
+                  <div className="technology-badges">
+                    <span className="tech-badge">QGIS</span>
+                    <span className="tech-badge">ArcGIS</span>
+                  </div>
+                </div>
+                <div className="tool-category">
+                  <h4>Engineering Analysis</h4>
+                  <div className="technology-badges">
+                    <span className="tech-badge">Matlab</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Water Reticulation Section */}
-        <section className="service-category">
-          <h2>Water & Wastewater Reticulation Design</h2>
-          <div className="full-service-card">
+        {/* Enhanced Call to Action */}
+        <div className="consulting-cta enhanced-cta">
+          <div className="cta-background">
+            <div className="cta-icons">
+              <FaWater />
+              <FaLeaf />
+              <FaLightbulb />
+              <FaCogs />
+              <FaGlobe />
+              <FaRobot />
+            </div>
+          </div>
+          <div className="cta-content">
+            <h3>Ready to Transform Your Environmental Challenges?</h3>
             <p>
-              Comprehensive design services for water and wastewater collection, distribution, and transmission systems. Our reticulation design services incorporate hydraulic modeling, material selection, pump station design, and maintenance planning to ensure efficient, reliable, and sustainable water infrastructure.
+              With expertise spanning from molecular-level treatment processes to watershed-scale modeling, 
+              I provide comprehensive environmental engineering solutions that work like a Swiss Army knife 
+              for complex environmental challenges. From digital twins that predict the future to nature-based 
+              solutions that heal ecosystems, let's create innovative, sustainable solutions that benefit both 
+              your objectives and the environment.
             </p>
-            <div className="service-grid">
-              <div className="service-card">
-                <h3>Gravity Sewer Systems</h3>
-                <p>
-                  Design of efficient gravity collection systems with proper sizing, slope, and materials for reliable long-term operation.
-                </p>
-                <ul className="service-features">
-                  <li>Hydraulic capacity analysis</li>
-                  <li>Material selection for corrosion resistance</li>
-                  <li>Infiltration/inflow minimization</li>
-                  <li>Maintenance access optimization</li>
-                </ul>
-              </div>
-
-              <div className="service-card">
-                <h3>Pressure Sewer Systems</h3>
-                <p>
-                  Planning and design of pressure sewer networks for challenging terrain or low-density service areas.
-                </p>
-                <ul className="service-features">
-                  <li>Grinder pump selection and sizing</li>
-                  <li>System pressure management</li>
-                  <li>Air/vacuum release valve placement</li>
-                  <li>SCADA and monitoring integration</li>
-                </ul>
-              </div>
-
-              <div className="service-card">
-                <h3>Water Distribution Networks</h3>
-                <p>
-                  Design of efficient water supply networks with proper pressure management, looping, and water quality maintenance.
-                </p>
-                <ul className="service-features">
-                  <li>Pressure zone design</li>
-                  <li>Fire protection integration</li>
-                  <li>Water age and quality modeling</li>
-                  <li>Energy-efficient pumping systems</li>
-                </ul>
-              </div>
-
-              <div className="service-card">
-                <h3>Pump Station Design</h3>
-                <p>
-                  Complete design of water and wastewater pumping facilities with energy efficiency and reliability as core principles.
-                </p>
-                <ul className="service-features">
-                  <li>Pump selection and system curve analysis</li>
-                  <li>Variable frequency drive implementation</li>
-                  <li>Wet well design and modeling</li>
-                  <li>Backup power and redundancy systems</li>
-                </ul>
-              </div>
+            <div className="cta-buttons">
+              <Link to="/contact" className="btn primary-btn enhanced-btn">
+                Start Your Project
+              </Link>
+              <Link to="/resume" className="btn secondary-btn enhanced-btn">
+                View Credentials
+              </Link>
             </div>
           </div>
-        </section>
-
-        {/* Environmental Management Section */}
-        <section className="service-category">
-          <h2>Environmental Management & Compliance</h2>
-          <div className="full-service-card">
-            <p>
-              Expert guidance on environmental compliance and management for water resource projects, with in-depth knowledge of New Zealand's regulatory framework including the Resource Management Act (RMA), National Policy Statement for Freshwater Management (NPS-FM), and National Environmental Standards for Freshwater (NES-F).
-            </p>
-            <div className="service-grid">
-              <div className="service-card">
-                <h3>Resource Consent Applications</h3>
-                <p>
-                  Preparation and management of resource consent applications for water takes, discharges, and land use activities under the RMA.
-                </p>
-                <ul className="service-features">
-                  <li>Assessment of Environmental Effects (AEE)</li>
-                  <li>Stakeholder consultation management</li>
-                  <li>Technical reporting and expert evidence</li>
-                  <li>Consent condition negotiation</li>
-                </ul>
-              </div>
-
-              <div className="service-card">
-                <h3>Compliance Monitoring & Reporting</h3>
-                <p>
-                  Development and implementation of monitoring programs to ensure ongoing compliance with consent conditions and regulatory requirements.
-                </p>
-                <ul className="service-features">
-                  <li>Water quality monitoring design</li>
-                  <li>Data analysis and interpretation</li>
-                  <li>Compliance reporting</li>
-                  <li>Non-compliance mitigation planning</li>
-                </ul>
-              </div>
-
-              <div className="service-card">
-                <h3>Erosion & Sediment Control</h3>
-                <p>
-                  Design of effective erosion and sediment control measures for construction and land development projects to protect water resources.
-                </p>
-                <ul className="service-features">
-                  <li>Erosion and Sediment Control Plans (ESCP)</li>
-                  <li>Chemical treatment design</li>
-                  <li>Site monitoring and maintenance planning</li>
-                  <li>Staff training and capacity building</li>
-                </ul>
-              </div>
-
-              <div className="service-card">
-                <h3>Strategic Environmental Planning</h3>
-                <p>
-                  Development of long-term environmental strategies that balance development goals with sustainability objectives and regulatory compliance.
-                </p>
-                <ul className="service-features">
-                  <li>Policy and plan development</li>
-                  <li>Environmental risk assessment</li>
-                  <li>Climate change adaptation planning</li>
-                  <li>Stakeholder engagement facilitation</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Process Modeling Section */}
-        <section className="service-category">
-          <h2>Chemical & Food Processing Optimization</h2>
-          <div className="full-service-card">
-            <p>
-              Specialized process modeling and optimization services for chemical and food processing operations. We leverage advanced computational approaches to improve efficiency, product quality, and sustainability across various industrial processes.
-            </p>
-            <div className="service-grid">
-              <div className="service-card">
-                <h3>Bioethanol Production Optimization</h3>
-                <p>
-                  Process optimization for bioethanol production facilities to maximize yield and efficiency while minimizing costs and environmental impacts.
-                </p>
-                <ul className="service-features">
-                  <li>Fermentation kinetics modeling</li>
-                  <li>Yeast strain selection and evaluation</li>
-                  <li>Process parameter optimization</li>
-                  <li>Scale-up strategy development</li>
-                </ul>
-              </div>
-
-              <div className="service-card">
-                <h3>Process Simulation & Digital Twins</h3>
-                <p>
-                  Comprehensive flowsheet models for process design, troubleshooting, and real-time optimization.
-                </p>
-                <ul className="service-features">
-                  <li>Steady-state and dynamic simulation</li>
-                  <li>Economic optimization and scenario analysis</li>
-                  <li>Digital twin development and implementation</li>
-                  <li>Operator training simulations</li>
-                </ul>
-              </div>
-
-              <div className="service-card">
-                <h3>Statistical Process Optimization</h3>
-                <p>
-                  Data-driven approaches to identify optimal operating conditions and control strategies for improved process performance.
-                </p>
-                <ul className="service-features">
-                  <li>Design of Experiments (DOE)</li>
-                  <li>Response surface methodology</li>
-                  <li>Multivariate statistical process control</li>
-                  <li>Robustness and sensitivity analysis</li>
-                </ul>
-              </div>
-
-              <div className="service-card">
-                <h3>Waste Valorization & Circular Economy</h3>
-                <p>
-                  Development of innovative approaches to convert process waste streams into valuable products, improving economic and environmental sustainability.
-                </p>
-                <ul className="service-features">
-                  <li>Waste characterization and opportunity assessment</li>
-                  <li>Process development for waste conversion</li>
-                  <li>Techno-economic analysis</li>
-                  <li>Market analysis for derived products</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Call to Action */}
-        <div className="consulting-cta">
-          <h3>Need Specialized Environmental Engineering Solutions?</h3>
-          <p>I provide customized consulting services tailored to your specific challenges and requirements. With expertise spanning hydrogeology, catchment modeling, wastewater treatment, and process optimization, I can develop efficient, sustainable solutions for your water and environmental needs.</p>
-          <Link to="/contact" className="btn primary-btn">Request a Consultation</Link>
         </div>
       </div>
     </div>

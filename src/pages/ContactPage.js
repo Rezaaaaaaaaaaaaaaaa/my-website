@@ -1,23 +1,31 @@
 import React, { useState } from 'react';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGoogleScholar, FaGlobe, FaPaperPlane } from 'react-icons/fa';
 
 const ContactPage = () => {
-  // Form state
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    organization: '',
     subject: '',
-    message: ''
+    message: '',
+    projectType: ''
   });
   
-  // Validation state
   const [formErrors, setFormErrors] = useState({});
-  
-  // Form submission state
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
   
-  // Handle input changes
+  const projectTypes = [
+    'Environmental Consulting',
+    'Water Treatment Design',
+    'Watershed Modeling',
+    'Research Collaboration',
+    'Technical Assessment',
+    'Policy Development',
+    'Other'
+  ];
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -25,7 +33,6 @@ const ContactPage = () => {
       [name]: value
     });
     
-    // Clear errors when user starts typing
     if (formErrors[name]) {
       setFormErrors({
         ...formErrors,
@@ -34,7 +41,6 @@ const ContactPage = () => {
     }
   };
   
-  // Validate form
   const validateForm = () => {
     const errors = {};
     
@@ -54,29 +60,25 @@ const ContactPage = () => {
     
     if (!formData.message.trim()) {
       errors.message = 'Message is required';
-    } else if (formData.message.trim().length < 10) {
-      errors.message = 'Message must be at least 10 characters';
+    } else if (formData.message.trim().length < 20) {
+      errors.message = 'Message must be at least 20 characters';
     }
     
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
   
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Validate form
     if (!validateForm()) {
       return;
     }
     
-    // Set submitting state
     setIsSubmitting(true);
-    // Clear any previous error message
     setSubmitError('');
     
-    // Simulate form submission (would be replaced with actual API call)
+    // Simulate form submission
     setTimeout(() => {
       try {
         setIsSubmitting(false);
@@ -84,155 +86,266 @@ const ContactPage = () => {
         setFormData({
           name: '',
           email: '',
+          organization: '',
           subject: '',
-          message: ''
+          message: '',
+          projectType: ''
         });
         
-        // Reset success message after 5 seconds
         setTimeout(() => {
           setSubmitSuccess(false);
         }, 5000);
       } catch (error) {
-        // Handle any potential errors
         setIsSubmitting(false);
         setSubmitError('Failed to send message. Please try again later.');
       }
-    }, 1500);
+    }, 2000);
   };
 
   return (
     <div className="contact-page">
-      <section className="page-header">
-        <h1>Contact Me</h1>
-        <p>Get in touch for collaborations, consultations, or inquiries</p>
+      <section className="page-header enhanced-header">
+        <div className="header-content">
+          <h1>Contact & Collaboration</h1>
+          <p>Ready to tackle your environmental challenges together? Let's discuss how we can create sustainable solutions.</p>
+        </div>
       </section>
 
       <section className="contact-container">
-        <div className="contact-info">
-          <h2>Contact Information</h2>
-          <div className="contact-details">
-            <div className="contact-item">
-              <span className="contact-label">Email:</span>
-              <span className="contact-value">che.eng@live.com</span>
+        <div className="contact-info-section modern-section">
+          <div className="section-header">
+            <h2>Get in Touch</h2>
+            <p className="section-subtitle">Multiple ways to connect and start your project</p>
+          </div>
+          
+          <div className="contact-methods">
+            <div className="contact-method enhanced-card">
+              <div className="contact-icon">
+                <FaEnvelope />
+              </div>
+              <div className="contact-details">
+                <h3>Email</h3>
+                <p>reza.moghaddam@niwa.co.nz</p>
+                <span className="contact-note">Primary contact for project inquiries</span>
+              </div>
             </div>
-            <div className="contact-item">
-              <span className="contact-label">Phone:</span>
-              <span className="contact-value">+642108052489</span>
+            
+            <div className="contact-method enhanced-card">
+              <div className="contact-icon">
+                <FaPhone />
+              </div>
+              <div className="contact-details">
+                <h3>Phone</h3>
+                <p>+64 21 0805 2489</p>
+                <span className="contact-note">Available for consultations</span>
+              </div>
             </div>
-            <div className="contact-item">
-              <span className="contact-label">Based in:</span>
-              <span className="contact-value">New Zealand</span>
+            
+            <div className="contact-method enhanced-card">
+              <div className="contact-icon">
+                <FaMapMarkerAlt />
+              </div>
+              <div className="contact-details">
+                <h3>Location</h3>
+                <p>New Zealand</p>
+                <span className="contact-note">Available for projects nationwide</span>
+              </div>
             </div>
           </div>
 
-          <div className="social-links">
+          <div className="professional-links-section">
             <h3>Professional Profiles</h3>
-            <div className="social-grid">
-              <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="social-link">
-                LinkedIn
+            <div className="professional-links">
+              <a href="https://nz.linkedin.com/in/reza-moghaddam" target="_blank" rel="noopener noreferrer" className="social-link enhanced-card">
+                <FaLinkedin className="social-icon" />
+                <div>
+                  <h4>LinkedIn</h4>
+                  <p>Professional network & updates</p>
+                </div>
               </a>
-              <a href="https://www.researchgate.net/" target="_blank" rel="noopener noreferrer" className="social-link">
-                ResearchGate
+              
+              <a href="https://scholar.google.com/citations" target="_blank" rel="noopener noreferrer" className="social-link enhanced-card">
+                <FaGoogleScholar className="social-icon" />
+                <div>
+                  <h4>Google Scholar</h4>
+                  <p>Research publications & citations</p>
+                </div>
               </a>
-              <a href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer" className="social-link">
-                Google Scholar
-              </a>
-              <a href="https://niwa.co.nz/profile" target="_blank" rel="noopener noreferrer" className="social-link">
-                NIWA Profile
+              
+              <a href="https://niwa.co.nz/staff-profile" target="_blank" rel="noopener noreferrer" className="social-link enhanced-card">
+                <FaGlobe className="social-icon" />
+                <div>
+                  <h4>NIWA Profile</h4>
+                  <p>Institutional affiliation & research</p>
+                </div>
               </a>
             </div>
           </div>
           
-          <div className="consulting-services">
-            <h3>Consulting Services</h3>
-            <p>I offer expert consulting in:</p>
-            <ul className="service-features">
-              <li>Hydrogeology Analysis & Modeling</li>
-              <li>Catchment Hydrology & Water Quality</li>
-              <li>Municipal & Agricultural Wastewater Treatment</li>
-              <li>Water & Wastewater Reticulation Design</li>
-              <li>Environmental Management & Compliance</li>
-              <li>Chemical & Food Processing Optimization</li>
-              <li>Resource Consent Applications (RMA, NES-F)</li>
+          <div className="consultation-info enhanced-card">
+            <h3>Consultation Services</h3>
+            <p>I offer expert consulting in these key areas:</p>
+            <ul className="service-list">
+              <li>Environmental Systems Modeling & Digital Twins</li>
+              <li>Water Treatment Technology & Process Engineering</li>
+              <li>Nature-Based Solutions & Green Infrastructure</li>
+              <li>Geospatial Analysis & Data Science</li>
+              <li>Regulatory Compliance & Environmental Assessment</li>
+              <li>Research & Development Collaboration</li>
             </ul>
-            <p className="mt-3">Request a consultation by filling out the form.</p>
           </div>
         </div>
 
-        <div className="contact-form-container">
-          <h2>Send Me a Message</h2>
+        <div className="contact-form-section modern-section">
+          <div className="section-header">
+            <h2>Send a Message</h2>
+            <p className="section-subtitle">Start the conversation about your project</p>
+          </div>
           
           {submitSuccess && (
-            <div className="form-success">
-              Thank you for your message! I'll get back to you as soon as possible.
+            <div className="form-success enhanced-card">
+              <FaPaperPlane className="success-icon" />
+              <h3>Message Sent Successfully!</h3>
+              <p>Thank you for reaching out. I'll get back to you within 24 hours to discuss your project.</p>
             </div>
           )}
           
           {submitError && (
-            <div className="form-error">
-              {submitError}
+            <div className="form-error enhanced-card">
+              <h3>Message Failed</h3>
+              <p>{submitError}</p>
             </div>
           )}
           
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input 
-                type="text" 
-                id="name" 
-                name="name" 
-                value={formData.name}
-                onChange={handleChange}
-              />
-              {formErrors.name && <span className="form-error">{formErrors.name}</span>}
+          <form className="contact-form enhanced-card" onSubmit={handleSubmit}>
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="name">Full Name *</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name" 
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Your full name"
+                />
+                {formErrors.name && <span className="error-message">{formErrors.name}</span>}
+              </div>
+              
+              <div className="form-group">
+                <label htmlFor="email">Email Address *</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="your.email@example.com"
+                />
+                {formErrors.email && <span className="error-message">{formErrors.email}</span>}
+              </div>
+            </div>
+            
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="organization">Organization</label>
+                <input 
+                  type="text" 
+                  id="organization" 
+                  name="organization" 
+                  value={formData.organization}
+                  onChange={handleChange}
+                  placeholder="Your organization or company"
+                />
+              </div>
+              
+              <div className="form-group">
+                <label htmlFor="projectType">Project Type</label>
+                <select 
+                  id="projectType" 
+                  name="projectType" 
+                  value={formData.projectType}
+                  onChange={handleChange}
+                >
+                  <option value="">Select project type</option>
+                  {projectTypes.map((type, index) => (
+                    <option key={index} value={type}>{type}</option>
+                  ))}
+                </select>
+              </div>
             </div>
             
             <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input 
-                type="email" 
-                id="email" 
-                name="email" 
-                value={formData.email}
-                onChange={handleChange}
-              />
-              {formErrors.email && <span className="form-error">{formErrors.email}</span>}
-            </div>
-            
-            <div className="form-group">
-              <label htmlFor="subject">Subject</label>
+              <label htmlFor="subject">Subject *</label>
               <input 
                 type="text" 
                 id="subject" 
                 name="subject" 
                 value={formData.subject}
                 onChange={handleChange}
+                placeholder="Brief description of your project or inquiry"
               />
-              {formErrors.subject && <span className="form-error">{formErrors.subject}</span>}
+              {formErrors.subject && <span className="error-message">{formErrors.subject}</span>}
             </div>
             
             <div className="form-group">
-              <label htmlFor="message">Message</label>
+              <label htmlFor="message">Project Details *</label>
               <textarea 
                 id="message" 
                 name="message" 
-                rows="5" 
+                rows="6" 
                 value={formData.message}
                 onChange={handleChange}
+                placeholder="Please provide details about your project, timeline, specific requirements, and any questions you have. The more information you provide, the better I can assist you."
               ></textarea>
-              {formErrors.message && <span className="form-error">{formErrors.message}</span>}
+              {formErrors.message && <span className="error-message">{formErrors.message}</span>}
             </div>
             
             <button 
               type="submit" 
-              className="btn primary-btn"
+              className="btn primary-btn enhanced-btn submit-btn"
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'Sending...' : 'Send Message'}
+              {isSubmitting ? (
+                <>
+                  <div className="loading-spinner"></div>
+                  Sending Message...
+                </>
+              ) : (
+                <>
+                  <FaPaperPlane />
+                  Send Message
+                </>
+              )}
             </button>
           </form>
         </div>
       </section>
+      
+      <div className="consultation-cta enhanced-cta">
+        <div className="cta-content">
+          <h3>Ready to Start Your Environmental Project?</h3>
+          <p>
+            Whether you need innovative water treatment solutions, comprehensive environmental modeling, 
+            or sustainable engineering design, I'm here to help transform your challenges into opportunities. 
+            Let's collaborate to create solutions that benefit both your objectives and the environment.
+          </p>
+          <div className="cta-features">
+            <div className="feature-item">
+              <h4>Expert Consultation</h4>
+              <p>Comprehensive analysis and strategic planning</p>
+            </div>
+            <div className="feature-item">
+              <h4>Innovative Solutions</h4>
+              <p>Cutting-edge technology and sustainable approaches</p>
+            </div>
+            <div className="feature-item">
+              <h4>Proven Results</h4>
+              <p>Track record of successful project delivery</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

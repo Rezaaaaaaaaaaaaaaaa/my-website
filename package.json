@@ -1,13 +1,17 @@
 {
-  "name": "rmes-portfolio",
-  "version": "0.1.0",
+  "name": "reza-moghaddam-portfolio",
+  "version": "2.0.0",
   "private": true,
+  "description": "Professional portfolio website for Dr. Reza Moghaddam - Environmental Engineer & Water Systems Specialist",
+  "author": "Dr. Reza Moghaddam",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^6.16.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "framer-motion": "^10.16.0",
+    "react-intersection-observer": "^9.5.0"
   },
   "scripts": {
     "start": "react-scripts start",

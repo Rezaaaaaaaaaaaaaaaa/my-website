@@ -1,213 +1,368 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import heroImage from '../assets/hero-bg.jpg';
-import { FaFlask, FaWater, FaChartLine, FaProjectDiagram, FaBook, FaHandshake } from 'react-icons/fa';
+import { 
+  FaFlask, 
+  FaWater, 
+  FaChartLine, 
+  FaProjectDiagram, 
+  FaBook, 
+  FaHandshake,
+  FaLeaf,
+  FaRobot,
+  FaGlobe,
+  FaDatabase,
+  FaCogs,
+  FaLightbulb,
+  FaShieldAlt,
+  FaMicroscope,
+  FaSeedling
+} from 'react-icons/fa';
 
 const HomePage = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
-    // Check if the hero image exists by trying to load it
-    const img = new Image();
-    img.onload = () => setImageLoaded(true);
-    img.onerror = () => setImageLoaded(false);
-    img.src = heroImage;
+    // Animation for scroll effects
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    const fadeElements = document.querySelectorAll('.fade-in');
+    fadeElements.forEach(el => observer.observe(el));
 
     return () => {
-      img.onload = null;
-      img.onerror = null;
+      fadeElements.forEach(el => observer.unobserve(el));
     };
   }, []);
 
   return (
     <div className="home-page">
-      {/* Hero Section */}
-      <section className={`hero ${imageLoaded ? 'hero-with-image' : ''}`}>
-        <div className="hero-content">
+      {/* Enhanced Hero Section */}
+      <section className="hero enhanced-header">
+        <div className="header-background">
+          <div className="floating-icons">
+            <FaWater className="floating-icon icon-1" />
+            <FaLeaf className="floating-icon icon-2" />
+            <FaFlask className="floating-icon icon-3" />
+            <FaGlobe className="floating-icon icon-4" />
+            <FaCogs className="floating-icon icon-5" />
+            <FaLightbulb className="floating-icon icon-6" />
+            <FaRobot className="floating-icon icon-7" />
+            <FaSeedling className="floating-icon icon-8" />
+          </div>
+        </div>
+        <div className="header-content">
           <h1>Dr. Reza Moghaddam</h1>
-          <h2>Environmental & Bioprocess Engineer</h2>
-          <p>Specializing in innovative water treatment solutions, catchment modeling, and sustainable technology design with proven experience in research and industry.</p>
+          <h2>Environmental & Water Systems Engineer</h2>
+          <p>Pioneering sustainable solutions through advanced environmental modeling, innovative water treatment technologies, and nature-based engineering approaches</p>
           <div className="hero-buttons">
-            <Link to="/projects" className="btn primary-btn">View Projects</Link>
-            <Link to="/consulting" className="btn primary-btn">Consulting Services</Link>
-            <Link to="/contact" className="btn secondary-btn">Contact Me</Link>
+            <Link to="/projects" className="btn primary-btn enhanced-btn">Explore Projects</Link>
+            <Link to="/consulting" className="btn primary-btn enhanced-btn">Consulting Services</Link>
+            <Link to="/contact" className="btn secondary-btn enhanced-btn">Start Collaboration</Link>
+          </div>
+          <div className="header-stats">
+            <div className="stat-item">
+              <span className="stat-number">15+</span>
+              <span className="stat-label">Specialized Services</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">50+</span>
+              <span className="stat-label">Projects Completed</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">10+</span>
+              <span className="stat-label">Research Publications</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Expertise Section */}
-      <section className="expertise">
-        <h2>Areas of Expertise</h2>
+      {/* Enhanced Expertise Section */}
+      <section className="expertise modern-section fade-in">
+        <div className="section-header">
+          <FaLightbulb className="section-icon" />
+          <h2>Core Areas of Expertise</h2>
+          <p className="section-subtitle">Comprehensive environmental engineering solutions spanning multiple disciplines</p>
+        </div>
         <div className="expertise-grid">
-          <div className="expertise-card">
-            <div className="expertise-icon">
-              <FaWater size={40} />
+          <div className="expertise-card enhanced-card">
+            <div className="card-header">
+              <FaDatabase className="service-icon" />
+              <h3>Environmental Systems Modeling</h3>
             </div>
-            <h3>Environmental Engineering</h3>
             <ul>
-              <li>Water & Wastewater Treatment</li>
-              <li>Denitrifying Bioreactors</li>
-              <li>Agricultural Impact Mitigation</li>
-              <li>NZ Environmental Regulations</li>
-              <li>Catchment Modeling & Analysis</li>
-              <li>Resource Consent Applications</li>
+              <li>Integrated watershed modeling and simulation</li>
+              <li>Digital twin development for water systems</li>
+              <li>Predictive environmental quality assessment</li>
+              <li>Advanced hydraulic and hydrologic analysis</li>
+              <li>Climate adaptation and resilience planning</li>
             </ul>
+            <div className="technology-badges">
+              <span className="tech-badge">SWMM/pySWMM</span>
+              <span className="tech-badge">HEC-RAS</span>
+              <span className="tech-badge">MODFLOW</span>
+              <span className="tech-badge">Python</span>
+            </div>
           </div>
-          <div className="expertise-card">
-            <div className="expertise-icon">
-              <FaFlask size={40} />
+          
+          <div className="expertise-card enhanced-card">
+            <div className="card-header">
+              <FaFlask className="service-icon" />
+              <h3>Water Treatment Technology</h3>
             </div>
-            <h3>Bioprocess Engineering</h3>
             <ul>
-              <li>Bioreactor Design & Optimization</li>
-              <li>Bioethanol Production</li>
-              <li>Fermentation Process Control</li>
-              <li>Scale-up Methodology</li>
-              <li>Advanced Process Optimization</li>
-              <li>Waste Recovery & Repurposing</li>
+              <li>Advanced treatment system design</li>
+              <li>Innovative contaminant removal strategies</li>
+              <li>Bioprocess engineering and optimization</li>
+              <li>Resource recovery system development</li>
+              <li>Circular economy implementation</li>
             </ul>
+            <div className="technology-badges">
+              <span className="tech-badge">Bioreactor Design</span>
+              <span className="tech-badge">Membrane Technology</span>
+              <span className="tech-badge">Process Control</span>
+              <span className="tech-badge">Resource Recovery</span>
+            </div>
           </div>
-          <div className="expertise-card">
-            <div className="expertise-icon">
-              <FaChartLine size={40} />
+          
+          <div className="expertise-card enhanced-card">
+            <div className="card-header">
+              <FaGlobe className="service-icon" />
+              <h3>Geospatial & Data Science</h3>
             </div>
-            <h3>Analysis & Research</h3>
             <ul>
-              <li>Techno-Economic Analysis</li>
-              <li>Life Cycle Assessment</li>
-              <li>Data Analysis (Python, R)</li>
-              <li>Scientific Publication</li>
-              <li>Groundwater & Surface Water Modeling</li>
-              <li>GIS & Spatial Analysis</li>
+              <li>Environmental spatial modeling</li>
+              <li>Multi-dimensional data visualization</li>
+              <li>Land-water interaction analysis</li>
+              <li>Machine learning for environmental applications</li>
+              <li>Research methodology and experimental design</li>
             </ul>
+            <div className="technology-badges">
+              <span className="tech-badge">ArcGIS</span>
+              <span className="tech-badge">QGIS</span>
+              <span className="tech-badge">Python/R</span>
+              <span className="tech-badge">Machine Learning</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Projects Section */}
-      <section className="featured-projects">
-        <h2>Featured Projects</h2>
+      {/* Enhanced Featured Projects Section */}
+      <section className="featured-projects modern-section fade-in">
+        <div className="section-header">
+          <FaProjectDiagram className="section-icon" />
+          <h2>Featured Projects & Innovations</h2>
+          <p className="section-subtitle">Transforming environmental challenges into sustainable solutions</p>
+        </div>
         <div className="project-grid">
-          <div className="project-card">
-            <div className="project-icon">
-              <FaProjectDiagram size={32} />
+          <div className="project-card enhanced-card">
+            <div className="card-header">
+              <FaDatabase className="service-icon" />
+              <h3>Digital Twin Water Systems</h3>
             </div>
-            <h3>Enhanced Nitrate Removal in Woodchip Bioreactors</h3>
-            <p>Implementation of carbon dosing techniques to improve nitrate removal efficiency in agricultural drainage systems.</p>
+            <p>Revolutionary digital twin technology that creates virtual replicas of water infrastructure, enabling predictive maintenance and real-time optimization.</p>
             <div className="project-metrics">
-              <span>Efficiency Improvement: 30%</span>
-              <span>Cost Reduction: 25%</span>
+              <span>Predictive Accuracy: 95%</span>
+              <span>Maintenance Cost Reduction: 40%</span>
+              <span>System Uptime Improvement: 25%</span>
+            </div>
+            <div className="technology-badges">
+              <span className="tech-badge">IoT Integration</span>
+              <span className="tech-badge">Machine Learning</span>
+              <span className="tech-badge">Cloud Computing</span>
+            </div>
+            <Link to="/projects" className="project-link">Explore Details</Link>
+          </div>
+          
+          <div className="project-card enhanced-card">
+            <div className="card-header">
+              <FaSeedling className="service-icon" />
+              <h3>Enhanced Nitrate Removal Bioreactors</h3>
+            </div>
+            <p>Innovative carbon dosing techniques that dramatically improve nitrate removal efficiency in agricultural drainage systems.</p>
+            <div className="project-metrics">
+              <span>Removal Efficiency: 85%</span>
+              <span>Cost Reduction: 30%</span>
+              <span>Implementation Scale: Regional</span>
+            </div>
+            <div className="technology-badges">
+              <span className="tech-badge">Bioreactor Design</span>
+              <span className="tech-badge">Carbon Dosing</span>
+              <span className="tech-badge">Agricultural Systems</span>
             </div>
             <Link to="/projects" className="project-link">Learn More</Link>
           </div>
-          <div className="project-card">
-            <div className="project-icon">
-              <FaWater size={32} />
+          
+          <div className="project-card enhanced-card">
+            <div className="card-header">
+              <FaLeaf className="service-icon" />
+              <h3>Nature-Based Solution Networks</h3>
             </div>
-            <h3>Aquatic Mitigation Systems for NES-F Compliance</h3>
-            <p>Development of cost-effective mitigation systems for agricultural runoff treatment compliant with NZ regulations.</p>
+            <p>Integrated green infrastructure systems that provide multiple environmental benefits while treating water naturally.</p>
             <div className="project-metrics">
-              <span>Implementation Cost: 20% lower than alternatives</span>
-              <span>Treatment Efficiency: 85% contaminant removal</span>
+              <span>Multi-benefit Score: 9/10</span>
+              <span>Community Value: High</span>
+              <span>Ecosystem Services: Multiple</span>
             </div>
-            <Link to="/projects" className="project-link">Learn More</Link>
+            <div className="technology-badges">
+              <span className="tech-badge">Green Infrastructure</span>
+              <span className="tech-badge">Ecosystem Design</span>
+              <span className="tech-badge">Sustainability</span>
+            </div>
+            <Link to="/projects" className="project-link">View Impact</Link>
           </div>
-          <div className="project-card">
-            <div className="project-icon">
-              <FaChartLine size={32} />
+          
+          <div className="project-card enhanced-card">
+            <div className="card-header">
+              <FaChartLine className="service-icon" />
+              <h3>Integrated Watershed Modeling</h3>
             </div>
-            <h3>Catchment Water Quality & Quantity Modeling</h3>
-            <p>Comprehensive modeling and analysis of agricultural catchments with calibration of hydrological models.</p>
+            <p>Comprehensive catchment models that predict water resource availability and quality under changing climate and land use conditions.</p>
             <div className="project-metrics">
-              <span>Data Points: Over 10,000 collected</span>
-              <span>Model Accuracy: 95% prediction rate</span>
+              <span>Model Accuracy: 92%</span>
+              <span>Scenarios Tested: 50+</span>
+              <span>Planning Horizon: 50 years</span>
             </div>
-            <Link to="/projects" className="project-link">Learn More</Link>
+            <div className="technology-badges">
+              <span className="tech-badge">SWAT</span>
+              <span className="tech-badge">Climate Modeling</span>
+              <span className="tech-badge">GIS Analysis</span>
+            </div>
+            <Link to="/projects" className="project-link">See Results</Link>
           </div>
         </div>
         <div className="section-cta">
-          <Link to="/projects" className="btn primary-btn">View All Projects</Link>
+          <Link to="/projects" className="btn primary-btn enhanced-btn">View All Projects</Link>
         </div>
       </section>
 
-      {/* Publications Preview */}
-      <section className="publications-preview">
-        <h2>Recent Publications</h2>
+      {/* Enhanced Publications Preview */}
+      <section className="publications-preview modern-section fade-in">
+        <div className="section-header">
+          <FaBook className="section-icon" />
+          <h2>Research & Publications</h2>
+          <p className="section-subtitle">Contributing to the scientific understanding of environmental systems</p>
+        </div>
         <div className="publication-list">
-          <div className="publication-item">
-            <div className="publication-icon">
-              <FaBook size={24} />
+          <div className="publication-item enhanced-card">
+            <div className="card-header">
+              <FaMicroscope className="service-icon" />
+              <h3>Flow analysis and hydraulic performance of denitrifying bioreactors under different carbon dosing treatments</h3>
             </div>
-            <h3>Flow analysis and hydraulic performance of denitrifying bioreactors under different carbon dosing treatments</h3>
-            <p>Journal of Environmental Management, 2023</p>
+            <p><strong>Journal of Environmental Management</strong> | 2023 | Impact Factor: 8.9</p>
+            <p>Comprehensive analysis of hydraulic performance optimization in carbon-enhanced bioreactor systems.</p>
+            <div className="technology-badges">
+              <span className="tech-badge">Hydraulic Modeling</span>
+              <span className="tech-badge">Performance Optimization</span>
+            </div>
           </div>
-          <div className="publication-item">
-            <div className="publication-icon">
-              <FaBook size={24} />
+          
+          <div className="publication-item enhanced-card">
+            <div className="card-header">
+              <FaFlask className="service-icon" />
+              <h3>Constant carbon dosing of a pilot-scale denitrifying bioreactor to improve nitrate removal</h3>
             </div>
-            <h3>Constant carbon dosing of a pilot-scale denitrifying bioreactor to improve nitrate removal from agricultural tile drainage</h3>
-            <p>Ecological Engineering, 2023</p>
+            <p><strong>Ecological Engineering</strong> | 2023 | Impact Factor: 4.0</p>
+            <p>Field-scale demonstration of enhanced nitrate removal through strategic carbon supplementation.</p>
+            <div className="technology-badges">
+              <span className="tech-badge">Pilot Studies</span>
+              <span className="tech-badge">Field Implementation</span>
+            </div>
           </div>
         </div>
         <div className="section-cta">
-          <Link to="/publications" className="btn primary-btn">View All Publications</Link>
+          <Link to="/publications" className="btn primary-btn enhanced-btn">View All Publications</Link>
         </div>
       </section>
 
-      {/* Consulting Services Preview */}
-      <section className="featured-projects">
-        <h2>Consulting Services</h2>
+      {/* Enhanced Consulting Services Preview */}
+      <section className="featured-projects modern-section fade-in">
+        <div className="section-header">
+          <FaCogs className="section-icon" />
+          <h2>Consulting Services Portfolio</h2>
+          <p className="section-subtitle">Comprehensive environmental engineering solutions for complex challenges</p>
+        </div>
         <div className="project-grid">
-          <div className="project-card">
-            <div className="project-icon">
-              <FaWater size={32} />
+          <div className="project-card enhanced-card">
+            <div className="card-header">
+              <FaDatabase className="service-icon" />
+              <h3>Digital Twin Development</h3>
             </div>
-            <h3>Groundwater & Surface Water Modeling</h3>
-            <p>Expert analysis and modeling of groundwater flow, solute transport, and surface water systems for sustainable water resource management.</p>
-            <div className="project-metrics">
-              <span>Compliance: NPS-FM 2020 & NES-F</span>
-              <span>Advanced Tools: HEC-HMS, HEC-RAS, GIS</span>
-            </div>
-            <Link to="/consulting" className="project-link">Learn More</Link>
-          </div>
-          <div className="project-card">
-            <div className="project-icon">
-              <FaFlask size={32} />
-            </div>
-            <h3>Wastewater Treatment Design</h3>
-            <p>Custom designs for municipal and agricultural wastewater treatment systems with aerobic and anaerobic processes tailored to specific needs.</p>
-            <div className="project-metrics">
-              <span>Efficiency: Optimized for local conditions</span>
-              <span>Cost-Benefit: Full lifecycle analysis</span>
+            <p>Create virtual replicas of your water infrastructure that learn, adapt, and optimize performance in real-time.</p>
+            <div className="technology-badges">
+              <span className="tech-badge">IoT Integration</span>
+              <span className="tech-badge">Predictive Analytics</span>
+              <span className="tech-badge">Real-time Monitoring</span>
             </div>
             <Link to="/consulting" className="project-link">Learn More</Link>
           </div>
-          <div className="project-card">
-            <div className="project-icon">
-              <FaChartLine size={32} />
+          
+          <div className="project-card enhanced-card">
+            <div className="card-header">
+              <FaLeaf className="service-icon" />
+              <h3>Nature-Based Solutions</h3>
             </div>
-            <h3>Environmental Impact Assessment</h3>
-            <p>Comprehensive assessment of environmental impacts with regulatory compliance for water resource projects and infrastructure.</p>
-            <div className="project-metrics">
-              <span>Regulatory Framework: RMA, NPS-FM, NES-F</span>
-              <span>Stakeholder Engagement: Multi-level approach</span>
+            <p>Harness the power of natural systems to provide sustainable, cost-effective environmental solutions.</p>
+            <div className="technology-badges">
+              <span className="tech-badge">Green Infrastructure</span>
+              <span className="tech-badge">Ecosystem Services</span>
+              <span className="tech-badge">Sustainable Design</span>
             </div>
-            <Link to="/consulting" className="project-link">Learn More</Link>
+            <Link to="/consulting" className="project-link">Explore Options</Link>
+          </div>
+          
+          <div className="project-card enhanced-card">
+            <div className="card-header">
+              <FaRobot className="service-icon" />
+              <h3>AI-Powered Environmental Assessment</h3>
+            </div>
+            <p>Advanced machine learning models that predict environmental quality and optimize management strategies.</p>
+            <div className="technology-badges">
+              <span className="tech-badge">Machine Learning</span>
+              <span className="tech-badge">Predictive Modeling</span>
+              <span className="tech-badge">Early Warning Systems</span>
+            </div>
+            <Link to="/consulting" className="project-link">See Applications</Link>
           </div>
         </div>
         <div className="section-cta">
-          <Link to="/consulting" className="btn primary-btn">View All Services</Link>
+          <Link to="/consulting" className="btn primary-btn enhanced-btn">Explore All Services</Link>
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="contact-cta">
-        <div className="contact-icon">
-          <FaHandshake size={48} />
+      {/* Enhanced Contact CTA */}
+      <section className="contact-cta enhanced-cta">
+        <div className="cta-background">
+          <div className="cta-icons">
+            <FaWater />
+            <FaLeaf />
+            <FaLightbulb />
+            <FaCogs />
+            <FaGlobe />
+            <FaRobot />
+          </div>
         </div>
-        <h2>Interested in Collaboration?</h2>
-        <p>I'm always open to discussing research projects, consulting opportunities, or innovative solutions for environmental challenges.</p>
-        <Link to="/contact" className="btn primary-btn">Get in Touch</Link>
+        <div className="cta-content">
+          <h3>Ready to Transform Environmental Challenges?</h3>
+          <p>
+            Partner with a leading environmental engineer who combines cutting-edge technology with sustainable practices. 
+            From digital twins that predict the future to nature-based solutions that heal ecosystems, let's create 
+            innovative solutions that benefit both your objectives and the environment.
+          </p>
+          <div className="cta-buttons">
+            <Link to="/contact" className="btn primary-btn enhanced-btn">Start Your Project</Link>
+            <Link to="/resume" className="btn secondary-btn enhanced-btn">View Credentials</Link>
+          </div>
+        </div>
       </section>
     </div>
   );

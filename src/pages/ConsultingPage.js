@@ -30,8 +30,20 @@ import {
   FaNetworkWired,
   FaGlasses,
   FaAtom,
-  FaCompass
+  FaCompass,
+  FaUserTie,
+  FaGraduationCap,
+  FaAward
 } from 'react-icons/fa';
+
+import { 
+  SiPython, 
+  SiR, 
+  SiMathworks, 
+  SiQgis, 
+  SiLinkedin, 
+  SiGooglescholar 
+} from 'react-icons/si';
 
 const ConsultingPage = () => {
   return (
@@ -102,7 +114,7 @@ const ConsultingPage = () => {
                 <span className="tech-badge">SWAT</span>
                 <span className="tech-badge">MIKE SHE</span>
                 <span className="tech-badge">HEC-HMS</span>
-                <span className="tech-badge">Python</span>
+                <span className="tech-badge"><SiPython style={{marginRight: '4px'}} />Python</span>
               </div>
             </div>
 
@@ -130,7 +142,7 @@ const ConsultingPage = () => {
                 <span className="tech-badge">HEC-RAS</span>
                 <span className="tech-badge">EPANET</span>
                 <span className="tech-badge">SWMM</span>
-                <span className="tech-badge">Matlab</span>
+                <span className="tech-badge"><SiMathworks style={{marginRight: '4px'}} />Matlab</span>
               </div>
             </div>
 
@@ -156,8 +168,8 @@ const ConsultingPage = () => {
               </ul>
               <div className="technology-badges">
                 <span className="tech-badge">Machine Learning</span>
-                <span className="tech-badge">Python</span>
-                <span className="tech-badge">R</span>
+                <span className="tech-badge"><SiPython style={{marginRight: '4px'}} />Python</span>
+                <span className="tech-badge"><SiR style={{marginRight: '4px'}} />R</span>
                 <span className="tech-badge">TensorFlow</span>
               </div>
             </div>
@@ -821,7 +833,7 @@ const ConsultingPage = () => {
               </div>
               <div className="tool-categories">
                 <div className="tool-category">
-                  <h4>Python Ecosystem</h4>
+                  <h4><SiPython style={{marginRight: '8px'}} />Python Ecosystem</h4>
                   <div className="technology-badges">
                     <span className="tech-badge">Pandas</span>
                     <span className="tech-badge">NumPy</span>
@@ -830,24 +842,115 @@ const ConsultingPage = () => {
                   </div>
                 </div>
                 <div className="tool-category">
-                  <h4>Statistical Computing</h4>
+                  <h4><SiR style={{marginRight: '8px'}} />Statistical Computing</h4>
                   <div className="technology-badges">
-                    <span className="tech-badge">R</span>
+                    <span className="tech-badge">Advanced Statistics</span>
+                    <span className="tech-badge">Data Visualization</span>
+                    <span className="tech-badge">Regression Analysis</span>
                   </div>
                 </div>
                 <div className="tool-category">
-                  <h4>Spatial Analysis</h4>
+                  <h4><SiQgis style={{marginRight: '8px'}} />Spatial Analysis</h4>
                   <div className="technology-badges">
                     <span className="tech-badge">QGIS</span>
                     <span className="tech-badge">ArcGIS</span>
+                    <span className="tech-badge">Spatial Modeling</span>
                   </div>
                 </div>
                 <div className="tool-category">
-                  <h4>Engineering Analysis</h4>
+                  <h4><SiMathworks style={{marginRight: '8px'}} />Engineering Analysis</h4>
                   <div className="technology-badges">
-                    <span className="tech-badge">Matlab</span>
+                    <span className="tech-badge">Numerical Computing</span>
+                    <span className="tech-badge">Signal Processing</span>
+                    <span className="tech-badge">Optimization</span>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Professional Qualifications & Credentials */}
+        <section className="service-category modern-section">
+          <div className="section-header">
+            <FaUserTie className="section-icon" />
+            <h2>Professional Qualifications & Credentials</h2>
+            <p className="section-subtitle">PhD-qualified environmental engineer with proven industry experience</p>
+          </div>
+          <div className="service-grid">
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaGraduationCap className="service-icon" />
+                <h3>Educational Excellence</h3>
+              </div>
+              <ul className="service-features">
+                <li><strong>PhD Environmental Engineering</strong> - University of Waikato (2019-2022)</li>
+                <li><strong>MSc Chemical Engineering</strong> - Sahand University of Technology (2015-2017)</li>
+                <li><strong>BSc Chemical Engineering</strong> - University of Zanjan (2011-2015)</li>
+                <li>Specialized research in enhanced nitrate removal via carbon dosing</li>
+                <li>Advanced training in environmental systems modeling and analysis</li>
+              </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">PhD Qualified</span>
+                <span className="tech-badge">Research Excellence</span>
+                <span className="tech-badge">Advanced Degrees</span>
+              </div>
+            </div>
+
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaBuilding className="service-icon" />
+                <h3>Professional Experience</h3>
+              </div>
+              <ul className="service-features">
+                <li><strong>Environmental Engineer</strong> - NIWA (Mar 2023 - Present)</li>
+                <li><strong>Water Engineer</strong> - Williamson Water & Land Advisory (2022)</li>
+                <li><strong>Chemical Engineer</strong> - Bidestan Alcohol & Foodstuff Co (2016-2019)</li>
+                <li>Leading researcher in sustainable water treatment technologies</li>
+                <li>Proven track record in both research and practical applications</li>
+              </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Industry Experience</span>
+                <span className="tech-badge">Research Leadership</span>
+                <span className="tech-badge">Project Management</span>
+              </div>
+            </div>
+
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <FaAward className="service-icon" />
+                <h3>Professional Affiliations & Recognition</h3>
+              </div>
+              <ul className="service-features">
+                <li><strong>Engineering New Zealand</strong> - Professional Member</li>
+                <li><strong>Chartered Professional Engineer (CPEng)</strong> - In Progress</li>
+                <li><strong>International Water Quality Forums</strong> - Active Participant</li>
+                <li>Published researcher with 10+ peer-reviewed publications</li>
+                <li>Recognized expert in environmental systems modeling</li>
+              </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Professional Member</span>
+                <span className="tech-badge">CPEng Candidate</span>
+                <span className="tech-badge">Published Researcher</span>
+              </div>
+            </div>
+
+            <div className="service-card enhanced-card">
+              <div className="card-header">
+                <SiLinkedin className="service-icon" />
+                <h3>Professional Networks & Publications</h3>
+              </div>
+              <ul className="service-features">
+                <li><strong>LinkedIn Professional Profile</strong> - nz.linkedin.com/in/reza-moghaddam</li>
+                <li><strong>Google Scholar</strong> - Comprehensive publication record</li>
+                <li><strong>NIWA Research Profile</strong> - Current research activities</li>
+                <li>Actively contributing to water quality and environmental forums</li>
+                <li>Multilingual capabilities (English, Persian)</li>
+              </ul>
+              <div className="technology-badges">
+                <span className="tech-badge">Professional Networks</span>
+                <span className="tech-badge">International Collaboration</span>
+                <span className="tech-badge">Multilingual</span>
               </div>
             </div>
           </div>

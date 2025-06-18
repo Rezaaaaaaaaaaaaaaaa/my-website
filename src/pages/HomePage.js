@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  FaFlask, 
-  FaWater, 
-  FaChartLine, 
-  FaProjectDiagram, 
-  FaBook, 
-  FaHandshake,
+import {
+  FaFlask,
+  FaWater,
+  FaChartLine,
+  FaProjectDiagram,
+  FaBook,
   FaLeaf,
   FaRobot,
   FaGlobe,
   FaDatabase,
   FaCogs,
   FaLightbulb,
-  FaShieldAlt,
   FaMicroscope,
   FaSeedling,
   FaGraduationCap,
@@ -21,28 +19,18 @@ import {
   FaUserTie,
   FaMapMarkedAlt,
   FaIndustry,
-  FaRecycle,
-  FaTree,
-  FaBrain,
-  FaNetworkWired,
-  FaAtom,
-  FaCompass,
   FaBuilding,
-  FaLayerGroup
+  FaAtom
 } from 'react-icons/fa';
 
-import { 
-  SiPython, 
-  SiR, 
-  SiMathworks, 
-  SiQgis, 
-  SiLinkedin, 
-  SiGooglescholar 
+import {
+  SiPython,
+  SiR,
+  SiQgis,
+  SiLinkedin
 } from 'react-icons/si';
 
 const HomePage = () => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
   useEffect(() => {
     // Animation for scroll effects
     const observerOptions = {
@@ -153,7 +141,7 @@ const HomePage = () => {
               <span className="tech-badge">Python</span>
             </div>
           </div>
-          
+
           <div className="expertise-card enhanced-card">
             <div className="card-header">
               <FaFlask className="service-icon" />
@@ -173,7 +161,7 @@ const HomePage = () => {
               <span className="tech-badge">Resource Recovery</span>
             </div>
           </div>
-          
+
           <div className="expertise-card enhanced-card">
             <div className="card-header">
               <FaGlobe className="service-icon" />
@@ -187,11 +175,11 @@ const HomePage = () => {
               <li><strong>Research Design:</strong> Experimental optimization and statistical analysis</li>
             </ul>
             <div className="technology-badges">
-              <span className="tech-badge"><SiQgis style={{marginRight: '4px'}} />QGIS</span>
+              <span className="tech-badge"><SiQgis style={{ marginRight: '4px' }} />QGIS</span>
               <span className="tech-badge">ArcGIS</span>
-              <span className="tech-badge"><SiPython style={{marginRight: '4px'}} />Python</span>
-              <span className="tech-badge"><SiR style={{marginRight: '4px'}} />R</span>
-              <span className="tech-badge"><SiMathworks style={{marginRight: '4px'}} />Matlab</span>
+              <span className="tech-badge"><SiPython style={{ marginRight: '4px' }} />Python</span>
+              <span className="tech-badge"><SiR style={{ marginRight: '4px' }} />R</span>
+              <span className="tech-badge">Matlab</span>
             </div>
           </div>
         </div>
@@ -223,7 +211,7 @@ const HomePage = () => {
             </div>
             <Link to="/projects" className="project-link">Explore Details</Link>
           </div>
-          
+
           <div className="project-card enhanced-card">
             <div className="card-header">
               <FaSeedling className="service-icon" />
@@ -242,7 +230,7 @@ const HomePage = () => {
             </div>
             <Link to="/projects" className="project-link">Learn More</Link>
           </div>
-          
+
           <div className="project-card enhanced-card">
             <div className="card-header">
               <FaLeaf className="service-icon" />
@@ -261,7 +249,7 @@ const HomePage = () => {
             </div>
             <Link to="/projects" className="project-link">View Impact</Link>
           </div>
-          
+
           <div className="project-card enhanced-card">
             <div className="card-header">
               <FaChartLine className="service-icon" />
@@ -413,7 +401,7 @@ const HomePage = () => {
               <span className="tech-badge">Performance Optimization</span>
             </div>
           </div>
-          
+
           <div className="publication-item enhanced-card">
             <div className="card-header">
               <FaFlask className="service-icon" />
@@ -501,7 +489,7 @@ const HomePage = () => {
             </div>
             <Link to="/consulting" className="project-link">Learn More</Link>
           </div>
-          
+
           <div className="project-card enhanced-card">
             <div className="card-header">
               <FaLeaf className="service-icon" />
@@ -515,7 +503,7 @@ const HomePage = () => {
             </div>
             <Link to="/consulting" className="project-link">Explore Options</Link>
           </div>
-          
+
           <div className="project-card enhanced-card">
             <div className="card-header">
               <FaRobot className="service-icon" />
@@ -550,18 +538,14 @@ const HomePage = () => {
         <div className="cta-content">
           <h3>Ready to Transform Environmental Challenges?</h3>
           <p>
-            Partner with a PhD-qualified environmental engineer who combines cutting-edge technology with sustainable practices. 
-            From digital twins that predict the future to nature-based solutions that heal ecosystems, let's create 
+            Partner with a PhD-qualified environmental engineer who combines cutting-edge technology with sustainable practices.
+            From digital twins that predict the future to nature-based solutions that heal ecosystems, let's create
             innovative solutions that benefit both your objectives and the environment.
           </p>
           <div className="professional-links">
             <div className="link-item">
               <SiLinkedin className="link-icon" />
               <span>LinkedIn Professional Profile</span>
-            </div>
-            <div className="link-item">
-              <SiGooglescholar className="link-icon" />
-              <span>Google Scholar Publications</span>
             </div>
             <div className="link-item">
               <FaBuilding className="link-icon" />

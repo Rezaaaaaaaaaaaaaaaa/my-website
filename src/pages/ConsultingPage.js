@@ -1,48 +1,42 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  FaWater, 
-  FaFlask, 
-  FaChartLine, 
-  FaLeaf, 
-  FaCogs, 
-  FaGlobe, 
+import {
+  FaWater,
+  FaFlask,
+  FaChartLine,
+  FaLeaf,
+  FaCogs,
+  FaGlobe,
   FaLightbulb,
   FaMicroscope,
   FaIndustry,
-  FaRecycle,
-  FaTree,
-  FaShieldAlt,
-  FaRobot,
   FaDatabase,
   FaMapMarkedAlt,
-  FaUsers,
-  FaCloudRain,
-  FaHandHoldingWater,
   FaSeedling,
   FaChartArea,
   FaMountain,
-  FaCity,
   FaBuilding,
   FaLayerGroup,
   FaSearchLocation,
-  FaBrain,
-  FaNetworkWired,
-  FaGlasses,
-  FaAtom,
-  FaCompass,
   FaUserTie,
   FaGraduationCap,
-  FaAward
+  FaAward,
+  FaRobot,
+  FaTree,
+  FaBrain,
+  FaShieldAlt,
+  FaAtom,
+  FaGlasses,
+  FaNetworkWired,
+  FaRecycle,
+  FaCompass
 } from 'react-icons/fa';
 
-import { 
-  SiPython, 
-  SiR, 
-  SiMathworks, 
-  SiQgis, 
-  SiLinkedin, 
-  SiGooglescholar 
+import {
+  SiPython,
+  SiR,
+  SiQgis,
+  SiLinkedin
 } from 'react-icons/si';
 
 const ConsultingPage = () => {
@@ -96,11 +90,11 @@ const ConsultingPage = () => {
                 <h3>Integrated Watershed Modeling & Simulation</h3>
               </div>
               <p>
-                Comprehensive watershed modeling that works like a digital crystal ball - predicting how water moves, 
+                Comprehensive watershed modeling that works like a digital crystal ball - predicting how water moves,
                 transforms, and impacts ecosystems across entire catchments.
               </p>
               <p>
-                These sophisticated models integrate surface water, groundwater, land use, and climate data to provide 
+                These sophisticated models integrate surface water, groundwater, land use, and climate data to provide
                 holistic insights for sustainable water resource management.
               </p>
               <ul className="service-features">
@@ -114,7 +108,7 @@ const ConsultingPage = () => {
                 <span className="tech-badge">SWAT</span>
                 <span className="tech-badge">MIKE SHE</span>
                 <span className="tech-badge">HEC-HMS</span>
-                <span className="tech-badge"><SiPython style={{marginRight: '4px'}} />Python</span>
+                <span className="tech-badge"><SiPython style={{ marginRight: '4px' }} />Python</span>
               </div>
             </div>
 
@@ -124,11 +118,11 @@ const ConsultingPage = () => {
                 <h3>Advanced Hydraulic & Hydrologic Analysis</h3>
               </div>
               <p>
-                Hydraulic analysis that functions like an engineer's X-ray vision - seeing through complex water 
+                Hydraulic analysis that functions like an engineer's X-ray vision - seeing through complex water
                 systems to understand flow patterns, pressure dynamics, and system performance.
               </p>
               <p>
-                From pipe networks to river systems, these analyses ensure optimal design and operation 
+                From pipe networks to river systems, these analyses ensure optimal design and operation
                 of water infrastructure.
               </p>
               <ul className="service-features">
@@ -142,7 +136,7 @@ const ConsultingPage = () => {
                 <span className="tech-badge">HEC-RAS</span>
                 <span className="tech-badge">EPANET</span>
                 <span className="tech-badge">SWMM</span>
-                <span className="tech-badge"><SiMathworks style={{marginRight: '4px'}} />Matlab</span>
+                <span className="tech-badge">Matlab</span>
               </div>
             </div>
 
@@ -152,11 +146,11 @@ const ConsultingPage = () => {
                 <h3>Predictive Environmental Quality Assessment</h3>
               </div>
               <p>
-                AI-powered environmental forecasting that acts like a weather prediction system for water quality - 
+                AI-powered environmental forecasting that acts like a weather prediction system for water quality -
                 anticipating problems before they become critical issues.
               </p>
               <p>
-                Machine learning algorithms analyze environmental data patterns to provide early warnings 
+                Machine learning algorithms analyze environmental data patterns to provide early warnings
                 and optimize management strategies.
               </p>
               <ul className="service-features">
@@ -168,8 +162,8 @@ const ConsultingPage = () => {
               </ul>
               <div className="technology-badges">
                 <span className="tech-badge">Machine Learning</span>
-                <span className="tech-badge"><SiPython style={{marginRight: '4px'}} />Python</span>
-                <span className="tech-badge"><SiR style={{marginRight: '4px'}} />R</span>
+                <span className="tech-badge"><SiPython style={{ marginRight: '4px' }} />Python</span>
+                <span className="tech-badge"><SiR style={{ marginRight: '4px' }} />R</span>
                 <span className="tech-badge">TensorFlow</span>
               </div>
             </div>
@@ -180,11 +174,11 @@ const ConsultingPage = () => {
                 <h3>Digital Twin Development for Water Systems</h3>
               </div>
               <p>
-                Digital twin technology that creates a virtual mirror of your water infrastructure - 
+                Digital twin technology that creates a virtual mirror of your water infrastructure -
                 think of it as building a smart, learning replica that evolves with your real system.
               </p>
               <p>
-                These digital replicas enable predictive maintenance, scenario testing, and 
+                These digital replicas enable predictive maintenance, scenario testing, and
                 optimization without disrupting actual operations.
               </p>
               <ul className="service-features">
@@ -208,11 +202,11 @@ const ConsultingPage = () => {
                 <h3>Nature-Based Solution Development</h3>
               </div>
               <p>
-                Nature-based engineering that works like partnering with ecosystems - using natural processes 
+                Nature-based engineering that works like partnering with ecosystems - using natural processes
                 to solve environmental challenges while providing multiple co-benefits.
               </p>
               <p>
-                These solutions harness the power of natural systems to treat water, manage floods, 
+                These solutions harness the power of natural systems to treat water, manage floods,
                 and enhance biodiversity simultaneously.
               </p>
               <ul className="service-features">
@@ -236,11 +230,11 @@ const ConsultingPage = () => {
                 <h3>Green Infrastructure Implementation</h3>
               </div>
               <p>
-                Green infrastructure that functions like nature's own utility system - providing essential 
+                Green infrastructure that functions like nature's own utility system - providing essential
                 services while enhancing community livability and environmental health.
               </p>
               <p>
-                Integrated solutions that manage stormwater, improve air quality, reduce urban heat, 
+                Integrated solutions that manage stormwater, improve air quality, reduce urban heat,
                 and create valuable community spaces.
               </p>
               <ul className="service-features">
@@ -264,11 +258,11 @@ const ConsultingPage = () => {
                 <h3>Ecological Engineering Approaches</h3>
               </div>
               <p>
-                Ecological engineering that operates like ecosystem rehabilitation - restoring natural 
+                Ecological engineering that operates like ecosystem rehabilitation - restoring natural
                 functions while providing engineered performance for human needs.
               </p>
               <p>
-                Sustainable solutions that work with natural processes to create self-maintaining, 
+                Sustainable solutions that work with natural processes to create self-maintaining,
                 resilient systems that improve over time.
               </p>
               <ul className="service-features">
@@ -292,11 +286,11 @@ const ConsultingPage = () => {
                 <h3>Resilient System Design for Climate Adaptation</h3>
               </div>
               <p>
-                Climate-resilient infrastructure that works like an adaptive immune system - evolving 
+                Climate-resilient infrastructure that works like an adaptive immune system - evolving
                 and strengthening in response to changing environmental conditions.
               </p>
               <p>
-                Forward-thinking designs that not only withstand future climate scenarios but 
+                Forward-thinking designs that not only withstand future climate scenarios but
                 actually improve performance under stress.
               </p>
               <ul className="service-features">
@@ -330,11 +324,11 @@ const ConsultingPage = () => {
                 <h3>Treatment System Design & Optimization</h3>
               </div>
               <p>
-                Water treatment design that functions like a precision medicine approach - customizing 
+                Water treatment design that functions like a precision medicine approach - customizing
                 treatment strategies to match specific water quality challenges and regulatory requirements.
               </p>
               <p>
-                From concept to commissioning, comprehensive design services that optimize performance, 
+                From concept to commissioning, comprehensive design services that optimize performance,
                 efficiency, and long-term sustainability.
               </p>
               <ul className="service-features">
@@ -358,11 +352,11 @@ const ConsultingPage = () => {
                 <h3>Innovative Contaminant Removal Strategies</h3>
               </div>
               <p>
-                Contaminant removal that works like a molecular-level security system - identifying and 
+                Contaminant removal that works like a molecular-level security system - identifying and
                 eliminating specific pollutants with precision and efficiency.
               </p>
               <p>
-                Advanced treatment technologies targeting emerging contaminants, micropollutants, 
+                Advanced treatment technologies targeting emerging contaminants, micropollutants,
                 and challenging water quality issues.
               </p>
               <ul className="service-features">
@@ -386,11 +380,11 @@ const ConsultingPage = () => {
                 <h3>Water Quality Management Frameworks</h3>
               </div>
               <p>
-                Water quality management that operates like a comprehensive health monitoring system - 
+                Water quality management that operates like a comprehensive health monitoring system -
                 continuously tracking, analyzing, and maintaining optimal water conditions.
               </p>
               <p>
-                Integrated frameworks that ensure consistent water quality through monitoring, 
+                Integrated frameworks that ensure consistent water quality through monitoring,
                 analysis, and adaptive management strategies.
               </p>
               <ul className="service-features">
@@ -414,11 +408,11 @@ const ConsultingPage = () => {
                 <h3>Decentralized Treatment Solutions</h3>
               </div>
               <p>
-                Decentralized treatment that works like a distributed network - bringing treatment 
+                Decentralized treatment that works like a distributed network - bringing treatment
                 capabilities closer to where they're needed while maintaining system-wide efficiency.
               </p>
               <p>
-                Small-scale, community-based treatment systems that provide flexibility, resilience, 
+                Small-scale, community-based treatment systems that provide flexibility, resilience,
                 and cost-effective solutions for diverse applications.
               </p>
               <ul className="service-features">
@@ -442,11 +436,11 @@ const ConsultingPage = () => {
                 <h3>Bioprocess Engineering & Optimization</h3>
               </div>
               <p>
-                Bioprocess engineering that functions like conducting a microbial orchestra - optimizing 
+                Bioprocess engineering that functions like conducting a microbial orchestra - optimizing
                 biological processes to achieve maximum treatment efficiency and resource recovery.
               </p>
               <p>
-                Advanced biological treatment systems that harness the power of microorganisms 
+                Advanced biological treatment systems that harness the power of microorganisms
                 for sustainable water treatment and resource recovery.
               </p>
               <ul className="service-features">
@@ -470,11 +464,11 @@ const ConsultingPage = () => {
                 <h3>Resource Recovery System Development</h3>
               </div>
               <p>
-                Resource recovery that works like urban mining - extracting valuable resources from 
+                Resource recovery that works like urban mining - extracting valuable resources from
                 waste streams to create circular, sustainable treatment systems.
               </p>
               <p>
-                Innovative approaches that transform waste treatment facilities into resource 
+                Innovative approaches that transform waste treatment facilities into resource
                 recovery centers, generating energy, nutrients, and clean water.
               </p>
               <ul className="service-features">
@@ -498,11 +492,11 @@ const ConsultingPage = () => {
                 <h3>Industrial Ecology Implementation</h3>
               </div>
               <p>
-                Industrial ecology that operates like a natural ecosystem - where waste from one 
+                Industrial ecology that operates like a natural ecosystem - where waste from one
                 process becomes input for another, creating efficient, sustainable industrial networks.
               </p>
               <p>
-                Systems thinking approaches that optimize resource use across industrial facilities 
+                Systems thinking approaches that optimize resource use across industrial facilities
                 and create symbiotic relationships between different processes.
               </p>
               <ul className="service-features">
@@ -526,11 +520,11 @@ const ConsultingPage = () => {
                 <h3>Circular Economy Approaches</h3>
               </div>
               <p>
-                Circular economy design that functions like nature's own recycling system - eliminating 
+                Circular economy design that functions like nature's own recycling system - eliminating
                 waste by designing processes where every output becomes a valuable input.
               </p>
               <p>
-                Comprehensive strategies that redesign industrial and municipal systems to minimize 
+                Comprehensive strategies that redesign industrial and municipal systems to minimize
                 waste, maximize resource efficiency, and create regenerative processes.
               </p>
               <ul className="service-features">
@@ -564,11 +558,11 @@ const ConsultingPage = () => {
                 <h3>Environmental Spatial Modeling</h3>
               </div>
               <p>
-                Environmental spatial modeling that works like Google Earth for environmental data - 
+                Environmental spatial modeling that works like Google Earth for environmental data -
                 revealing hidden patterns, relationships, and trends across landscapes and watersheds.
               </p>
               <p>
-                Advanced GIS applications that transform spatial data into actionable insights 
+                Advanced GIS applications that transform spatial data into actionable insights
                 for environmental management and decision-making.
               </p>
               <ul className="service-features">
@@ -592,11 +586,11 @@ const ConsultingPage = () => {
                 <h3>Multi-Dimensional Data Visualization</h3>
               </div>
               <p>
-                Data visualization that functions like a translator for complex information - converting 
+                Data visualization that functions like a translator for complex information - converting
                 multidimensional environmental data into clear, intuitive visual stories.
               </p>
               <p>
-                Interactive dashboards and visualizations that make complex environmental data 
+                Interactive dashboards and visualizations that make complex environmental data
                 accessible to stakeholders and decision-makers.
               </p>
               <ul className="service-features">
@@ -620,11 +614,11 @@ const ConsultingPage = () => {
                 <h3>Land-Water Interaction Analysis</h3>
               </div>
               <p>
-                Land-water analysis that operates like an ecosystem detective - investigating the 
+                Land-water analysis that operates like an ecosystem detective - investigating the
                 complex relationships between terrestrial and aquatic systems.
               </p>
               <p>
-                Comprehensive analysis of how land use, topography, and human activities 
+                Comprehensive analysis of how land use, topography, and human activities
                 influence water resources and ecosystem health.
               </p>
               <ul className="service-features">
@@ -648,11 +642,11 @@ const ConsultingPage = () => {
                 <h3>Terrain & Hydrologic Feature Characterization</h3>
               </div>
               <p>
-                Terrain analysis that works like a topographic scanner - precisely mapping and 
+                Terrain analysis that works like a topographic scanner - precisely mapping and
                 analyzing landscape features that control water flow and environmental processes.
               </p>
               <p>
-                Detailed characterization of topographic and hydrologic features that influence 
+                Detailed characterization of topographic and hydrologic features that influence
                 water movement, erosion, and ecosystem function.
               </p>
               <ul className="service-features">
@@ -676,11 +670,11 @@ const ConsultingPage = () => {
                 <h3>Data Science for Environmental Applications</h3>
               </div>
               <p>
-                Environmental data science that functions like an AI environmental consultant - 
+                Environmental data science that functions like an AI environmental consultant -
                 using machine learning and advanced analytics to extract insights from complex datasets.
               </p>
               <p>
-                Cutting-edge data science techniques applied to environmental challenges, 
+                Cutting-edge data science techniques applied to environmental challenges,
                 from prediction and optimization to pattern recognition and decision support.
               </p>
               <ul className="service-features">
@@ -704,11 +698,11 @@ const ConsultingPage = () => {
                 <h3>Research Methodology & Experimental Design</h3>
               </div>
               <p>
-                Research design that operates like a scientific GPS - guiding research projects 
+                Research design that operates like a scientific GPS - guiding research projects
                 along the most efficient path to valid, reliable, and meaningful results.
               </p>
               <p>
-                Rigorous experimental design and statistical approaches that maximize the value 
+                Rigorous experimental design and statistical approaches that maximize the value
                 of research investments and ensure scientifically sound conclusions.
               </p>
               <ul className="service-features">
@@ -732,11 +726,11 @@ const ConsultingPage = () => {
                 <h3>Environmental Regulatory Framework Navigation</h3>
               </div>
               <p>
-                Regulatory navigation that works like a legal compass - guiding projects through 
+                Regulatory navigation that works like a legal compass - guiding projects through
                 complex environmental regulations to achieve compliance efficiently and effectively.
               </p>
               <p>
-                Expert guidance through New Zealand's environmental regulatory landscape, 
+                Expert guidance through New Zealand's environmental regulatory landscape,
                 from consent applications to compliance monitoring and reporting.
               </p>
               <ul className="service-features">
@@ -760,11 +754,11 @@ const ConsultingPage = () => {
                 <h3>Indigenous Environmental Management Principles</h3>
               </div>
               <p>
-                Indigenous management that functions like traditional navigation - using time-tested 
+                Indigenous management that functions like traditional navigation - using time-tested
                 wisdom and cultural knowledge to guide contemporary environmental decision-making.
               </p>
               <p>
-                Culturally grounded approaches that honor indigenous knowledge systems while 
+                Culturally grounded approaches that honor indigenous knowledge systems while
                 integrating modern environmental science and technology.
               </p>
               <ul className="service-features">
@@ -833,7 +827,7 @@ const ConsultingPage = () => {
               </div>
               <div className="tool-categories">
                 <div className="tool-category">
-                  <h4><SiPython style={{marginRight: '8px'}} />Python Ecosystem</h4>
+                  <h4><SiPython style={{ marginRight: '8px' }} />Python Ecosystem</h4>
                   <div className="technology-badges">
                     <span className="tech-badge">Pandas</span>
                     <span className="tech-badge">NumPy</span>
@@ -842,7 +836,7 @@ const ConsultingPage = () => {
                   </div>
                 </div>
                 <div className="tool-category">
-                  <h4><SiR style={{marginRight: '8px'}} />Statistical Computing</h4>
+                  <h4><SiR style={{ marginRight: '8px' }} />Statistical Computing</h4>
                   <div className="technology-badges">
                     <span className="tech-badge">Advanced Statistics</span>
                     <span className="tech-badge">Data Visualization</span>
@@ -850,7 +844,7 @@ const ConsultingPage = () => {
                   </div>
                 </div>
                 <div className="tool-category">
-                  <h4><SiQgis style={{marginRight: '8px'}} />Spatial Analysis</h4>
+                  <h4><SiQgis style={{ marginRight: '8px' }} />Spatial Analysis</h4>
                   <div className="technology-badges">
                     <span className="tech-badge">QGIS</span>
                     <span className="tech-badge">ArcGIS</span>
@@ -858,7 +852,7 @@ const ConsultingPage = () => {
                   </div>
                 </div>
                 <div className="tool-category">
-                  <h4><SiMathworks style={{marginRight: '8px'}} />Engineering Analysis</h4>
+                  <h4>Engineering Analysis</h4>
                   <div className="technology-badges">
                     <span className="tech-badge">Numerical Computing</span>
                     <span className="tech-badge">Signal Processing</span>
@@ -971,10 +965,10 @@ const ConsultingPage = () => {
           <div className="cta-content">
             <h3>Ready to Transform Your Environmental Challenges?</h3>
             <p>
-              With expertise spanning from molecular-level treatment processes to watershed-scale modeling, 
-              I provide comprehensive environmental engineering solutions that work like a Swiss Army knife 
-              for complex environmental challenges. From digital twins that predict the future to nature-based 
-              solutions that heal ecosystems, let's create innovative, sustainable solutions that benefit both 
+              With expertise spanning from molecular-level treatment processes to watershed-scale modeling,
+              I provide comprehensive environmental engineering solutions that work like a Swiss Army knife
+              for complex environmental challenges. From digital twins that predict the future to nature-based
+              solutions that heal ecosystems, let's create innovative, sustainable solutions that benefit both
               your objectives and the environment.
             </p>
             <div className="cta-buttons">

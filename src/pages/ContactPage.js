@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { 
-  FaPhone, 
-  FaEnvelope, 
-  FaMapMarkerAlt, 
+import {
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt,
   FaBuilding,
   FaPaperPlane,
   FaUser,
-  FaSubject,
+  FaBook,
   FaComments,
   FaClock,
   FaCheckCircle,
@@ -15,9 +15,8 @@ import {
   FaAward
 } from 'react-icons/fa';
 
-import { 
-  SiLinkedin, 
-  SiGooglescholar 
+import {
+  SiLinkedin
 } from 'react-icons/si';
 
 const ContactPage = () => {
@@ -42,7 +41,7 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
@@ -61,7 +60,6 @@ const ContactPage = () => {
             <FaPhone className="floating-icon icon-2" />
             <SiLinkedin className="floating-icon icon-3" />
             <FaBuilding className="floating-icon icon-4" />
-            <SiGooglescholar className="floating-icon icon-5" />
             <FaUserTie className="floating-icon icon-6" />
           </div>
         </div>
@@ -69,7 +67,7 @@ const ContactPage = () => {
           <h1>Get In Touch</h1>
           <h2>Dr. Reza Moghaddam, PhD</h2>
           <p>Ready to collaborate on innovative environmental engineering solutions? Let's discuss how we can transform your environmental challenges into sustainable opportunities.</p>
-          
+
           <div className="contact-credentials">
             <div className="credential-item">
               <FaGraduationCap className="credential-icon" />
@@ -98,7 +96,7 @@ const ContactPage = () => {
                 <h3>Professional Contact Information</h3>
                 <p>Multiple ways to connect and collaborate</p>
               </div>
-              
+
               <div className="contact-methods">
                 <div className="contact-method">
                   <div className="method-icon">
@@ -151,10 +149,6 @@ const ContactPage = () => {
                   <a href="https://nz.linkedin.com/in/reza-moghaddam" target="_blank" rel="noopener noreferrer" className="network-link">
                     <SiLinkedin />
                     <span>LinkedIn Professional Profile</span>
-                  </a>
-                  <a href="https://scholar.google.com/citations" target="_blank" rel="noopener noreferrer" className="network-link">
-                    <SiGooglescholar />
-                    <span>Google Scholar Publications</span>
                   </a>
                   <a href="https://niwa.co.nz/staff-profile" target="_blank" rel="noopener noreferrer" className="network-link">
                     <FaBuilding />
@@ -214,7 +208,7 @@ const ContactPage = () => {
 
                   <div className="form-group">
                     <label htmlFor="subject">
-                      <FaSubject className="form-icon" />
+                      <FaBook className="form-icon" />
                       Project Subject
                     </label>
                     <select
@@ -252,8 +246,8 @@ const ContactPage = () => {
                     ></textarea>
                   </div>
 
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     className="submit-btn enhanced-btn"
                     disabled={isSubmitting}
                   >
@@ -282,7 +276,7 @@ const ContactPage = () => {
             <h2>How Can I Help Your Organization?</h2>
             <p className="section-subtitle">Comprehensive environmental engineering solutions tailored to your needs</p>
           </div>
-          
+
           <div className="services-grid">
             <div className="service-overview enhanced-card">
               <h4>Consulting Services</h4>
@@ -321,7 +315,7 @@ const ContactPage = () => {
           <div className="cta-content">
             <h3>Ready to Start Your Project?</h3>
             <p>
-              Whether you need cutting-edge environmental modeling, innovative water treatment solutions, 
+              Whether you need cutting-edge environmental modeling, innovative water treatment solutions,
               or sustainable engineering consultancy, I'm here to help transform your challenges into opportunities.
             </p>
             <div className="cta-stats">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFlask, FaWater, FaLeaf, FaRobot, FaChartLine, FaDatabase, FaSeedling, FaGlobe } from 'react-icons/fa';
+import { FaFlask, FaSeedling, FaDatabase, FaGlobe, FaLeaf, FaRobot } from 'react-icons/fa';
 
 const ProjectsPage = () => {
   const projects = [
@@ -19,7 +19,7 @@ const ProjectsPage = () => {
     },
     {
       id: 2,
-      title: "Digital Twin Water Systems Development", 
+      title: "Digital Twin Water Systems Development",
       description: "Revolutionary digital twin technology for water infrastructure enabling predictive maintenance and real-time optimization.",
       details: "Development of comprehensive digital replicas of water treatment and distribution systems that learn from operational data to predict failures, optimize performance, and enable scenario testing without real-world risks.",
       icon: FaDatabase,
@@ -126,13 +126,13 @@ const ProjectsPage = () => {
                   <p className="project-description">{project.description}</p>
                 </div>
               </div>
-              
+
               <div className="project-content">
                 <div className="project-details">
                   <h3>Project Overview</h3>
                   <p>{project.details}</p>
                 </div>
-                
+
                 <div className="project-metrics-container">
                   <h3>Key Performance Metrics</h3>
                   <div className="metrics-grid">
@@ -144,7 +144,7 @@ const ProjectsPage = () => {
                     ))}
                   </div>
                 </div>
-                
+
                 <div className="project-technologies">
                   <h3>Technologies & Methods</h3>
                   <div className="technology-badges">
@@ -153,7 +153,7 @@ const ProjectsPage = () => {
                     ))}
                   </div>
                 </div>
-                
+
                 {project.publications && (
                   <div className="project-publications">
                     <h3>Related Publications</h3>
@@ -164,7 +164,7 @@ const ProjectsPage = () => {
                     </ul>
                   </div>
                 )}
-                
+
                 {project.applications && (
                   <div className="project-applications">
                     <h3>Applications</h3>
@@ -175,7 +175,7 @@ const ProjectsPage = () => {
                     </ul>
                   </div>
                 )}
-                
+
                 {project.benefits && (
                   <div className="project-benefits">
                     <h3>Benefits</h3>

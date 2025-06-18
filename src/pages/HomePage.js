@@ -1,34 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  FaFlask,
-  FaWater,
-  FaChartLine,
-  FaProjectDiagram,
-  FaBook,
-  FaLeaf,
-  FaRobot,
-  FaGlobe,
-  FaDatabase,
-  FaCogs,
-  FaLightbulb,
-  FaMicroscope,
   FaSeedling,
-  FaGraduationCap,
-  FaAward,
-  FaUserTie,
-  FaMapMarkedAlt,
-  FaIndustry,
-  FaBuilding,
-  FaAtom
+  FaDatabase,
+  FaGlobe,
+  FaFlask
 } from 'react-icons/fa';
-
-import {
-  SiPython,
-  SiR,
-  SiQgis,
-  SiLinkedin
-} from 'react-icons/si';
 
 const HomePage = () => {
   useEffect(() => {

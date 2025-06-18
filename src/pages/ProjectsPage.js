@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFlask, FaSeedling, FaDatabase, FaGlobe } from 'react-icons/fa';
+import { FaSeedling, FaDatabase, FaGlobe, FaFlask } from 'react-icons/fa';
 
 const ProjectsPage = () => {
   return (

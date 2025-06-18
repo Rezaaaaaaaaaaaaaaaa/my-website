@@ -13,7 +13,6 @@ import {
   FaDatabase,
   FaMapMarkedAlt,
   FaSeedling,
-  FaChartArea,
   FaMountain,
   FaBuilding,
   FaLayerGroup,

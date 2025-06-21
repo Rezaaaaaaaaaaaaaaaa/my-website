@@ -193,30 +193,29 @@ img {
 
 /* Navbar Styles */
 .navbar {
-  background: var(--white); /* Changed from transparent/blurry to solid white */
-  box-shadow: var(--box-shadow-light); /* Softer shadow */
+  background: var(--white);
+  box-shadow: var(--box-shadow-light);
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid var(--border-color); /* Subtle border */
-  padding: calc(var(--spacing-unit) * 0.75) 0; /* Adjust padding */
+  border-bottom: 1px solid var(--border-color);
+  padding: calc(var(--spacing-unit) * 0.75) 0;
 }
 
-.navbar.scrolled { /* Style for when page is scrolled */
-  box-shadow: var(--box-shadow-medium); /* Slightly stronger shadow when scrolled */
+.navbar.scrolled {
+  box-shadow: var(--box-shadow-medium);
 }
 
 .navbar-container {
-  /* Uses the global .container for width and padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .navbar-logo {
-  font-size: 1.75rem; /* Slightly adjusted */
+  font-size: 1.75rem;
   font-weight: 800;
-  color: var(--primary-color); /* Solid color, no gradient for simplicity */
+  color: var(--primary-color);
   text-decoration: none;
 }
 
@@ -226,25 +225,25 @@ img {
 
 .nav-menu {
   display: flex;
-  list-style: none; /* Ensure ul has no bullets */
-  margin: 0; /* Reset margin */
-  padding: 0; /* Reset padding */
-  gap: calc(var(--spacing-unit) * 0.5); /* Reduced gap between items */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: calc(var(--spacing-unit) * 0.5);
 }
 
 .nav-item {
-  /* No specific styles needed if just a container for nav-link */
+  /* No specific styles needed */
 }
 
 .nav-link {
   font-family: var(--font-primary);
-  font-weight: 600; /* Slightly bolder */
+  font-weight: 600;
   color: var(--text-color);
   text-decoration: none;
-  padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit); /* 8px 16px */
-  border-radius: var(--border-radius-medium); /* 4px */
+  padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
+  border-radius: var(--border-radius-medium);
   transition: background-color 0.3s ease, color 0.3s ease;
-  position: relative; /* For potential active indicators */
+  position: relative;
   text-transform: uppercase;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
@@ -252,31 +251,30 @@ img {
 
 .nav-link:hover {
   color: var(--primary-color);
-  background-color: var(--background-dark); /* Subtle hover background */
-  text-decoration: none; /* Remove underline from general 'a:hover' */
+  background-color: var(--background-dark);
+  text-decoration: none;
 }
 
 .nav-link.active {
   color: var(--primary-color);
-  font-weight: 700; /* Make active link bolder */
+  font-weight: 700;
 }
 
 /* Mobile Menu Specific Styles */
 .mobile-menu-button {
-  display: none; /* Hidden by default, shown in media query */
+  display: none;
   background: none;
   border: none;
   color: var(--primary-color);
-  font-size: 2rem; /* Larger icon */
+  font-size: 2rem;
   cursor: pointer;
 }
 
 .nav-menu.mobile-menu {
-  /* Styles for when the menu is in mobile layout (dropdown) */
-  display: none; /* Hidden until toggled */
+  display: none;
   flex-direction: column;
   position: absolute;
-  top: 100%; /* Position below navbar */
+  top: 100%;
   left: 0;
   right: 0;
   background-color: var(--white);
@@ -286,7 +284,7 @@ img {
 }
 
 .nav-menu.mobile-menu.open {
-  display: flex; /* Show when open */
+  display: flex;
 }
 
 .nav-menu.mobile-menu .nav-item {
@@ -294,10 +292,10 @@ img {
 }
 
 .nav-menu.mobile-menu .nav-link {
-  display: block; /* Make links take full width */
+  display: block;
   padding: var(--spacing-unit);
   text-align: center;
-  border-bottom: 1px solid var(--background-dark); /* Separators */
+  border-bottom: 1px solid var(--background-dark);
 }
 
 .nav-menu.mobile-menu .nav-link:hover {
@@ -315,9 +313,9 @@ img {
   background: var(--background-dark);
   color: var(--text-light);
   padding: calc(var(--spacing-unit) * 3) 0;
-  text-align: left; /* Default to left align for content inside sections */
+  text-align: left;
   border-top: 1px solid var(--border-color);
-  font-size: 0.9rem; /* Slightly smaller base font for footer */
+  font-size: 0.9rem;
 }
 
 .footer-content {
@@ -334,9 +332,9 @@ img {
 .footer-section h3,
 .footer-section h4,
 .footer-section h5 {
-  color: var(--text-color); /* Darker headings in footer */
+  color: var(--text-color);
   margin-bottom: var(--spacing-unit);
-  font-weight: 600; /* Slightly less bold than global headings */
+  font-weight: 600;
 }
 .footer-section h3 { font-size: 1.25rem; }
 .footer-section h4 { font-size: 1.1rem; }
@@ -384,7 +382,7 @@ img {
   gap: calc(var(--spacing-unit) * 0.4);
 }
 
-.footer-link { /* Combined with .footer-nav a */
+.footer-link {
   color: var(--text-light);
   text-decoration: none;
   transition: color 0.3s ease;
@@ -426,8 +424,8 @@ img {
 
 .contact-icon {
   color: var(--primary-color);
-  font-size: 1.1em; /* Control icon size relative to text */
-  margin-top: calc(var(--spacing-unit) * 0.2); /* Align with first line of text */
+  font-size: 1.1em;
+  margin-top: calc(var(--spacing-unit) * 0.2);
 }
 
 .contact-label {
@@ -459,7 +457,7 @@ a.contact-value:hover {
 }
 
 .network-link {
-  display: inline-flex; /* Changed to inline-flex for better alignment */
+  display: inline-flex;
   align-items: center;
   gap: calc(var(--spacing-unit) * 0.5);
   color: var(--text-light);
@@ -473,12 +471,12 @@ a.contact-value:hover {
   color: var(--primary-color);
 }
 
-.network-link svg { /* Icon within the link */
-  font-size: 1.2em; /* Slightly larger than text */
+.network-link svg {
+  font-size: 1.2em;
 }
-.network-link .external-icon { /* The small arrow icon */
+.network-link .external-icon {
   font-size: 0.8em;
-  margin-left: auto; /* Pushes to the right */
+  margin-left: auto;
   opacity: 0.7;
 }
 
@@ -504,7 +502,7 @@ a.contact-value:hover {
 }
 
 .affiliation-icon {
-  color: var(--secondary-color); /* Using secondary color for these icons */
+  color: var(--secondary-color);
   font-size: 1.5em;
   margin-top: calc(var(--spacing-unit) * 0.2);
 }
@@ -526,8 +524,8 @@ a.contact-value:hover {
   margin-top: calc(var(--spacing-unit) * 2);
   padding-top: calc(var(--spacing-unit) * 1.5);
   border-top: 1px solid var(--border-color);
-  text-align: center; /* Center the bottom content */
-  font-size: 0.85rem; /* Smaller text for copyright */
+  text-align: center;
+  font-size: 0.85rem;
   opacity: 0.9;
 }
 .footer-bottom-content {
@@ -556,549 +554,400 @@ a.contact-value:hover {
   gap: calc(var(--spacing-unit) * 0.3);
 }
 .heart-icon {
-  color: var(--danger-color); /* Use a danger/love color */
+  color: var(--danger-color);
   font-size: 0.8em;
 }
 
-/* Responsive adjustments for footer grid if needed */
-@media (max-width: 768px) {
-  .footer-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust minmax for tablet */
-    gap: calc(var(--spacing-unit) * 1.5);
-  }
-  .footer {
-    text-align: center; /* Center align section titles on mobile */
-  }
-  .footer-section {
-    margin-bottom: var(--spacing-unit);
-  }
-   .contact-item, .affiliation-item, .credential-badge {
-    justify-content: center; /* Center items within sections on mobile if text is centered */
-    text-align: center;
-  }
-  .contact-item div, .affiliation-item div {
-    text-align:left; /* Keep text within items left aligned */
-  }
-  .professional-networks .network-link {
-    justify-content: center;
-  }
-  .professional-networks .network-link .external-icon {
-    display: none; /* Hide external icon on mobile for cleaner look */
-  }
-}
 
-@media (max-width: 480px) {
-    .footer-grid {
-        grid-template-columns: 1fr; /* Single column on very small screens */
-    }
-}
+/* --- SHARED/REFACTORED COMPONENT STYLES (formerly 'original App.css' part) --- */
 
-/* --- Styles below this line are from the original App.css --- */
-/* --- REVIEWING AND REFACTORING THESE OLDER STYLES --- */
-
-/* Enhanced Page Header (General Page Header Style) */
-/* This can be used as a template for page headers if needed, or simplified/removed if not generally used. */
-.enhanced-header {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Use new vars */
+/* Page Header Style (replaces original .enhanced-header) */
+.enhanced-header { /* Retaining name as it's used in JSX */
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: var(--white);
   text-align: center;
-  padding: calc(var(--spacing-unit) * 4) var(--spacing-unit); /* Adjusted padding */
+  padding: calc(var(--spacing-unit) * 4) var(--spacing-unit);
   position: relative;
   overflow: hidden;
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* min-height: 70vh; /* Can be adjusted per page or removed if too large */
 }
 
-.header-background {
+.header-background { /* Optional decorative background element */
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0.1;
+  opacity: 0.05; /* More subtle */
   overflow: hidden;
+  /* background-image: url('path/to/pattern.svg'); /* Example */
 }
 
-.floating-icons {
+.floating-icons { /* Optional decorative icons */
   position: absolute;
   width: 100%;
   height: 100%;
+  pointer-events: none; /* Ensure they don't interfere with interaction */
 }
 
 .floating-icon {
   position: absolute;
-  font-size: 2.5rem;
-  opacity: 0.15; /* Slightly more subtle */
-  animation: float 8s ease-in-out infinite;
-  color: var(--white); /* Use white with opacity if needed, or a light var */
+  font-size: 2rem; /* Slightly smaller */
+  opacity: 0.1;
+  animation: float 10s ease-in-out infinite alternate; /* Slower, alternating animation */
+  color: var(--white);
 }
-
-/* Consider removing specific icon positioning if not broadly applicable */
+/* Specific icon positions can be added if this pattern is reused, otherwise remove */
 .icon-1 { top: 15%; left: 10%; animation-delay: 0s; }
-.icon-2 { top: 25%; right: 15%; animation-delay: 1s; }
-.icon-3 { top: 45%; left: 85%; animation-delay: 2s; }
-.icon-4 { top: 65%; left: 20%; animation-delay: 3s; }
-.icon-5 { top: 75%; right: 25%; animation-delay: 4s; }
-.icon-6 { top: 35%; left: 5%; animation-delay: 5s; }
-.icon-7 { top: 55%; right: 5%; animation-delay: 6s; }
-.icon-8 { top: 85%; left: 60%; animation-delay: 7s; }
+.icon-2 { top: 25%; right: 15%; animation-delay: -2s; }
+.icon-3 { top: 45%; left: 85%; animation-delay: -4s; }
+.icon-4 { top: 65%; left: 20%; animation-delay: -6s; }
+.icon-5 { top: 75%; right: 25%; animation-delay: -8s; }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-    opacity: 0.2;
-  }
-  25% {
-    transform: translateY(-15px) rotate(5deg);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translateY(-25px) rotate(-5deg);
-    opacity: 0.4;
-  }
-  75% {
-    transform: translateY(-10px) rotate(3deg);
-    opacity: 0.3;
-  }
+
+@keyframes float { /* Simplified float animation */
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-20px) rotate(5deg); }
 }
 
 .header-content {
   position: relative;
-  z-index: 2;
-  max-width: 1000px;
+  z-index: 1; /* Above background elements */
+  max-width: 900px; /* Consistent with HomePage hero */
   margin: 0 auto;
 }
 
-.enhanced-header h1 { /* This is a very specific H1 style for this header */
-  font-size: 3rem; /* Adjusted from 4rem, aligns more with global H1 */
-  font-family: var(--font-secondary); /* Ensure consistency */
-  color: var(--white); /* Simpler than gradient text */
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.4); /* Simplified shadow */
+.enhanced-header h1 { /* Contextual H1 style for this header type */
+  font-size: 2.8rem; /* Adjusted for general page headers */
+  font-family: var(--font-secondary);
+  color: var(--white);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
   margin-bottom: var(--spacing-unit);
-  /* Removed background-clip:text and animation:glow for cleaner look and performance */
 }
 
-/* @keyframes glow removed as animation is removed */
-
-.enhanced-header p {
-  font-size: 1.2rem; /* Adjusted from 1.4rem */
+.enhanced-header p { /* Contextual P style for this header type */
+  font-size: 1.15rem;
   color: var(--white);
-  opacity: 0.9; /* Use opacity for lighter text on dark bg */
+  opacity: 0.9;
   margin-bottom: calc(var(--spacing-unit) * 1.5);
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Simplified shadow */
-  max-width: 800px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  max-width: 750px; /* Consistent */
   margin-left: auto;
   margin-right: auto;
 }
 
-.header-stats { /* If used, style with vars */
+.header-stats {
   display: flex;
   justify-content: center;
-  gap: calc(var(--spacing-unit) * 2); /* Was 3rem */
-  margin-top: calc(var(--spacing-unit) * 2); /* Was 3rem */
+  gap: calc(var(--spacing-unit) * 1.5);
+  margin-top: calc(var(--spacing-unit) * 1.5);
   flex-wrap: wrap;
 }
 
-.stat-item { /* If used, style with vars */
+.stat-item {
   text-align: center;
-  padding: var(--spacing-unit); /* Was 1.5rem */
-  background: rgba(var(--white-rgb), 0.1); /* Assuming --white-rgb is defined or use white with alpha */
-  border-radius: var(--border-radius-medium); /* Was 20px */
-  /* backdrop-filter: blur(5px); /* Reduced blur */
-  border: 1px solid rgba(var(--white-rgb), 0.15); /* Assuming --white-rgb */
+  padding: calc(var(--spacing-unit) * 0.75);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-medium);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   transition: background-color 0.3s ease, transform 0.3s ease;
+  min-width: 100px;
 }
 
 .stat-item:hover {
-  background: rgba(var(--white-rgb), 0.2);
-  transform: translateY(-3px); /* Was -5px */
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
-.stat-number { /* If used, style with vars */
+.stat-number {
   display: block;
-  font-size: 2rem; /* Was 2.5rem */
-  font-weight: 700; /* Was 800 */
+  font-size: 1.8rem;
+  font-weight: 700;
   color: var(--white);
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Simplified */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
-.stat-label { /* If used, style with vars */
+.stat-label {
   display: block;
-  font-size: 0.9rem; /* Was 1rem */
+  font-size: 0.85rem;
   color: var(--white);
-  opacity: 0.85; /* Was 0.9 */
-  margin-top: calc(var(--spacing-unit) * 0.25); /* Was 0.5rem */
+  opacity: 0.85;
+  margin-top: calc(var(--spacing-unit) * 0.25);
 }
 
-/* Enhanced Section Styling - Refactored to .page-section */
-.consulting-container { /* This specific container might be obsolete if pages use global .container */
-  /* max-width: 1400px; /* Handled by global .container */
-  /* margin: 0 auto; */
-  /* padding: calc(var(--spacing-unit) * 3) var(--spacing-unit); /* Adjusted padding */
-}
-
-.page-section { /* Replaces .modern-section for a more generic name */
-  margin-bottom: calc(var(--spacing-unit) * 3); /* Was 8rem, adjusted */
-  background: var(--white); /* Default to white, can be overridden */
-  border-radius: var(--border-radius-large); /* Was 30px */
-  padding: calc(var(--spacing-unit) * 2); /* Was 4rem, adjusted */
-  box-shadow: var(--box-shadow-medium); /* Was more complex */
-  /* backdrop-filter: blur(10px); /* Removed blur for cleaner look, can be added selectively */
-  /* border: 1px solid var(--border-color); /* Use global border */
+/* Page Section (replaces .modern-section) */
+.page-section {
+  margin-bottom: calc(var(--spacing-unit) * 2.5);
+  background: var(--white);
+  border-radius: var(--border-radius-medium); /* More subtle radius */
+  padding: calc(var(--spacing-unit) * 2);
+  box-shadow: var(--box-shadow-light); /* Lighter shadow for general sections */
   position: relative;
-  overflow: hidden; /* Keep for pseudo-elements if any */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
-.page-section--dark { /* Modifier for dark background sections */
+.page-section--dark {
   background-color: var(--background-dark);
 }
-
-/* Removed .modern-section::before as it was very specific gradient line */
-
-.page-section:hover {
-  /* transform: translateY(-3px); /* Subtle hover effect */
-  /* box-shadow: var(--box-shadow-large); /* Slightly larger shadow on hover, define --box-shadow-large if needed */
+.page-section--accent {
+  background-color: var(--primary-color);
+  color: var(--white);
 }
+.page-section--accent h2,
+.page-section--accent h3,
+.page-section--accent h4,
+.page-section--accent p,
+.page-section--accent .section-subtitle,
+.page-section--accent .section-icon {
+  color: var(--white);
+}
+.page-section--accent .section-subtitle {
+  opacity: 0.85;
+}
+
 
 .section-header {
   text-align: center;
-  margin-bottom: calc(var(--spacing-unit) * 2); /* Was 4rem, adjusted */
-  position: relative;
+  margin-bottom: calc(var(--spacing-unit) * 2);
 }
 
-.section-icon { /* For icons above section titles */
-  font-size: 3rem; /* Was 4rem */
-  color: var(--primary-color); /* Simpler than gradient */
-  /* background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); */
-  /* -webkit-background-clip: text; */
-  /* -webkit-text-fill-color: transparent; */
-  /* background-clip: text; */
+.section-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
   display: block;
-  margin: 0 auto var(--spacing-unit) auto; /* Was 1rem */
-  /* animation: pulse 1.5s ease-in-out infinite alternate; /* Simpler pulse */
+  margin: 0 auto calc(var(--spacing-unit) * 0.75) auto;
 }
 
-/* @keyframes pulse removed, or can be simplified if kept */
-
-
-.section-header h2 { /* Uses global H2, this provides context */
-  /* font-size: 2.5rem; /* Adjusted from 3rem, global H2 is 2.25rem */
-  /* color: var(--primary-color); /* Ensure it uses global var */
-  /* background: none; /* Remove gradient from original */
-  /* -webkit-background-clip: initial; */
-  /* -webkit-text-fill-color: initial; */
-  /* background-clip: initial; */
-  margin-bottom: calc(var(--spacing-unit) * 0.5); /* Was 1rem */
+.section-header h2 { /* Uses global H2, context specific margin */
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
 }
 
 .section-subtitle {
-  font-size: 1.1rem; /* Was 1.2rem */
+  font-size: 1.05rem;
   color: var(--text-light);
   font-style: italic;
-  max-width: 700px; /* Was 600px */
+  max-width: 700px;
   margin: 0 auto;
 }
 
-/* Enhanced Service Grid - styles are now in App.css (from HomePage merge), usually named .service-grid etc. */
-/* The .service-grid styles from HomePage are already appended at the end of this file. */
-/* This section is for the *original* .enhanced-card styles that were part of App.css before merges. */
-
-/* Refactoring original .enhanced-card to align with new design */
+/* Enhanced Card (generic card style, distinct from HomePage cards) */
 .enhanced-card {
-  background: var(--white); /* Simpler background */
-  border-radius: var(--border-radius-large); /* Consistent border radius */
-  padding: calc(var(--spacing-unit) * 1.5); /* Consistent padding */
-  box-shadow: var(--box-shadow-medium); /* Consistent shadow */
+  background: var(--white);
+  border-radius: var(--border-radius-medium);
+  padding: calc(var(--spacing-unit) * 1.5);
+  box-shadow: var(--box-shadow-light);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid var(--border-color);
-  position: relative;
-  overflow: hidden; /* Keep if using pseudo-elements for effects */
+  display: flex; /* Often useful for card layouts */
+  flex-direction: column; /* Stack content vertically */
 }
-
-/* Removing complex ::before and ::after effects for cleaner design, can be added back if desired */
-/* .enhanced-card::before { ... } */
-/* .enhanced-card::after { ... } */
 
 .enhanced-card:hover {
-  transform: translateY(-5px); /* Consistent hover transform */
-  box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.12); /* Consistent hover shadow, can be a new var */
+  transform: translateY(-3px);
+  box-shadow: var(--box-shadow-medium);
 }
 
-.card-header { /* General card header style, ensure it doesn't conflict with HomePage's card headers */
+/* .card-header for .enhanced-card, distinct from HomePage card headers if needed */
+.enhanced-card .card-header {
   display: flex;
   align-items: center;
-  gap: var(--spacing-unit); /* Consistent gap */
-  margin-bottom: var(--spacing-unit); /* Consistent margin */
-  padding-bottom: var(--spacing-unit); /* Add padding if it has a border */
-  border-bottom: 1px solid var(--border-color); /* Example border */
+  gap: var(--spacing-unit);
+  margin-bottom: var(--spacing-unit);
+  padding-bottom: var(--spacing-unit);
+  border-bottom: 1px solid var(--border-color);
 }
 
-.service-icon { /* This class name is also used in HomePage styles. Ensure no conflict or make specific. */
-                 /* Assuming this is for icons inside .enhanced-card's .card-header */
-  font-size: 1.8rem; /* Adjusted size */
-  color: var(--primary-color); /* Use primary color */
-  /* background: none; /* Remove gradient */
-  /* -webkit-background-clip: initial; */
-  /* -webkit-text-fill-color: initial; */
-  /* background-clip: initial; */
+.enhanced-card .service-icon { /* Icon within .enhanced-card's .card-header */
+  font-size: 1.5rem;
+  color: var(--primary-color);
   flex-shrink: 0;
 }
 
 .enhanced-card h3 { /* h3 within .enhanced-card */
-  font-size: 1.3rem; /* Align with general card heading sizes, or global H3 */
+  font-size: 1.25rem; /* Align with global H5 or a bit larger */
   color: var(--primary-color);
   margin: 0;
-  line-height: 1.3;
 }
 
 .enhanced-card p { /* p within .enhanced-card */
   color: var(--text-light);
   margin-bottom: var(--spacing-unit);
-  line-height: 1.6; /* Global p line-height is 1.7, this is a slight override */
-  font-size: 0.95rem; /* Slightly smaller text in cards */
-}
-
-.service-features { /* Styling for lists within .enhanced-card or similar contexts */
-  list-style: none; /* Remove default list style */
-  padding: 0; /* Remove default padding */
-  margin: var(--spacing-unit) 0; /* Consistent margin */
-}
-
-.service-features li {
-  position: relative;
-  padding-left: calc(var(--spacing-unit) * 1.5); /* Space for icon */
-  margin-bottom: calc(var(--spacing-unit) * 0.5);
-  color: var(--text-color);
   line-height: 1.6;
-  font-size: 0.9rem; /* Slightly smaller list item text */
-  /* transition: color 0.3s ease, transform 0.3s ease; /* Removed transform for simplicity */
-  transition: color 0.3s ease;
+  font-size: 0.9rem;
+  flex-grow: 1; /* Allow p to take space before a button at bottom */
 }
 
-.service-features li:hover {
-  color: var(--primary-color);
-  /* transform: translateX(3px); */ /* Removed hover transform */
+/* .service-features for lists inside .enhanced-card */
+.enhanced-card .service-features {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-unit) 0;
 }
 
-.service-features li::before {
-  content: '✓'; /* More standard checkmark or could use an SVG icon */
+.enhanced-card .service-features li {
+  position: relative;
+  padding-left: calc(var(--spacing-unit) * 1.25);
+  margin-bottom: calc(var(--spacing-unit) * 0.4);
+  color: var(--text-color);
+  font-size: 0.85rem;
+}
+
+.enhanced-card .service-features li::before {
+  content: '✓';
   position: absolute;
   left: 0;
-  top: 1px; /* Adjust vertical alignment */
-  color: var(--accent-color); /* Use accent color for the checkmark */
+  top: 1px;
+  color: var(--accent-color);
   font-weight: bold;
-  font-size: 1em; /* Relative to li font-size */
-  /* animation: none; /* Removed sparkle animation */
 }
 
-/* @keyframes sparkle removed */
 
-/* Technology Badges */
-/* The styles for .technology-badges and .tech-badge that were merged from HomePage.css are more comprehensive. */
-/* These original .technology-badges and .tech-badge from App.css will be removed to avoid conflict, */
-/* assuming the HomePage versions (now at the end of App.css) are preferred or will be the basis for further refinement. */
-/* Removing the old .technology-badges and .tech-badge from this section. */
-
-
-/* Tool Cards */
-.tool-card { /* This implies a specific type of card, possibly used in ConsultingPage */
-  /* If it's meant to be like .enhanced-card or HomePage's cards, its styles should align. */
-  /* For now, ensuring it uses global variables if it's a distinct style. */
-  background: var(--background-light); /* Example: use a light background */
-  /* Other styles from .enhanced-card (padding, border-radius, shadow) can be applied here if needed */
-  /* or by adding .enhanced-card class to the element in JSX. */
-}
-
-/* .tool-categories and .tool-category h4 styles are in ConsultingPage.css */
-/* They can be moved here if they become a global pattern. */
-
-
-/* Enhanced CTA Section - Refactored */
+/* Enhanced CTA Section (refactored global CTA) */
 .enhanced-cta {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: var(--white);
-  padding: calc(var(--spacing-unit) * 3) var(--spacing-unit); /* Adjusted padding */
+  padding: calc(var(--spacing-unit) * 2.5) var(--spacing-unit);
   text-align: center;
-  margin-top: calc(var(--spacing-unit) * 3); /* Adjusted margin */
-  border-radius: var(--border-radius-large); /* Consistent border radius */
+  margin-top: calc(var(--spacing-unit) * 2.5);
+  border-radius: var(--border-radius-medium);
   position: relative;
-  overflow: hidden; /* Keep for ::before element if used for pattern */
-  box-shadow: var(--box-shadow-medium);
+  overflow: hidden;
+  box-shadow: var(--box-shadow-light);
 }
 
-/* Removed .cta-background and .cta-icons for simplification. A subtle ::before pattern could be used if needed. */
-/* Example:
-.enhanced-cta::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url('path/to/subtle-pattern.svg');
-  opacity: 0.05;
+.cta-content { /* No change needed if z-index was the only purpose */
+  position: relative;
   z-index: 1;
 }
-*/
 
-.cta-content {
-  position: relative;
-  z-index: 2; /* Ensure content is above pseudo-elements */
-}
-
-.enhanced-cta h3 { /* Uses global H3, this is context specific override */
-  font-size: 2rem; /* Adjusted from 3rem */
-  color: var(--white); /* Direct color, no gradient text */
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-  margin-bottom: var(--spacing-unit); /* Was 2rem */
+.enhanced-cta h3 {
+  font-size: 1.8rem;
+  color: var(--white);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
 }
 
 .enhanced-cta p {
-  font-size: 1.1rem; /* Adjusted from 1.3rem */
-  max-width: 800px; /* Was 1000px */
-  margin: 0 auto calc(var(--spacing-unit) * 1.5) auto; /* Was 3rem bottom margin */
-  line-height: 1.7; /* Was 1.8 */
-  opacity: 0.9; /* For slightly softer text on dark bg */
-  text-shadow: none; /* Removed text shadow for cleaner look */
+  font-size: 1rem;
+  max-width: 700px;
+  margin: 0 auto calc(var(--spacing-unit) * 1.25) auto;
+  line-height: 1.6;
+  opacity: 0.9;
 }
 
-.cta-buttons {
+.cta-buttons { /* Already styled well using global button classes */
   display: flex;
-  gap: var(--spacing-unit); /* Was 2rem */
+  gap: var(--spacing-unit);
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: var(--spacing-unit); /* Was 2rem */
+  margin-top: var(--spacing-unit);
 }
 
-/* Buttons within .enhanced-cta should use global .btn, .primary-btn, .secondary-btn */
-/* The specific overrides below might need to be adjusted or removed if global buttons are sufficient. */
-/* This assumes .enhanced-btn is a modifier class for special effects, not a base button style. */
-
-.cta-buttons .btn.primary-btn, /* Targeting combined classes */
-.cta-buttons .btn.enhanced-btn.primary-btn {
+/* Specific button overrides for .enhanced-cta if needed (prefer using standard .btn classes) */
+.enhanced-cta .btn.primary-btn {
   background-color: var(--white);
   color: var(--primary-color);
   border-color: var(--white);
 }
-.cta-buttons .btn.primary-btn:hover,
-.cta-buttons .btn.enhanced-btn.primary-btn:hover {
+.enhanced-cta .btn.primary-btn:hover {
   background-color: var(--accent-color);
   color: var(--white);
   border-color: var(--accent-color);
 }
 
-.cta-buttons .btn.secondary-btn,
-.cta-buttons .btn.enhanced-btn.secondary-btn {
-  background-color: transparent;
+.enhanced-cta .btn.secondary-btn {
   color: var(--white);
-  border: 2px solid var(--white);
+  border: 1px solid var(--white);
 }
-.cta-buttons .btn.secondary-btn:hover,
-.cta-buttons .btn.enhanced-btn.secondary-btn:hover {
+.enhanced-cta .btn.secondary-btn:hover {
   background-color: var(--white);
   color: var(--primary-color);
-  border-color: var(--white);
 }
 
-/* Removed .cta-buttons .enhanced-btn specific padding/font-size if covered by .btn */
-/* Removed .cta-buttons .enhanced-btn:hover if covered by .btn:hover */
 
-
-/* Responsive Design (original App.css part) */
-@media (max-width: 1200px) {
-  .service-grid {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  }
-}
-
+/* Responsive Design (for the refactored global components) */
 @media (max-width: 768px) {
-  /* Reduce specificity or integrate into global responsive styles if possible */
-  .enhanced-header h1 { font-size: 2.5rem; }
-  .enhanced-header p { font-size: 1.1rem; }
-  .header-stats { gap: 1.5rem; }
-  .stat-item { padding: 1rem; }
-  .stat-number { font-size: 2rem; }
-  .service-grid { grid-template-columns: 1fr; }
-  .modern-section { padding: 2rem; margin-bottom: 4rem; }
-  .consulting-container { padding: 2rem 1rem; }
-  .enhanced-cta { padding: 4rem 2rem; }
-  .enhanced-cta h3 { font-size: 2rem; }
-  .cta-buttons { flex-direction: column; gap: 1rem; }
-  .section-header h2 { font-size: 2rem; }
+  .enhanced-header h1 { font-size: 2.2rem; }
+  .enhanced-header p { font-size: 1.05rem; }
+  .header-stats { gap: var(--spacing-unit); }
+  .stat-item { padding: calc(var(--spacing-unit) * 0.6); }
+  .stat-number { font-size: 1.6rem; }
 
-  .navbar-container {
-    /* padding: 1rem; /* Global .container will handle this */
-  }
+  .page-section { padding: calc(var(--spacing-unit) * 1.5); margin-bottom: calc(var(--spacing-unit) * 2); }
+  .consulting-container { padding: var(--spacing-unit); } /* Example if used */
 
-  .nav-menu { /* For desktop view, if it needs to change at 768px */
-    /* gap: 1rem; /* Adjusted in global .nav-menu */
-  }
+  .enhanced-cta { padding: calc(var(--spacing-unit) * 2) var(--spacing-unit); }
+  .enhanced-cta h3 { font-size: 1.6rem; }
+  .enhanced-cta p { font-size: 1rem;}
+  .cta-buttons { flex-direction: column; gap: calc(var(--spacing-unit)*0.75); }
 
-  .mobile-menu-button { /* Show mobile menu button */
-    display: block;
-  }
+  .section-header h2 { font-size: 1.8rem; } /* Adjust global H2 for context */
+  .section-icon { font-size: 2.5rem; }
 
-  .nav-menu:not(.mobile-menu) { /* Hide desktop menu if mobile button is shown */
-    display: none;
-  }
+  .mobile-menu-button { display: block; }
+  .nav-menu:not(.mobile-menu) { display: none; }
 
-  .card-header { /* Example of a component part that might need responsive tweaks */
+  .enhanced-card .card-header { /* If cards need to stack header items */
     flex-direction: column;
-    text-align: center;
-    gap: 1rem;
+    align-items: flex-start; /* Or center */
+    gap: calc(var(--spacing-unit) * 0.5);
   }
 }
 
 @media (max-width: 480px) {
-  .enhanced-header { padding: 4rem 1rem; }
-  .enhanced-header h1 { font-size: 2rem; }
-  .section-header { margin-bottom: 2rem; }
-  .enhanced-card { padding: 2rem; }
-  .technology-badges { justify-content: center; }
+  .enhanced-header { padding: calc(var(--spacing-unit) * 3) var(--spacing-unit); }
+  .enhanced-header h1 { font-size: 1.8rem; }
+  .section-header { margin-bottom: calc(var(--spacing-unit)*1.5); }
+  .enhanced-card { padding: var(--spacing-unit); }
 }
 
-/* Animation for page load */
-/* These are fine as generic animations but ensure they are applied selectively */
+/* Global Animation & Utility classes */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(50px); }
+  from { opacity: 0; transform: translateY(30px); } /* Increased distance slightly */
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-50px); }
+  from { opacity: 0; transform: translateX(-40px); } /* Increased distance slightly */
   to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideInRight {
-  from { opacity: 0; transform: translateX(50px); }
+  from { opacity: 0; transform: translateX(40px); } /* Increased distance slightly */
   to { opacity: 1; transform: translateX(0); }
 }
 
 /* Applying animations: these are very broad. Consider more targeted classes like .animate-fadeInUp */
-.modern-section {
+/* Commenting out broad application; apply these via specific classes in JSX where needed */
+/*
+.page-section {
   animation: fadeInUp 0.8s ease-out;
 }
-.modern-section:nth-child(even) { animation: slideInLeft 0.8s ease-out; }
-.modern-section:nth-child(odd) { animation: slideInRight 0.8s ease-out; }
-.modern-section:nth-child(1) { animation-delay: 0.1s; }
-.modern-section:nth-child(2) { animation-delay: 0.2s; }
-.modern-section:nth-child(3) { animation-delay: 0.3s; }
-.modern-section:nth-child(4) { animation-delay: 0.4s; }
-.modern-section:nth-child(5) { animation-delay: 0.5s; }
+.page-section:nth-child(even) { animation: slideInLeft 0.8s ease-out; }
+.page-section:nth-child(odd) { animation: slideInRight 0.8s ease-out; }
+.page-section:nth-child(1) { animation-delay: 0.1s; }
+.page-section:nth-child(2) { animation-delay: 0.2s; }
+.page-section:nth-child(3) { animation-delay: 0.3s; }
+.page-section:nth-child(4) { animation-delay: 0.4s; }
+.page-section:nth-child(5) { animation-delay: 0.5s; }
+*/
 
-/* Glassmorphism effects - these are very specific, ensure they align with new design */
-.enhanced-card, .modern-section {
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  background-color: rgba(255, 255, 255, 0.95); /* Use var(--white-transparent) or similar */
-  border: 1px solid rgba(209, 213, 219, 0.3); /* Use var(--border-color-transparent) or similar */
+/* Glassmorphism effects - these are very specific, should be applied selectively if desired */
+/* Removing these general glassmorphism rules, apply to specific components if needed */
+/*
+.enhanced-card, .page-section {
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(209, 213, 219, 0.2);
 }
+*/
 
-/* Scroll animations */
+/* Scroll animations utility */
 .fade-in {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
+  transform: translateY(20px); /* Consistent with keyframes */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smoother transition */
 }
 .fade-in.visible {
   opacity: 1;
@@ -1107,56 +956,55 @@ a.contact-value:hover {
 
 /* Custom scrollbar - this is a global change, generally okay */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px; /* Slightly wider */
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Use var(--background-dark) or similar */
+  background: var(--background-dark);
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Use global vars */
-  border-radius: 4px;
+  background: var(--secondary-color); /* Use secondary for thumb */
+  border-radius: 5px; /* Rounded thumb */
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)); /* Darken/change on hover */
+  background: var(--primary-color);
 }
 
 /* Print styles */
 @media print {
   .floating-icons,
-  .cta-background,
-  .header-background,
-  .navbar, /* Hide navbar for print */
-  .footer { /* Hide footer for print */
-    display: none !important; /* Important to override other styles */
+  .header-background, /* Removed .cta-background as it was removed */
+  .navbar,
+  .footer {
+    display: none !important;
   }
 
   body {
-    background: var(--white) !important; /* Ensure plain white background for print */
-    color: #000 !important; /* Ensure black text for print */
-    font-size: 12pt; /* Adjust base font for print */
+    background: var(--white) !important;
+    color: #000 !important;
+    font-size: 11pt; /* Adjusted for print */
   }
 
   a {
-    text-decoration: underline !important; /* Underline links for print */
+    text-decoration: underline !important;
     color: #000 !important;
   }
 
-  .modern-section, .enhanced-card, .main-content, .container {
+  .page-section, .enhanced-card, .main-content, .container {
     break-inside: avoid;
-    margin-bottom: 1rem; /* Adjust spacing for print */
+    margin-bottom: 0.5rem; /* Tighter print spacing */
     box-shadow: none !important;
-    border: 1px solid #ccc !important; /* Simple border for sections/cards */
+    border: 1px solid #bbb !important; /* Lighter border for print */
     padding: 0.5rem !important;
   }
 
   h1, h2, h3, h4, h5, h6 {
     color: #000 !important;
-    background: none !important; /* Remove background gradients from headings */
-    -webkit-text-fill-color: initial !important; /* Reset text fill for print */
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
   }
 }
 
-/* Page-specific styles for HomePage */
+/* Page-specific styles for HomePage (Appended as workaround) */
 /* Variables from src/App.css are available globally */
 
 .home-page {

@@ -7,22 +7,22 @@ import {
   FaWater,
   FaChartLine,
   FaCogs,
-  FaLightbulb,
+  // FaLightbulb, // Unused
   FaGraduationCap,
-  FaBriefcase,
+  // FaBriefcase, // Unused
   FaAward,
-  FaUsers,
+  // FaUsers, // Unused
   FaMapMarkedAlt,
   FaLeaf,
-  FaIndustry,
-  FaUniversity,
-  FaBook,
+  // FaIndustry, // Unused
+  // FaUniversity, // Unused
+  // FaBook, // Unused
   FaRocket,
   FaHandshake,
   FaPhone,
   FaEnvelope,
-  FaLinkedin,
-  FaGithub,
+  // FaLinkedin, // Unused
+  // FaGithub, // Unused
   FaChevronDown,
   FaChevronUp,
   FaExternalLinkAlt
@@ -30,7 +30,7 @@ import {
 
 const HomePage = () => {
   const [openDropdowns, setOpenDropdowns] = useState({});
-  const [activeSection, setActiveSection] = useState('hero');
+  // const [activeSection, setActiveSection] = useState('hero'); // Unused variable - Linter warning
 
   useEffect(() => {
     // Animation for scroll effects
@@ -200,10 +200,12 @@ const HomePage = () => {
             data-driven insights, and collaborative partnerships.
           </p>
           <div className="hero-cta">
-            <button className="cta-button primary" onClick={() => setActiveSection('expertise')}>
+            {/* Removed onClick that used setActiveSection */}
+            <button className="cta-button primary">
               Explore Expertise
             </button>
-            <button className="cta-button secondary" onClick={() => setActiveSection('contact')}>
+            {/* Removed onClick that used setActiveSection */}
+            <button className="cta-button secondary">
               Get In Touch
             </button>
           </div>

@@ -1,0 +1,224 @@
+/* src/pages/PublicationsPage.css */
+
+.publications-page .enhanced-header h1 { /* Using .publications-page for specificity */
+    font-size: 2.8rem;
+}
+.publications-page .enhanced-header p {
+    font-size: 1.1rem;
+    max-width: 750px;
+}
+.publications-page .header-stats {
+    gap: var(--spacing-unit); /* Tighter gap for these stats */
+}
+.publications-page .header-stats .stat-item {
+    padding: calc(var(--spacing-unit)*0.8);
+    min-width: 120px;
+}
+.publications-page .header-stats .stat-number {
+    font-size: 1.5rem;
+}
+.publications-page .header-stats .stat-label {
+    font-size: 0.8rem;
+}
+
+
+.publications-container {
+    /* Uses global .container for max-width and horizontal padding, applied in JSX */
+    padding-top: calc(var(--spacing-unit) * 2);
+    padding-bottom: calc(var(--spacing-unit) * 2);
+}
+
+.publications-intro { /* This is a .page-section (formerly .modern-section) */
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+.publications-intro .section-header h2 { /* Inherits global H2 */
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+}
+.publications-intro .section-subtitle { /* Inherits global .section-subtitle */
+    font-size: 1rem;
+}
+
+
+.publications-list {
+    display: grid;
+    gap: calc(var(--spacing-unit) * 1.5);
+}
+
+.publication-card { /* Extends .enhanced-card from App.css */
+    /* .enhanced-card provides base background, shadow, border-radius, padding */
+}
+
+.publication-header {
+    padding-bottom: var(--spacing-unit);
+    margin-bottom: var(--spacing-unit);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.publication-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-unit);
+    margin-bottom: calc(var(--spacing-unit) * 0.75);
+    font-size: 0.8rem;
+}
+
+.publication-type {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: calc(var(--spacing-unit) * 0.2) calc(var(--spacing-unit) * 0.5);
+    border-radius: var(--border-radius-small);
+    font-weight: 500;
+}
+
+.impact-badge {
+    padding: calc(var(--spacing-unit) * 0.2) calc(var(--spacing-unit) * 0.5);
+    border-radius: var(--border-radius-small);
+    font-weight: 500;
+    color: var(--white);
+}
+.impact-badge.high-impact { background-color: var(--danger-color); }
+.impact-badge.medium-impact { background-color: var(--warning-color); color: var(--text-color); }
+.impact-badge.standard-impact { background-color: var(--success-color); }
+
+
+.publication-year {
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.publication-title { /* Inherits global H3 style */
+    font-size: 1.3rem; /* Override if needed */
+    margin-bottom: calc(var(--spacing-unit) * 0.25);
+    color: var(--primary-color);
+}
+
+.publication-authors { /* Inherits global P style */
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-unit);
+    font-style: italic;
+}
+
+.publication-details {
+    /* Styles for this container if needed */
+}
+
+.publication-source { /* Inherits global P style */
+    font-size: 0.85rem;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-unit);
+}
+.publication-source strong {
+    font-weight: 600;
+}
+
+.publication-abstract {
+    margin-bottom: var(--spacing-unit);
+    padding-left: calc(var(--spacing-unit) * 1.5);
+    position: relative;
+    border-left: 3px solid var(--accent-color);
+    padding: var(--spacing-unit);
+    background: var(--background-light);
+    border-radius: var(--border-radius-small);
+}
+.publication-abstract .quote-icon {
+    position: absolute;
+    top: var(--spacing-unit);
+    left: -calc(var(--spacing-unit) * 0.6);
+    font-size: 1rem;
+    color: var(--accent-color);
+    opacity: 0.5;
+}
+.publication-abstract p { /* Inherits global P style */
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.publication-keywords {
+    margin-bottom: var(--spacing-unit);
+}
+.publication-keywords h4 { /* Inherits global H4 style */
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-bottom: calc(var(--spacing-unit) * 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.keyword-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--spacing-unit) * 0.4);
+}
+.keyword-tag {
+    background-color: var(--background-dark);
+    color: var(--text-color);
+    padding: calc(var(--spacing-unit) * 0.25) calc(var(--spacing-unit) * 0.6);
+    border-radius: var(--border-radius-small);
+    font-size: 0.75rem;
+}
+
+.publication-links {
+    margin-top: var(--spacing-unit);
+}
+.publication-link { /* Should use .btn .secondary-btn or .primary-btn */
+    display: inline-flex; /* For icon alignment */
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 0.5);
+    /* Inherits from .btn */
+}
+
+.publications-summary { /* This is a .page-section */
+    margin-top: calc(var(--spacing-unit) * 2);
+}
+.summary-content h3 { /* Inherits global H3 */
+    text-align: center;
+    margin-bottom: var(--spacing-unit);
+}
+.summary-content p { /* Inherits global P */
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+.research-themes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-unit);
+    margin-top: var(--spacing-unit);
+}
+.theme-item {
+    background-color: var(--background-light);
+    padding: var(--spacing-unit);
+    border-radius: var(--border-radius-medium);
+    text-align: center;
+}
+.theme-item h4 { /* Inherits global H4 */
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-bottom: calc(var(--spacing-unit) * 0.4);
+}
+.theme-item p { /* Inherits global P */
+    font-size: 0.85rem;
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments for PublicationsPage */
+@media (max-width: 768px) {
+    .publication-meta {
+        font-size: 0.75rem; /* Smaller meta text on mobile */
+        gap: calc(var(--spacing-unit) * 0.5);
+    }
+    .publication-title {
+        font-size: 1.15rem;
+    }
+    .publication-authors {
+        font-size: 0.85rem;
+    }
+    .publication-abstract p {
+        font-size: 0.85rem;
+    }
+}

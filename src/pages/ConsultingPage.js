@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './ConsultingPage.css'; // Import page-specific styles
 import {
   FaWater,
   FaFlask,
@@ -40,7 +41,7 @@ import {
 
 const ConsultingPage = () => {
   return (
-    <div className="consulting-page">
+    <div className="consulting-page container"> {/* Added container class */}
       <nav className="dropdown-menu">
         <ul>
           <li>

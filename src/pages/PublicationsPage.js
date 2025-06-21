@@ -1,4 +1,5 @@
 import React from 'react';
+import './PublicationsPage.css'; // Import page-specific styles
 import { FaBook, FaExternalLinkAlt, FaQuoteLeft } from 'react-icons/fa';
 
 const PublicationsPage = () => {
@@ -36,7 +37,7 @@ const PublicationsPage = () => {
       type: 'journal',
       title: "Enhanced nitrate removal and side effects of methanol dosing in denitrifying bioreactors",
       authors: "Moghaddam, R., et al.",
-      journal: "Ecological Engineering", 
+      journal: "Ecological Engineering",
       year: 2022,
       volume: "185",
       pages: "106818",
@@ -76,7 +77,7 @@ const PublicationsPage = () => {
   };
 
   return (
-    <div className="publications-page">
+    <div className="publications-page container"> {/* Added container class */}
       <section className="page-header enhanced-header">
         <div className="header-content">
           <h1>Research Publications</h1>
@@ -98,8 +99,8 @@ const PublicationsPage = () => {
         </div>
       </section>
 
-      <section className="publications-container">
-        <div className="publications-intro modern-section">
+      <section className="publications-container"> {/* This could also take .container if needed, or rely on parent */}
+        <div className="publications-intro page-section"> {/* Replaced modern-section with page-section */}
           <div className="section-header">
             <FaBook className="section-icon" />
             <h2>Published Research</h2>
@@ -123,11 +124,13 @@ const PublicationsPage = () => {
                 <h3 className="publication-title">{publication.title}</h3>
                 <p className="publication-authors">{publication.authors}</p>
               </div>
-              
+
               <div className="publication-details">
                 {publication.journal ? (
                   <p className="publication-source">
-                    <strong>{publication.journal}</strong> | Volume {publication.volume} | Pages {publication.pages}
+                    <strong>{publication.journal}</strong>
+                    {publication.volume && ` | Volume ${publication.volume}`}
+                    {publication.pages && ` | Pages ${publication.pages}`}
                     {publication.impactFactor && ` | Impact Factor: ${publication.impactFactor}`}
                   </p>
                 ) : (
@@ -136,12 +139,12 @@ const PublicationsPage = () => {
                     {publication.reportNumber && ` | Report No: ${publication.reportNumber}`}
                   </p>
                 )}
-                
+
                 <div className="publication-abstract">
                   <FaQuoteLeft className="quote-icon" />
                   <p>{publication.abstract}</p>
                 </div>
-                
+
                 <div className="publication-keywords">
                   <h4>Keywords:</h4>
                   <div className="keyword-tags">
@@ -150,14 +153,14 @@ const PublicationsPage = () => {
                     ))}
                   </div>
                 </div>
-                
+
                 {publication.doi && (
                   <div className="publication-links">
-                    <a 
-                      href={`https://doi.org/${publication.doi}`} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="publication-link"
+                    <a
+                      href={`https://doi.org/${publication.doi}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn secondary-btn publication-link" /* Using global button styles */
                     >
                       <FaExternalLinkAlt />
                       View Publication
@@ -169,13 +172,13 @@ const PublicationsPage = () => {
           ))}
         </div>
 
-        <div className="publications-summary modern-section">
+        <div className="publications-summary page-section"> {/* Replaced modern-section with page-section */}
           <div className="summary-content">
             <h3>Research Impact</h3>
             <p>
-              My research focuses on developing innovative, practical solutions for environmental challenges, 
-              with particular emphasis on water treatment technologies and sustainable engineering approaches. 
-              The published work demonstrates significant contributions to the field of environmental engineering, 
+              My research focuses on developing innovative, practical solutions for environmental challenges,
+              with particular emphasis on water treatment technologies and sustainable engineering approaches.
+              The published work demonstrates significant contributions to the field of environmental engineering,
               with applications ranging from agricultural water management to advanced treatment systems.
             </p>
             <div className="research-themes">

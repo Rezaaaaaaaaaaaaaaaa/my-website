@@ -1,9 +1,10 @@
 import React from 'react';
+import './ProjectsPage.css'; // Import page-specific styles
 import { FaSeedling, FaDatabase, FaGlobe, FaFlask } from 'react-icons/fa';
 
 const ProjectsPage = () => {
   return (
-    <div className="projects-page">
+    <div className="projects-page container"> {/* Added container class */}
       <nav className="dropdown-menu">
         <ul>
           <li>

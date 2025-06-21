@@ -1,0 +1,13 @@
+/* src/pages/ResumePage.css */
+/* Styles for the Resume Page */
+
+.resume-page-content {
+    padding-top: calc(var(--spacing-unit) * 2);
+    padding-bottom: calc(var(--spacing-unit) * 2);
+    text-align: center; /* Center content by default */
+}
+
+.resume-page-content .download-link {
+    margin-top: calc(var(--spacing-unit) * 2);
+    display: inline-block; /* To apply margins and padding correctly */
+}

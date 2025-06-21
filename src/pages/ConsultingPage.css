@@ -1,0 +1,116 @@
+/* src/pages/ConsultingPage.css */
+
+.consulting-page {
+  /* .container class is now applied in the JSX for overall width and horizontal padding. */
+  /* Vertical padding will be handled by sections or specific elements if needed. */
+}
+
+.dropdown-menu { /* Local page navigation */
+  background-color: var(--background-dark);
+  padding: var(--spacing-unit);
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--box-shadow-light);
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-unit);
+}
+
+.dropdown-menu li a {
+  text-decoration: none;
+  color: var(--primary-color);
+  padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
+  border-radius: var(--border-radius-small);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus {
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.service-category {
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  padding: calc(var(--spacing-unit) * 2);
+  border-radius: var(--border-radius-large);
+  background-color: var(--white); /* Default background for categories */
+  box-shadow: var(--box-shadow-light);
+}
+
+.service-category:nth-child(odd) { /* Alternate background for visual separation if needed */
+  /* background-color: var(--background-light); */
+}
+
+/* .service-category h2 should inherit global h2 styles. */
+/* Specific overrides can be added if truly necessary. */
+.service-category h2 {
+  /* Example: if a different bottom margin is needed than global h2 */
+   margin-bottom: calc(var(--spacing-unit) * 1.5);
+   /* text-align: center; is already part of .section-header which is used by some sections */
+}
+
+/* .service-category > p should inherit global p styles. */
+/* The existing style is quite similar to global <p> but with centering and max-width */
+.service-category > p.section-subtitle-consulting { /* More specific class if needed */
+  text-align: center;
+  font-size: 1.05rem; /* Slightly larger than global p if desired */
+  color: var(--text-light);
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  max-width: 750px; /* Consistent with HomePage's section description */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Styles for .service-grid, .enhanced-card, .card-header, .service-icon etc. */
+/* are expected to be inherited from App.css (originally from HomePage styles) */
+/* We will verify and adjust these if needed. */
+
+/* Specifically for .tool-card and its contents, if they need differentiation */
+.tool-card {
+  /* Could add specific styles if it needs to look different from other .enhanced-card */
+}
+
+.tool-categories {
+  display: flex; /* Changed from grid for potentially better wrapping/flow */
+  flex-direction: column;
+  gap: calc(var(--spacing-unit) * 1.5);
+}
+
+.tool-category h4 { /* Uses global H4 */
+  /* color: var(--secondary-color); */ /* Example override */
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+  padding-bottom: calc(var(--spacing-unit) * 0.25);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* .technology-badges and .tech-badge styles are from App.css (via HomePage) */
+
+/* .consulting-cta and .enhanced-cta styles are from App.css (original global styles) */
+/* These will be reviewed and updated to use new vars later if not already done. */
+
+/* Ensure the main page content is within a .container if not already handled by consulting-page */
+.consulting-page > section,
+.consulting-page > .consulting-cta {
+  /* If sections themselves aren't wrapped in a .container in JSX, add it here */
+  /* This is a fallback; better to add .container in JSX for clarity */
+  /* max-width: 1200px; */
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  /* padding-left: var(--spacing-unit); */
+  /* padding-right: var(--spacing-unit); */
+}
+
+/* Add .container to the main div in ConsultingPage.js */
+/* <div className="consulting-page container"> */
+/* Then sections might not need individual container logic here. */

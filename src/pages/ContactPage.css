@@ -1,0 +1,265 @@
+/* src/pages/ContactPage.css */
+
+.contact-page .enhanced-header h1 {
+    font-size: 2.8rem; /* Slightly smaller than default .enhanced-header h1 if needed */
+}
+.contact-page .enhanced-header p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin-bottom: var(--spacing-unit);
+}
+
+.contact-credentials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-unit);
+    margin-top: var(--spacing-unit);
+}
+
+.credential-item {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) / 2);
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: calc(var(--spacing-unit) / 2) var(--spacing-unit);
+    border-radius: var(--border-radius-medium);
+    font-size: 0.9rem;
+    color: var(--white);
+}
+
+.credential-icon {
+    color: var(--accent-color); /* Or var(--white) if bg is dark */
+}
+
+.contact-container {
+    /* Uses global .container for max-width and horizontal padding */
+    /* Add any specific vertical padding for the contact content area */
+    padding-top: calc(var(--spacing-unit) * 2);
+    padding-bottom: calc(var(--spacing-unit) * 2);
+}
+
+.contact-main { /* This is a .page-section (formerly .modern-section) */
+    /* It will inherit padding, bg, shadow from .page-section */
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: calc(var(--spacing-unit) * 2);
+}
+
+.contact-info-card,
+.contact-form-card {
+    /* These use .enhanced-card, so they inherit its base styling */
+    /* Add specific overrides if needed */
+}
+
+.contact-info-card .card-header h3, /* Using global H3 */
+.contact-form-card .card-header h3 {
+    font-size: 1.5rem; /* Override global H3 if needed for card context */
+}
+.contact-info-card .card-header p,
+.contact-form-card .card-header p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: -calc(var(--spacing-unit) * 0.5);
+}
+
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-unit) * 1.5);
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.contact-method {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-unit);
+}
+
+.method-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-top: calc(var(--spacing-unit) * 0.25);
+    width: 30px; /* Fixed width for alignment */
+    text-align: center;
+}
+
+.method-details h4 { /* Uses global H4 */
+    margin-bottom: calc(var(--spacing-unit) * 0.25);
+    font-size: 1.1rem; /* Override global H4 if needed */
+}
+
+.method-details p { /* Uses global P */
+    margin-bottom: calc(var(--spacing-unit) * 0.25);
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+.method-details p a { /* If phone/email are links */
+    color: var(--text-color);
+}
+.method-details p a:hover {
+    color: var(--primary-color);
+}
+
+
+.availability {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.contact-page .professional-networks { /* Styles for this section if different from footer */
+    margin-top: var(--spacing-unit);
+    padding-top: var(--spacing-unit);
+    border-top: 1px solid var(--border-color);
+}
+.contact-page .professional-networks h4 {
+    font-size: 1.1rem; /* Override global H4 */
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+}
+.contact-page .network-links {
+    flex-direction: row; /* Side by side if space allows */
+    gap: var(--spacing-unit);
+}
+.contact-page .network-link {
+    font-size: 0.9rem;
+    padding: calc(var(--spacing-unit) * 0.4) var(--spacing-unit);
+    background-color: var(--background-dark);
+    border-radius: var(--border-radius-small);
+}
+.contact-page .network-link:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+
+/* Contact Form Styles */
+.contact-form .form-group {
+    margin-bottom: var(--spacing-unit); /* Consistent spacing */
+}
+
+.contact-form label { /* Inherits from global form styles if defined, or define here */
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 0.5);
+    font-weight: 500; /* Slightly less than global H label */
+    font-size: 0.9rem;
+    margin-bottom: calc(var(--spacing-unit) * 0.3);
+}
+
+.contact-form .form-icon {
+    color: var(--secondary-color);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form select,
+.contact-form textarea {
+    /* These should inherit from .form-input, .form-select in App.css */
+    /* Add any specific overrides here */
+    font-size: 0.95rem;
+}
+
+.contact-form .submit-btn { /* Should be .btn .primary-btn */
+    width: 100%; /* Make button full width */
+    padding: calc(var(--spacing-unit) * 0.85) var(--spacing-unit); /* Adjust padding if needed */
+}
+.contact-form .submit-btn .btn-icon {
+    margin-right: calc(var(--spacing-unit) * 0.5);
+}
+
+
+.success-message {
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 2);
+    background-color: var(--success-color-light); /* Define --success-color-light or use light green */
+    border: 1px solid var(--success-color);
+    border-radius: var(--border-radius-medium);
+    color: var(--success-color-dark); /* Define or use darker green */
+}
+.success-message .success-icon {
+    font-size: 3rem;
+    color: var(--success-color);
+    margin-bottom: var(--spacing-unit);
+}
+.success-message h4 {
+    color: var(--success-color-dark); /* Define */
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+}
+
+/* Services Overview on Contact Page */
+.contact-services { /* This is a .page-section */
+    /* Inherits .page-section styles */
+}
+.contact-services .services-grid { /* From HomePage styles in App.css */
+    /* gap: var(--spacing-unit); /* Adjust gap if needed */
+}
+
+.service-overview.enhanced-card { /* Specific styling for these cards */
+    /* padding: var(--spacing-unit); */ /* Override .enhanced-card padding if needed */
+}
+.service-overview h4 { /* Uses global H4 */
+    margin-bottom: calc(var(--spacing-unit) * 0.75);
+    font-size: 1.2rem; /* Override global H4 if needed */
+    color: var(--primary-color);
+}
+.service-overview ul {
+    list-style: none; /* Checkmark or other custom bullets */
+    padding-left: 0;
+    margin: 0;
+}
+.service-overview ul li {
+    position: relative;
+    padding-left: calc(var(--spacing-unit) * 1.25);
+    margin-bottom: calc(var(--spacing-unit) * 0.4);
+    font-size: 0.9rem;
+}
+.service-overview ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Contact CTA */
+.contact-cta { /* Uses .enhanced-cta from App.css */
+    /* Specific overrides for contact page CTA if needed */
+}
+
+.cta-stats {
+    display: flex;
+    justify-content: center;
+    gap: calc(var(--spacing-unit) * 2);
+    margin-top: calc(var(--spacing-unit) * 1.5);
+    color: var(--white);
+}
+.cta-stats .stat {
+    text-align: center;
+}
+.cta-stats .stat-number {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-color); /* Or var(--white) */
+}
+.cta-stats .stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+
+/* Responsive adjustments for ContactPage specific elements */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr; /* Stack info and form */
+    }
+    .contact-page .professional-networks .network-links {
+        flex-direction: column;
+        align-items: flex-start; /* Align to left in column */
+    }
+}

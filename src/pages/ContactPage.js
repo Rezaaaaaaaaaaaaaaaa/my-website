@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './ContactPage.css'; // Import page-specific styles
 import {
   FaPhone,
   FaEnvelope,
@@ -187,6 +188,7 @@ const ContactPage = () => {
                       onChange={handleInputChange}
                       required
                       placeholder="Your full name"
+                      className="form-input"
                     />
                   </div>
 
@@ -203,6 +205,7 @@ const ContactPage = () => {
                       onChange={handleInputChange}
                       required
                       placeholder="your.email@company.com"
+                      className="form-input"
                     />
                   </div>
 
@@ -217,6 +220,7 @@ const ContactPage = () => {
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
+                      className="form-select"
                     >
                       <option value="">Select project type</option>
                       <option value="environmental-modeling">Environmental Systems Modeling</option>
@@ -243,22 +247,23 @@ const ContactPage = () => {
                       required
                       rows="6"
                       placeholder="Please describe your project, timeline, and specific requirements..."
+                      className="form-input"
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
-                    className="submit-btn enhanced-btn"
+                    className="btn primary-btn submit-btn" /* Use global button classes */
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
                       <>
-                        <FaClock className="btn-icon" />
+                        <FaClock className="btn-icon" /> {/* Ensure .btn-icon is styled if needed */}
                         Sending Message...
                       </>
                     ) : (
                       <>
-                        <FaPaperPlane className="btn-icon" />
+                        <FaPaperPlane className="btn-icon" /> {/* Ensure .btn-icon is styled if needed */}
                         Send Message
                       </>
                     )}

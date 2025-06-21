@@ -23,11 +23,12 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <div className="footer-background">
-        <div className="footer-pattern"></div>
-      </div>
+      {/* Decorative background and pattern removed for a cleaner design */}
+      {/* <div className="footer-background"> */}
+      {/*   <div className="footer-pattern"></div> */}
+      {/* </div> */}
       
-      <div className="footer-content">
+      <div className="footer-content container"> {/* Added .container for consistent width */}
         <div className="footer-grid">
           {/* Professional Profile Section */}
           <div className="footer-section">

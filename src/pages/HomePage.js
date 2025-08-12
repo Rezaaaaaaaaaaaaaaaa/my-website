@@ -57,8 +57,9 @@ const HomePage = () => {
             <h1>AquaTech Solutions NZ</h1>
             <p className="subtitle">Environmental Engineering Excellence</p>
             <p className="description">
-              Leading New Zealand consultancy specializing in chemical processes, 
-              bioprocess engineering, and sustainable solutions for industry and research.
+              New Zealand's premier environmental engineering consultancy, delivering innovative 
+              chemical process solutions, bioprocess engineering, and sustainable technologies 
+              for industry and research applications.
             </p>
             <div className="flex justify-center gap-4 mt-8">
               <Link to="/services" className="btn btn-primary">

@@ -54,26 +54,28 @@ const AboutPage = () => {
             <div>
               <h2>Our Story</h2>
               <p>
-                AquaTech Solutions NZ was founded with a vision to provide world-class 
-                environmental and process engineering services to New Zealand industries. 
-                We specialize in chemical processes, bioprocess engineering, and sustainable 
-                solutions that drive innovation while protecting our environment.
+                Founded with a commitment to environmental stewardship and engineering excellence, 
+                AquaTech Solutions NZ delivers world-class process engineering services to 
+                New Zealand's diverse industrial landscape. Our expertise spans chemical processes, 
+                bioprocess engineering, and innovative sustainable technologies that drive industry 
+                advancement while protecting our natural environment.
               </p>
               <p>
-                Our team combines deep technical expertise with practical industry experience, 
-                enabling us to deliver solutions that are both technically sound and 
-                commercially viable. We work across diverse sectors including food processing, 
-                water treatment, chemical manufacturing, and biotechnology.
+                Our multidisciplinary team seamlessly integrates advanced technical knowledge 
+                with extensive industry experience, ensuring every solution is both scientifically 
+                rigorous and commercially practical. We serve as trusted partners across food processing, 
+                water treatment, chemical manufacturing, biotechnology, and emerging green technology sectors.
               </p>
             </div>
             
             <div>
               <h2>Our Mission</h2>
               <p>
-                To advance sustainable engineering practices through innovative solutions 
-                that optimize industrial processes while minimizing environmental impact. 
-                We are committed to helping New Zealand industries achieve their operational 
-                goals through cutting-edge engineering expertise.
+                To advance sustainable engineering practices through innovative, scientifically-driven 
+                solutions that optimize industrial processes while minimizing environmental impact. 
+                We are dedicated to empowering New Zealand industries to achieve operational excellence 
+                through cutting-edge engineering expertise, sustainable technologies, and strategic 
+                environmental stewardship.
               </p>
               
               <div className="mt-8">

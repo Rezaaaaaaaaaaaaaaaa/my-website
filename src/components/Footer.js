@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaEnvelope, FaMapMarkerAlt, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
@@ -15,11 +16,11 @@ const Footer = () => {
 
           <div>
             <h4>Services</h4>
-            <a href="/services" className="footer-link">Chemical Process Engineering</a>
-            <a href="/services" className="footer-link">Bioprocess Engineering</a>
-            <a href="/services" className="footer-link">Environmental Consulting</a>
-            <a href="/services" className="footer-link">Process Optimization</a>
-            <a href="/services" className="footer-link">Sustainability Solutions</a>
+            <Link to="/services" className="footer-link">Chemical Process Engineering</Link>
+            <Link to="/services" className="footer-link">Bioprocess Engineering</Link>
+            <Link to="/services" className="footer-link">Environmental Consulting</Link>
+            <Link to="/services" className="footer-link">Process Optimization</Link>
+            <Link to="/services" className="footer-link">Sustainability Solutions</Link>
           </div>
 
           <div>
@@ -40,11 +41,11 @@ const Footer = () => {
 
           <div>
             <h4>Industries</h4>
-            <a href="/services" className="footer-link">Food & Beverage</a>
-            <a href="/services" className="footer-link">Water Treatment</a>
-            <a href="/services" className="footer-link">Chemical Manufacturing</a>
-            <a href="/services" className="footer-link">Agricultural Technology</a>
-            <a href="/services" className="footer-link">Research & Development</a>
+            <Link to="/services" className="footer-link">Food & Beverage</Link>
+            <Link to="/services" className="footer-link">Water Treatment</Link>
+            <Link to="/services" className="footer-link">Chemical Manufacturing</Link>
+            <Link to="/services" className="footer-link">Agricultural Technology</Link>
+            <Link to="/services" className="footer-link">Research & Development</Link>
           </div>
         </div>
 

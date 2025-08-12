@@ -57,15 +57,17 @@ const processes = [
 
 const TechnicalProcesses = () => (
     <section className="technical-processes">
-        <h2>Water & Wastewater Treatment Systems</h2>
-        <div className="process-list">
-            {processes.map((proc, idx) => (
-                <div className="process-card" key={idx}>
-                    {proc.icon}
-                    <h3>{proc.title}</h3>
-                    <p>{proc.description}</p>
-                </div>
-            ))}
+        <div className="container">
+            <h2>Water & Wastewater Treatment Systems</h2>
+            <div className="process-list">
+                {processes.map((proc, idx) => (
+                    <div className="process-card" key={idx}>
+                        {proc.icon}
+                        <h3>{proc.title}</h3>
+                        <p>{proc.description}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     </section>
 );

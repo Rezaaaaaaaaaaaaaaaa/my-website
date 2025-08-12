@@ -74,8 +74,9 @@ const ContactPage = () => {
           <div className="hero-content">
             <h1>Contact Us</h1>
             <p className="description">
-              Ready to discuss your engineering challenges? Get in touch with our expert team
-              for a consultation tailored to your specific needs.
+              Ready to transform your engineering challenges into innovative solutions? 
+              Connect with our expert team for a comprehensive consultation tailored to 
+              your specific industrial requirements and sustainability goals.
             </p>
           </div>
         </div>
@@ -183,8 +184,9 @@ const ContactPage = () => {
             <div>
               <h2>Get In Touch</h2>
               <p className="mb-8">
-                We're here to help with your engineering challenges. Contact us through
-                any of the methods below, and we'll respond promptly.
+                Our engineering experts are ready to collaborate on your next project. 
+                Contact us through any of the methods below, and we'll respond with a 
+                tailored approach to your specific requirements within 24 hours.
               </p>
 
               <div className="card mb-6">

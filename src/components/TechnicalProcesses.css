@@ -1,47 +1,71 @@
 .technical-processes {
-    padding: 2rem 1rem;
-    background: #f7fafc;
+    padding: var(--space-16) 0;
+    background: var(--gray-100);
+}
+
+.technical-processes .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
 }
 
 .technical-processes h2 {
     text-align: center;
-    margin-bottom: 2rem;
-    color: #1a365d;
+    margin-bottom: var(--space-12);
+    color: var(--gray-900);
+    font-family: var(--font-secondary);
+    font-size: 2.25rem;
+    font-weight: 700;
 }
 
 .process-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
 }
 
 .process-card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-    padding: 1.5rem;
-    width: 260px;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-6);
     text-align: center;
-    transition: box-shadow 0.2s;
+    transition: var(--transition);
+    border: 1px solid var(--gray-200);
 }
 
 .process-card:hover {
-    box-shadow: 0 4px 16px rgba(26, 54, 93, 0.15);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
 }
 
 .process-icon {
-    font-size: 2.5rem;
-    color: #3182ce;
-    margin-bottom: 1rem;
+    font-size: 3rem;
+    color: var(--primary-green);
+    margin-bottom: var(--space-4);
 }
 
 .process-card h3 {
-    margin: 0.5rem 0 1rem 0;
-    color: #2a4365;
+    margin: 0 0 var(--space-3) 0;
+    color: var(--gray-900);
+    font-family: var(--font-secondary);
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 .process-card p {
-    color: #4a5568;
+    color: var(--gray-600);
     font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .process-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .technical-processes {
+        padding: var(--space-12) 0;
+    }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,7 +12,7 @@ const Footer = () => {
             <h4>AquaTech Solutions NZ</h4>
             <p>Leading environmental engineering consultancy specializing in chemical processes, bioprocess engineering, and sustainable solutions across New Zealand.</p>
           </div>
-          
+
           <div>
             <h4>Services</h4>
             <a href="/services" className="footer-link">Chemical Process Engineering</a>
@@ -21,7 +21,7 @@ const Footer = () => {
             <a href="/services" className="footer-link">Process Optimization</a>
             <a href="/services" className="footer-link">Sustainability Solutions</a>
           </div>
-          
+
           <div>
             <h4>Contact</h4>
             <div className="flex items-center gap-4 mb-2">
@@ -37,7 +37,7 @@ const Footer = () => {
               <span>Professional Network</span>
             </div>
           </div>
-          
+
           <div>
             <h4>Industries</h4>
             <a href="/services" className="footer-link">Food & Beverage</a>
@@ -47,7 +47,7 @@ const Footer = () => {
             <a href="/services" className="footer-link">Research & Development</a>
           </div>
         </div>
-        
+
         <div className="footer-bottom">
           <p>&copy; {currentYear} AquaTech Solutions NZ. All rights reserved.</p>
         </div>

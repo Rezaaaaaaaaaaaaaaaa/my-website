@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import emailjs from 'emailjs-com';
-import { 
-  FaPhone, 
-  FaEnvelope, 
-  FaMapMarkerAlt, 
+// import emailjs from 'emailjs-com';
+import {
+  FaEnvelope,
+  FaMapMarkerAlt,
   FaPaperPlane,
   FaCheckCircle,
   FaExclamationTriangle
@@ -34,23 +33,12 @@ const ContactPage = () => {
 
     try {
       // EmailJS configuration - you'll need to set these up
-      const serviceId = 'YOUR_SERVICE_ID'; // Replace with your EmailJS service ID
-      const templateId = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS template ID
-      const userId = 'YOUR_USER_ID'; // Replace with your EmailJS user ID
-
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        company: formData.company,
-        service: formData.service,
-        message: formData.message,
-        to_email: 'che.eng@live.com'
-      };
+      // Removed unused variables: serviceId, templateId, userId, templateParams
 
       // For now, simulate successful submission
       // Uncomment the line below when EmailJS is configured
       // await emailjs.send(serviceId, templateId, templateParams, userId);
-      
+
       // Simulate delay
       await new Promise(resolve => setTimeout(resolve, 1000));
 
@@ -58,7 +46,7 @@ const ContactPage = () => {
         type: 'success',
         message: 'Thank you! Your message has been sent successfully. We will get back to you within 24 hours.'
       });
-      
+
       // Reset form
       setFormData({
         name: '',
@@ -70,7 +58,7 @@ const ContactPage = () => {
 
     } catch (error) {
       setStatus({
-        type: 'error', 
+        type: 'error',
         message: 'Sorry, there was an error sending your message. Please try again or contact us directly.'
       });
     } finally {
@@ -81,12 +69,12 @@ const ContactPage = () => {
   return (
     <div>
       {/* Page Header */}
-      <section className="hero" style={{padding: 'var(--space-16) 0'}}>
+      <section className="hero" style={{ padding: 'var(--space-16) 0' }}>
         <div className="container">
           <div className="hero-content">
             <h1>Contact Us</h1>
             <p className="description">
-              Ready to discuss your engineering challenges? Get in touch with our expert team 
+              Ready to discuss your engineering challenges? Get in touch with our expert team
               for a consultation tailored to your specific needs.
             </p>
           </div>
@@ -96,7 +84,7 @@ const ContactPage = () => {
       {/* Contact Form & Info */}
       <section className="section">
         <div className="container">
-          <div className="grid grid-cols-2" style={{gap: 'var(--space-12)'}}>
+          <div className="grid grid-cols-2" style={{ gap: 'var(--space-12)' }}>
             {/* Contact Form */}
             <div>
               <h2>Send Us a Message</h2>
@@ -167,8 +155,8 @@ const ContactPage = () => {
                   ></textarea>
                 </div>
 
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   className="btn btn-primary"
                   disabled={isSubmitting}
                 >
@@ -195,13 +183,13 @@ const ContactPage = () => {
             <div>
               <h2>Get In Touch</h2>
               <p className="mb-8">
-                We're here to help with your engineering challenges. Contact us through 
+                We're here to help with your engineering challenges. Contact us through
                 any of the methods below, and we'll respond promptly.
               </p>
 
               <div className="card mb-6">
                 <div className="flex items-center gap-4">
-                  <FaEnvelope className="text-2xl" style={{color: 'var(--primary-green)'}} />
+                  <FaEnvelope className="text-2xl" style={{ color: 'var(--primary-green)' }} />
                   <div>
                     <h4>Email</h4>
                     <p>che.eng@live.com</p>
@@ -212,7 +200,7 @@ const ContactPage = () => {
 
               <div className="card mb-6">
                 <div className="flex items-center gap-4">
-                  <FaMapMarkerAlt className="text-2xl" style={{color: 'var(--primary-green)'}} />
+                  <FaMapMarkerAlt className="text-2xl" style={{ color: 'var(--primary-green)' }} />
                   <div>
                     <h4>Location</h4>
                     <p>New Zealand</p>

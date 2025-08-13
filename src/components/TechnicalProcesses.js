@@ -1,8 +1,8 @@
 import React from 'react';
-import { FaWater, FaFilter, FaRecycle, FaBolt, FaVial, FaLeaf, FaSlidersH, FaChartLine } from 'react-icons/fa';
+import { FaWater, FaFilter, FaRecycle, FaBolt, FaVial, FaLeaf, FaSlidersH, FaChartLine, FaIndustry, FaTint, FaFlask, FaSnowflake, FaBurn, FaAtom, FaDna, FaSeedling, FaCog, FaOilCan, FaThermometerHalf, FaCloudRain, FaMicroscope, FaWind } from 'react-icons/fa';
 import './TechnicalProcesses.css';
 
-const processes = [
+const waterTreatmentProcesses = [
     {
         title: 'Filtration',
         icon: <FaFilter className="process-icon" />,
@@ -55,18 +55,124 @@ const processes = [
     },
 ];
 
+const bioProcesses = [
+    {
+        title: 'Bioreactors',
+        icon: <FaFlask className="process-icon bio-icon" />,
+        description: 'Controlled fermentation vessels for microbial cultivation and bioprocessing applications.'
+    },
+    {
+        title: 'Anaerobic Digestion',
+        icon: <FaDna className="process-icon bio-icon" />,
+        description: 'Biogas production from organic waste through anaerobic bacterial decomposition.'
+    },
+    {
+        title: 'Composting Systems',
+        icon: <FaSeedling className="process-icon bio-icon" />,
+        description: 'Aerobic biological decomposition of organic materials into nutrient-rich compost.'
+    },
+    {
+        title: 'Membrane Bioreactors',
+        icon: <FaMicroscope className="process-icon bio-icon" />,
+        description: 'Combined biological treatment and membrane filtration for high-quality effluent.'
+    },
+    {
+        title: 'Biofilm Reactors',
+        icon: <FaLeaf className="process-icon bio-icon" />,
+        description: 'Fixed-film biological systems for efficient organic matter removal and nitrification.'
+    },
+    {
+        title: 'Algae Cultivation',
+        icon: <FaSeedling className="process-icon bio-icon" />,
+        description: 'Photobioreactors and open ponds for algae production and nutrient recovery.'
+    },
+];
+
+const chemicalProcesses = [
+    {
+        title: 'Distillation',
+        icon: <FaThermometerHalf className="process-icon chem-icon" />,
+        description: 'Separation of liquid mixtures based on different boiling points and volatility.'
+    },
+    {
+        title: 'Chemical Precipitation',
+        icon: <FaCloudRain className="process-icon chem-icon" />,
+        description: 'Coagulation and flocculation for removal of dissolved contaminants and phosphorus.'
+    },
+    {
+        title: 'Crystallization',
+        icon: <FaSnowflake className="process-icon chem-icon" />,
+        description: 'Purification and separation through controlled crystal formation and recovery.'
+    },
+    {
+        title: 'Oxidation Processes',
+        icon: <FaAtom className="process-icon chem-icon" />,
+        description: 'Advanced oxidation using ozone, hydrogen peroxide, and UV for micropollutant removal.'
+    },
+    {
+        title: 'Extraction',
+        icon: <FaOilCan className="process-icon chem-icon" />,
+        description: 'Liquid-liquid and solid-liquid extraction for component separation and purification.'
+    },
+    {
+        title: 'Catalytic Processes',
+        icon: <FaIndustry className="process-icon chem-icon" />,
+        description: 'Heterogeneous and homogeneous catalysis for chemical transformation and treatment.'
+    },
+    {
+        title: 'Gas Absorption',
+        icon: <FaWind className="process-icon chem-icon" />,
+        description: 'Scrubbing towers and packed columns for gas-phase contaminant removal.'
+    },
+    {
+        title: 'Thermal Treatment',
+        icon: <FaBurn className="process-icon chem-icon" />,
+        description: 'Incineration and pyrolysis for waste volume reduction and energy recovery.'
+    },
+];
+
 const TechnicalProcesses = () => (
     <section className="technical-processes">
         <div className="container">
-            <h2>Water & Wastewater Treatment Systems</h2>
-            <div className="process-list">
-                {processes.map((proc, idx) => (
-                    <div className="process-card" key={idx}>
-                        {proc.icon}
-                        <h3>{proc.title}</h3>
-                        <p>{proc.description}</p>
-                    </div>
-                ))}
+            <h2>Environmental Engineering Process Units</h2>
+            
+            <div className="process-section">
+                <h3 className="section-title">Water & Wastewater Treatment</h3>
+                <div className="process-list">
+                    {waterTreatmentProcesses.map((proc, idx) => (
+                        <div className="process-card water-treatment" key={`water-${idx}`}>
+                            {proc.icon}
+                            <h4>{proc.title}</h4>
+                            <p>{proc.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className="process-section">
+                <h3 className="section-title">Biological Processes</h3>
+                <div className="process-list">
+                    {bioProcesses.map((proc, idx) => (
+                        <div className="process-card bio-process" key={`bio-${idx}`}>
+                            {proc.icon}
+                            <h4>{proc.title}</h4>
+                            <p>{proc.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className="process-section">
+                <h3 className="section-title">Chemical Engineering Processes</h3>
+                <div className="process-list">
+                    {chemicalProcesses.map((proc, idx) => (
+                        <div className="process-card chem-process" key={`chem-${idx}`}>
+                            {proc.icon}
+                            <h4>{proc.title}</h4>
+                            <p>{proc.description}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     </section>

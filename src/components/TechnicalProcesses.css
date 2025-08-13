@@ -11,11 +11,37 @@
 
 .technical-processes h2 {
     text-align: center;
-    margin-bottom: var(--space-12);
+    margin-bottom: var(--space-16);
     color: var(--gray-900);
     font-family: var(--font-secondary);
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     font-weight: 700;
+}
+
+.process-section {
+    margin-bottom: var(--space-16);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: var(--space-8);
+    color: var(--gray-800);
+    font-family: var(--font-secondary);
+    font-size: 1.875rem;
+    font-weight: 600;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
+    border-radius: 2px;
 }
 
 .process-list {
@@ -45,7 +71,7 @@
     margin-bottom: var(--space-4);
 }
 
-.process-card h3 {
+.process-card h4 {
     margin: 0 0 var(--space-3) 0;
     color: var(--gray-900);
     font-family: var(--font-secondary);
@@ -60,6 +86,72 @@
     margin: 0;
 }
 
+/* Category-specific styling */
+.water-treatment {
+    border-left: 4px solid #3B82F6;
+}
+
+.water-treatment:hover {
+    border-left-color: #2563EB;
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+}
+
+.bio-process {
+    border-left: 4px solid #10B981;
+}
+
+.bio-process:hover {
+    border-left-color: #059669;
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
+}
+
+.bio-icon {
+    color: #10B981 !important;
+}
+
+.chem-process {
+    border-left: 4px solid #F59E0B;
+}
+
+.chem-process:hover {
+    border-left-color: #D97706;
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.15);
+}
+
+.chem-icon {
+    color: #F59E0B !important;
+}
+
+/* Enhanced visual effects */
+.process-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.process-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.process-card:hover::before {
+    transform: translateX(100%);
+}
+
+.bio-process::before {
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.3), transparent);
+}
+
+.chem-process::before {
+    background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.3), transparent);
+}
+
 @media (max-width: 768px) {
     .process-list {
         grid-template-columns: 1fr;
@@ -67,5 +159,13 @@
     
     .technical-processes {
         padding: var(--space-12) 0;
+    }
+    
+    .process-section {
+        margin-bottom: var(--space-12);
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
     }
 }

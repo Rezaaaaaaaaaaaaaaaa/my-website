@@ -1,0 +1,16 @@
+.process-unit-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 32px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  text-align: center;
+}
+.unit-image {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  margin: 24px 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+}

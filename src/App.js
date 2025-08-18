@@ -3,10 +3,17 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import TechnicalProcesses from './components/TechnicalProcesses';
+
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import ReactorPage from './pages/ReactorPage';
+import DistillationPage from './pages/DistillationPage';
+import HeatExchangerPage from './pages/HeatExchangerPage';
+import SeparatorPage from './pages/SeparatorPage';
+import ProcessesPage from './pages/ProcessesPage';
+            <Route path="/processes" element={<ProcessesPage />} />
 import './styles/index.css';
 
 function App() {
@@ -20,6 +27,10 @@ function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/reactor" element={<ReactorPage />} />
+            <Route path="/distillation" element={<DistillationPage />} />
+            <Route path="/heat-exchanger" element={<HeatExchangerPage />} />
+            <Route path="/separator" element={<SeparatorPage />} />
           </Routes>
         </main>
         <TechnicalProcesses />

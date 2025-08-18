@@ -56,6 +56,16 @@ const Navbar = () => {
                 Contact
               </Link>
             </li>
+
+            <li>
+              <Link 
+                to="/processes" 
+                className={`nav-link ${isActive('/processes') ? 'active' : ''}`}
+                onClick={closeMenu}
+              >
+                Processes
+              </Link>
+            </li>
           </ul>
 
           <button className="mobile-menu-btn" onClick={toggleMenu}>

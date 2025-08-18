@@ -13,7 +13,6 @@ import DistillationPage from './pages/DistillationPage';
 import HeatExchangerPage from './pages/HeatExchangerPage';
 import SeparatorPage from './pages/SeparatorPage';
 import ProcessesPage from './pages/ProcessesPage';
-            <Route path="/processes" element={<ProcessesPage />} />
 import './styles/index.css';
 
 function App() {
@@ -31,6 +30,7 @@ function App() {
             <Route path="/distillation" element={<DistillationPage />} />
             <Route path="/heat-exchanger" element={<HeatExchangerPage />} />
             <Route path="/separator" element={<SeparatorPage />} />
+            <Route path="/processes" element={<ProcessesPage />} />
           </Routes>
         </main>
         <TechnicalProcesses />

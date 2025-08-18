@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaWater, FaFilter, FaRecycle, FaBolt, FaVial, FaLeaf, FaSlidersH, FaChartLine, FaIndustry, FaTint, FaFlask, FaSnowflake, FaBurn, FaAtom, FaDna, FaSeedling, FaCog, FaOilCan, FaThermometerHalf, FaCloudRain, FaMicroscope, FaWind } from 'react-icons/fa';
+import { FaWater, FaFilter, FaRecycle, FaBolt, FaVial, FaLeaf, FaSlidersH, FaChartLine, FaIndustry, FaFlask, FaSnowflake, FaBurn, FaAtom, FaDna, FaSeedling, FaOilCan, FaThermometerHalf, FaCloudRain, FaMicroscope, FaWind } from 'react-icons/fa';
 import './TechnicalProcesses.css';
 
 const waterTreatmentProcesses = [

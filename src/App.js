@@ -13,6 +13,12 @@ import DistillationPage from './pages/DistillationPage';
 import HeatExchangerPage from './pages/HeatExchangerPage';
 import SeparatorPage from './pages/SeparatorPage';
 import ProcessesPage from './pages/ProcessesPage';
+import QMRAAnalysisPage from './pages/QMRAAnalysisPage';
+import MachineLearningPage from './pages/MachineLearningPage';
+import MechanisticAnalysisPage from './pages/MechanisticAnalysisPage';
+import RatingCurvesPage from './pages/RatingCurvesPage';
+import ReactionPage from './pages/ReactionPage';
+import ExtractionPage from './pages/ExtractionPage';
 import './styles/index.css';
 
 function App() {
@@ -31,6 +37,12 @@ function App() {
             <Route path="/heat-exchanger" element={<HeatExchangerPage />} />
             <Route path="/separator" element={<SeparatorPage />} />
             <Route path="/processes" element={<ProcessesPage />} />
+            <Route path="/qmra-analysis" element={<QMRAAnalysisPage />} />
+            <Route path="/machine-learning" element={<MachineLearningPage />} />
+            <Route path="/mechanistic-analysis" element={<MechanisticAnalysisPage />} />
+            <Route path="/rating-curves" element={<RatingCurvesPage />} />
+            <Route path="/reaction" element={<ReactionPage />} />
+            <Route path="/extraction" element={<ExtractionPage />} />
           </Routes>
         </main>
         <TechnicalProcesses />

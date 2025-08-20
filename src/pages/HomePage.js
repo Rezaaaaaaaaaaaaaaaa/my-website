@@ -40,11 +40,11 @@ const HomePage = () => {
   ];
 
   const industries = [
-    "Food & Beverage Processing",
-    "Water Treatment Facilities", 
-    "Chemical Manufacturing",
-    "Biotechnology & Pharmaceuticals",
-    "Agricultural Technology",
+    "Dairy & Food Processing",
+    "Water Treatment & Infrastructure", 
+    "Agricultural Technology & Horticulture",
+    "Marine & Aquaculture",
+    "Manufacturing & Industrial",
     "Research & Development"
   ];
 
@@ -57,9 +57,9 @@ const HomePage = () => {
             <h1>AquaTech Solutions NZ</h1>
             <p className="subtitle">Environmental Engineering Excellence</p>
             <p className="description">
-              New Zealand's premier environmental engineering consultancy, delivering innovative 
+              New Zealand's trusted environmental engineering consultancy, delivering innovative 
               chemical process solutions, bioprocess engineering, and sustainable technologies 
-              for industry and research applications.
+              that drive Kiwi innovation while protecting our pristine natural environment.
             </p>
             <div className="flex justify-center gap-4 mt-8">
               <Link to="/services" className="btn btn-primary">
@@ -79,7 +79,7 @@ const HomePage = () => {
           <div className="section-header">
             <h2 className="section-title">Core Engineering Services</h2>
             <p className="section-description">
-              Comprehensive engineering solutions tailored for New Zealand's industrial and environmental challenges
+              Comprehensive engineering solutions designed specifically for New Zealand's unique industrial landscape and environmental challenges
             </p>
           </div>
           
@@ -112,7 +112,7 @@ const HomePage = () => {
           <div className="section-header">
             <h2 className="section-title">Industries We Serve</h2>
             <p className="section-description">
-              Delivering specialized engineering solutions across diverse sectors
+              Supporting New Zealand's key industries with specialized engineering expertise
             </p>
           </div>
           
@@ -138,13 +138,13 @@ const HomePage = () => {
             <div className="card text-center">
               <FaChartLine className="card-icon" />
               <h3>Proven Expertise</h3>
-              <p>Deep technical knowledge in chemical and bioprocess engineering with years of industry experience.</p>
+              <p>Deep technical expertise in chemical and bioprocess engineering with extensive experience across New Zealand industries.</p>
             </div>
             
             <div className="card text-center">
               <FaLeaf className="card-icon" />
               <h3>Sustainable Solutions</h3>
-              <p>Environmentally conscious engineering that balances performance with sustainability goals.</p>
+              <p>Environmentally conscious engineering that aligns with New Zealand's commitment to sustainability and clean, green innovation.</p>
             </div>
             
             <div className="card text-center">

@@ -40,41 +40,41 @@ const ServicesPage = () => {
     },
     {
       icon: <FaWater />,
-      title: "Water & Wastewater Treatment",
-      description: "Advanced water treatment and environmental solutions",
+      title: "Water & Marine Treatment",
+      description: "Advanced water treatment solutions for New Zealand's pristine environment",
       details: [
         "Water treatment system design",
         "Wastewater treatment optimization",
-        "Membrane technology applications",
+        "Marine and aquaculture systems",
         "Biological treatment processes",
         "Water quality monitoring",
-        "Regulatory compliance support"
+        "Environmental compliance support"
       ]
     },
     {
       icon: <FaIndustry />,
       title: "Food Process Engineering",
-      description: "Food processing and manufacturing optimization",
+      description: "Specialized solutions for New Zealand's world-class food industry",
       details: [
-        "Food processing system design",
-        "Thermal processing optimization",
+        "Dairy processing optimization",
+        "Meat and seafood processing",
         "Food safety and HACCP implementation",
         "Quality control systems",
-        "Packaging technology",
-        "Shelf-life extension strategies"
+        "Sustainable packaging solutions",
+        "Export compliance and certification"
       ]
     },
     {
       icon: <FaLeaf />,
       title: "Environmental Consulting",
-      description: "Sustainable environmental engineering solutions",
+      description: "Protecting New Zealand's clean, green reputation through sustainable engineering",
       details: [
         "Environmental impact assessments",
-        "Pollution prevention strategies",
+        "Resource consent applications",
         "Waste minimization programs",
-        "Sustainability consulting",
         "Carbon footprint reduction",
-        "Green technology implementation"
+        "Biodiversity protection strategies",
+        "Clean technology implementation"
       ]
     },
     {
@@ -100,8 +100,9 @@ const ServicesPage = () => {
           <div className="hero-content">
             <h1>Our Engineering Services</h1>
             <p className="description">
-              Comprehensive engineering solutions designed to optimize your processes, 
-              improve efficiency, and ensure sustainable operations across diverse industries.
+              Comprehensive engineering solutions designed specifically for New Zealand industries, 
+              optimizing processes while maintaining our commitment to environmental stewardship 
+              and sustainable operations across diverse sectors.
             </p>
           </div>
         </div>

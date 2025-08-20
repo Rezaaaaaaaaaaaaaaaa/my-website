@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npm start)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(/c/Users/moghaddamr/scoop/apps/git/current/bin/git.exe --version)"
     ],
     "deny": [],
     "ask": []

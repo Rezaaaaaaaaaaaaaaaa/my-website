@@ -74,9 +74,9 @@ const ContactPage = () => {
           <div className="hero-content">
             <h1>Contact Us</h1>
             <p className="description">
-              Ready to transform your engineering challenges into innovative solutions? 
-              Connect with our expert team for a comprehensive consultation tailored to 
-              your specific industrial requirements and sustainability goals.
+              Ready to transform your engineering challenges into innovative, sustainable solutions? 
+              Connect with our Kiwi engineering experts for a comprehensive consultation that 
+              respects both your commercial objectives and New Zealand's environmental values.
             </p>
           </div>
         </div>
@@ -184,9 +184,9 @@ const ContactPage = () => {
             <div>
               <h2>Get In Touch</h2>
               <p className="mb-8">
-                Our engineering experts are ready to collaborate on your next project. 
+                Our Kiwi engineering experts are ready to collaborate on your next project. 
                 Contact us through any of the methods below, and we'll respond with a 
-                tailored approach to your specific requirements within 24 hours.
+                tailored approach aligned with New Zealand's sustainability standards within 24 hours.
               </p>
 
               <div className="card mb-6">
@@ -205,8 +205,8 @@ const ContactPage = () => {
                   <FaMapMarkerAlt className="text-2xl" style={{ color: 'var(--primary-green)' }} />
                   <div>
                     <h4>Location</h4>
-                    <p>New Zealand</p>
-                    <small>Serving clients nationwide</small>
+                    <p>Aotearoa New Zealand</p>
+                    <small>Serving clients from Auckland to Invercargill</small>
                   </div>
                 </div>
               </div>
@@ -215,10 +215,11 @@ const ContactPage = () => {
                 <h4>Why Contact Us?</h4>
                 <ul>
                   <li className="mb-2">• Free initial consultation</li>
-                  <li className="mb-2">• Expert technical guidance</li>
-                  <li className="mb-2">• Tailored solutions for your industry</li>
-                  <li className="mb-2">• Competitive pricing</li>
+                  <li className="mb-2">• Expert Kiwi technical guidance</li>
+                  <li className="mb-2">• Solutions tailored to NZ regulations</li>
+                  <li className="mb-2">• Competitive local pricing</li>
                   <li className="mb-2">• Professional project management</li>
+                  <li className="mb-2">• Environmental compliance expertise</li>
                 </ul>
               </div>
             </div>

@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="footer-content">
           <div>
             <h4>AquaTech Solutions NZ</h4>
-            <p>Leading environmental engineering consultancy specializing in chemical processes, bioprocess engineering, and sustainable solutions across New Zealand.</p>
+            <p>New Zealand's trusted environmental engineering consultancy, delivering innovative solutions that protect our clean, green heritage while advancing industrial excellence across Aotearoa.</p>
           </div>
 
           <div>
@@ -41,10 +41,10 @@ const Footer = () => {
 
           <div>
             <h4>Industries</h4>
-            <Link to="/services" className="footer-link">Food & Beverage</Link>
-            <Link to="/services" className="footer-link">Water Treatment</Link>
-            <Link to="/services" className="footer-link">Chemical Manufacturing</Link>
+            <Link to="/services" className="footer-link">Dairy & Food Processing</Link>
+            <Link to="/services" className="footer-link">Water & Marine Systems</Link>
             <Link to="/services" className="footer-link">Agricultural Technology</Link>
+            <Link to="/services" className="footer-link">Environmental Compliance</Link>
             <Link to="/services" className="footer-link">Research & Development</Link>
           </div>
         </div>

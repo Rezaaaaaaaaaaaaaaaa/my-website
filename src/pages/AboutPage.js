@@ -40,8 +40,8 @@ const AboutPage = () => {
           <div className="hero-content">
             <h1>About AquaTech Solutions NZ</h1>
             <p className="description">
-              Your trusted partner for innovative environmental and process engineering 
-              solutions across New Zealand and beyond.
+              Your trusted Kiwi partner for innovative environmental and process engineering 
+              solutions that honour New Zealand's commitment to environmental excellence.
             </p>
           </div>
         </div>
@@ -55,36 +55,38 @@ const AboutPage = () => {
               <h2>Our Story</h2>
               <p>
                 Founded with a commitment to environmental stewardship and engineering excellence, 
-                AquaTech Solutions NZ delivers world-class process engineering services to 
-                New Zealand's diverse industrial landscape. Our expertise spans chemical processes, 
-                bioprocess engineering, and innovative sustainable technologies that drive industry 
-                advancement while protecting our natural environment.
+                AquaTech Solutions NZ delivers world-class process engineering services designed 
+                specifically for New Zealand's unique industrial landscape. From the pristine 
+                waters of our fjords to the fertile plains of Canterbury, we understand the 
+                responsibility of protecting Aotearoa's natural heritage while advancing industrial innovation.
               </p>
               <p>
-                Our multidisciplinary team seamlessly integrates advanced technical knowledge 
-                with extensive industry experience, ensuring every solution is both scientifically 
-                rigorous and commercially practical. We serve as trusted partners across food processing, 
-                water treatment, chemical manufacturing, biotechnology, and emerging green technology sectors.
+                Our multidisciplinary team combines advanced technical knowledge with deep 
+                understanding of New Zealand's regulatory environment and sustainability imperatives. 
+                We serve as trusted partners across our nation's key industries - from dairy and 
+                agriculture to marine processing and clean technology - ensuring every solution 
+                delivers both commercial success and environmental responsibility.
               </p>
             </div>
             
             <div>
               <h2>Our Mission</h2>
               <p>
-                To advance sustainable engineering practices through innovative, scientifically-driven 
-                solutions that optimize industrial processes while minimizing environmental impact. 
-                We are dedicated to empowering New Zealand industries to achieve operational excellence 
-                through cutting-edge engineering expertise, sustainable technologies, and strategic 
-                environmental stewardship.
+                To advance sustainable engineering practices that embody New Zealand's clean, green 
+                values through innovative, scientifically-driven solutions. We are dedicated to 
+                empowering Kiwi industries to achieve operational excellence while upholding our 
+                nation's commitment to environmental stewardship - ensuring future generations 
+                inherit the same pristine environment we cherish today.
               </p>
               
               <div className="mt-8">
                 <h3>Key Focus Areas</h3>
                 <ul>
                   <li className="mb-2">• Chemical and bioprocess engineering</li>
-                  <li className="mb-2">• Environmental sustainability</li>
-                  <li className="mb-2">• Food processing optimization</li>
-                  <li className="mb-2">• Water treatment solutions</li>
+                  <li className="mb-2">• Environmental sustainability and compliance</li>
+                  <li className="mb-2">• Dairy and food processing optimization</li>
+                  <li className="mb-2">• Water treatment and marine solutions</li>
+                  <li className="mb-2">• Agricultural technology advancement</li>
                   <li className="mb-2">• Research and development support</li>
                 </ul>
               </div>
@@ -142,7 +144,7 @@ const AboutPage = () => {
             <div className="card text-center">
               <FaGlobe className="card-icon" />
               <h3>Global Perspective</h3>
-              <p>International experience combined with deep understanding of New Zealand's unique challenges</p>
+              <p>International expertise applied to New Zealand's unique environmental and regulatory landscape</p>
             </div>
           </div>
         </div>

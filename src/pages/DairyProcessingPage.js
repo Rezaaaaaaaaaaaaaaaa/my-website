@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaMilk, FaIndustry, FaThermometerHalf, FaFlask, FaCheckCircle, FaCogs, FaLeaf, FaGlobe } from 'react-icons/fa';
+import { FaIndustry, FaThermometerHalf, FaFlask, FaCheckCircle, FaCogs, FaLeaf, FaGlobe } from 'react-icons/fa';
 
 const DairyProcessingPage = () => {
   const processes = [
@@ -167,7 +167,7 @@ const DairyProcessingPage = () => {
           <div className="products-grid">
             {products.map((product, index) => (
               <div key={index} className="product-item">
-                <FaMilk className="product-icon" />
+                <FaIndustry className="product-icon" />
                 <span>{product}</span>
               </div>
             ))}

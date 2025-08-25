@@ -38,7 +38,7 @@ const AboutPage = () => {
       <section className="hero" style={{padding: 'var(--space-16) 0'}}>
         <div className="container">
           <div className="hero-content">
-            <h1>About AquaTech Solutions NZ</h1>
+            <h1>About RMES</h1>
             <p className="description">
               Your trusted Kiwi partner for innovative environmental and process engineering 
               solutions that honour New Zealand's commitment to environmental excellence.
@@ -55,7 +55,7 @@ const AboutPage = () => {
               <h2>Our Story</h2>
               <p>
                 Founded with a commitment to environmental stewardship and engineering excellence, 
-                AquaTech Solutions NZ delivers world-class process engineering services designed 
+                RMES delivers world-class process engineering services designed 
                 specifically for New Zealand's unique industrial landscape. From the pristine 
                 waters of our fjords to the fertile plains of Canterbury, we understand the 
                 responsibility of protecting Aotearoa's natural heritage while advancing industrial innovation.

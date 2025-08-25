@@ -12,51 +12,23 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
-  const processEquipmentItems = [
-    { name: 'Reactor', path: '/reactor' },
-    { name: 'Distillation', path: '/distillation' },
-    { name: 'Heat Exchanger', path: '/heat-exchanger' },
-    { name: 'Separator', path: '/separator' }
+  // Consolidated service groups for better navigation efficiency
+  const engineeringServicesItems = [
+    { name: 'Process Equipment', path: '/services#equipment' },
+    { name: 'Treatment Systems', path: '/services#treatment' },
+    { name: 'Analysis Services', path: '/services#analysis' }
   ];
 
-  const treatmentSystemsItems = [
-    { name: 'Extraction', path: '/extraction' },
-    { name: 'Reaction', path: '/reaction' }
-  ];
-
-  const analysisServicesItems = [
-    { name: 'QMRA Analysis', path: '/qmra-analysis' },
-    { name: 'Machine Learning', path: '/machine-learning' },
-    { name: 'Mechanistic Analysis', path: '/mechanistic-analysis' },
-    { name: 'Rating Curves', path: '/rating-curves' }
-  ];
-
-  const biologicalTreatmentItems = [
-    { name: 'Activated Sludge', path: '/activated-sludge' },
-    { name: 'Biofilm Reactors', path: '/biofilm-reactors' },
-    { name: 'Anaerobic Digestion', path: '/anaerobic-digestion' },
-    { name: 'Constructed Wetlands', path: '/constructed-wetlands' },
-    { name: 'Membrane Bioreactors', path: '/membrane-bioreactors' },
-    { name: 'Trickling Filters', path: '/trickling-filters' }
-  ];
-
-  const chemicalProcessesItems = [
-    { name: 'Coagulation & Flocculation', path: '/coagulation-flocculation' },
-    { name: 'Chemical Precipitation', path: '/chemical-precipitation' },
-    { name: 'Ion Exchange', path: '/ion-exchange' },
-    { name: 'Advanced Oxidation', path: '/advanced-oxidation' },
-    { name: 'Electrochemical Treatment', path: '/electrochemical-treatment' },
-    { name: 'pH Adjustment', path: '/ph-adjustment' }
+  const environmentalSolutionsItems = [
+    { name: 'Biological Treatment', path: '/services#biological' },
+    { name: 'Chemical Processes', path: '/services#chemical' },
+    { name: 'Water & Marine', path: '/services#water' }
   ];
 
   const foodEngineeringItems = [
     { name: 'Dairy Processing', path: '/dairy-processing' },
-    { name: 'Meat Processing', path: '/meat-processing' },
-    { name: 'Wine & Beverage', path: '/wine-beverage' },
-    { name: 'Seafood Processing', path: '/seafood-processing' },
-    { name: 'Kiwifruit Processing', path: '/kiwifruit-processing' },
-    { name: 'Honey Processing', path: '/honey-processing' },
-    { name: 'Food Safety Systems', path: '/food-safety-systems' }
+    { name: 'Food Safety Systems', path: '/food-safety-systems' },
+    { name: 'Process Optimization', path: '/services#optimization' }
   ];
 
   return (
@@ -64,7 +36,7 @@ const Navbar = () => {
       <div className="container">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMenu}>
-            AquaTech Solutions NZ
+            RMES
           </Link>
           
           <ul className={`nav-menu ${isOpen ? 'nav-menu-open' : ''}`}>
@@ -95,43 +67,16 @@ const Navbar = () => {
                 About
               </Link>
             </li>
-            <li>
-              <Link 
-                to="/contact" 
-                className={`nav-link ${isActive('/contact') ? 'active' : ''}`}
-                onClick={closeMenu}
-              >
-                Contact
-              </Link>
-            </li>
 
             <Dropdown 
-              title="Process Equipment" 
-              items={processEquipmentItems} 
+              title="Engineering Services" 
+              items={engineeringServicesItems} 
               closeMainMenu={closeMenu} 
             />
 
             <Dropdown 
-              title="Treatment Systems" 
-              items={treatmentSystemsItems} 
-              closeMainMenu={closeMenu} 
-            />
-
-            <Dropdown 
-              title="Analysis Services" 
-              items={analysisServicesItems} 
-              closeMainMenu={closeMenu} 
-            />
-
-            <Dropdown 
-              title="Biological Treatment" 
-              items={biologicalTreatmentItems} 
-              closeMainMenu={closeMenu} 
-            />
-
-            <Dropdown 
-              title="Chemical Processes" 
-              items={chemicalProcessesItems} 
+              title="Environmental Solutions" 
+              items={environmentalSolutionsItems} 
               closeMainMenu={closeMenu} 
             />
 
@@ -141,6 +86,15 @@ const Navbar = () => {
               closeMainMenu={closeMenu} 
             />
 
+            <li>
+              <Link 
+                to="/contact" 
+                className={`nav-link ${isActive('/contact') ? 'active' : ''}`}
+                onClick={closeMenu}
+              >
+                Contact
+              </Link>
+            </li>
           </ul>
 
           <button className="mobile-menu-btn" onClick={toggleMenu}>

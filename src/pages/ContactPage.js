@@ -5,7 +5,9 @@ import {
   FaMapMarkerAlt,
   FaPaperPlane,
   FaCheckCircle,
-  FaExclamationTriangle
+  FaExclamationTriangle,
+  FaPhone,
+  FaClock
 } from 'react-icons/fa';
 
 const ContactPage = () => {
@@ -72,7 +74,7 @@ const ContactPage = () => {
       <section className="hero" style={{ padding: 'var(--space-16) 0' }}>
         <div className="container">
           <div className="hero-content">
-            <h1>Contact Us</h1>
+            <h1>Contact RMES</h1>
             <p className="description">
               Ready to transform your engineering challenges into innovative, sustainable solutions? 
               Connect with our Kiwi engineering experts for a comprehensive consultation that 
@@ -82,68 +84,128 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* Contact Form & Info */}
+      {/* Contact Form & Info - Single Column Layout */}
       <section className="section">
         <div className="container">
-          <div className="grid grid-cols-2" style={{ gap: 'var(--space-12)' }}>
+          <div className="max-w-3xl mx-auto">
+            {/* Contact Information */}
+            <div className="mb-12">
+              <h2>Get In Touch</h2>
+              <p className="mb-8">
+                Our Kiwi engineering experts are ready to collaborate on your next project. 
+                Contact us through any of the methods below, and we'll respond with a 
+                tailored approach aligned with New Zealand's sustainability standards within 24 hours.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="card">
+                  <div className="flex items-center gap-4">
+                    <FaEnvelope className="text-2xl" style={{ color: 'var(--primary-green)' }} />
+                    <div>
+                      <h4>Email</h4>
+                      <p>che.eng@live.com</p>
+                      <small>We typically respond within 24 hours</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card">
+                  <div className="flex items-center gap-4">
+                    <FaMapMarkerAlt className="text-2xl" style={{ color: 'var(--primary-green)' }} />
+                    <div>
+                      <h4>Location</h4>
+                      <p>Aotearoa New Zealand</p>
+                      <small>Serving clients nationwide</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card">
+                  <div className="flex items-center gap-4">
+                    <FaPhone className="text-2xl" style={{ color: 'var(--primary-green)' }} />
+                    <div>
+                      <h4>Consultation</h4>
+                      <p>Available by appointment</p>
+                      <small>Free initial consultation</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card">
+                  <div className="flex items-center gap-4">
+                    <FaClock className="text-2xl" style={{ color: 'var(--primary-green)' }} />
+                    <div>
+                      <h4>Response Time</h4>
+                      <p>Within 24 hours</p>
+                      <small>Business days</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Contact Form */}
             <div>
               <h2>Send Us a Message</h2>
               <form onSubmit={handleSubmit} className="mt-6">
-                <div className="form-group">
-                  <label className="form-label">Full Name *</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="form-input"
-                    required
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div className="form-group">
+                    <label className="form-label">Full Name *</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="form-input"
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">Email Address *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="form-input"
+                      required
+                    />
+                  </div>
                 </div>
 
-                <div className="form-group">
-                  <label className="form-label">Email Address *</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="form-input"
-                    required
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div className="form-group">
+                    <label className="form-label">Company/Organization</label>
+                    <input
+                      type="text"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      className="form-input"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">Service Interest</label>
+                    <select
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      className="form-select"
+                    >
+                      <option value="">Select a service...</option>
+                      <option value="chemical-process">Chemical Process Engineering</option>
+                      <option value="bioprocess">Bioprocess Engineering</option>
+                      <option value="environmental">Environmental Solutions</option>
+                      <option value="food-engineering">Food Engineering</option>
+                      <option value="consulting">General Consulting</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
                 </div>
 
-                <div className="form-group">
-                  <label className="form-label">Company/Organization</label>
-                  <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="form-input"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Service Interest</label>
-                  <select
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="form-select"
-                  >
-                    <option value="">Select a service...</option>
-                    <option value="chemical-process">Chemical Process Engineering</option>
-                    <option value="bioprocess">Bioprocess Engineering</option>
-                    <option value="environmental">Environmental Solutions</option>
-                    <option value="food-engineering">Food Engineering</option>
-                    <option value="consulting">General Consulting</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div className="form-group">
+                <div className="form-group mb-6">
                   <label className="form-label">Message *</label>
                   <textarea
                     name="message"
@@ -158,7 +220,7 @@ const ContactPage = () => {
 
                 <button
                   type="submit"
-                  className="btn btn-primary"
+                  className="btn btn-primary w-full md:w-auto"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -180,46 +242,19 @@ const ContactPage = () => {
               )}
             </div>
 
-            {/* Contact Information */}
-            <div>
-              <h2>Get In Touch</h2>
-              <p className="mb-8">
-                Our Kiwi engineering experts are ready to collaborate on your next project. 
-                Contact us through any of the methods below, and we'll respond with a 
-                tailored approach aligned with New Zealand's sustainability standards within 24 hours.
-              </p>
-
-              <div className="card mb-6">
-                <div className="flex items-center gap-4">
-                  <FaEnvelope className="text-2xl" style={{ color: 'var(--primary-green)' }} />
-                  <div>
-                    <h4>Email</h4>
-                    <p>che.eng@live.com</p>
-                    <small>We typically respond within 24 hours</small>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card mb-6">
-                <div className="flex items-center gap-4">
-                  <FaMapMarkerAlt className="text-2xl" style={{ color: 'var(--primary-green)' }} />
-                  <div>
-                    <h4>Location</h4>
-                    <p>Aotearoa New Zealand</p>
-                    <small>Serving clients from Auckland to Invercargill</small>
-                  </div>
-                </div>
-              </div>
-
-              <div className="card">
-                <h4>Why Contact Us?</h4>
-                <ul>
-                  <li className="mb-2">• Free initial consultation</li>
-                  <li className="mb-2">• Expert Kiwi technical guidance</li>
-                  <li className="mb-2">• Solutions tailored to NZ regulations</li>
-                  <li className="mb-2">• Competitive local pricing</li>
-                  <li className="mb-2">• Professional project management</li>
-                  <li className="mb-2">• Environmental compliance expertise</li>
+            {/* Why Choose Us - Streamlined */}
+            <div className="mt-12 p-6 bg-gray-50 rounded-lg">
+              <h3>Why Choose RMES?</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <ul className="space-y-2">
+                  <li>• Free initial consultation</li>
+                  <li>• Expert Kiwi technical guidance</li>
+                  <li>• Solutions tailored to NZ regulations</li>
+                </ul>
+                <ul className="space-y-2">
+                  <li>• Competitive local pricing</li>
+                  <li>• Professional project management</li>
+                  <li>• Environmental compliance expertise</li>
                 </ul>
               </div>
             </div>

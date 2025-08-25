@@ -109,10 +109,94 @@ const ServicesPage = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="section">
+      <section id="equipment" className="section">
         <div className="container">
+          <div className="section-header">
+            <h2>Process Equipment & Engineering Services</h2>
+            <p className="section-description">
+              Core engineering solutions for industrial processes and equipment
+            </p>
+          </div>
           <div className="grid grid-auto">
-            {services.map((service, index) => (
+            {services.slice(0, 2).map((service, index) => (
+              <div key={index} className="card">
+                <div className="card-icon">{service.icon}</div>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+                <ul>
+                  {service.details.map((detail, idx) => (
+                    <li key={idx} className="mb-2 text-gray-600">• {detail}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Treatment Systems Section */}
+      <section id="treatment" className="section" style={{backgroundColor: 'var(--gray-100)'}}>
+        <div className="container">
+          <div className="section-header">
+            <h2>Treatment Systems & Environmental Solutions</h2>
+            <p className="section-description">
+              Specialized solutions for water treatment and environmental protection
+            </p>
+          </div>
+          <div className="grid grid-auto">
+            {services.slice(2, 3).map((service, index) => (
+              <div key={index} className="card">
+                <div className="card-icon">{service.icon}</div>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+                <ul>
+                  {service.details.map((detail, idx) => (
+                    <li key={idx} className="mb-2 text-gray-600">• {detail}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Analysis & Optimization Section */}
+      <section id="analysis" className="section">
+        <div className="container">
+          <div className="section-header">
+            <h2>Analysis Services & Process Optimization</h2>
+            <p className="section-description">
+              Data-driven solutions for process improvement and efficiency
+            </p>
+          </div>
+          <div className="grid grid-auto">
+            {services.slice(4, 6).map((service, index) => (
+              <div key={index} className="card">
+                <div className="card-icon">{service.icon}</div>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+                <ul>
+                  {service.details.map((detail, idx) => (
+                    <li key={idx} className="mb-2 text-gray-600">• {detail}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Food Engineering Section */}
+      <section id="food" className="section" style={{backgroundColor: 'var(--gray-100)'}}>
+        <div className="container">
+          <div className="section-header">
+            <h2>Food Engineering & Processing</h2>
+            <p className="section-description">
+              Specialized solutions for New Zealand's world-class food industry
+            </p>
+          </div>
+          <div className="grid grid-auto">
+            {services.slice(3, 4).map((service, index) => (
               <div key={index} className="card">
                 <div className="card-icon">{service.icon}</div>
                 <h3>{service.title}</h3>
@@ -129,7 +213,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Process Approach */}
-      <section className="section" style={{backgroundColor: 'var(--gray-100)'}}>
+      <section className="section">
         <div className="container">
           <div className="section-header">
             <h2>Our Engineering Approach</h2>

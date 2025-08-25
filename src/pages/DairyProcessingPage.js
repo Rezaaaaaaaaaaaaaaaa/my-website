@@ -29,40 +29,26 @@ const DairyProcessingPage = () => {
     }
   ];
 
-  const products = [
-    "Whole Milk Powder",
-    "Skim Milk Powder",
-    "Whey Protein Concentrate",
-    "Butter & Anhydrous Milk Fat",
-    "Specialty Cheeses",
-    "Infant Formula Base"
-  ];
-
-  const innovations = [
-    "Membrane Filtration Technology",
-    "Precision Fermentation Control",
-    "Energy Recovery Systems",
-    "Automated Quality Testing",
-    "Sustainable Processing",
-    "Traceability Systems"
-  ];
-
-  const benefits = [
+  const dairyServices = [
     {
-      title: "Export Quality Assurance",
-      description: "Meet stringent international standards for New Zealand dairy exports to over 140 countries."
+      icon: <FaIndustry />,
+      title: "Process Design & Optimization",
+      description: "Custom dairy processing system design optimized for your specific product requirements"
     },
     {
-      title: "Sustainable Operations",
-      description: "Implement energy-efficient processes that align with New Zealand's sustainability goals."
+      icon: <FaCogs />,
+      title: "Equipment Selection",
+      description: "Expert guidance on dairy processing equipment selection and sizing"
     },
     {
-      title: "Premium Product Development",
-      description: "Create high-value dairy products that command premium prices in global markets."
+      icon: <FaLeaf />,
+      title: "Quality & Safety Systems",
+      description: "Implementation of HACCP and food safety systems for export compliance"
     },
     {
-      title: "Process Optimization",
-      description: "Maximize yield and minimize waste while maintaining the highest quality standards."
+      icon: <FaGlobe />,
+      title: "Export Compliance",
+      description: "Ensure compliance with international dairy export standards and regulations"
     }
   ];
 
@@ -83,7 +69,62 @@ const DairyProcessingPage = () => {
         </div>
       </section>
 
-      {/* Industry Overview */}
+      {/* Dairy Services */}
+      <section className="section">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Our Dairy Engineering Services</h2>
+            <p className="section-description">
+              Comprehensive solutions for dairy processing optimization and product development
+            </p>
+          </div>
+          
+          <div className="grid grid-auto">
+            {dairyServices.map((service, index) => (
+              <div key={index} className="card">
+                <div className="card-icon">{service.icon}</div>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Processing Technologies */}
+      <section className="section" style={{backgroundColor: 'var(--gray-100)'}}>
+        <div className="container">
+          <div className="section-header">
+            <h2>Dairy Processing Technologies</h2>
+            <p className="section-description">
+              Advanced technologies for efficient dairy processing and product development
+            </p>
+          </div>
+          
+          <div className="grid grid-auto">
+            {processes.map((process, index) => (
+              <div key={index} className="card">
+                <div className="card-icon">{process.icon}</div>
+                <h3>{process.title}</h3>
+                <p>{process.description}</p>
+                <div className="mt-4">
+                  <h4 className="font-semibold mb-2">Key Features:</h4>
+                  <ul>
+                    {process.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center gap-2 mb-1">
+                        <FaCheckCircle className="text-green-600" style={{color: 'var(--primary-green)'}} />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* New Zealand Dairy Excellence */}
       <section className="section">
         <div className="container">
           <div className="section-header">
@@ -94,175 +135,75 @@ const DairyProcessingPage = () => {
             </p>
           </div>
           
-          <div className="dairy-overview">
-            <div className="overview-content">
-              <h3>From Pasture to Premium Products</h3>
-              <div className="dairy-stats">
-                <div className="stat">
-                  <div className="stat-number">95%</div>
-                  <h4>Export Volume</h4>
-                  <p>Of New Zealand's dairy production is exported to international markets</p>
-                </div>
-                <div className="stat">
-                  <div className="stat-number">140+</div>
-                  <h4>Export Countries</h4>
-                  <p>New Zealand dairy products reach consumers in over 140 countries worldwide</p>
-                </div>
-                <div className="stat">
-                  <div className="stat-number">22B</div>
-                  <h4>Liters Processed</h4>
-                  <p>Annual milk processing volume in New Zealand's dairy industry</p>
-                </div>
-                <div className="stat">
-                  <div className="stat-number">$20B</div>
-                  <h4>Annual Export Value</h4>
-                  <p>Total value of New Zealand dairy exports to global markets</p>
-                </div>
-              </div>
+          <div className="grid grid-cols-2" style={{gap: 'var(--space-12)'}}>
+            <div>
+              <h3>Global Market Position</h3>
+              <ul className="space-y-2">
+                <li>• World's largest dairy exporter</li>
+                <li>• Premium quality reputation</li>
+                <li>• Advanced processing technology</li>
+                <li>• Sustainable farming practices</li>
+                <li>• Export to 140+ countries</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3>Key Export Products</h3>
+              <ul className="space-y-2">
+                <li>• Whole Milk Powder (WMP)</li>
+                <li>• Skim Milk Powder (SMP)</li>
+                <li>• Butter & Anhydrous Milk Fat</li>
+                <li>• Cheese & Specialty Products</li>
+                <li>• Infant Formula Base</li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Processing Technologies */}
-      <section className="section bg-light">
+      {/* Why Choose RMES for Dairy */}
+      <section className="section" style={{backgroundColor: 'var(--gray-100)'}}>
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Advanced Processing Technologies</h2>
-            <p className="section-description">
-              State-of-the-art dairy processing solutions for New Zealand's premium products
-            </p>
+            <h2>Why Choose RMES for Dairy Engineering?</h2>
           </div>
           
-          <div className="grid grid-auto">
-            {processes.map((process, index) => (
-              <div key={index} className="card fade-in-up">
-                <div className="card-icon">{process.icon}</div>
-                <h3>{process.title}</h3>
-                <p>{process.description}</p>
-                <ul className="mb-4">
-                  {process.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 mb-2">
-                      <FaCheckCircle className="text-green-600" style={{color: 'var(--primary-green)'}} />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Key Products */}
-      <section className="section">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Premium Dairy Products</h2>
-            <p className="section-description">
-              High-value products that drive New Zealand's dairy export success
-            </p>
-          </div>
-          
-          <div className="products-grid">
-            {products.map((product, index) => (
-              <div key={index} className="product-item">
-                <FaIndustry className="product-icon" />
-                <span>{product}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Innovations */}
-      <section className="section bg-light">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Processing Innovations</h2>
-            <p className="section-description">
-              Cutting-edge technologies advancing New Zealand's dairy industry
-            </p>
-          </div>
-          
-          <div className="innovations-grid">
-            {innovations.map((innovation, index) => (
-              <div key={index} className="innovation-item">
-                <FaLeaf className="innovation-icon" />
-                <span>{innovation}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits */}
-      <section className="section">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Strategic Advantages</h2>
-            <p className="section-description">
-              Key benefits of advanced dairy processing in New Zealand
-            </p>
-          </div>
-          
-          <div className="benefits-grid">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="benefit-item">
-                <h4>{benefit.title}</h4>
-                <p>{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Flow */}
-      <section className="section bg-light">
-        <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Dairy Processing Flow</h2>
-            <p className="section-description">
-              Comprehensive process optimization from milk reception to finished products
-            </p>
-          </div>
-          
-          <div className="process-steps">
-            <div className="step">
-              <h4>Milk Reception & Testing</h4>
-              <p>Quality assessment, composition analysis, and microbiological testing of raw milk</p>
+          <div className="grid grid-cols-2" style={{gap: 'var(--space-12)'}}>
+            <div>
+              <h3>Technical Expertise</h3>
+              <ul className="space-y-2">
+                <li>• Advanced dairy process modeling</li>
+                <li>• Heat transfer optimization</li>
+                <li>• Separation technology expertise</li>
+                <li>• Quality control systems</li>
+                <li>• New Zealand regulatory compliance</li>
+              </ul>
             </div>
-            <div className="step">
-              <h4>Standardization & Treatment</h4>
-              <p>Fat standardization, pasteurization, and thermal treatment for food safety</p>
-            </div>
-            <div className="step">
-              <h4>Separation & Concentration</h4>
-              <p>Cream separation, protein concentration, and membrane filtration processes</p>
-            </div>
-            <div className="step">
-              <h4>Product Manufacturing</h4>
-              <p>Spray drying, cheese making, butter production, and specialty product development</p>
-            </div>
-            <div className="step">
-              <h4>Packaging & Distribution</h4>
-              <p>Aseptic packaging, quality control, and cold chain management for export</p>
+            
+            <div>
+              <h3>Industry Experience</h3>
+              <ul className="space-y-2">
+                <li>• Large-scale dairy processing</li>
+                <li>• Export market requirements</li>
+                <li>• Food safety and HACCP</li>
+                <li>• Sustainable processing</li>
+                <li>• International standards</li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="section cta-section">
-        <div className="container">
-          <div className="cta-content">
-            <h2>Optimize Your Dairy Processing Operations?</h2>
-            <p>Enhance efficiency, quality, and sustainability in New Zealand's dairy industry</p>
-            <div className="cta-buttons">
-              <a href="/contact" className="btn btn-primary">Get Dairy Consultation</a>
-              <a href="/services" className="btn btn-secondary">Explore Services</a>
-            </div>
-          </div>
+      <section className="section">
+        <div className="container text-center">
+          <h2>Ready to Optimize Your Dairy Operations?</h2>
+          <p className="text-xl mb-8">
+            Contact our dairy engineering experts to discuss your processing requirements and get a customized solution.
+          </p>
+          <a href="/contact" className="btn btn-primary btn-lg">
+            Get Dairy Engineering Consultation
+          </a>
         </div>
       </section>
     </div>

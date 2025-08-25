@@ -697,3 +697,207 @@ a {
 html {
   scroll-behavior: smooth;
 }
+
+/* Additional styles for newer pages */
+.hover-card {
+  cursor: pointer;
+}
+
+.hover-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.page-container {
+  min-height: 100vh;
+}
+
+.bg-light {
+  background-color: var(--gray-100);
+}
+
+.text-gray-600 {
+  color: var(--gray-600);
+}
+
+.text-green-600 {
+  color: var(--primary-green);
+}
+
+/* QMRA specific styles */
+.qmra-hero {
+  background: linear-gradient(135deg, #2E8B57 0%, #14B8A6 50%, #1E3A8A 100%);
+}
+
+.qmra-overview,
+.ml-overview {
+  margin: var(--space-8) 0;
+}
+
+.qmra-steps,
+.ml-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.step {
+  text-align: center;
+  padding: var(--space-4);
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--primary-green);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin: 0 auto var(--space-3);
+}
+
+.applications-grid,
+.technologies-grid,
+.methodologies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.application-item,
+.technology-item,
+.methodology-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.application-item:hover,
+.technology-item:hover,
+.methodology-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.application-icon,
+.technology-icon,
+.methodology-icon {
+  font-size: 1.5rem;
+  color: var(--primary-green);
+  flex-shrink: 0;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.benefit-item {
+  padding: var(--space-4);
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid var(--primary-green);
+}
+
+.benefit-item h4 {
+  color: var(--primary-green);
+  margin-bottom: var(--space-2);
+}
+
+/* Machine Learning specific styles */
+.ml-hero {
+  background: linear-gradient(135deg, #1E3A8A 0%, #3730A3 50%, #2E8B57 100%);
+}
+
+.implementation-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.impl-step {
+  padding: var(--space-4);
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  border-top: 3px solid var(--primary-green);
+}
+
+.impl-step h4 {
+  color: var(--primary-blue);
+  margin-bottom: var(--space-2);
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);
+  color: var(--white);
+}
+
+.cta-content {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  color: var(--white);
+  margin-bottom: var(--space-4);
+}
+
+.cta-content p {
+  color: var(--gray-300);
+  margin-bottom: var(--space-6);
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+/* Responsive adjustments for new content */
+@media (max-width: 768px) {
+  .qmra-steps,
+  .ml-steps {
+    grid-template-columns: 1fr;
+  }
+  
+  .applications-grid,
+  .technologies-grid,
+  .methodologies-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .benefits-grid,
+  .implementation-steps {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaEnvelope, FaMapMarkerAlt, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaPhone } from 'react-icons/fa';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,37 +10,41 @@ const Footer = () => {
       <div className="container">
         <div className="footer-content">
           <div>
-            <h4>AquaTech Solutions NZ</h4>
+            <h4>RMES</h4>
             <p>New Zealand's trusted environmental engineering consultancy, delivering innovative solutions that protect our clean, green heritage while advancing industrial excellence across Aotearoa.</p>
           </div>
 
           <div>
-            <h4>Services</h4>
+            <h4>Core Services</h4>
             <Link to="/services" className="footer-link">Chemical Process Engineering</Link>
             <Link to="/services" className="footer-link">Bioprocess Engineering</Link>
             <Link to="/services" className="footer-link">Environmental Consulting</Link>
+            <Link to="/services" className="footer-link">Food Engineering</Link>
             <Link to="/services" className="footer-link">Process Optimization</Link>
-            <Link to="/services" className="footer-link">Sustainability Solutions</Link>
           </div>
 
           <div>
-            <h4>Contact</h4>
+            <h4>Contact Information</h4>
             <div className="flex items-center gap-4 mb-2">
               <FaEnvelope />
               <span>che.eng@live.com</span>
             </div>
             <div className="flex items-center gap-4 mb-2">
               <FaMapMarkerAlt />
-              <span>New Zealand</span>
+              <span>Aotearoa New Zealand</span>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 mb-2">
               <FaLinkedin />
               <span>Professional Network</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <FaPhone />
+              <span>Available by appointment</span>
             </div>
           </div>
 
           <div>
-            <h4>Industries</h4>
+            <h4>NZ Industries</h4>
             <Link to="/services" className="footer-link">Dairy & Food Processing</Link>
             <Link to="/services" className="footer-link">Water & Marine Systems</Link>
             <Link to="/services" className="footer-link">Agricultural Technology</Link>
@@ -50,7 +54,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {currentYear} AquaTech Solutions NZ. All rights reserved.</p>
+          <p>&copy; {currentYear} RMES. All rights reserved. | Serving New Zealand businesses nationwide</p>
         </div>
       </div>
     </footer>

@@ -54,7 +54,7 @@ const HomePage = () => {
       <section className="hero">
         <div className="container">
           <div className="hero-content">
-            <h1>AquaTech Solutions NZ</h1>
+            <h1>RMES</h1>
             <p className="subtitle">Environmental Engineering Excellence</p>
             <p className="description">
               New Zealand's trusted environmental engineering consultancy, delivering innovative 
@@ -131,7 +131,7 @@ const HomePage = () => {
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Why Choose AquaTech Solutions NZ?</h2>
+            <h2 className="section-title">Why Choose RMES?</h2>
           </div>
           
           <div className="grid grid-cols-3">
@@ -156,16 +156,21 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Single CTA Section - Consolidated */}
       <section className="section" style={{backgroundColor: 'var(--gray-100)'}}>
         <div className="container text-center">
           <h2>Ready to Optimize Your Processes?</h2>
           <p className="text-xl mb-8">
-            Contact us today to discuss how our engineering expertise can benefit your operations.
+            Contact our Kiwi engineering experts today to discuss how we can benefit your operations with sustainable, efficient solutions.
           </p>
-          <Link to="/contact" className="btn btn-primary btn-lg">
-            Start Your Project <FaArrowRight />
-          </Link>
+          <div className="flex justify-center gap-4">
+            <Link to="/contact" className="btn btn-primary btn-lg">
+              Start Your Project <FaArrowRight />
+            </Link>
+            <Link to="/services" className="btn btn-secondary btn-lg">
+              Explore Services
+            </Link>
+          </div>
         </div>
       </section>
     </div>

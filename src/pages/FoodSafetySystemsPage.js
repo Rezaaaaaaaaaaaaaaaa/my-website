@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaShieldAlt, FaMicroscope, FaClipboardCheck, FaSearch, FaCheckCircle, FaCogs, FaIndustry, FaGlobe } from 'react-icons/fa';
+import { FaShieldAlt, FaMicroscope, FaClipboardCheck, FaSearch, FaCheckCircle, FaIndustry } from 'react-icons/fa';
 
 const FoodSafetySystemsPage = () => {
   const systems = [

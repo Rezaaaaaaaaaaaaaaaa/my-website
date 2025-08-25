@@ -7,7 +7,6 @@ import {
   FaIndustry, 
   FaThermometerHalf,
   FaFilter,
-  FaRecycle,
   FaTint,
   FaLeaf,
   FaArrowRight

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaBrain, FaChartLine, FaDatabase, FaRobot, FaFlask, FaIndustry, FaCheckCircle, FaCogs } from 'react-icons/fa';
+import { FaBrain, FaChartLine, FaDatabase, FaRobot, FaIndustry, FaCheckCircle, FaCogs } from 'react-icons/fa';
 
 const MachineLearningPage = () => {
   const mlServices = [

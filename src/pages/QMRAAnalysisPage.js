@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaShieldAlt, FaFlask, FaChartLine, FaMicroscope, FaWater, FaIndustry, FaCheckCircle } from 'react-icons/fa';
+import { FaShieldAlt, FaChartLine, FaMicroscope, FaWater, FaIndustry, FaCheckCircle } from 'react-icons/fa';
 
 const QMRAAnalysisPage = () => {
   const qmraServices = [

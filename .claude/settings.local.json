@@ -3,9 +3,18 @@
     "allow": [
       "Bash(npm start)",
       "Bash(git add:*)",
-      "Bash(/c/Users/moghaddamr/scoop/apps/git/current/bin/git.exe --version)"
+      "Bash(/c/Users/moghaddamr/scoop/apps/git/current/bin/git.exe --version)",
+      "Bash(git push:*)",
+      "Bash(cmd /c \"git push\")",
+      "Bash(npm run build:*)",
+      "Bash(powershell:*)",
+      "Bash(cmd /c \"npm run build 2>&1\")",
+      "Bash(npx eslint:*)"
     ],
     "deny": [],
-    "ask": []
+    "ask": [],
+    "additionalDirectories": [
+      "C:\\c\\webiste"
+    ]
   }
 }

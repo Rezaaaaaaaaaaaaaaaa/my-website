@@ -14,7 +14,8 @@
       "WebFetch(domain:fonts.gstatic.com)",
       "WebFetch(domain:fonts.googleapis.com)",
       "Bash(find:*)",
-      "Bash(del \"C:\\webiste\\my-website\\src\\pages\\FoodSafetySystemsPage.js\")"
+      "Bash(del \"C:\\webiste\\my-website\\src\\pages\\FoodSafetySystemsPage.js\")",
+      "Bash(cmd /c:*)"
     ],
     "deny": [],
     "ask": [],

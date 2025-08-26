@@ -43,18 +43,12 @@ const TechnicalIcons = ({ type, size = "default", animated = false }) => {
         <circle cx="0" cy="0" r="3" fill="white" stroke="url(#waterTreatmentGradient)" strokeWidth="2"/>
       </g>
       
-      {/* Bubbles */}
+      {/* Bubbles - simplified */}
       {animated && (
-        <g>
-          <circle cx="35" cy="55" r="2" fill="white" opacity="0.7">
-            <animate attributeName="cy" values="55;25;55" dur="2s" repeatCount="indefinite" />
-          </circle>
-          <circle cx="45" cy="60" r="1.5" fill="white" opacity="0.6">
-            <animate attributeName="cy" values="60;30;60" dur="2.5s" repeatCount="indefinite" />
-          </circle>
-          <circle cx="55" cy="58" r="2.5" fill="white" opacity="0.8">
-            <animate attributeName="cy" values="58;28;58" dur="1.8s" repeatCount="indefinite" />
-          </circle>
+        <g className="animate-pulse">
+          <circle cx="35" cy="45" r="2" fill="white" opacity="0.7" />
+          <circle cx="45" cy="50" r="1.5" fill="white" opacity="0.6" />
+          <circle cx="55" cy="48" r="2.5" fill="white" opacity="0.8" />
         </g>
       )}
       
@@ -97,11 +91,9 @@ const TechnicalIcons = ({ type, size = "default", animated = false }) => {
       {/* Air diffusers */}
       <rect x="20" y="75" width="40" height="3" fill="#64748b"/>
       {animated && (
-        <g>
+        <g className="animate-pulse">
           {[25, 35, 45, 55].map((x, i) => (
-            <circle key={i} cx={x} cy="72" r="1" fill="white" opacity="0.8">
-              <animate attributeName="cy" values="72;35;72" dur="1.5s" repeatCount="indefinite" begin={`${i * 0.3}s`}/>
-            </circle>
+            <circle key={i} cx={x} cy="60" r="1" fill="white" opacity="0.8"/>
           ))}
         </g>
       )}
@@ -136,15 +128,11 @@ const TechnicalIcons = ({ type, size = "default", animated = false }) => {
       {/* Catchment area */}
       <path d="M10 20 Q30 15 50 20 Q70 25 90 20 L90 35 L10 35 Z" fill="#6b7280" opacity="0.6"/>
       
-      {/* Rain drops */}
+      {/* Rain drops - simplified */}
       {animated && (
-        <g>
+        <g className="animate-pulse">
           {[20, 35, 50, 65, 80].map((x, i) => (
-            <g key={i}>
-              <path d={`M${x} 5 C${x-2} 8, ${x-1} 12, ${x} 15 C${x+1} 12, ${x+2} 8, ${x} 5 Z`} fill="url(#rainGradient)">
-                <animateTransform attributeName="transform" type="translate" values={`0,0;0,25;0,0`} dur="1.2s" repeatCount="indefinite" begin={`${i * 0.2}s`}/>
-              </path>
-            </g>
+            <path key={i} d={`M${x} 10 C${x-2} 13, ${x-1} 17, ${x} 20 C${x+1} 17, ${x+2} 13, ${x} 10 Z`} fill="url(#rainGradient)" opacity="0.6"/>
           ))}
         </g>
       )}
@@ -224,15 +212,12 @@ const TechnicalIcons = ({ type, size = "default", animated = false }) => {
       <rect x="75" y="47" width="20" height="6" fill="#64748b"/>
       <path d="M90 47 L90 53 L100 50 Z" fill="#10b981"/>
       
-      {/* Hydroxyl radicals */}
+      {/* Hydroxyl radicals - simplified */}
       {animated && (
-        <g>
+        <g className="animate-pulse">
           {[35, 45, 55, 65].map((x, i) => (
             <g key={i}>
-              <circle cx={x} cy="50" r="1.5" fill="#fbbf24" opacity="0.8">
-                <animate attributeName="r" values="1.5;3;1.5" dur="1s" repeatCount="indefinite" begin={`${i * 0.2}s`}/>
-                <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1s" repeatCount="indefinite" begin={`${i * 0.2}s`}/>
-              </circle>
+              <circle cx={x} cy="50" r="2" fill="#fbbf24" opacity="0.6"/>
               <text x={x} y="53" fontSize="4" textAnchor="middle" fill="#fbbf24" fontWeight="bold">•OH</text>
             </g>
           ))}
@@ -298,21 +283,12 @@ const TechnicalIcons = ({ type, size = "default", animated = false }) => {
       <circle cx="85" cy="25" r="6" fill="white" stroke="#64748b" strokeWidth="1"/>
       <text x="85" y="28" fontSize="6" textAnchor="middle" fill="#64748b" fontWeight="bold">60 bar</text>
       
-      {/* Flow indicators */}
+      {/* Flow indicators - simplified */}
       {animated && (
-        <g>
-          {/* Feed flow */}
-          <circle cx="20" cy="50" r="1" fill="#7c2d12">
-            <animate attributeName="cx" values="20;70;20" dur="2s" repeatCount="indefinite"/>
-          </circle>
-          {/* Permeate flow */}
-          <circle cx="70" cy="42" r="0.8" fill="#0891b2">
-            <animate attributeName="cx" values="70;90;70" dur="1.5s" repeatCount="indefinite"/>
-          </circle>
-          {/* Concentrate flow */}
-          <circle cx="70" cy="58" r="0.8" fill="#dc2626">
-            <animate attributeName="cx" values="70;90;70" dur="1.8s" repeatCount="indefinite"/>
-          </circle>
+        <g className="animate-pulse">
+          <circle cx="45" cy="50" r="1" fill="#7c2d12" opacity="0.6"/>
+          <circle cx="80" cy="42" r="0.8" fill="#0891b2" opacity="0.6"/>
+          <circle cx="80" cy="58" r="0.8" fill="#dc2626" opacity="0.6"/>
         </g>
       )}
       

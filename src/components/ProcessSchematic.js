@@ -83,8 +83,8 @@ const ProcessSchematic = ({ schematicType = "mbr_system" }) => {
         {
           id: 'catchment',
           name: 'Urban Catchment',
-          type: 'polygon',
-          points: '50,100 150,50 200,100 150,150',
+          type: 'rect',
+          x: 50, y: 80, width: 150, height: 60,
           color: '#6b7280',
           specs: 'Area: 10-500 ha, Runoff Coefficient: 0.3-0.9'
         },
@@ -290,14 +290,6 @@ const ProcessSchematic = ({ schematicType = "mbr_system" }) => {
               />
             ))}
           </g>
-        );
-      case 'polygon':
-        return (
-          <polygon
-            key={component.id}
-            points={component.points}
-            {...commonProps}
-          />
         );
       default:
         return null;

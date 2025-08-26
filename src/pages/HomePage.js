@@ -27,9 +27,9 @@ const HomePage = () => {
     },
     {
       icon: <FaWater />,
-      title: "Water Treatment Excellence",
-      description: "Local Water Done Well - Advanced water treatment solutions ensuring New Zealand's water quality meets the highest international standards.",
-      features: ["Advanced Water Treatment", "Quality Assurance", "Environmental Compliance", "Local Expertise"]
+      title: "Water Treatment Engineering",
+      description: "Local Water Done Well - Advanced water/wastewater treatment including MBR, SBR, MBBR, membrane systems, and stormwater WSUD solutions.",
+      features: ["Membrane Systems (RO/UF/MF)", "Biological Treatment (ASP/MBR/SBR)", "Advanced Oxidation (AOPs)", "Stormwater Management"]
     },
     {
       icon: <FaIndustry />,
@@ -40,12 +40,12 @@ const HomePage = () => {
   ];
 
   const industries = [
-    "Water Treatment & Infrastructure - Local Water Done Well",
+    "Water Treatment & Municipal Infrastructure",
     "Dairy & Food Processing", 
     "Agricultural Technology & Horticulture",
-    "Marine & Aquaculture",
-    "Manufacturing & Industrial",
-    "Research & Development"
+    "Marine & Aquaculture Systems",
+    "Manufacturing & Industrial Processes",
+    "Research & Development Facilities"
   ];
 
   return (
@@ -56,13 +56,14 @@ const HomePage = () => {
           <div className="hero-content">
             <h1>RMES</h1>
             <p className="subtitle">Environmental Engineering Excellence</p>
-            <div className="mb-6 p-6 bg-blue-50 rounded-lg border-l-4 border-blue-600">
-              <h2 className="text-2xl font-bold text-blue-800 mb-2">
-                Local Water Done Well is New Zealand's Priority
+            <div className="mb-6 p-6 bg-slate-50 rounded-lg border-l-4 border-slate-700">
+              <h2 className="text-2xl font-bold text-slate-800 mb-2">
+                Local Water Done Well: New Zealand's Engineering Excellence
               </h2>
-              <p className="text-blue-700 text-lg">
-                Our expertise in water treatment and environmental solutions ensures every drop 
-                meets the highest standards while protecting Aotearoa's precious water resources.
+              <p className="text-slate-700 text-lg">
+                Specialized engineering in water treatment (coagulation, sedimentation, filtration), 
+                wastewater systems (ASP, MBR, SBR, MBBR), and stormwater management (WSUD, constructed wetlands) 
+                delivering regulatory compliance across New Zealand.
               </p>
             </div>
             <p className="description">

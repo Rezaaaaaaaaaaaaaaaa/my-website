@@ -22,7 +22,7 @@ Create a template with these variables:
 - `{{company}}` - Company name
 - `{{service}}` - Service interested in
 - `{{message}}` - The message content
-- `{{to_email}}` - Recipients (che.eng@live.com,reza.moghaddam.nz@gmail.com)
+- `{{to_email}}` - Recipient (single email - the form sends separate emails to each recipient)
 
 ### 3. Update Configuration
 In `src/pages/ContactPage.js`, update these values:
@@ -42,7 +42,7 @@ After setup, test by submitting the contact form.
 - User needs to click "Send" in their email client
 
 **With EmailJS setup:**
-- Form sends email directly to both che.eng@live.com and reza.moghaddam.nz@gmail.com
+- Form sends separate emails directly to both che.eng@live.com and reza.moghaddam.nz@gmail.com
 - User sees success message immediately
 - No additional steps required
 

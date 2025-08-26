@@ -39,19 +39,32 @@ const ContactPage = () => {
       const templateId = 'template_rmes_contact';
       const userId = 'your_emailjs_user_id';
 
-      const templateParams = {
+      const templateParams1 = {
         from_name: formData.name,
         from_email: formData.email,
         company: formData.company || 'Not specified',
         service: formData.service || 'Not specified',
         message: formData.message,
-        to_email: 'che.eng@live.com,reza.moghaddam.nz@gmail.com',
+        to_email: 'che.eng@live.com',
         reply_to: formData.email
       };
 
-      // Try EmailJS first
+      const templateParams2 = {
+        from_name: formData.name,
+        from_email: formData.email,
+        company: formData.company || 'Not specified',
+        service: formData.service || 'Not specified',
+        message: formData.message,
+        to_email: 'reza.moghaddam.nz@gmail.com',
+        reply_to: formData.email
+      };
+
+      // Try EmailJS first - send to both recipients
       try {
-        await emailjs.send(serviceId, templateId, templateParams, userId);
+        await Promise.all([
+          emailjs.send(serviceId, templateId, templateParams1, userId),
+          emailjs.send(serviceId, templateId, templateParams2, userId)
+        ]);
         
         setStatus({
           type: 'success',

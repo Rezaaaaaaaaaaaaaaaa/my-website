@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import emailjs from 'emailjs-com';
+import emailjs from 'emailjs-com';
 import {
   FaEnvelope,
   FaMapMarkerAlt,
@@ -34,34 +34,70 @@ const ContactPage = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      // EmailJS configuration - you'll need to set these up
-      // Removed unused variables: serviceId, templateId, userId, templateParams
+      // EmailJS configuration
+      const serviceId = 'service_rmes_nz';
+      const templateId = 'template_rmes_contact';
+      const userId = 'your_emailjs_user_id';
 
-      // For now, simulate successful submission
-      // Uncomment the line below when EmailJS is configured
-      // await emailjs.send(serviceId, templateId, templateParams, userId);
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        company: formData.company || 'Not specified',
+        service: formData.service || 'Not specified',
+        message: formData.message,
+        to_email: 'che.eng@live.com',
+        reply_to: formData.email
+      };
 
-      // Simulate delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Try EmailJS first
+      try {
+        await emailjs.send(serviceId, templateId, templateParams, userId);
+        
+        setStatus({
+          type: 'success',
+          message: 'Thank you! Your message has been sent successfully to che.eng@live.com. We will get back to you within 24 hours.'
+        });
 
-      setStatus({
-        type: 'success',
-        message: 'Thank you! Your message has been sent successfully. We will get back to you within 24 hours.'
-      });
+        // Reset form on success
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          service: '',
+          message: ''
+        });
 
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        service: '',
-        message: ''
-      });
+      } catch (emailError) {
+        console.log('EmailJS failed, trying fallback method:', emailError);
+        
+        // Fallback: Create mailto link and show instructions
+        const subject = `RMES Contact Form: ${formData.service || 'General Inquiry'}`;
+        const body = `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company || 'Not specified'}\nService: ${formData.service || 'Not specified'}\n\nMessage:\n${formData.message}`;
+        const mailtoLink = `mailto:che.eng@live.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        // Open default email client
+        window.location.href = mailtoLink;
+        
+        setStatus({
+          type: 'success',
+          message: 'Your default email client should now open with a pre-filled message to che.eng@live.com. Please send the email to complete your inquiry.'
+        });
+
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          service: '',
+          message: ''
+        });
+      }
 
     } catch (error) {
+      console.error('Contact form error:', error);
       setStatus({
         type: 'error',
-        message: 'Sorry, there was an error sending your message. Please try again or contact us directly.'
+        message: 'Sorry, there was an error. Please contact us directly at che.eng@live.com or try again.'
       });
     } finally {
       setIsSubmitting(false);
@@ -235,9 +271,22 @@ const ContactPage = () => {
 
               {/* Status Messages */}
               {status.message && (
-                <div className={status.type === 'success' ? 'success-message' : 'error-message'}>
-                  {status.type === 'success' ? <FaCheckCircle /> : <FaExclamationTriangle />}
-                  {status.message}
+                <div 
+                  className={`mt-6 p-4 rounded-lg border flex items-start gap-3 ${
+                    status.type === 'success' 
+                      ? 'bg-green-50 border-green-200 text-green-800' 
+                      : 'bg-red-50 border-red-200 text-red-800'
+                  }`}
+                >
+                  <div className="flex-shrink-0 mt-0.5">
+                    {status.type === 'success' ? 
+                      <FaCheckCircle className="text-green-600" /> : 
+                      <FaExclamationTriangle className="text-red-600" />
+                    }
+                  </div>
+                  <div className="text-sm">
+                    {status.message}
+                  </div>
                 </div>
               )}
             </div>

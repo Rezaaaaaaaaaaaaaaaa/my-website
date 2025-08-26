@@ -45,7 +45,7 @@ const ContactPage = () => {
         company: formData.company || 'Not specified',
         service: formData.service || 'Not specified',
         message: formData.message,
-        to_email: 'che.eng@live.com',
+        to_email: 'che.eng@live.com,reza.moghaddam.nz@gmail.com',
         reply_to: formData.email
       };
 
@@ -55,7 +55,7 @@ const ContactPage = () => {
         
         setStatus({
           type: 'success',
-          message: 'Thank you! Your message has been sent successfully to che.eng@live.com. We will get back to you within 24 hours.'
+          message: 'Thank you! Your message has been sent successfully to che.eng@live.com and reza.moghaddam.nz@gmail.com. We will get back to you within 24 hours.'
         });
 
         // Reset form on success
@@ -73,14 +73,14 @@ const ContactPage = () => {
         // Fallback: Create mailto link and show instructions
         const subject = `RMES Contact Form: ${formData.service || 'General Inquiry'}`;
         const body = `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company || 'Not specified'}\nService: ${formData.service || 'Not specified'}\n\nMessage:\n${formData.message}`;
-        const mailtoLink = `mailto:che.eng@live.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        const mailtoLink = `mailto:che.eng@live.com,reza.moghaddam.nz@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         
         // Open default email client
         window.location.href = mailtoLink;
         
         setStatus({
           type: 'success',
-          message: 'Your default email client should now open with a pre-filled message to che.eng@live.com. Please send the email to complete your inquiry.'
+          message: 'Your default email client should now open with a pre-filled message to che.eng@live.com and reza.moghaddam.nz@gmail.com. Please send the email to complete your inquiry.'
         });
 
         // Reset form
@@ -97,7 +97,7 @@ const ContactPage = () => {
       console.error('Contact form error:', error);
       setStatus({
         type: 'error',
-        message: 'Sorry, there was an error. Please contact us directly at che.eng@live.com or try again.'
+        message: 'Sorry, there was an error. Please contact us directly at che.eng@live.com or reza.moghaddam.nz@gmail.com or try again.'
       });
     } finally {
       setIsSubmitting(false);

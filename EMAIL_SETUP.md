@@ -1,7 +1,7 @@
 # Email Setup Guide for RMES Contact Form
 
 ## Current Status
-The contact form now has two methods to send emails to che.eng@live.com:
+The contact form now has two methods to send emails to both che.eng@live.com and reza.moghaddam.nz@gmail.com:
 
 1. **EmailJS** (Primary method) - Requires setup
 2. **Mailto fallback** (Always works) - Opens user's default email client
@@ -22,7 +22,7 @@ Create a template with these variables:
 - `{{company}}` - Company name
 - `{{service}}` - Service interested in
 - `{{message}}` - The message content
-- `{{to_email}}` - Recipient (che.eng@live.com)
+- `{{to_email}}` - Recipients (che.eng@live.com,reza.moghaddam.nz@gmail.com)
 
 ### 3. Update Configuration
 In `src/pages/ContactPage.js`, update these values:
@@ -38,11 +38,11 @@ After setup, test by submitting the contact form.
 ## Current Behavior
 
 **Without EmailJS setup:** 
-- Form opens user's default email client with pre-filled message to che.eng@live.com
+- Form opens user's default email client with pre-filled message to both che.eng@live.com and reza.moghaddam.nz@gmail.com
 - User needs to click "Send" in their email client
 
 **With EmailJS setup:**
-- Form sends email directly to che.eng@live.com
+- Form sends email directly to both che.eng@live.com and reza.moghaddam.nz@gmail.com
 - User sees success message immediately
 - No additional steps required
 

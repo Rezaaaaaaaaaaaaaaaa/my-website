@@ -9,6 +9,7 @@ import {
   FaPhone,
   FaClock
 } from 'react-icons/fa';
+import Logo from '../components/Logo';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -304,20 +305,46 @@ const ContactPage = () => {
               )}
             </div>
 
-            {/* Why Choose Us - Streamlined */}
-            <div className="mt-12 p-6 bg-gray-50 rounded-lg">
-              <h3>Why Choose RMES?</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                <ul className="space-y-2">
-                  <li>• Free initial consultation</li>
-                  <li>• Expert Kiwi technical guidance</li>
-                  <li>• Solutions tailored to NZ regulations</li>
-                </ul>
-                <ul className="space-y-2">
-                  <li>• Competitive local pricing</li>
-                  <li>• Professional project management</li>
-                  <li>• Environmental compliance expertise</li>
-                </ul>
+            {/* Why Choose Us - Enhanced with Branding */}
+            <div className="mt-12 p-8 bg-gradient-to-br from-teal-50 to-blue-50 rounded-xl border border-teal-200 shadow-lg">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-bold text-slate-800">Why Choose Reza Moghaddam Engineering Solutions?</h3>
+                <Logo size="small" variant="icon" animated={true} />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <FaCheckCircle className="text-teal-600 flex-shrink-0" />
+                    <span>Free initial consultation and technical assessment</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <FaCheckCircle className="text-teal-600 flex-shrink-0" />
+                    <span>Expert Kiwi technical guidance and local knowledge</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <FaCheckCircle className="text-teal-600 flex-shrink-0" />
+                    <span>Solutions tailored to NZ regulations and standards</span>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <FaCheckCircle className="text-teal-600 flex-shrink-0" />
+                    <span>Competitive local pricing and transparent costs</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <FaCheckCircle className="text-teal-600 flex-shrink-0" />
+                    <span>Professional project management from concept to completion</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <FaCheckCircle className="text-teal-600 flex-shrink-0" />
+                    <span>Environmental compliance and sustainability expertise</span>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 p-4 bg-white/70 rounded-lg border border-teal-100">
+                <p className="text-center text-teal-700 font-semibold italic">
+                  "Local Water Done Well" - Our commitment to excellence in New Zealand's water engineering
+                </p>
               </div>
             </div>
           </div>

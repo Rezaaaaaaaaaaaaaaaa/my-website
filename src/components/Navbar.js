@@ -40,7 +40,7 @@ const Navbar = () => {
       <div className="container">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMenu}>
-            <Logo size="small" />
+            <Logo size="small" variant="compact" />
           </Link>
           
           <ul className={`nav-menu ${isOpen ? 'nav-menu-open' : ''}`}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   FaFlask, 
@@ -8,10 +8,19 @@ import {
   FaLeaf, 
   FaChartLine,
   FaTools,
-  FaShieldAlt
+  FaShieldAlt,
+  FaPlay,
+  FaEye,
+  FaFilter
 } from 'react-icons/fa';
+import ProcessFlowDiagram from '../components/ProcessFlowDiagram';
+import ProcessSchematic from '../components/ProcessSchematic';
+import TechnicalIcons from '../components/TechnicalIcons';
 
 const ServicesPage = () => {
+  const [activeFlow, setActiveFlow] = useState('water_treatment');
+  const [activeSchematic, setActiveSchematic] = useState('mbr_system');
+
   const services = [
     {
       icon: <FaFlask />,
@@ -251,6 +260,46 @@ const ServicesPage = () => {
         </div>
       </section>
 
+      {/* Technical Excellence Showcase */}
+      <section className="section" style={{backgroundColor: 'var(--gray-100)'}}>
+        <div className="container">
+          <div className="section-header">
+            <h2>Technical Excellence in Water Engineering</h2>
+            <p className="section-description">
+              Advanced process technologies with real-time monitoring and optimization capabilities
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-5 gap-6 mb-12">
+            <div className="text-center">
+              <TechnicalIcons type="water-treatment" size="large" animated={true} />
+              <h4 className="mt-3 font-semibold text-slate-800">Water Treatment</h4>
+              <p className="text-sm text-slate-600">Coagulation, Filtration, Disinfection</p>
+            </div>
+            <div className="text-center">
+              <TechnicalIcons type="mbr" size="large" animated={true} />
+              <h4 className="mt-3 font-semibold text-slate-800">MBR Systems</h4>
+              <p className="text-sm text-slate-600">Membrane Bioreactors</p>
+            </div>
+            <div className="text-center">
+              <TechnicalIcons type="stormwater" size="large" animated={true} />
+              <h4 className="mt-3 font-semibold text-slate-800">Stormwater</h4>
+              <p className="text-sm text-slate-600">WSUD, Bioswales, Wetlands</p>
+            </div>
+            <div className="text-center">
+              <TechnicalIcons type="aop" size="large" animated={true} />
+              <h4 className="mt-3 font-semibold text-slate-800">Advanced Oxidation</h4>
+              <p className="text-sm text-slate-600">UV/H₂O₂, Ozonation</p>
+            </div>
+            <div className="text-center">
+              <TechnicalIcons type="membrane" size="large" animated={true} />
+              <h4 className="mt-3 font-semibold text-slate-800">Membrane Systems</h4>
+              <p className="text-sm text-slate-600">RO, UF, MF Technologies</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Water Treatment Modeling & Design */}
       <section className="section">
         <div className="container">
@@ -420,6 +469,165 @@ const ServicesPage = () => {
                 <li>• Discharge Water: Environmental protection limits</li>
                 <li>• Reuse Water: Fit-for-purpose quality criteria</li>
               </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Interactive Process Flow Diagrams */}
+      <section className="section" style={{backgroundColor: 'var(--gray-100)'}}>
+        <div className="container">
+          <div className="section-header">
+            <h2>Interactive Process Flow Diagrams</h2>
+            <p className="section-description">
+              Explore our engineering expertise through detailed, interactive process diagrams and schematics
+            </p>
+          </div>
+          
+          {/* Flow Diagram Selector */}
+          <div className="mb-8">
+            <div className="flex flex-wrap justify-center gap-4 mb-6">
+              <button
+                onClick={() => setActiveFlow('water_treatment')}
+                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  activeFlow === 'water_treatment' 
+                    ? 'bg-teal-600 text-white shadow-lg' 
+                    : 'bg-white text-teal-600 border border-teal-600 hover:bg-teal-50'
+                }`}
+              >
+                <FaWater className="inline mr-2" />
+                Municipal Water Treatment
+              </button>
+              <button
+                onClick={() => setActiveFlow('wastewater_treatment')}
+                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  activeFlow === 'wastewater_treatment' 
+                    ? 'bg-purple-600 text-white shadow-lg' 
+                    : 'bg-white text-purple-600 border border-purple-600 hover:bg-purple-50'
+                }`}
+              >
+                <FaCogs className="inline mr-2" />
+                Activated Sludge Process
+              </button>
+              <button
+                onClick={() => setActiveFlow('membrane_system')}
+                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  activeFlow === 'membrane_system' 
+                    ? 'bg-red-600 text-white shadow-lg' 
+                    : 'bg-white text-red-600 border border-red-600 hover:bg-red-50'
+                }`}
+              >
+                <FaFilter className="inline mr-2" />
+                RO Membrane System
+              </button>
+            </div>
+            
+            <ProcessFlowDiagram processType={activeFlow} />
+          </div>
+        </div>
+      </section>
+
+      {/* Process Schematics */}
+      <section className="section">
+        <div className="container">
+          <div className="section-header">
+            <h2>Advanced Process Schematics</h2>
+            <p className="section-description">
+              Detailed engineering schematics showcasing advanced treatment technologies and system configurations
+            </p>
+          </div>
+          
+          {/* Schematic Selector */}
+          <div className="mb-8">
+            <div className="flex flex-wrap justify-center gap-4 mb-6">
+              <button
+                onClick={() => setActiveSchematic('mbr_system')}
+                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  activeSchematic === 'mbr_system' 
+                    ? 'bg-blue-600 text-white shadow-lg' 
+                    : 'bg-white text-blue-600 border border-blue-600 hover:bg-blue-50'
+                }`}
+              >
+                <FaCogs className="inline mr-2" />
+                MBR System
+              </button>
+              <button
+                onClick={() => setActiveSchematic('stormwater_treatment')}
+                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  activeSchematic === 'stormwater_treatment' 
+                    ? 'bg-green-600 text-white shadow-lg' 
+                    : 'bg-white text-green-600 border border-green-600 hover:bg-green-50'
+                }`}
+              >
+                <FaLeaf className="inline mr-2" />
+                Stormwater Treatment
+              </button>
+              <button
+                onClick={() => setActiveSchematic('advanced_oxidation')}
+                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  activeSchematic === 'advanced_oxidation' 
+                    ? 'bg-purple-600 text-white shadow-lg' 
+                    : 'bg-white text-purple-600 border border-purple-600 hover:bg-purple-50'
+                }`}
+              >
+                <FaFlask className="inline mr-2" />
+                Advanced Oxidation
+              </button>
+            </div>
+            
+            <ProcessSchematic schematicType={activeSchematic} />
+          </div>
+        </div>
+      </section>
+
+      {/* Engineering Capabilities Showcase */}
+      <section className="section" style={{backgroundColor: 'var(--gray-100)'}}>
+        <div className="container">
+          <div className="section-header">
+            <h2>Engineering Design Capabilities</h2>
+            <p className="section-description">
+              Comprehensive process engineering services from concept to commissioning
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 gap-8">
+            <div className="card">
+              <h4 className="flex items-center gap-2 mb-4">
+                <FaTools className="text-teal-600" />
+                Process Design & Modeling
+              </h4>
+              <ul className="space-y-2 text-slate-600">
+                <li>• Hydraulic and process modeling using industry-standard software</li>
+                <li>• Mass balance calculations and process optimization</li>
+                <li>• Equipment sizing and selection criteria</li>
+                <li>• P&ID development and process control strategies</li>
+                <li>• 3D plant modeling and clash detection</li>
+              </ul>
+            </div>
+            
+            <div className="card">
+              <h4 className="flex items-center gap-2 mb-4">
+                <FaChartLine className="text-blue-600" />
+                Performance Analysis
+              </h4>
+              <ul className="space-y-2 text-slate-600">
+                <li>• Process performance evaluation and troubleshooting</li>
+                <li>• Energy efficiency analysis and optimization</li>
+                <li>• Life cycle assessment and sustainability metrics</li>
+                <li>• Risk assessment and failure mode analysis</li>
+                <li>• Predictive maintenance strategies</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="mt-8 p-6 bg-gradient-to-r from-teal-600 to-blue-600 text-white rounded-xl">
+            <div className="text-center">
+              <h3 className="text-xl font-bold mb-4">Ready to Discuss Your Process Engineering Needs?</h3>
+              <p className="mb-6">Our team can develop custom process diagrams and engineering solutions for your specific requirements.</p>
+              <Link to="/contact" className="btn bg-white text-teal-600 hover:bg-gray-100">
+                <FaEye className="mr-2" />
+                Get Technical Consultation
+              </Link>
             </div>
           </div>
         </div>

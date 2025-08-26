@@ -59,7 +59,7 @@ const HomePage = () => {
         <div className="container">
           <div className="hero-content">
             <div className="flex justify-center mb-6">
-              <Logo size="large" />
+              <Logo size="hero" variant="full" animated={true} />
             </div>
             <p className="subtitle">Environmental Engineering Excellence</p>
             <div className="mb-6 p-8 bg-gradient-to-r from-teal-50 to-blue-50 rounded-xl border border-teal-100 shadow-lg">

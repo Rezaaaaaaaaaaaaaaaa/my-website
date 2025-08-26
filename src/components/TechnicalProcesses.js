@@ -19,7 +19,8 @@ const waterTreatmentProcesses = [
     {
         title: 'Ultrafiltration (UF)',
         icon: <FaSlidersH className="process-icon" />,
-        description: 'UF uses hollow fiber membranes to remove bacteria, viruses, and colloids.'
+        description: 'UF uses hollow fiber membranes to remove bacteria, viruses, and colloids.',
+        link: '/ultrafiltration'
     },
     {
         title: 'UV Disinfection',
@@ -36,7 +37,8 @@ const waterTreatmentProcesses = [
     {
         title: 'Activated Carbon Adsorption',
         icon: <FaLeaf className="process-icon" />,
-        description: 'Carbon media adsorbs organic compounds, chlorine, and taste/odor contaminants.'
+        description: 'Carbon media adsorbs organic compounds, chlorine, and taste/odor contaminants.',
+        link: '/activated-carbon'
     },
     {
         title: 'Primary Treatment',
@@ -80,7 +82,8 @@ const bioProcesses = [
     {
         title: 'Membrane Bioreactors',
         icon: <FaMicroscope className="process-icon bio-icon" />,
-        description: 'Combined biological treatment and membrane filtration for high-quality effluent.'
+        description: 'Combined biological treatment and membrane filtration for high-quality effluent.',
+        link: '/membrane-bioreactor'
     },
     {
         title: 'Biofilm Reactors',
@@ -108,7 +111,8 @@ const chemicalProcesses = [
     {
         title: 'Crystallization',
         icon: <FaSnowflake className="process-icon chem-icon" />,
-        description: 'Purification and separation through controlled crystal formation and recovery.'
+        description: 'Purification and separation through controlled crystal formation and recovery.',
+        link: '/crystallization'
     },
     {
         title: 'Oxidation Processes',

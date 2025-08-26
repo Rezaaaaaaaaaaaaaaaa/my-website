@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaBrain, FaChartLine, FaDatabase, FaRobot, FaIndustry, FaCheckCircle, FaCogs } from 'react-icons/fa';
 
 const MachineLearningPage = () => {
@@ -214,9 +215,9 @@ const MachineLearningPage = () => {
           <p className="text-xl mb-8">
             Contact our machine learning experts to discuss how AI can optimize your processes.
           </p>
-          <a href="/contact" className="btn btn-primary btn-lg">
+          <Link to="/contact" className="btn btn-primary btn-lg">
             Get ML Consultation
-          </a>
+          </Link>
         </div>
       </section>
     </div>

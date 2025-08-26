@@ -12,7 +12,9 @@
       "Bash(npx eslint:*)",
       "WebFetch(domain:fonts.googleapis.com)",
       "WebFetch(domain:fonts.gstatic.com)",
-      "WebFetch(domain:fonts.googleapis.com)"
+      "WebFetch(domain:fonts.googleapis.com)",
+      "Bash(find:*)",
+      "Bash(del \"C:\\webiste\\my-website\\src\\pages\\FoodSafetySystemsPage.js\")"
     ],
     "deny": [],
     "ask": [],

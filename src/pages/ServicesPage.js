@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { 
   FaFlask, 
   FaCogs, 
@@ -208,6 +209,41 @@ const ServicesPage = () => {
                 </ul>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Unit Technologies */}
+      <section className="section" style={{backgroundColor: 'var(--gray-100)'}}>
+        <div className="container">
+          <div className="section-header">
+            <h2>Process Unit Technologies</h2>
+            <p className="section-description">
+              Comprehensive range of process units and technologies for diverse applications
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-3">
+            <div className="card text-center">
+              <FaWater className="card-icon" />
+              <h4>Water Treatment Systems</h4>
+              <p>Filtration, RO, UF, UV disinfection, and ion exchange technologies</p>
+              <Link to="/filtration" className="btn btn-secondary">Explore Water Treatment</Link>
+            </div>
+            
+            <div className="card text-center">
+              <FaCogs className="card-icon" />
+              <h4>Separation Processes</h4>
+              <p>Distillation, crystallization, extraction, and advanced separation</p>
+              <Link to="/distillation" className="btn btn-secondary">Explore Separations</Link>
+            </div>
+            
+            <div className="card text-center">
+              <FaLeaf className="card-icon" />
+              <h4>Biological Systems</h4>
+              <p>Bioreactors, MBR systems, and sustainable bioprocessing</p>
+              <Link to="/bioreactor" className="btn btn-secondary">Explore Bioprocesses</Link>
+            </div>
           </div>
         </div>
       </section>

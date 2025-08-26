@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaFlask, FaCogs, FaThermometerHalf, FaExclamationTriangle, FaIndustry, FaLeaf, FaCheckCircle } from 'react-icons/fa';
 
 const ReactorPage = () => {
@@ -157,9 +158,9 @@ const ReactorPage = () => {
           <p className="text-xl mb-8">
             Contact our reactor engineering experts to discuss your specific requirements and get a customized solution.
           </p>
-          <a href="/contact" className="btn btn-primary btn-lg">
+          <Link to="/contact" className="btn btn-primary btn-lg">
             Get Reactor Consultation
-          </a>
+          </Link>
         </div>
       </section>
     </div>

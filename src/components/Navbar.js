@@ -12,23 +12,26 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
-  // Consolidated service groups for better navigation efficiency
+  // Process equipment and technologies
   const engineeringServicesItems = [
-    { name: 'Process Equipment', path: '/services#equipment' },
-    { name: 'Treatment Systems', path: '/services#treatment' },
-    { name: 'Analysis Services', path: '/services#analysis' }
+    { name: 'Filtration Systems', path: '/filtration' },
+    { name: 'Reverse Osmosis', path: '/reverse-osmosis' },
+    { name: 'Ultrafiltration', path: '/ultrafiltration' },
+    { name: 'Ion Exchange', path: '/ion-exchange' }
   ];
 
   const environmentalSolutionsItems = [
-    { name: 'Biological Treatment', path: '/services#biological' },
-    { name: 'Chemical Processes', path: '/services#chemical' },
-    { name: 'Water & Marine', path: '/services#water' }
+    { name: 'Bioreactors', path: '/bioreactor' },
+    { name: 'Membrane Bioreactor', path: '/membrane-bioreactor' },
+    { name: 'UV Disinfection', path: '/uv-disinfection' },
+    { name: 'Activated Carbon', path: '/activated-carbon' }
   ];
 
-  const foodEngineeringItems = [
-    { name: 'Dairy Processing', path: '/dairy-processing' },
-    { name: 'Food Safety Systems', path: '/food-safety-systems' },
-    { name: 'Process Optimization', path: '/services#optimization' }
+  const processUnitsItems = [
+    { name: 'Crystallization', path: '/crystallization' },
+    { name: 'Distillation', path: '/distillation' },
+    { name: 'Heat Exchangers', path: '/heat-exchanger' },
+    { name: 'Separators', path: '/separator' }
   ];
 
   return (
@@ -69,20 +72,20 @@ const Navbar = () => {
             </li>
 
             <Dropdown 
-              title="Engineering Services" 
+              title="Water Treatment" 
               items={engineeringServicesItems} 
               closeMainMenu={closeMenu} 
             />
 
             <Dropdown 
-              title="Environmental Solutions" 
+              title="Biological Systems" 
               items={environmentalSolutionsItems} 
               closeMainMenu={closeMenu} 
             />
 
             <Dropdown 
-              title="Food Engineering" 
-              items={foodEngineeringItems} 
+              title="Process Units" 
+              items={processUnitsItems} 
               closeMainMenu={closeMenu} 
             />
 

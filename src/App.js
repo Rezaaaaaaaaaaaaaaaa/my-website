@@ -26,7 +26,6 @@ import ExtractionPage from './pages/ExtractionPage';
 
 // Food Engineering - Key NZ industry
 import DairyProcessingPage from './pages/DairyProcessingPage';
-import FoodSafetySystemsPage from './pages/FoodSafetySystemsPage';
 
 // Process Unit Pages - Individual process technologies
 import FiltrationPage from './pages/FiltrationPage';
@@ -34,6 +33,10 @@ import ReverseOsmosisPage from './pages/ReverseOsmosisPage';
 import UVDisinfectionPage from './pages/UVDisinfectionPage';
 import BioreactorPage from './pages/BioreactorPage';
 import IonExchangePage from './pages/IonExchangePage';
+import ActivatedCarbonPage from './pages/ActivatedCarbonPage';
+import UltrafiltrationPage from './pages/UltrafiltrationPage';
+import CrystallizationPage from './pages/CrystallizationPage';
+import MembraneBioreactorPage from './pages/MembraneBioreactorPage';
 
 import './styles/index.css';
 
@@ -66,7 +69,6 @@ function App() {
             
             {/* Food Engineering - Key NZ Industry */}
             <Route path="/dairy-processing" element={<DairyProcessingPage />} />
-            <Route path="/food-safety-systems" element={<FoodSafetySystemsPage />} />
             
             {/* Process Unit Pages */}
             <Route path="/filtration" element={<FiltrationPage />} />
@@ -74,6 +76,13 @@ function App() {
             <Route path="/uv-disinfection" element={<UVDisinfectionPage />} />
             <Route path="/bioreactor" element={<BioreactorPage />} />
             <Route path="/ion-exchange" element={<IonExchangePage />} />
+            <Route path="/activated-carbon" element={<ActivatedCarbonPage />} />
+            <Route path="/ultrafiltration" element={<UltrafiltrationPage />} />
+            <Route path="/crystallization" element={<CrystallizationPage />} />
+            <Route path="/membrane-bioreactor" element={<MembraneBioreactorPage />} />
+            
+            {/* Catch-all route for debugging */}
+            <Route path="*" element={<div style={{padding: '2rem', textAlign: 'center'}}><h2>Page Not Found</h2><p>The requested page could not be found.</p></div>} />
           </Routes>
         </main>
         <TechnicalProcesses />

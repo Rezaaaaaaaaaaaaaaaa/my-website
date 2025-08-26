@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaShieldAlt, FaChartLine, FaMicroscope, FaWater, FaIndustry, FaCheckCircle } from 'react-icons/fa';
 
 const QMRAAnalysisPage = () => {
@@ -215,8 +216,8 @@ const QMRAAnalysisPage = () => {
             <h2>Ready to Assess Your Microbial Risks?</h2>
             <p>Contact our QMRA experts for comprehensive microbial risk assessment services</p>
             <div className="cta-buttons">
-              <a href="/contact" className="btn btn-primary">Get Consultation</a>
-              <a href="/services" className="btn btn-secondary">Learn More</a>
+              <Link to="/contact" className="btn btn-primary">Get Consultation</Link>
+              <Link to="/services" className="btn btn-secondary">Learn More</Link>
             </div>
           </div>
         </div>

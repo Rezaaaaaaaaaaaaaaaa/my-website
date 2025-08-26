@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaFilter, FaCogs, FaIndustry, FaLeaf, FaCheckCircle, FaChartLine, FaTools } from 'react-icons/fa';
 
 const SeparatorPage = () => {
@@ -190,9 +191,9 @@ const SeparatorPage = () => {
           <p className="text-xl mb-8">
             Contact our separation engineering experts to discuss your requirements and get a customized solution.
           </p>
-          <a href="/contact" className="btn btn-primary btn-lg">
+          <Link to="/contact" className="btn btn-primary btn-lg">
             Get Separation Consultation
-          </a>
+          </Link>
         </div>
       </section>
     </div>

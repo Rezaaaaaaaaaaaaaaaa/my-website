@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaThermometerHalf, FaCogs, FaIndustry, FaLeaf, FaCheckCircle, FaChartLine, FaTools } from 'react-icons/fa';
 
 const HeatExchangerPage = () => {
@@ -190,9 +191,9 @@ const HeatExchangerPage = () => {
           <p className="text-xl mb-8">
             Contact our heat exchanger engineering experts to discuss your thermal requirements and get a customized solution.
           </p>
-          <a href="/contact" className="btn btn-primary btn-lg">
+          <Link to="/contact" className="btn btn-primary btn-lg">
             Get Heat Exchanger Consultation
-          </a>
+          </Link>
         </div>
       </section>
     </div>

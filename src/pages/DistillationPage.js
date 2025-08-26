@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaFlask, FaThermometerHalf, FaCogs, FaIndustry, FaLeaf, FaCheckCircle, FaChartLine } from 'react-icons/fa';
 
 const DistillationPage = () => {
@@ -190,9 +191,9 @@ const DistillationPage = () => {
           <p className="text-xl mb-8">
             Contact our distillation engineering experts to discuss your separation requirements and get a customized solution.
           </p>
-          <a href="/contact" className="btn btn-primary btn-lg">
+          <Link to="/contact" className="btn btn-primary btn-lg">
             Get Distillation Consultation
-          </a>
+          </Link>
         </div>
       </section>
     </div>

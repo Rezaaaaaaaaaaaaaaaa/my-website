@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaIndustry, FaThermometerHalf, FaFlask, FaCheckCircle, FaCogs, FaLeaf, FaGlobe } from 'react-icons/fa';
 
 const DairyProcessingPage = () => {
@@ -201,9 +202,9 @@ const DairyProcessingPage = () => {
           <p className="text-xl mb-8">
             Contact our dairy engineering experts to discuss your processing requirements and get a customized solution.
           </p>
-          <a href="/contact" className="btn btn-primary btn-lg">
+          <Link to="/contact" className="btn btn-primary btn-lg">
             Get Dairy Engineering Consultation
-          </a>
+          </Link>
         </div>
       </section>
     </div>

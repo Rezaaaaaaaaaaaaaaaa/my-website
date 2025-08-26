@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import Dropdown from './Dropdown';
+import Logo from './Logo';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +40,7 @@ const Navbar = () => {
       <div className="container">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMenu}>
-            RMES
+            <Logo size="small" />
           </Link>
           
           <ul className={`nav-menu ${isOpen ? 'nav-menu-open' : ''}`}>

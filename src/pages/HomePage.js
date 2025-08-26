@@ -8,8 +8,12 @@ import {
   FaWater, 
   FaChartLine,
   FaArrowRight,
-  FaCheckCircle
+  FaCheckCircle,
+  FaAward,
+  FaUsers,
+  FaGlobeAmericas
 } from 'react-icons/fa';
+import Logo from '../components/Logo';
 
 const HomePage = () => {
   const services = [
@@ -54,17 +58,36 @@ const HomePage = () => {
       <section className="hero">
         <div className="container">
           <div className="hero-content">
-            <h1>RMES</h1>
+            <div className="flex justify-center mb-6">
+              <Logo size="large" />
+            </div>
             <p className="subtitle">Environmental Engineering Excellence</p>
-            <div className="mb-6 p-6 bg-slate-50 rounded-lg border-l-4 border-slate-700">
-              <h2 className="text-2xl font-bold text-slate-800 mb-2">
-                Local Water Done Well: New Zealand's Engineering Excellence
-              </h2>
-              <p className="text-slate-700 text-lg">
+            <div className="mb-6 p-8 bg-gradient-to-r from-teal-50 to-blue-50 rounded-xl border border-teal-100 shadow-lg">
+              <div className="flex items-center mb-4">
+                <FaWater className="text-3xl text-teal-600 mr-3" />
+                <h2 className="text-2xl font-bold text-slate-800">
+                  Local Water Done Well: New Zealand's Engineering Excellence
+                </h2>
+              </div>
+              <p className="text-slate-700 text-lg leading-relaxed">
                 Specialized engineering in water treatment (coagulation, sedimentation, filtration), 
                 wastewater systems (ASP, MBR, SBR, MBBR), and stormwater management (WSUD, constructed wetlands) 
                 delivering regulatory compliance across New Zealand.
               </p>
+              <div className="flex items-center gap-6 mt-4 text-sm text-slate-600">
+                <div className="flex items-center gap-2">
+                  <FaAward className="text-teal-600" />
+                  <span>ISO Compliant</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaUsers className="text-teal-600" />
+                  <span>Expert Team</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaGlobeAmericas className="text-teal-600" />
+                  <span>NZ Wide Service</span>
+                </div>
+              </div>
             </div>
             <p className="description">
               New Zealand's trusted environmental engineering consultancy, delivering innovative 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaWater, FaFilter, FaRecycle, FaBolt, FaVial, FaLeaf, FaSlidersH, FaChartLine, FaIndustry, FaFlask, FaSnowflake, FaBurn, FaAtom, FaDna, FaSeedling, FaOilCan, FaThermometerHalf, FaCloudRain, FaMicroscope, FaWind } from 'react-icons/fa';
 import './TechnicalProcesses.css';
 
@@ -6,12 +7,14 @@ const waterTreatmentProcesses = [
     {
         title: 'Filtration',
         icon: <FaFilter className="process-icon" />,
-        description: 'Sand, multimedia, and cartridge filtration remove suspended solids and particulates from water.'
+        description: 'Sand, multimedia, and cartridge filtration remove suspended solids and particulates from water.',
+        link: '/filtration'
     },
     {
         title: 'Reverse Osmosis (RO)',
         icon: <FaWater className="process-icon" />,
-        description: 'RO membranes separate dissolved salts and impurities, producing high-purity water.'
+        description: 'RO membranes separate dissolved salts and impurities, producing high-purity water.',
+        link: '/reverse-osmosis'
     },
     {
         title: 'Ultrafiltration (UF)',
@@ -21,12 +24,14 @@ const waterTreatmentProcesses = [
     {
         title: 'UV Disinfection',
         icon: <FaBolt className="process-icon" />,
-        description: 'UV lamps inactivate microorganisms, providing chemical-free disinfection.'
+        description: 'UV lamps inactivate microorganisms, providing chemical-free disinfection.',
+        link: '/uv-disinfection'
     },
     {
         title: 'Ion Exchange',
         icon: <FaVial className="process-icon" />,
-        description: 'Softening and deionization through resin beds for targeted contaminant removal.'
+        description: 'Softening and deionization through resin beds for targeted contaminant removal.',
+        link: '/ion-exchange'
     },
     {
         title: 'Activated Carbon Adsorption',
@@ -59,7 +64,8 @@ const bioProcesses = [
     {
         title: 'Bioreactors',
         icon: <FaFlask className="process-icon bio-icon" />,
-        description: 'Controlled fermentation vessels for microbial cultivation and bioprocessing applications.'
+        description: 'Controlled fermentation vessels for microbial cultivation and bioprocessing applications.',
+        link: '/bioreactor'
     },
     {
         title: 'Anaerobic Digestion',
@@ -141,9 +147,19 @@ const TechnicalProcesses = () => (
                 <div className="process-list">
                     {waterTreatmentProcesses.map((proc, idx) => (
                         <div className="process-card water-treatment" key={`water-${idx}`}>
-                            {proc.icon}
-                            <h4>{proc.title}</h4>
-                            <p>{proc.description}</p>
+                            {proc.link ? (
+                                <Link to={proc.link} className="process-card-link">
+                                    {proc.icon}
+                                    <h4>{proc.title}</h4>
+                                    <p>{proc.description}</p>
+                                </Link>
+                            ) : (
+                                <>
+                                    {proc.icon}
+                                    <h4>{proc.title}</h4>
+                                    <p>{proc.description}</p>
+                                </>
+                            )}
                         </div>
                     ))}
                 </div>
@@ -154,9 +170,19 @@ const TechnicalProcesses = () => (
                 <div className="process-list">
                     {bioProcesses.map((proc, idx) => (
                         <div className="process-card bio-process" key={`bio-${idx}`}>
-                            {proc.icon}
-                            <h4>{proc.title}</h4>
-                            <p>{proc.description}</p>
+                            {proc.link ? (
+                                <Link to={proc.link} className="process-card-link">
+                                    {proc.icon}
+                                    <h4>{proc.title}</h4>
+                                    <p>{proc.description}</p>
+                                </Link>
+                            ) : (
+                                <>
+                                    {proc.icon}
+                                    <h4>{proc.title}</h4>
+                                    <p>{proc.description}</p>
+                                </>
+                            )}
                         </div>
                     ))}
                 </div>
@@ -167,9 +193,19 @@ const TechnicalProcesses = () => (
                 <div className="process-list">
                     {chemicalProcesses.map((proc, idx) => (
                         <div className="process-card chem-process" key={`chem-${idx}`}>
-                            {proc.icon}
-                            <h4>{proc.title}</h4>
-                            <p>{proc.description}</p>
+                            {proc.link ? (
+                                <Link to={proc.link} className="process-card-link">
+                                    {proc.icon}
+                                    <h4>{proc.title}</h4>
+                                    <p>{proc.description}</p>
+                                </Link>
+                            ) : (
+                                <>
+                                    {proc.icon}
+                                    <h4>{proc.title}</h4>
+                                    <p>{proc.description}</p>
+                                </>
+                            )}
                         </div>
                     ))}
                 </div>

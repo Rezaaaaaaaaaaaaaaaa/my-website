@@ -9,7 +9,10 @@
       "Bash(npm run build:*)",
       "Bash(powershell:*)",
       "Bash(cmd /c \"npm run build 2>&1\")",
-      "Bash(npx eslint:*)"
+      "Bash(npx eslint:*)",
+      "WebFetch(domain:fonts.googleapis.com)",
+      "WebFetch(domain:fonts.gstatic.com)",
+      "WebFetch(domain:fonts.googleapis.com)"
     ],
     "deny": [],
     "ask": [],

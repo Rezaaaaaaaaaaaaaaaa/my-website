@@ -28,6 +28,13 @@ import ExtractionPage from './pages/ExtractionPage';
 import DairyProcessingPage from './pages/DairyProcessingPage';
 import FoodSafetySystemsPage from './pages/FoodSafetySystemsPage';
 
+// Process Unit Pages - Individual process technologies
+import FiltrationPage from './pages/FiltrationPage';
+import ReverseOsmosisPage from './pages/ReverseOsmosisPage';
+import UVDisinfectionPage from './pages/UVDisinfectionPage';
+import BioreactorPage from './pages/BioreactorPage';
+import IonExchangePage from './pages/IonExchangePage';
+
 import './styles/index.css';
 
 function App() {
@@ -60,6 +67,13 @@ function App() {
             {/* Food Engineering - Key NZ Industry */}
             <Route path="/dairy-processing" element={<DairyProcessingPage />} />
             <Route path="/food-safety-systems" element={<FoodSafetySystemsPage />} />
+            
+            {/* Process Unit Pages */}
+            <Route path="/filtration" element={<FiltrationPage />} />
+            <Route path="/reverse-osmosis" element={<ReverseOsmosisPage />} />
+            <Route path="/uv-disinfection" element={<UVDisinfectionPage />} />
+            <Route path="/bioreactor" element={<BioreactorPage />} />
+            <Route path="/ion-exchange" element={<IonExchangePage />} />
           </Routes>
         </main>
         <TechnicalProcesses />

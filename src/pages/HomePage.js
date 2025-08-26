@@ -27,9 +27,9 @@ const HomePage = () => {
     },
     {
       icon: <FaWater />,
-      title: "Environmental Solutions",
-      description: "Sustainable environmental engineering focusing on water treatment, waste management, and pollution control.",
-      features: ["Water Treatment", "Waste Management", "Pollution Control", "Compliance"]
+      title: "Water Treatment Excellence",
+      description: "Local Water Done Well - Advanced water treatment solutions ensuring New Zealand's water quality meets the highest international standards.",
+      features: ["Advanced Water Treatment", "Quality Assurance", "Environmental Compliance", "Local Expertise"]
     },
     {
       icon: <FaIndustry />,
@@ -40,8 +40,8 @@ const HomePage = () => {
   ];
 
   const industries = [
-    "Dairy & Food Processing",
-    "Water Treatment & Infrastructure", 
+    "Water Treatment & Infrastructure - Local Water Done Well",
+    "Dairy & Food Processing", 
     "Agricultural Technology & Horticulture",
     "Marine & Aquaculture",
     "Manufacturing & Industrial",
@@ -56,6 +56,15 @@ const HomePage = () => {
           <div className="hero-content">
             <h1>RMES</h1>
             <p className="subtitle">Environmental Engineering Excellence</p>
+            <div className="mb-6 p-6 bg-blue-50 rounded-lg border-l-4 border-blue-600">
+              <h2 className="text-2xl font-bold text-blue-800 mb-2">
+                Local Water Done Well is New Zealand's Priority
+              </h2>
+              <p className="text-blue-700 text-lg">
+                Our expertise in water treatment and environmental solutions ensures every drop 
+                meets the highest standards while protecting Aotearoa's precious water resources.
+              </p>
+            </div>
             <p className="description">
               New Zealand's trusted environmental engineering consultancy, delivering innovative 
               chemical process solutions, bioprocess engineering, and sustainable technologies 

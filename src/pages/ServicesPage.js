@@ -41,15 +41,15 @@ const ServicesPage = () => {
     },
     {
       icon: <FaWater />,
-      title: "Water & Marine Treatment",
-      description: "Advanced water treatment solutions for New Zealand's pristine environment",
+      title: "Local Water Done Well - Premium Water Treatment",
+      description: "New Zealand's water deserves excellence. Advanced treatment solutions ensuring every drop meets world-class standards while protecting our pristine environment.",
       details: [
-        "Water treatment system design",
+        "Local Water Done Well - Quality assurance systems",
+        "Advanced water treatment system design",
         "Wastewater treatment optimization",
         "Marine and aquaculture systems",
-        "Biological treatment processes",
-        "Water quality monitoring",
-        "Environmental compliance support"
+        "Real-time water quality monitoring",
+        "NZ environmental compliance expertise"
       ]
     },
     {
@@ -139,9 +139,10 @@ const ServicesPage = () => {
       <section id="treatment" className="section" style={{backgroundColor: 'var(--gray-100)'}}>
         <div className="container">
           <div className="section-header">
-            <h2>Treatment Systems & Environmental Solutions</h2>
+            <h2>Local Water Done Well - Treatment Systems & Environmental Solutions</h2>
             <p className="section-description">
-              Specialized solutions for water treatment and environmental protection
+              New Zealand's commitment to water excellence through specialized treatment solutions 
+              and environmental protection that sets the global standard for local water quality.
             </p>
           </div>
           <div className="grid grid-auto">
@@ -226,8 +227,8 @@ const ServicesPage = () => {
           <div className="grid grid-cols-3">
             <div className="card text-center">
               <FaWater className="card-icon" />
-              <h4>Water Treatment Systems</h4>
-              <p>Filtration, RO, UF, UV disinfection, and ion exchange technologies</p>
+              <h4>Local Water Done Well - Treatment Systems</h4>
+              <p>Premium filtration, RO, UF, UV disinfection, and ion exchange technologies ensuring New Zealand's water quality excellence</p>
               <Link to="/filtration" className="btn btn-secondary">Explore Water Treatment</Link>
             </div>
             

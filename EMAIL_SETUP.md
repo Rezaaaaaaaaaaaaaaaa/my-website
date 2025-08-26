@@ -27,9 +27,9 @@ Create a template with these variables:
 ### 3. Update Configuration
 In `src/pages/ContactPage.js`, update these values:
 ```javascript
-const serviceId = 'your_actual_service_id';
-const templateId = 'your_actual_template_id'; 
-const userId = 'your_actual_user_id';
+const serviceId = 'service_rmes_nz';  // ✓ Already configured
+const templateId = 'template_rmes_contact';  // ✓ Already configured
+const userId = '4PgEGqhXeKropITSb';  // ✓ Already configured
 ```
 
 ### 4. Test the Form

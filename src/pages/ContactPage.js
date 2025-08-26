@@ -37,7 +37,7 @@ const ContactPage = () => {
       // EmailJS configuration
       const serviceId = 'service_rmes_nz';
       const templateId = 'template_rmes_contact';
-      const userId = 'your_emailjs_user_id';
+      const userId = '4PgEGqhXeKropITSb';
 
       const templateParams1 = {
         from_name: formData.name,

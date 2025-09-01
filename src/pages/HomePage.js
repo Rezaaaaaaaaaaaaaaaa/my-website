@@ -14,32 +14,46 @@ import {
   FaGlobeAmericas
 } from 'react-icons/fa';
 import Logo from '../components/Logo';
+import { serviceCategories } from '../data/servicesData';
 
 const HomePage = () => {
+  const slugify = (text) => {
+    return text.toString().toLowerCase()
+      .replace(/\s+/g, '-')           // Replace spaces with -
+      .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+      .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+      .replace(/^-+/, '')             // Trim - from start of text
+      .replace(/-+$/, '');            // Trim - from end of text
+  };
+
   const services = [
     {
       icon: <FaFlask />,
       title: "Chemical Process Engineering",
       description: "Advanced process design, optimization, and troubleshooting for chemical manufacturing and production facilities.",
-      features: ["Process Design", "Scale-up", "Optimization", "Safety Analysis"]
+      features: ["Process Design", "Scale-up", "Optimization", "Safety Analysis"],
+      link: `/services#${slugify(serviceCategories.CHEMICAL)}`
     },
     {
       icon: <FaCogs />,
       title: "Bioprocess Engineering",
       description: "Specialized engineering solutions for biotechnology, fermentation, and biological treatment systems.",
-      features: ["Bioreactor Design", "Fermentation", "Downstream Processing", "Quality Control"]
+      features: ["Bioreactor Design", "Fermentation", "Downstream Processing", "Quality Control"],
+      link: `/services#${slugify(serviceCategories.BIOLOGICAL)}`
     },
     {
       icon: <FaWater />,
       title: "Water Treatment Engineering",
       description: "Local Water Done Well - Advanced water/wastewater treatment including MBR, SBR, MBBR, membrane systems, and stormwater WSUD solutions.",
-      features: ["Membrane Systems (RO/UF/MF)", "Biological Treatment (ASP/MBR/SBR)", "Advanced Oxidation (AOPs)", "Stormwater Management"]
+      features: ["Membrane Systems (RO/UF/MF)", "Biological Treatment (ASP/MBR/SBR)", "Advanced Oxidation (AOPs)", "Stormwater Management"],
+      link: `/services#${slugify(serviceCategories.WATER_TREATMENT)}`
     },
     {
       icon: <FaIndustry />,
       title: "Food Engineering",
       description: "Comprehensive food processing solutions ensuring quality, safety, and efficiency in food production.",
-      features: ["Process Design", "Food Safety", "Quality Systems", "Equipment Selection"]
+      features: ["Process Design", "Food Safety", "Quality Systems", "Equipment Selection"],
+      link: `/services#${slugify(serviceCategories.FOOD)}`
     }
   ];
 
@@ -130,7 +144,7 @@ const HomePage = () => {
                     </li>
                   ))}
                 </ul>
-                <Link to="/services" className="btn btn-secondary">
+                <Link to={service.link} className="btn btn-secondary">
                   Learn More
                 </Link>
               </div>

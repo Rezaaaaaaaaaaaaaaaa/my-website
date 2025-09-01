@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import Dropdown from './Dropdown';
 import Logo from './Logo';
+import { servicesData, serviceCategories } from '../data/servicesData';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,27 +14,14 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
-  // Process equipment and technologies
-  const engineeringServicesItems = [
-    { name: 'Filtration Systems', path: '/filtration' },
-    { name: 'Reverse Osmosis', path: '/reverse-osmosis' },
-    { name: 'Ultrafiltration', path: '/ultrafiltration' },
-    { name: 'Ion Exchange', path: '/ion-exchange' }
-  ];
+  // Group services by category for the dropdowns
+  const navLinks = Object.values(serviceCategories).map(category => {
+    const items = servicesData
+      .filter(service => service.category === category && service.link)
+      .map(service => ({ name: service.title, path: service.link }));
 
-  const environmentalSolutionsItems = [
-    { name: 'Bioreactors', path: '/bioreactor' },
-    { name: 'Membrane Bioreactor', path: '/membrane-bioreactor' },
-    { name: 'UV Disinfection', path: '/uv-disinfection' },
-    { name: 'Activated Carbon', path: '/activated-carbon' }
-  ];
-
-  const processUnitsItems = [
-    { name: 'Crystallization', path: '/crystallization' },
-    { name: 'Distillation', path: '/distillation' },
-    { name: 'Heat Exchangers', path: '/heat-exchanger' },
-    { name: 'Separators', path: '/separator' }
-  ];
+    return { title: category, items };
+  }).filter(category => category.items.length > 0);
 
   return (
     <nav className="navbar">
@@ -72,23 +60,14 @@ const Navbar = () => {
               </Link>
             </li>
 
-            <Dropdown 
-              title="Water Treatment" 
-              items={engineeringServicesItems} 
-              closeMainMenu={closeMenu} 
-            />
-
-            <Dropdown 
-              title="Biological Systems" 
-              items={environmentalSolutionsItems} 
-              closeMainMenu={closeMenu} 
-            />
-
-            <Dropdown 
-              title="Process Units" 
-              items={processUnitsItems} 
-              closeMainMenu={closeMenu} 
-            />
+            {navLinks.map(link => (
+              <Dropdown
+                key={link.title}
+                title={link.title}
+                items={link.items}
+                closeMainMenu={closeMenu}
+              />
+            ))}
 
             <li>
               <Link 

@@ -25,6 +25,7 @@ import ExtractionPage from './pages/ExtractionPage';
 
 // Food Engineering - Key NZ industry
 import DairyProcessingPage from './pages/DairyProcessingPage';
+import FoodSafetySystemsPage from './pages/FoodSafetySystemsPage';
 
 // Process Unit Pages - Individual process technologies
 import FiltrationPage from './pages/FiltrationPage';
@@ -68,6 +69,7 @@ function App() {
             
             {/* Food Engineering - Key NZ Industry */}
             <Route path="/dairy-processing" element={<DairyProcessingPage />} />
+            <Route path="/food-safety-systems" element={<FoodSafetySystemsPage />} />
             
             {/* Process Unit Pages */}
             <Route path="/filtration" element={<FiltrationPage />} />

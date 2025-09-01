@@ -1,0 +1,54 @@
+src/pages/DairyProcessingPage.js:          <Link to="/contact" className="btn btn-primary btn-lg">
+src/pages/MembraneBioreactorPage.js:            <Link to="/contact" className="btn btn-primary btn-lg">
+src/pages/MembraneBioreactorPage.js:            <Link to="/services" className="btn btn-secondary btn-lg">
+src/pages/QMRAAnalysisPage.js:              <Link to="/contact" className="btn btn-primary">Get Consultation</Link>
+src/pages/QMRAAnalysisPage.js:              <Link to="/services" className="btn btn-secondary">Learn More</Link>
+src/pages/FiltrationPage.js:            <Link to="/contact" className="btn btn-primary btn-lg">
+src/pages/FiltrationPage.js:            <Link to="/services" className="btn btn-secondary btn-lg">
+src/pages/SeparatorPage.js:          <Link to="/contact" className="btn btn-primary btn-lg">
+src/pages/ActivatedCarbonPage.js:            <Link to="/contact" className="btn btn-primary btn-lg">
+src/pages/ActivatedCarbonPage.js:            <Link to="/services" className="btn btn-secondary btn-lg">
+src/pages/IonExchangePage.js:            <Link to="/contact" className="btn btn-primary btn-lg">
+src/pages/IonExchangePage.js:            <Link to="/services" className="btn btn-secondary btn-lg">
+src/pages/ReactorPage.js:          <Link to="/contact" className="btn btn-primary btn-lg">
+src/pages/DistillationPage.js:          <Link to="/contact" className="btn btn-primary btn-lg">
+src/pages/UVDisinfectionPage.js:            <Link to="/contact" className="btn btn-primary btn-lg">
+src/pages/UVDisinfectionPage.js:            <Link to="/services" className="btn btn-secondary btn-lg">
+src/pages/BioreactorPage.js:            <Link to="/contact" className="btn btn-primary btn-lg">
+src/pages/BioreactorPage.js:            <Link to="/services" className="btn btn-secondary btn-lg">
+src/pages/HeatExchangerPage.js:          <Link to="/contact" className="btn btn-primary btn-lg">
+src/pages/CrystallizationPage.js:            <Link to="/contact" className="btn btn-primary btn-lg">
+src/pages/CrystallizationPage.js:            <Link to="/services" className="btn btn-secondary btn-lg">
+src/pages/HomePage.js:              <Link to="/services" className="btn btn-primary">
+src/pages/HomePage.js:              <Link to="/contact" className="btn btn-secondary">
+src/pages/HomePage.js:                <Link to={service.link} className="btn btn-secondary">
+src/pages/HomePage.js:            <Link to="/contact" className="btn btn-primary btn-lg">
+src/pages/HomePage.js:            <Link to="/services" className="btn btn-secondary btn-lg">
+src/pages/ReverseOsmosisPage.js:            <Link to="/contact" className="btn btn-primary btn-lg">
+src/pages/ReverseOsmosisPage.js:            <Link to="/services" className="btn btn-secondary btn-lg">
+src/pages/ProcessesPage.js:                  <Link key={idx} to={process.path} className="card hover-card" style={{textDecoration: 'none', color: 'inherit'}}>
+src/pages/ProcessesPage.js:            <Link to="/qmra-analysis" className="card text-center hover-card" style={{textDecoration: 'none', color: 'inherit'}}>
+src/pages/ProcessesPage.js:            <Link to="/machine-learning" className="card text-center hover-card" style={{textDecoration: 'none', color: 'inherit'}}>
+src/pages/ProcessesPage.js:            <Link to="/mechanistic-analysis" className="card text-center hover-card" style={{textDecoration: 'none', color: 'inherit'}}>
+src/pages/ProcessesPage.js:              <Link to="/contact" className="btn btn-secondary">
+src/pages/ProcessesPage.js:              <Link to="/services" className="btn" style={{background: 'rgba(255, 255, 255, 0.2)', color: 'var(--white)', border: '2px solid rgba(255, 255, 255, 0.3)'}}>
+src/pages/MachineLearningPage.js:          <Link to="/contact" className="btn btn-primary btn-lg">
+src/pages/UltrafiltrationPage.js:            <Link to="/contact" className="btn btn-primary btn-lg">
+src/pages/UltrafiltrationPage.js:            <Link to="/services" className="btn btn-secondary btn-lg">
+src/components/Footer.js:            <Link to="/services" className="footer-link">Chemical Process Engineering</Link>
+src/components/Footer.js:            <Link to="/services" className="footer-link">Bioprocess Engineering</Link>
+src/components/Footer.js:            <Link to="/services" className="footer-link">Environmental Consulting</Link>
+src/components/Footer.js:            <Link to="/services" className="footer-link">Food Engineering</Link>
+src/components/Footer.js:            <Link to="/services" className="footer-link">Process Optimization</Link>
+src/components/Footer.js:            <Link to="/services" className="footer-link">Dairy & Food Processing</Link>
+src/components/Footer.js:            <Link to="/services" className="footer-link">Water & Marine Systems</Link>
+src/components/Footer.js:            <Link to="/services" className="footer-link">Agricultural Technology</Link>
+src/components/Footer.js:            <Link to="/services" className="footer-link">Environmental Compliance</Link>
+src/components/Footer.js:            <Link to="/services" className="footer-link">Research & Development</Link>
+src/components/ServiceCard.js:      <Link to={link} className="card service-card linked">
+src/components/Navbar.js:          <Link to="/" className="navbar-logo" onClick={closeMenu}>
+src/components/Navbar.js:                to="/"
+src/components/Navbar.js:                to="/services"
+src/components/Navbar.js:                to="/about"
+src/components/Navbar.js:                to="/contact"
+src/components/Dropdown.js:                to={item.path}

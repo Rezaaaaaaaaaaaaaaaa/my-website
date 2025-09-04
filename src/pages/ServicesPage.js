@@ -254,7 +254,7 @@ const ServicesPage = () => {
               <FaLeaf className="card-icon" />
               <h4>Stormwater & WSUD</h4>
               <p>Water Sensitive Urban Design, constructed wetlands, bioretention systems, and integrated catchment management</p>
-              <Link to="/environmental" className="btn btn-secondary">Explore Stormwater</Link>
+              <Link to="/services" className="btn btn-secondary">Explore Stormwater</Link>
             </div>
           </div>
         </div>

@@ -246,7 +246,7 @@ const ProcessFlowDiagram = ({ processType = "water_treatment" }) => {
           ))}
           
           {/* Process Steps */}
-          {currentProcess.steps.map((step, index) => {
+          {currentProcess.steps.map((step) => {
             const IconComponent = step.icon;
             return (
               <g key={step.id} transform={`translate(${step.position.x}, ${step.position.y})`}>

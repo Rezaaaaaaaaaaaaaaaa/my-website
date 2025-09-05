@@ -9,7 +9,6 @@ import {
   FaChartLine,
   FaTools,
   FaShieldAlt,
-  FaPlay,
   FaEye,
   FaFilter
 } from 'react-icons/fa';

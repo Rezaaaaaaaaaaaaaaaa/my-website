@@ -15,7 +15,13 @@
       "WebFetch(domain:fonts.googleapis.com)",
       "Bash(find:*)",
       "Bash(del \"C:\\webiste\\my-website\\src\\pages\\FoodSafetySystemsPage.js\")",
-      "Bash(cmd /c:*)"
+      "Bash(cmd /c:*)",
+      "Bash(PORT=3001 npm start)",
+      "Bash(set CI=false)",
+      "Bash(git pull:*)",
+      "Bash(git commit:*)",
+      "Bash(git stash:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": [],

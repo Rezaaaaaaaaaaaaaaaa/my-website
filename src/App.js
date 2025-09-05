@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import TechnicalProcesses from './components/TechnicalProcesses';
 
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
@@ -85,7 +84,6 @@ function App() {
             <Route path="*" element={<div style={{padding: '2rem', textAlign: 'center'}}><h2>Page Not Found</h2><p>The requested page could not be found.</p></div>} />
           </Routes>
         </main>
-        <TechnicalProcesses />
         <Footer />
       </div>
     </Router>

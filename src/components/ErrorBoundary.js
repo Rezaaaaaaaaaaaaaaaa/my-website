@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaExclamationTriangle, FaHome, FaEnvelope, FaRefresh } from 'react-icons/fa';
+import { FaExclamationTriangle, FaHome, FaEnvelope, FaRedo } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 class ErrorBoundary extends React.Component {
@@ -192,7 +192,7 @@ class ErrorBoundary extends React.Component {
                   e.target.style.boxShadow = 'none';
                 }}
               >
-                <FaRefresh /> Try Again
+                <FaRedo /> Try Again
               </button>
 
               <Link

@@ -49,41 +49,41 @@ const ServicesPage = () => {
     },
     {
       icon: <FaWater />,
-      title: "Water Treatment Engineering - Local Water Done Well",
-      description: "Comprehensive water and wastewater treatment engineering services delivering regulatory compliance and operational excellence for New Zealand's critical infrastructure.",
+      title: "Water & Wastewater Treatment",
+      description: "Engineering services for water and wastewater treatment systems including design, optimization, and regulatory compliance support.",
       details: [
-        "Water Treatment: Coagulation-flocculation, sedimentation, multimedia filtration, GAC/PAC adsorption",
-        "Membrane Technologies: RO, NF, UF, MF systems with CIP protocols and fouling mitigation",
-        "Disinfection Systems: UV-C, chlorination, ozonation, and advanced oxidation processes (AOPs)",
-        "Wastewater Treatment: Activated sludge (ASP), MBR, SBR, MBBR, and trickling filter systems",
-        "Stormwater Management: Detention/retention ponds, bioswales, permeable pavements, WSUD principles",
-        "Advanced Treatment: Ion exchange, EDI, PFAS removal, nutrient recovery, and tertiary polishing"
+        "Water treatment process design (coagulation, sedimentation, filtration)",
+        "Membrane system engineering (RO, UF, MF applications)",
+        "Disinfection system design (UV, chlorination, ozone)",
+        "Wastewater treatment systems (activated sludge, MBR, SBR)",
+        "Stormwater management and WSUD principles",
+        "Advanced treatment processes and system integration"
       ]
     },
     {
       icon: <FaIndustry />,
-      title: "Food Process Engineering",
-      description: "Specialized solutions for New Zealand's world-class food industry",
+      title: "Food & Dairy Processing",
+      description: "Engineering services for food and dairy processing applications with focus on process efficiency and food safety compliance",
       details: [
-        "Dairy processing optimization",
-        "Meat and seafood processing",
-        "Food safety and HACCP implementation",
-        "Quality control systems",
-        "Sustainable packaging solutions",
-        "Export compliance and certification"
+        "Dairy processing system design and optimization",
+        "Food safety system implementation (HACCP)",
+        "CIP/SIP system design and validation",
+        "Heat treatment and pasteurization processes",
+        "Quality assurance system development",
+        "Regulatory compliance support"
       ]
     },
     {
       icon: <FaLeaf />,
-      title: "Environmental Consulting",
-      description: "Protecting New Zealand's clean, green reputation through sustainable engineering",
+      title: "Environmental & Regulatory Support",
+      description: "Environmental compliance and regulatory support services for engineering projects",
       details: [
-        "Environmental impact assessments",
-        "Resource consent applications",
-        "Waste minimization programs",
-        "Carbon footprint reduction",
-        "Biodiversity protection strategies",
-        "Clean technology implementation"
+        "Environmental assessment and reporting",
+        "Resource consent application support",
+        "Regulatory compliance consulting",
+        "Waste minimization and management strategies",
+        "Environmental monitoring and reporting",
+        "Sustainability assessment and planning"
       ]
     },
     {
@@ -109,9 +109,9 @@ const ServicesPage = () => {
           <div className="hero-content">
             <h1>Our Engineering Services</h1>
             <p className="description">
-              Professional engineering consulting services delivering process optimization, 
-              regulatory compliance, and technical excellence across New Zealand's industrial sectors, 
-              with specialized expertise in Local Water Done Well methodologies and environmental engineering.
+              Professional engineering consulting services specializing in process design, 
+              optimization, and regulatory compliance for chemical, biological, and water treatment 
+              applications across New Zealand's industrial sectors.
             </p>
           </div>
         </div>
@@ -150,8 +150,8 @@ const ServicesPage = () => {
           <div className="section-header">
             <h2>Water Treatment Engineering & Environmental Solutions</h2>
             <p className="section-description">
-              Local Water Done Well: Professional engineering services for water treatment systems, 
-              environmental compliance, and infrastructure development across New Zealand.
+              Professional engineering services for water treatment systems, environmental compliance, 
+              and sustainable infrastructure solutions.
             </p>
           </div>
           <div className="grid grid-auto">
@@ -627,6 +627,120 @@ const ServicesPage = () => {
                 <FaEye className="mr-2" />
                 Get Technical Consultation
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Study Frameworks */}
+      <section className="section" style={{backgroundColor: 'var(--gray-100)'}}>
+        <div className="container">
+          <div className="section-header">
+            <h2>Engineering Case Study Frameworks</h2>
+            <p className="section-description">
+              Structured approaches to process engineering challenges with systematic problem-solving methodologies
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="card">
+              <h3 className="flex items-center gap-2 mb-4">
+                <FaWater className="text-blue-600" />
+                Water Treatment System Design Framework
+              </h3>
+              <div className="space-y-3">
+                <div className="border-l-4 border-blue-500 pl-4">
+                  <h4 className="font-semibold text-gray-800">Phase 1: Characterization & Requirements</h4>
+                  <p className="text-sm text-gray-600">Water quality analysis, treatment objectives, regulatory requirements, capacity planning</p>
+                </div>
+                <div className="border-l-4 border-blue-400 pl-4">
+                  <h4 className="font-semibold text-gray-800">Phase 2: Process Selection & Design</h4>
+                  <p className="text-sm text-gray-600">Technology evaluation, pilot testing, process modeling, equipment sizing</p>
+                </div>
+                <div className="border-l-4 border-blue-300 pl-4">
+                  <h4 className="font-semibold text-gray-800">Phase 3: System Integration & Optimization</h4>
+                  <p className="text-sm text-gray-600">P&ID development, control strategies, energy optimization, commissioning plan</p>
+                </div>
+                <div className="border-l-4 border-blue-200 pl-4">
+                  <h4 className="font-semibold text-gray-800">Phase 4: Implementation & Validation</h4>
+                  <p className="text-sm text-gray-600">Performance testing, compliance verification, operational training, documentation</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="card">
+              <h3 className="flex items-center gap-2 mb-4">
+                <FaIndustry className="text-green-600" />
+                Process Optimization Framework
+              </h3>
+              <div className="space-y-3">
+                <div className="border-l-4 border-green-500 pl-4">
+                  <h4 className="font-semibold text-gray-800">Phase 1: Current State Analysis</h4>
+                  <p className="text-sm text-gray-600">Process audit, data collection, performance baseline, bottleneck identification</p>
+                </div>
+                <div className="border-l-4 border-green-400 pl-4">
+                  <h4 className="font-semibold text-gray-800">Phase 2: Improvement Identification</h4>
+                  <p className="text-sm text-gray-600">Root cause analysis, solution development, cost-benefit analysis, risk assessment</p>
+                </div>
+                <div className="border-l-4 border-green-300 pl-4">
+                  <h4 className="font-semibold text-gray-800">Phase 3: Solution Implementation</h4>
+                  <p className="text-sm text-gray-600">Pilot testing, phased rollout, change management, performance monitoring</p>
+                </div>
+                <div className="border-l-4 border-green-200 pl-4">
+                  <h4 className="font-semibold text-gray-800">Phase 4: Validation & Sustainment</h4>
+                  <p className="text-sm text-gray-600">Results validation, continuous improvement, knowledge transfer, documentation</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="card">
+              <h3 className="flex items-center gap-2 mb-4">
+                <FaLeaf className="text-teal-600" />
+                Environmental Compliance Framework
+              </h3>
+              <div className="space-y-3">
+                <div className="border-l-4 border-teal-500 pl-4">
+                  <h4 className="font-semibold text-gray-800">Phase 1: Regulatory Assessment</h4>
+                  <p className="text-sm text-gray-600">Regulation mapping, consent requirements, compliance gaps, timeline planning</p>
+                </div>
+                <div className="border-l-4 border-teal-400 pl-4">
+                  <h4 className="font-semibold text-gray-800">Phase 2: Technical Solution Design</h4>
+                  <p className="text-sm text-gray-600">Treatment technology selection, system design, monitoring requirements, reporting systems</p>
+                </div>
+                <div className="border-l-4 border-teal-300 pl-4">
+                  <h4 className="font-semibold text-gray-800">Phase 3: Implementation Support</h4>
+                  <p className="text-sm text-gray-600">Consent applications, construction oversight, commissioning support, staff training</p>
+                </div>
+                <div className="border-l-4 border-teal-200 pl-4">
+                  <h4 className="font-semibold text-gray-800">Phase 4: Ongoing Compliance</h4>
+                  <p className="text-sm text-gray-600">Performance monitoring, regulatory reporting, compliance audits, continuous improvement</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="card">
+              <h3 className="flex items-center gap-2 mb-4">
+                <FaCogs className="text-purple-600" />
+                Bioprocess Development Framework
+              </h3>
+              <div className="space-y-3">
+                <div className="border-l-4 border-purple-500 pl-4">
+                  <h4 className="font-semibold text-gray-800">Phase 1: Process Characterization</h4>
+                  <p className="text-sm text-gray-600">Biological system analysis, kinetics modeling, yield optimization, contamination control</p>
+                </div>
+                <div className="border-l-4 border-purple-400 pl-4">
+                  <h4 className="font-semibold text-gray-800">Phase 2: Scale-Up Design</h4>
+                  <p className="text-sm text-gray-600">Bioreactor design, mixing systems, mass transfer analysis, control strategies</p>
+                </div>
+                <div className="border-l-4 border-purple-300 pl-4">
+                  <h4 className="font-semibold text-gray-800">Phase 3: Downstream Processing</h4>
+                  <p className="text-sm text-gray-600">Separation technologies, purification design, waste treatment, product recovery</p>
+                </div>
+                <div className="border-l-4 border-purple-200 pl-4">
+                  <h4 className="font-semibold text-gray-800">Phase 4: Process Validation</h4>
+                  <p className="text-sm text-gray-600">Performance verification, regulatory compliance, quality systems, technology transfer</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

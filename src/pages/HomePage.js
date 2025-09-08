@@ -49,43 +49,95 @@ const HomePage = () => {
     {
       icon: <FaFlask />,
       title: "Chemical Process Engineering",
-      description: "Advanced process design, optimization, and troubleshooting for chemical manufacturing and production facilities.",
-      features: ["Process Design", "Scale-up", "Optimization", "Safety Analysis"],
+      description: "Comprehensive chemical engineering solutions covering process design, optimization, and troubleshooting for industrial applications. Expertise in mass and heat transfer, reaction engineering, and separation processes.",
+      features: [
+        "Process Design & Development", 
+        "Heat & Mass Transfer Analysis", 
+        "Reaction Kinetics & Reactor Design", 
+        "Separation Process Design",
+        "Process Safety Assessment",
+        "Equipment Sizing & Selection"
+      ],
       link: `/services#${slugify(serviceCategories.CHEMICAL)}`,
       modalType: 'chemical'
     },
     {
       icon: <FaCogs />,
       title: "Bioprocess Engineering",
-      description: "Specialized engineering solutions for biotechnology, fermentation, and biological treatment systems.",
-      features: ["Bioreactor Design", "Fermentation", "Downstream Processing", "Quality Control"],
+      description: "Specialized biotechnology and biological process engineering for fermentation, bioreactors, and downstream processing. Supporting both research-scale and industrial bioprocessing applications.",
+      features: [
+        "Bioreactor Design & Scale-up", 
+        "Fermentation Process Optimization", 
+        "Cell Culture System Design",
+        "Downstream Processing",
+        "Bioprocess Monitoring & Control",
+        "Sterilization & Containment"
+      ],
       link: `/services#${slugify(serviceCategories.BIOLOGICAL)}`,
       modalType: 'bioprocess'
     },
     {
       icon: <FaWater />,
-      title: "Water Treatment Engineering",
-      description: "Local Water Done Well - Advanced water/wastewater treatment including MBR, SBR, MBBR, membrane systems, and stormwater WSUD solutions.",
-      features: ["Membrane Systems (RO/UF/MF)", "Biological Treatment (ASP/MBR/SBR)", "Advanced Oxidation (AOPs)", "Stormwater Management"],
+      title: "Water & Wastewater Treatment",
+      description: "Comprehensive water treatment solutions including membrane systems, biological treatment, and advanced oxidation processes. Specializing in municipal and industrial applications with regulatory compliance focus.",
+      features: [
+        "Membrane Systems (RO/UF/MF/NF)", 
+        "Biological Treatment (ASP/MBR/SBR/MBBR)", 
+        "Advanced Oxidation Processes",
+        "Coagulation/Flocculation Systems",
+        "Disinfection Systems (UV/Ozone/Chlorine)",
+        "Process Monitoring & Control"
+      ],
       link: `/services#${slugify(serviceCategories.WATER_TREATMENT)}`,
       modalType: 'water'
     },
     {
       icon: <FaIndustry />,
-      title: "Food Engineering",
-      description: "Comprehensive food processing solutions ensuring quality, safety, and efficiency in food production.",
-      features: ["Process Design", "Food Safety", "Quality Systems", "Equipment Selection"],
+      title: "Food & Dairy Processing",
+      description: "Engineering solutions for food and dairy processing operations, focusing on process efficiency, food safety compliance, and quality assurance systems tailored for New Zealand's agricultural sector.",
+      features: [
+        "Dairy Processing Systems", 
+        "Food Safety System Design", 
+        "HACCP Implementation",
+        "CIP/SIP System Design",
+        "Heat Treatment Processes",
+        "Quality Control Systems"
+      ],
       link: `/services#${slugify(serviceCategories.FOOD)}`
     }
   ];
 
   const industries = [
-    "Water Treatment & Municipal Infrastructure",
-    "Dairy & Food Processing", 
-    "Agricultural Technology & Horticulture",
-    "Marine & Aquaculture Systems",
-    "Manufacturing & Industrial Processes",
-    "Research & Development Facilities"
+    {
+      icon: <FaWater />,
+      name: "Municipal Water Treatment",
+      description: "Drinking water treatment plants, wastewater treatment facilities, and stormwater management systems"
+    },
+    {
+      icon: <FaIndustry />,
+      name: "Dairy & Food Processing",
+      description: "Milk processing, cheese manufacturing, dairy waste treatment, and food safety compliance systems"
+    },
+    {
+      icon: <FaLeaf />,
+      name: "Agricultural Processing",
+      description: "Fruit processing, wine production, agricultural waste treatment, and irrigation system optimization"
+    },
+    {
+      icon: <FaFlask />,
+      name: "Biotechnology & Pharmaceuticals",
+      description: "Fermentation systems, cell culture processes, downstream purification, and clean room facilities"
+    },
+    {
+      icon: <FaCogs />,
+      name: "Industrial Manufacturing",
+      description: "Chemical processing, materials manufacturing, industrial water treatment, and waste minimization"
+    },
+    {
+      icon: <FaChartLine />,
+      name: "Research & Development",
+      description: "Laboratory-scale process development, pilot plant design, and technology scale-up services"
+    }
   ];
 
   return (
@@ -97,38 +149,37 @@ const HomePage = () => {
             <div className="flex justify-center mb-6">
               <Logo size="hero" variant="full" animated={true} />
             </div>
-            <p className="subtitle">Environmental Engineering Excellence</p>
+            <p className="subtitle">Professional Process Engineering Solutions</p>
             <div className="mb-6 p-8 bg-gradient-to-r from-teal-50 to-blue-50 rounded-xl border border-teal-100 shadow-lg">
               <div className="flex items-center mb-4">
                 <FaWater className="text-3xl text-teal-600 mr-3" />
                 <h2 className="text-2xl font-bold text-slate-800">
-                  Local Water Done Well: New Zealand's Engineering Excellence
+                  Environmental Engineering Services
                 </h2>
               </div>
               <p className="text-slate-700 text-lg leading-relaxed">
-                Specialized engineering in water treatment (coagulation, sedimentation, filtration), 
-                wastewater systems (ASP, MBR, SBR, MBBR), and stormwater management (WSUD, constructed wetlands) 
-                delivering regulatory compliance across New Zealand.
+                Engineering solutions for water treatment, wastewater systems, and environmental processes 
+                focused on regulatory compliance and sustainable practices.
               </p>
               <div className="flex items-center gap-6 mt-4 text-sm text-slate-600">
                 <div className="flex items-center gap-2">
                   <FaAward className="text-teal-600" />
-                  <span>ISO Compliant</span>
+                  <span>Quality Focused</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <FaUsers className="text-teal-600" />
-                  <span>Expert Team</span>
+                  <span>Professional Team</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <FaGlobeAmericas className="text-teal-600" />
-                  <span>NZ Wide Service</span>
+                  <span>Local Service</span>
                 </div>
               </div>
             </div>
             <p className="description">
-              New Zealand's trusted environmental engineering consultancy, delivering innovative 
-              chemical process solutions, bioprocess engineering, and sustainable technologies 
-              that drive Kiwi innovation while protecting our pristine natural environment.
+              PhD-led professional engineering consultancy providing advanced chemical process solutions, 
+              bioprocess engineering, and sustainable technologies. Combining doctoral-level expertise 
+              with practical implementation experience for environmental protection and regulatory compliance.
             </p>
             <div className="flex justify-center gap-4 mt-8">
               <Link to="/services" className="btn btn-primary">
@@ -165,7 +216,7 @@ const HomePage = () => {
           <div className="section-header">
             <h2 className="section-title">Core Engineering Services</h2>
             <p className="section-description">
-              Comprehensive engineering solutions designed specifically for New Zealand's unique industrial landscape and environmental challenges
+              Comprehensive engineering solutions for industrial and environmental applications
             </p>
           </div>
           
@@ -229,11 +280,18 @@ const HomePage = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {industries.map((industry, index) => (
-              <div key={index} className="flex items-center gap-3 mb-4">
-                <FaIndustry style={{color: 'var(--accent-teal)', fontSize: '1.5rem'}} />
-                <span className="text-lg font-medium">{industry}</span>
+              <div key={index} className="card">
+                <div className="flex items-start gap-4">
+                  <div style={{color: 'var(--accent-teal)', fontSize: '1.5rem', marginTop: '0.25rem'}}>
+                    {industry.icon}
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-lg mb-1" style={{color: 'var(--text-dark)'}}>{industry.name}</h4>
+                    <p className="text-sm" style={{color: 'var(--text-medium)'}}>{industry.description}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -247,23 +305,41 @@ const HomePage = () => {
             <h2 className="section-title">Why Choose RMES?</h2>
           </div>
           
-          <div className="grid grid-cols-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="card text-center">
               <FaChartLine className="card-icon" />
-              <h3>Proven Expertise</h3>
-              <p>Deep technical expertise in chemical and bioprocess engineering with extensive experience across New Zealand industries.</p>
+              <h3>Technical Excellence</h3>
+              <p>Comprehensive chemical and bioprocess engineering expertise with focus on practical, cost-effective solutions that meet performance requirements and regulatory standards.</p>
             </div>
             
             <div className="card text-center">
               <FaLeaf className="card-icon" />
-              <h3>Sustainable Solutions</h3>
-              <p>Environmentally conscious engineering that aligns with New Zealand's commitment to sustainability and clean, green innovation.</p>
+              <h3>Environmental Compliance</h3>
+              <p>Deep understanding of New Zealand's environmental regulations including RMA, NES, and regional requirements ensuring your project meets all compliance obligations.</p>
             </div>
             
             <div className="card text-center">
               <FaCogs className="card-icon" />
-              <h3>Innovation Focus</h3>
-              <p>Cutting-edge approaches combining latest technology with practical engineering solutions.</p>
+              <h3>Local Knowledge</h3>
+              <p>New Zealand-based engineering consultancy with understanding of local conditions, suppliers, contractors, and regulatory processes for efficient project delivery.</p>
+            </div>
+            
+            <div className="card text-center">
+              <FaUsers className="card-icon" />
+              <h3>Collaborative Approach</h3>
+              <p>Working closely with clients, contractors, and regulatory bodies to ensure project success through clear communication and technical collaboration.</p>
+            </div>
+            
+            <div className="card text-center">
+              <FaCheckCircle className="card-icon" />
+              <h3>Quality Assurance</h3>
+              <p>Thorough design reviews, validation processes, and quality control measures ensuring reliable, safe, and efficient engineering solutions.</p>
+            </div>
+            
+            <div className="card text-center">
+              <FaAward className="card-icon" />
+              <h3>Value Engineering</h3>
+              <p>Cost-conscious engineering approach that optimizes performance while managing project budgets and timelines effectively.</p>
             </div>
           </div>
         </div>

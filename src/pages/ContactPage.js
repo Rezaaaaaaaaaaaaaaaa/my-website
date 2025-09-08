@@ -125,9 +125,10 @@ const ContactPage = () => {
           <div className="hero-content">
             <h1>Contact RMES</h1>
             <p className="description">
-              Ready to transform your engineering challenges into innovative, sustainable solutions? 
-              Connect with our Kiwi engineering experts for a comprehensive consultation that 
-              respects both your commercial objectives and New Zealand's environmental values.
+              Ready to discuss your process engineering challenges? Connect with our PhD-led engineering 
+              consultancy for expert advice on chemical processes, bioprocess systems, water treatment, 
+              and regulatory compliance. We provide research-informed, practical solutions tailored 
+              to your specific requirements and New Zealand conditions.
             </p>
           </div>
         </div>
@@ -141,9 +142,10 @@ const ContactPage = () => {
             <div className="mb-12">
               <h2>Get In Touch</h2>
               <p className="mb-8">
-                Our Kiwi engineering experts are ready to collaborate on your next project. 
-                Contact us through any of the methods below, and we'll respond with a 
-                tailored approach aligned with New Zealand's sustainability standards within 24 hours.
+                Our engineering consultancy is ready to assist with your process engineering 
+                needs. Contact us to discuss your project requirements, and we'll provide 
+                professional guidance and technical solutions tailored to your specific 
+                applications and regulatory requirements.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -307,43 +309,211 @@ const ContactPage = () => {
             {/* Why Choose Us - Enhanced with Branding */}
             <div className="mt-12 p-8 bg-gradient-to-br from-teal-50 to-blue-50 rounded-xl border border-teal-200 shadow-lg">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-slate-800">Why Choose Reza Moghaddam Engineering Solutions?</h3>
+                <h3 className="text-2xl font-bold text-slate-800">Why Choose RMES?</h3>
                 <Logo size="small" variant="icon" animated={true} />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <FaCheckCircle className="text-teal-600 flex-shrink-0" />
-                    <span>Free initial consultation and technical assessment</span>
+                    <span>Professional engineering consultation and technical assessment</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <FaCheckCircle className="text-teal-600 flex-shrink-0" />
-                    <span>Expert Kiwi technical guidance and local knowledge</span>
+                    <span>New Zealand-based consultancy with local regulatory knowledge</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <FaCheckCircle className="text-teal-600 flex-shrink-0" />
-                    <span>Solutions tailored to NZ regulations and standards</span>
+                    <span>Solutions designed for NZ regulations and operating conditions</span>
                   </div>
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <FaCheckCircle className="text-teal-600 flex-shrink-0" />
-                    <span>Competitive local pricing and transparent costs</span>
+                    <span>Transparent project approach and professional service</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <FaCheckCircle className="text-teal-600 flex-shrink-0" />
-                    <span>Professional project management from concept to completion</span>
+                    <span>Technical documentation and engineering support</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <FaCheckCircle className="text-teal-600 flex-shrink-0" />
-                    <span>Environmental compliance and sustainability expertise</span>
+                    <span>Focus on practical, implementable engineering solutions</span>
                   </div>
                 </div>
               </div>
-              <div className="mt-6 p-4 bg-white/70 rounded-lg border border-teal-100">
-                <p className="text-center text-teal-700 font-semibold italic">
-                  "Local Water Done Well" - Our commitment to excellence in New Zealand's water engineering
-                </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Detailed Consultation Process */}
+      <section className="section" style={{backgroundColor: 'var(--gray-100)'}}>
+        <div className="container">
+          <div className="section-header">
+            <h2>Our Engineering Consultation Process</h2>
+            <p className="section-description">
+              Structured approach to delivering professional engineering solutions with clear deliverables and timelines
+            </p>
+          </div>
+          
+          <div className="space-y-8">
+            <div className="card">
+              <h3 className="text-xl font-bold text-teal-700 mb-6">Phase 1: Initial Consultation & Project Scoping</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold mb-3">Activities & Approach</h4>
+                  <ul className="space-y-2 text-sm">
+                    <li>• <strong>Free initial consultation</strong> to understand project requirements</li>
+                    <li>• Review existing documentation, process data, and regulatory requirements</li>
+                    <li>• Site visit and existing system assessment (if applicable)</li>
+                    <li>• Stakeholder interviews to understand constraints and objectives</li>
+                    <li>• Preliminary technical feasibility assessment</li>
+                    <li>• Definition of project scope, boundaries, and success criteria</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-3">Deliverables & Timeline</h4>
+                  <div className="bg-teal-50 p-4 rounded-lg">
+                    <div className="space-y-2 text-sm">
+                      <div><strong>Timeline:</strong> 1-2 weeks</div>
+                      <div><strong>Deliverables:</strong></div>
+                      <ul className="ml-4 space-y-1">
+                        <li>• Project scoping document</li>
+                        <li>• Preliminary assessment report</li>
+                        <li>• Regulatory requirements summary</li>
+                        <li>• Detailed proposal with work breakdown</li>
+                        <li>• Cost estimate and project timeline</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="card">
+              <h3 className="text-xl font-bold text-teal-700 mb-6">Phase 2: Technical Analysis & Design Development</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold mb-3">Engineering Activities</h4>
+                  <ul className="space-y-2 text-sm">
+                    <li>• Detailed process analysis and mass/energy balance calculations</li>
+                    <li>• Technology evaluation and selection with trade-off analysis</li>
+                    <li>• Process modeling and simulation using industry software</li>
+                    <li>• Equipment sizing and specification development</li>
+                    <li>• P&ID development and process control strategy</li>
+                    <li>• Risk assessment and safety analysis (HAZOP, FMEA)</li>
+                    <li>• Environmental impact assessment and compliance verification</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-3">Technical Deliverables</h4>
+                  <div className="bg-blue-50 p-4 rounded-lg">
+                    <div className="space-y-2 text-sm">
+                      <div><strong>Timeline:</strong> 2-6 weeks (project dependent)</div>
+                      <div><strong>Technical Documents:</strong></div>
+                      <ul className="ml-4 space-y-1">
+                        <li>• Process flow diagrams (PFDs)</li>
+                        <li>• Piping and instrumentation diagrams (P&IDs)</li>
+                        <li>• Mass and energy balance calculations</li>
+                        <li>• Equipment specification sheets</li>
+                        <li>• Design basis document</li>
+                        <li>• Safety and risk analysis report</li>
+                        <li>• Regulatory compliance documentation</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="card">
+              <h3 className="text-xl font-bold text-teal-700 mb-6">Phase 3: Implementation Support & Project Management</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold mb-3">Implementation Services</h4>
+                  <ul className="space-y-2 text-sm">
+                    <li>• Detailed engineering and construction documentation</li>
+                    <li>• Tender specification preparation and vendor evaluation</li>
+                    <li>• Construction oversight and quality assurance</li>
+                    <li>• Commissioning support and performance testing</li>
+                    <li>• Operator training and procedure development</li>
+                    <li>• Regulatory approval support and consent applications</li>
+                    <li>• Project coordination with contractors and suppliers</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-3">Support Deliverables</h4>
+                  <div className="bg-green-50 p-4 rounded-lg">
+                    <div className="space-y-2 text-sm">
+                      <div><strong>Timeline:</strong> Throughout implementation phase</div>
+                      <div><strong>Documentation:</strong></div>
+                      <ul className="ml-4 space-y-1">
+                        <li>• Detailed engineering drawings</li>
+                        <li>• Construction specifications</li>
+                        <li>• Commissioning procedures</li>
+                        <li>• Operations and maintenance manuals</li>
+                        <li>• Training materials and procedures</li>
+                        <li>• Performance testing protocols</li>
+                        <li>• Regulatory submission documents</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="card">
+              <h3 className="text-xl font-bold text-teal-700 mb-6">Phase 4: Performance Validation & Ongoing Support</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold mb-3">Validation & Optimization</h4>
+                  <ul className="space-y-2 text-sm">
+                    <li>• Performance testing and system validation</li>
+                    <li>• Process optimization and fine-tuning</li>
+                    <li>• Compliance verification and regulatory reporting</li>
+                    <li>• Troubleshooting support and issue resolution</li>
+                    <li>• Knowledge transfer to operational staff</li>
+                    <li>• Continuous improvement recommendations</li>
+                    <li>• Long-term technical support availability</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-3">Final Deliverables</h4>
+                  <div className="bg-purple-50 p-4 rounded-lg">
+                    <div className="space-y-2 text-sm">
+                      <div><strong>Timeline:</strong> 2-4 weeks post-commissioning</div>
+                      <div><strong>Completion Package:</strong></div>
+                      <ul className="ml-4 space-y-1">
+                        <li>• Performance validation report</li>
+                        <li>• As-built documentation package</li>
+                        <li>• Compliance certification</li>
+                        <li>• Optimization recommendations</li>
+                        <li>• Maintenance schedule and procedures</li>
+                        <li>• Project closure report</li>
+                        <li>• Ongoing support agreement (optional)</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-8 p-6 bg-gradient-to-r from-teal-600 to-blue-600 text-white rounded-xl text-center">
+            <h3 className="text-xl font-bold mb-4">Quality Assurance & Professional Standards</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+              <div>
+                <h4 className="font-semibold mb-2">Technical Excellence</h4>
+                <p>All calculations and designs undergo peer review and verification to ensure accuracy and compliance with engineering standards.</p>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-2">Regulatory Compliance</h4>
+                <p>Projects designed to meet New Zealand environmental regulations, WorkSafe requirements, and relevant industry standards.</p>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-2">Documentation Standards</h4>
+                <p>Comprehensive documentation following engineering best practices with clear traceability and professional certification.</p>
               </div>
             </div>
           </div>

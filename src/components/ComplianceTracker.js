@@ -69,7 +69,13 @@ const ComplianceTracker = () => {
       value: 'agricultural', 
       label: 'Agricultural Processing', 
       icon: <FaLeaf />, 
-      description: 'Dairy, meat processing, and agricultural water systems'
+      description: 'Dairy, food processing, and agricultural water systems'
+    },
+    { 
+      value: 'manufacturing', 
+      label: 'Industrial Manufacturing', 
+      icon: <FaIndustry />, 
+      description: 'Chemical processing, manufacturing, and industrial discharge systems'
     }
   ];
 
@@ -172,6 +178,221 @@ const ComplianceTracker = () => {
         consenting: '18-24 months', 
         construction: '12-36 months',
         commissioning: '6-12 months'
+      }
+    },
+    'industrial-discharge': {
+      rma: {
+        required: true,
+        complexity: 'high',
+        permits: ['Discharge Permit', 'Trade Waste Permit', 'Air Discharge Permit'],
+        timeframe: '8-12 months',
+        cost: '$15,000 - $50,000',
+        requirements: [
+          'Trade waste assessment',
+          'Discharge characterization study', 
+          'Environmental impact assessment',
+          'Treatment system design',
+          'Monitoring and reporting plan'
+        ]
+      },
+      nes: {
+        applicable: ['NES-FW (Freshwater)', 'NES-AQ (Air Quality)'],
+        requirements: [
+          'Freshwater discharge standards',
+          'Industrial discharge limits',
+          'Treatment requirements',
+          'Monitoring protocols'
+        ]
+      },
+      building: {
+        required: true,
+        complexity: 'medium',
+        permits: ['Building Consent'],
+        clauses: ['E1', 'E2', 'G13']
+      },
+      specialRequirements: [
+        'Trade waste bylaw compliance',
+        'Industrial discharge standards',
+        'Treatment system validation',
+        'Ongoing monitoring requirements'
+      ],
+      timeline: {
+        planning: '2-4 months',
+        consenting: '8-12 months',
+        construction: '6-18 months',
+        commissioning: '2-4 months'
+      }
+    },
+    'stormwater': {
+      rma: {
+        required: true,
+        complexity: 'medium',
+        permits: ['Land Use Consent', 'Stormwater Discharge Permit'],
+        timeframe: '6-10 months',
+        cost: '$8,000 - $25,000',
+        requirements: [
+          'Stormwater management plan',
+          'WSUD design principles',
+          'Catchment analysis',
+          'Runoff quality assessment',
+          'Maintenance plan'
+        ]
+      },
+      nes: {
+        applicable: ['NES-FW (Freshwater)'],
+        requirements: [
+          'Stormwater discharge standards',
+          'First flush treatment',
+          'Water quality protection',
+          'Ecological flow maintenance'
+        ]
+      },
+      building: {
+        required: true,
+        complexity: 'medium',
+        permits: ['Building Consent', 'Earthworks Consent'],
+        clauses: ['E1', 'E2']
+      },
+      specialRequirements: [
+        'WSUD compliance',
+        'Auckland TP10 (if applicable)',
+        'Maintenance and monitoring',
+        'Asset management plan'
+      ],
+      timeline: {
+        planning: '2-3 months',
+        consenting: '6-10 months',
+        construction: '4-12 months',
+        commissioning: '1-2 months'
+      }
+    },
+    'drinking-water': {
+      rma: {
+        required: true,
+        complexity: 'very-high',
+        permits: ['Water Take Permit', 'Land Use Consent', 'Discharge Permit'],
+        timeframe: '12-24 months',
+        cost: '$30,000 - $100,000',
+        requirements: [
+          'Source water assessment',
+          'Water safety plan',
+          'Treatment validation',
+          'Distribution system design',
+          'Emergency response plan'
+        ]
+      },
+      nes: {
+        applicable: ['NES-HSDS (Drinking Water Sources)', 'NES-FW (Freshwater)'],
+        requirements: [
+          'Source protection requirements',
+          'Treatment standards',
+          'Water safety management',
+          'Monitoring and reporting'
+        ]
+      },
+      building: {
+        required: true,
+        complexity: 'very-high',
+        permits: ['Building Consent', 'Dangerous Goods Permits'],
+        clauses: ['G12', 'G13', 'E1', 'E2', 'F4']
+      },
+      specialRequirements: [
+        'Taumata Arowai compliance',
+        'Health Act registration',
+        'Water Safety Plan',
+        'Operator certification'
+      ],
+      timeline: {
+        planning: '6-12 months',
+        consenting: '12-24 months',
+        construction: '12-36 months',
+        commissioning: '6-12 months'
+      }
+    },
+    'agricultural': {
+      rma: {
+        required: true,
+        complexity: 'medium',
+        permits: ['Discharge Permit', 'Water Take Permit', 'Land Use Consent'],
+        timeframe: '6-12 months',
+        cost: '$10,000 - $40,000',
+        requirements: [
+          'Farm environmental plan',
+          'Nutrient management plan',
+          'Effluent treatment design',
+          'Irrigation system design',
+          'Environmental monitoring'
+        ]
+      },
+      nes: {
+        applicable: ['NES-FW (Freshwater)', 'NPS-FM'],
+        requirements: [
+          'Nutrient discharge limits',
+          'Freshwater quality protection',
+          'Stock exclusion requirements',
+          'Riparian management'
+        ]
+      },
+      building: {
+        required: true,
+        complexity: 'medium',
+        permits: ['Building Consent'],
+        clauses: ['E1', 'E2', 'G13']
+      },
+      specialRequirements: [
+        'HACCP compliance (food processing)',
+        'Animal Products Act (if applicable)',
+        'Good Manufacturing Practice',
+        'Organic certification (if applicable)'
+      ],
+      timeline: {
+        planning: '3-6 months',
+        consenting: '6-12 months',
+        construction: '6-18 months',
+        commissioning: '2-6 months'
+      }
+    },
+    'manufacturing': {
+      rma: {
+        required: true,
+        complexity: 'high',
+        permits: ['Discharge Permit', 'Air Discharge Permit', 'Land Use Consent'],
+        timeframe: '8-15 months',
+        cost: '$20,000 - $60,000',
+        requirements: [
+          'Environmental management system',
+          'Waste characterization study',
+          'Treatment system design',
+          'Air emissions assessment',
+          'Spill response plan'
+        ]
+      },
+      nes: {
+        applicable: ['NES-AQ (Air Quality)', 'NES-FW (Freshwater)'],
+        requirements: [
+          'Air quality standards',
+          'Industrial discharge limits',
+          'Hazardous substance management',
+          'Environmental monitoring'
+        ]
+      },
+      building: {
+        required: true,
+        complexity: 'high',
+        permits: ['Building Consent', 'Dangerous Goods Permits'],
+        clauses: ['E1', 'E2', 'F4', 'G13', 'H1']
+      },
+      specialRequirements: [
+        'HSNO Act compliance',
+        'Workplace safety requirements',
+        'Chemical storage regulations',
+        'Emergency response procedures'
+      ],
+      timeline: {
+        planning: '4-8 months',
+        consenting: '8-15 months',
+        construction: '8-24 months',
+        commissioning: '3-8 months'
       }
     }
   };

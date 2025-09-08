@@ -16,7 +16,7 @@ const Navbar = () => {
       <div className="container">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMenu}>
-            AquaTech Solutions NZ
+            RMES
           </Link>
           
           <ul className={`nav-menu ${isOpen ? 'nav-menu-open' : ''}`}>

@@ -1,7 +1,5 @@
 import React from 'react';
-import aquaTechLogo from './AquaTechLogo.svg';
-import aquaTechLogoCompact from './AquaTechLogoCompact.svg';
-import aquaTechIcon from './AquaTechIcon.svg';
+import rmesLogo from './rmes.svg';
 
 const Logo = ({ 
   className = "", 
@@ -21,19 +19,8 @@ const Logo = ({
 
   const { width, height } = sizes[size] || sizes.default;
 
-  // Select appropriate logo based on size and variant
-  const getLogo = () => {
-    if (variant === "icon-only" || size === "tiny") {
-      return aquaTechIcon;
-    } else if (variant === "compact" || size === "small") {
-      return aquaTechLogoCompact;
-    } else {
-      return aquaTechLogo;
-    }
-  };
-
-  const logoSrc = getLogo();
-  const altText = "AquaTech Solutions NZ - Environmental Engineering Excellence";
+  const logoSrc = rmesLogo;
+  const altText = "RMES - Reza Moghaddam Engineering Solutions";
 
   const logoElement = (
     <div className={`flex items-center ${className}`} style={{ cursor: linkTo ? 'pointer' : 'default' }}>
@@ -62,20 +49,20 @@ const Logo = ({
           <div style={{ 
             fontSize: size === "hero" ? "2rem" : size === "large" ? "1.5rem" : "1.2rem",
             fontWeight: "700",
-            background: "linear-gradient(135deg, #0891b2 0%, #0369a1 100%)",
+            background: "linear-gradient(135deg, #338F9A 0%, #143852 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text"
           }}>
-            AquaTech Solutions
+            RMES
           </div>
           <div style={{ 
             fontSize: size === "hero" ? "1.2rem" : size === "large" ? "1rem" : "0.9rem",
             fontWeight: "600",
-            color: "#059669",
+            color: "#338F9A",
             marginTop: "-0.2rem"
           }}>
-            New Zealand
+            Engineering Solutions
           </div>
           {showTagline && size !== "tiny" && size !== "small" && (
             <div style={{ 
@@ -84,7 +71,7 @@ const Logo = ({
               color: "#64748b",
               marginTop: "0.2rem"
             }}>
-              Local Water Done Well
+              Professional Process Engineering
             </div>
           )}
         </div>

@@ -15,92 +15,7 @@ const TestimonialsCarousel = () => {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [filter, setFilter] = useState('all');
 
-  const testimonials = [
-    {
-      id: 1,
-      clientName: "Sarah Mitchell",
-      organization: "Waikato Regional Council",
-      projectType: "Water Treatment",
-      serviceCategory: "water-treatment",
-      location: "Hamilton, Waikato",
-      rating: 5,
-      outcome: "40% reduction in treatment costs",
-      testimonial: "RMES delivered an exceptional membrane bioreactor system that exceeded all performance expectations. Their expertise in New Zealand water quality standards and environmental compliance made the project seamless. The system has been operating flawlessly for 18 months with minimal maintenance requirements.",
-      projectDetails: "Municipal wastewater treatment upgrade serving 45,000 residents",
-      certifications: ["RMA Compliance", "Drinking Water Standards", "NES-FW Aligned"],
-      completionYear: "2023"
-    },
-    {
-      id: 2,
-      clientName: "David Chen",
-      organization: "Fonterra Co-operative",
-      projectType: "Bioprocess Engineering", 
-      serviceCategory: "biological",
-      location: "Te Awamutu, Waikato",
-      rating: 5,
-      outcome: "30% increase in processing efficiency",
-      testimonial: "The bioprocess optimization work RMES completed on our dairy processing plant was outstanding. They redesigned our wastewater treatment system with advanced anaerobic digestion, which now generates enough biogas to power 25% of our facility. True Kiwi ingenuity at its finest.",
-      projectDetails: "Industrial dairy processing plant biogas integration",
-      certifications: ["Food Safety Standards", "MPI Approved", "ISO 14001"],
-      completionYear: "2022"
-    },
-    {
-      id: 3,
-      clientName: "Dr. Rachel Thompson",
-      organization: "NIWA (Crown Research)",
-      projectType: "Chemical Process",
-      serviceCategory: "chemical",
-      location: "Christchurch, Canterbury",
-      rating: 5,
-      outcome: "Advanced research capabilities enabled",
-      testimonial: "RMES designed and implemented a specialized extraction system for our marine biotechnology research. Their understanding of both chemical processes and New Zealand's marine environment regulations made them the perfect partner. The system allows us to extract valuable compounds from native seaweed species sustainably.",
-      projectDetails: "Research-grade marine compound extraction facility",
-      certifications: ["HSNO Compliance", "EPA Approved", "Research Quality Standards"],
-      completionYear: "2023"
-    },
-    {
-      id: 4,
-      clientName: "Mark Stevens",
-      organization: "Zespri International",
-      projectType: "Food Engineering",
-      serviceCategory: "food",
-      location: "Bay of Plenty",
-      rating: 5,
-      outcome: "Zero waste facility achieved",
-      testimonial: "Working with RMES on our kiwifruit processing facility has been transformational. They implemented a closed-loop water treatment system that processes all our wash water and returns it to food-grade standards. We've achieved zero liquid discharge while maintaining the highest food safety standards required for export.",
-      projectDetails: "Integrated water treatment for kiwifruit processing and packing",
-      certifications: ["HACCP Certified", "BRC Grade A", "Export Quality Standards"],
-      completionYear: "2023"
-    },
-    {
-      id: 5,
-      clientName: "Jennifer Walsh",
-      organization: "Auckland Council",
-      projectType: "Stormwater Management",
-      serviceCategory: "water-treatment",
-      location: "Auckland",
-      rating: 5,
-      outcome: "95% pollutant removal efficiency",
-      testimonial: "RMES transformed our stormwater management approach with innovative WSUD solutions. The constructed wetlands they designed not only meet strict discharge consent conditions but have become valuable community assets. Their expertise in New Zealand's unique environmental conditions is unmatched.",
-      projectDetails: "Citywide stormwater treatment using constructed wetlands",
-      certifications: ["Resource Consent Compliant", "Biodiversity Enhancement", "WSUD Certified"],
-      completionYear: "2022"
-    },
-    {
-      id: 6,
-      clientName: "Dr. Michael Roberts",
-      organization: "Cawthron Institute",
-      projectType: "Aquaculture Systems",
-      serviceCategory: "biological",
-      location: "Nelson",
-      rating: 5,
-      outcome: "Breakthrough in sustainable aquaculture",
-      testimonial: "The recirculating aquaculture system RMES designed has revolutionized our salmon research. Water quality parameters are maintained within incredibly tight tolerances, and the biological filtration system they developed specifically for New Zealand conditions has become a model for the industry.",
-      projectDetails: "Advanced RAS for sustainable salmon farming research",
-      certifications: ["Aquaculture Standards", "Environmental Sustainability", "Research Excellence"],
-      completionYear: "2023"
-    }
-  ];
+  const testimonials = [];
 
   const filterOptions = [
     { value: 'all', label: 'All Projects', count: testimonials.length },
@@ -136,7 +51,29 @@ const TestimonialsCarousel = () => {
   };
 
   if (filteredTestimonials.length === 0) {
-    return <div>No testimonials found for the selected category.</div>;
+    return (
+      <section className="section" style={{ backgroundColor: '#f8fafc' }}>
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Client Testimonials</h2>
+            <p className="section-description">
+              Testimonials from our valued clients will be displayed here.
+            </p>
+          </div>
+          <div style={{
+            background: 'white',
+            borderRadius: '12px',
+            boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+            padding: '3rem',
+            textAlign: 'center',
+            color: 'var(--text-medium)'
+          }}>
+            <FaQuoteLeft style={{ fontSize: '3rem', color: '#e2e8f0', marginBottom: '1rem' }} />
+            <p>Client testimonials will be added as projects are completed.</p>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   const currentTestimonial = filteredTestimonials[currentSlide];

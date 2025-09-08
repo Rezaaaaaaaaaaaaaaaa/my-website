@@ -16,40 +16,40 @@ const FiltrationPage = () => {
     {
       icon: <FaIndustry />,
       title: "Dairy Processing",
-      description: "Critical for milk filtration, whey processing, and protein concentration in New Zealand's $20 billion dairy industry.",
+      description: "Filtration applications for milk processing, whey treatment, and protein concentration in New Zealand's dairy industry.",
       details: [
-        "Raw milk clarification and bacteria removal",
+        "Raw milk clarification and microbial reduction",
         "Whey protein concentration and purification", 
-        "UHT milk pre-treatment filtration",
-        "Cheese making process filtration"
+        "Heat treatment pre-filtration for milk processing",
+        "Process water filtration for dairy operations"
       ]
     },
     {
       icon: <FaWater />,
       title: "Municipal Water Treatment", 
-      description: "Essential for providing clean drinking water to New Zealand's 5 million residents across diverse geographic regions.",
+      description: "Filtration systems for drinking water treatment facilities serving communities across New Zealand.",
       details: [
         "Turbidity removal from surface water sources",
-        "Cryptosporidium and Giardia removal",
+        "Particle and pathogen removal systems",
         "Iron and manganese filtration from groundwater",
-        "Pre-treatment for reverse osmosis systems"
+        "Pre-treatment for advanced treatment processes"
       ]
     },
     {
       icon: <FaLeaf />,
       title: "Wine & Beverage Production",
-      description: "Supporting New Zealand's premium wine industry and craft beverage sector with specialized filtration solutions.",
+      description: "Filtration systems for New Zealand's wine industry and beverage production facilities.",
       details: [
-        "Wine clarification and stabilization",
-        "Yeast and bacteria removal",
-        "Cold stabilization filtration",
-        "Craft beer and cider production filtration"
+        "Wine clarification and stabilization processes",
+        "Microbial removal and product quality assurance",
+        "Cold stabilization filtration systems",
+        "Beverage production filtration applications"
       ]
     },
     {
       icon: <FaIndustry />,
       title: "Aquaculture & Seafood",
-      description: "Critical for New Zealand's sustainable aquaculture operations and seafood processing facilities.",
+      description: "Filtration systems for New Zealand's aquaculture operations and seafood processing facilities.",
       details: [
         "Recirculating aquaculture system (RAS) filtration",
         "Seawater intake treatment for salmon farms",

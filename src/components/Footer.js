@@ -14,10 +14,10 @@ const Footer = () => {
             <div className="mb-4">
               <Logo size="default" variant="compact" />
             </div>
-            <p>New Zealand's trusted environmental engineering consultancy, delivering innovative solutions that protect our clean, green heritage while advancing industrial excellence across Aotearoa.</p>
+            <p>RMES (Reza Moghaddam Engineering Solutions) is a PhD-led professional engineering consultancy specializing in advanced chemical processes, bioprocess systems, water treatment, and environmental compliance solutions for New Zealand industries.</p>
             <div className="mt-4 p-3 bg-gradient-to-r from-teal-600/10 to-blue-600/10 rounded-lg">
-              <p className="text-sm font-semibold text-teal-700 italic">Local Water Done Well</p>
-              <p className="text-xs text-slate-600 mt-1">Professional water treatment engineering across New Zealand</p>
+              <p className="text-sm font-semibold text-teal-700 italic">Professional Process Engineering</p>
+              <p className="text-xs text-slate-600 mt-1">Chemical, biological, and water treatment engineering solutions</p>
             </div>
           </div>
 

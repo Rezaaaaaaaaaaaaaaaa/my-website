@@ -17,23 +17,23 @@ const MembraneBioreactorPage = () => {
     {
       icon: <FaWater />,
       title: "Municipal Wastewater Treatment",
-      description: "Advanced treatment for New Zealand communities requiring high-quality effluent and water reuse.",
+      description: "MBR technology applications for municipal wastewater treatment requiring high-quality effluent.",
       details: [
-        "Small township MBR systems",
-        "Decentralized wastewater treatment",
-        "Water recycling for non-potable use",
-        "Nutrient removal for sensitive environments"
+        "Municipal MBR system design and optimization",
+        "Decentralized wastewater treatment solutions",
+        "Effluent quality improvement for discharge compliance",
+        "Nutrient removal system design"
       ]
     },
     {
       icon: <FaIndustry />,
       title: "Industrial Wastewater",
-      description: "Treating complex industrial effluents from New Zealand's manufacturing sectors.",
+      description: "MBR applications for treating industrial effluents from manufacturing and processing operations.",
       details: [
-        "Dairy processing wastewater treatment",
-        "Food and beverage industry effluent",
-        "Textile and manufacturing wastewater",
-        "Pharmaceutical industry treatment"
+        "Food processing wastewater treatment",
+        "Dairy industry effluent treatment",
+        "Industrial process water treatment",
+        "High-strength wastewater applications"
       ]
     },
     {

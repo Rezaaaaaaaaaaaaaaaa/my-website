@@ -1,17 +1,14 @@
 import React from 'react';
 import { 
   FaAward, 
-  FaUniversity, 
   FaCertificate, 
   FaGlobe, 
   FaMedal,
   FaUsers,
   FaBook,
   FaMicrophone,
-  FaNewspaper,
   FaShieldAlt,
-  FaLeaf,
-  FaFlask
+  FaLeaf
 } from 'react-icons/fa';
 
 const ProfessionalCredentials = () => {

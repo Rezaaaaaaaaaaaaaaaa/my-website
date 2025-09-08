@@ -6,7 +6,6 @@ import {
   FaCheckCircle,
   FaExclamationTriangle,
   FaInfoCircle,
-  FaDownload,
   FaCalendarAlt,
   FaMapMarkerAlt,
   FaIndustry,

@@ -6,7 +6,6 @@ import {
   FaUsers, 
   FaCheckCircle,
   FaFileAlt,
-  FaTimes,
   FaExternalLinkAlt,
   FaLeaf,
   FaWater,

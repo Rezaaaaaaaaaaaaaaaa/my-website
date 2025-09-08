@@ -3,7 +3,6 @@ import {
   FaFlask, 
   FaCogs, 
   FaWater, 
-  FaArrowRight,
   FaInfoCircle,
   FaPlay,
   FaPause,
@@ -16,8 +15,7 @@ import {
   FaBolt,
   FaFilter,
   FaRecycle,
-  FaVial,
-  FaTimes
+  FaVial
 } from 'react-icons/fa';
 import Modal from './Modal';
 

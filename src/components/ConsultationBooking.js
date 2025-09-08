@@ -5,13 +5,9 @@ import {
   FaPhone, 
   FaBuilding,
   FaMapMarkerAlt,
-  FaClipboardList,
   FaCheckCircle,
-  FaCalendarAlt,
-  FaClock,
   FaArrowRight,
-  FaArrowLeft,
-  FaExclamationCircle
+  FaArrowLeft
 } from 'react-icons/fa';
 import Modal from './Modal';
 import LoadingSpinner from './LoadingSpinner';

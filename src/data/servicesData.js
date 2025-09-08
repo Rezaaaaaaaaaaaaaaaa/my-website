@@ -3,7 +3,7 @@ import {
     FaWater, FaFilter, FaRecycle, FaBolt, FaVial, FaLeaf, FaSlidersH,
     FaChartLine, FaIndustry, FaFlask, FaSnowflake, FaBurn, FaAtom,
     FaDna, FaSeedling, FaOilCan, FaThermometerHalf, FaCloudRain,
-    FaMicroscope, FaWind, FaCogs, FaTools, FaShieldAlt, FaPlay, FaEye
+    FaMicroscope, FaWind, FaCogs, FaTools, FaShieldAlt
 } from 'react-icons/fa';
 
 export const serviceCategories = {

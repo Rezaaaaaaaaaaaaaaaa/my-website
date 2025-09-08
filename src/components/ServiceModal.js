@@ -9,8 +9,6 @@ import {
   FaIndustry,
   FaChartLine,
   FaTools,
-  FaLeaf,
-  FaShieldAlt,
   FaAward,
   FaGlobe
 } from 'react-icons/fa';

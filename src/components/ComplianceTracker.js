@@ -862,9 +862,9 @@ const ComplianceTracker = () => {
                     }}
                   >
                     <option value="">Select preferred timeline...</option>
-                    <option value="urgent">Urgent (< 6 months)</option>
+                    <option value="urgent">Urgent (&lt; 6 months)</option>
                     <option value="standard">Standard (6-18 months)</option>
-                    <option value="flexible">Flexible (> 18 months)</option>
+                    <option value="flexible">Flexible (&gt; 18 months)</option>
                   </select>
                 </div>
               </div>

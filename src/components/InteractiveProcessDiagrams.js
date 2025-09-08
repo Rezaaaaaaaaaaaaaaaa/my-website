@@ -10,7 +10,7 @@ import {
   FaChartLine,
   FaThermometerHalf,
   FaTachometerAlt,
-  FaDroplet,
+  FaTint,
   FaCloudRain,
   FaLeaf,
   FaBolt,
@@ -38,7 +38,7 @@ const InteractiveProcessDiagrams = () => {
         {
           id: 'intake',
           name: 'Raw Water Intake',
-          icon: <FaDroplet />,
+          icon: <FaTint />,
           position: { x: 10, y: 50 },
           description: 'Collection of raw water from source (river, lake, or groundwater)',
           parameters: {
@@ -179,7 +179,7 @@ const InteractiveProcessDiagrams = () => {
         {
           id: 'influent',
           name: 'Raw Wastewater Influent',
-          icon: <FaDroplet />,
+          icon: <FaTint />,
           position: { x: 10, y: 40 },
           description: 'Raw wastewater collection and preliminary screening',
           parameters: {

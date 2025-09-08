@@ -25,7 +25,8 @@
       "Bash(dir C:webistemy-websitesrccomponentslogo.svg)",
       "Bash(copy:*)",
       "Bash(git rm:*)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Read(//c/webiste/**)"
     ],
     "deny": [],
     "ask": [],

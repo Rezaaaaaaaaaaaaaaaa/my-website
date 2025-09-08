@@ -262,7 +262,7 @@ p {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-blue) 50%, var(--accent-blue) 100%);
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-teal) 25%, var(--primary-blue) 75%, var(--accent-blue) 100%);
   color: var(--white);
   padding: var(--space-20) 0;
   text-align: center;
@@ -361,16 +361,18 @@ p {
 }
 
 .btn-primary {
-  background-color: var(--primary-green);
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-teal) 100%);
   color: var(--white);
-  border: 2px solid var(--primary-green);
+  border: 2px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: var(--accent-teal);
-  border-color: var(--accent-teal);
+  background: linear-gradient(135deg, var(--accent-teal) 0%, var(--primary-blue) 100%);
+  border-color: transparent;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-xl);
 }
 
 .btn-secondary {
@@ -432,9 +434,10 @@ p {
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary-green), var(--primary-blue), var(--accent-teal));
+  background: linear-gradient(90deg, var(--primary-green), var(--accent-teal), var(--primary-blue));
   opacity: 0;
   transition: opacity 0.3s ease;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
 }
 
 .card:hover {

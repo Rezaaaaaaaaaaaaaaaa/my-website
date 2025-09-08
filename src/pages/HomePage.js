@@ -158,32 +158,36 @@ const HomePage = () => {
       <section className="hero">
         <div className="container">
           <div className="hero-content">
-            <div className="flex justify-center mb-6">
+            <div className="flex justify-center mb-8">
               <Logo size="hero" variant="full" animated={true} />
             </div>
             <p className="subtitle">Professional Process Engineering Solutions</p>
-            <div className="mb-6 p-8 bg-gradient-to-r from-teal-50 to-blue-50 rounded-xl border border-teal-100 shadow-lg">
+            <div className="mb-6 p-8 rounded-xl border shadow-lg" style={{
+              background: 'linear-gradient(135deg, var(--gray-50) 0%, #f0f9ff 100%)',
+              borderColor: 'var(--accent-teal)',
+              borderWidth: '1px'
+            }}>
               <div className="flex items-center mb-4">
-                <FaWater className="text-3xl text-teal-600 mr-3" />
-                <h2 className="text-2xl font-bold text-slate-800">
+                <FaWater className="text-3xl mr-3" style={{color: 'var(--accent-teal)'}} />
+                <h2 className="text-2xl font-bold" style={{color: 'var(--gray-900)'}}>
                   Environmental Engineering Services
                 </h2>
               </div>
-              <p className="text-slate-700 text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed" style={{color: 'var(--gray-700)'}}>
                 Engineering solutions for water treatment, wastewater systems, and environmental processes 
                 focused on regulatory compliance and sustainable practices.
               </p>
-              <div className="flex items-center gap-6 mt-4 text-sm text-slate-600">
+              <div className="flex items-center gap-6 mt-4 text-sm" style={{color: 'var(--gray-600)'}}>
                 <div className="flex items-center gap-2">
-                  <FaAward className="text-teal-600" />
+                  <FaAward style={{color: 'var(--accent-teal)'}} />
                   <span>Quality Focused</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <FaUsers className="text-teal-600" />
+                  <FaUsers style={{color: 'var(--accent-teal)'}} />
                   <span>Professional Team</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <FaGlobeAmericas className="text-teal-600" />
+                  <FaGlobeAmericas style={{color: 'var(--accent-teal)'}} />
                   <span>Local Service</span>
                 </div>
               </div>
@@ -201,21 +205,7 @@ const HomePage = () => {
               </Link>
               <button 
                 onClick={() => setConsultationOpen(true)}
-                className="btn btn-secondary"
-                style={{
-                  background: 'linear-gradient(135deg, var(--primary-green) 0%, #059669 100%)',
-                  color: 'white',
-                  border: 'none',
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: '6px',
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  textDecoration: 'none'
-                }}
+className="btn btn-primary"
               >
                 Get Consultation
               </button>
@@ -252,21 +242,8 @@ const HomePage = () => {
                   <button
                     onClick={() => openServiceModal(service.modalType)}
                     className="btn"
-                    style={{
-                      background: 'linear-gradient(135deg, var(--accent-teal) 0%, var(--primary-blue) 100%)',
-                      color: 'white',
-                      border: 'none',
-                      padding: '0.6rem 1.2rem',
-                      borderRadius: '6px',
-                      fontSize: '0.9rem',
-                      fontWeight: '600',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.5rem',
-                      textDecoration: 'none',
-                      flex: '1'
-                    }}
+className="btn btn-primary"
+                    style={{ flex: '1' }}
                   >
                     <FaInfoCircle /> View Details
                   </button>
@@ -380,10 +357,7 @@ const HomePage = () => {
             <button
               onClick={() => setConsultationOpen(true)}
               className="btn btn-primary btn-lg"
-              style={{
-                background: 'linear-gradient(135deg, var(--primary-green) 0%, #059669 100%)',
-                border: 'none'
-              }}
+className="btn btn-primary btn-lg"
             >
               Start Your Project <FaArrowRight />
             </button>

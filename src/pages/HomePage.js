@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   FaFlask, 
@@ -11,12 +11,31 @@ import {
   FaCheckCircle,
   FaAward,
   FaUsers,
-  FaGlobeAmericas
+  FaGlobeAmericas,
+  FaInfoCircle
 } from 'react-icons/fa';
 import Logo from '../components/Logo';
+import ServiceModal from '../components/ServiceModal';
+import ConsultationBooking from '../components/ConsultationBooking';
+import TestimonialsCarousel from '../components/TestimonialsCarousel';
+import ProfessionalCredentials from '../components/ProfessionalCredentials';
+import NZRegionalMap from '../components/NZRegionalMap';
+import ComplianceTracker from '../components/ComplianceTracker';
+import InteractiveProcessDiagrams from '../components/InteractiveProcessDiagrams';
+import BackToTop from '../components/BackToTop';
 import { serviceCategories } from '../data/servicesData';
 
 const HomePage = () => {
+  const [activeModal, setActiveModal] = useState(null);
+  const [consultationOpen, setConsultationOpen] = useState(false);
+
+  const openServiceModal = (serviceType) => {
+    setActiveModal(serviceType);
+  };
+
+  const closeServiceModal = () => {
+    setActiveModal(null);
+  };
   const slugify = (text) => {
     return text.toString().toLowerCase()
       .replace(/\s+/g, '-')           // Replace spaces with -
@@ -32,21 +51,24 @@ const HomePage = () => {
       title: "Chemical Process Engineering",
       description: "Advanced process design, optimization, and troubleshooting for chemical manufacturing and production facilities.",
       features: ["Process Design", "Scale-up", "Optimization", "Safety Analysis"],
-      link: `/services#${slugify(serviceCategories.CHEMICAL)}`
+      link: `/services#${slugify(serviceCategories.CHEMICAL)}`,
+      modalType: 'chemical'
     },
     {
       icon: <FaCogs />,
       title: "Bioprocess Engineering",
       description: "Specialized engineering solutions for biotechnology, fermentation, and biological treatment systems.",
       features: ["Bioreactor Design", "Fermentation", "Downstream Processing", "Quality Control"],
-      link: `/services#${slugify(serviceCategories.BIOLOGICAL)}`
+      link: `/services#${slugify(serviceCategories.BIOLOGICAL)}`,
+      modalType: 'bioprocess'
     },
     {
       icon: <FaWater />,
       title: "Water Treatment Engineering",
       description: "Local Water Done Well - Advanced water/wastewater treatment including MBR, SBR, MBBR, membrane systems, and stormwater WSUD solutions.",
       features: ["Membrane Systems (RO/UF/MF)", "Biological Treatment (ASP/MBR/SBR)", "Advanced Oxidation (AOPs)", "Stormwater Management"],
-      link: `/services#${slugify(serviceCategories.WATER_TREATMENT)}`
+      link: `/services#${slugify(serviceCategories.WATER_TREATMENT)}`,
+      modalType: 'water'
     },
     {
       icon: <FaIndustry />,
@@ -112,9 +134,26 @@ const HomePage = () => {
               <Link to="/services" className="btn btn-primary">
                 Our Services <FaArrowRight />
               </Link>
-              <Link to="/contact" className="btn btn-secondary">
+              <button 
+                onClick={() => setConsultationOpen(true)}
+                className="btn btn-secondary"
+                style={{
+                  background: 'linear-gradient(135deg, var(--primary-green) 0%, #059669 100%)',
+                  color: 'white',
+                  border: 'none',
+                  padding: '0.75rem 1.5rem',
+                  borderRadius: '6px',
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  textDecoration: 'none'
+                }}
+              >
                 Get Consultation
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -132,7 +171,7 @@ const HomePage = () => {
           
           <div className="grid grid-auto">
             {services.map((service, index) => (
-              <div key={index} className="card fade-in-up">
+              <div key={index} className="card fade-in-up" style={{ position: 'relative' }}>
                 <div className="card-icon">{service.icon}</div>
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
@@ -144,9 +183,36 @@ const HomePage = () => {
                     </li>
                   ))}
                 </ul>
-                <Link to={service.link} className="btn btn-secondary">
-                  Learn More
-                </Link>
+                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                  <button
+                    onClick={() => openServiceModal(service.modalType)}
+                    className="btn"
+                    style={{
+                      background: 'linear-gradient(135deg, var(--accent-teal) 0%, var(--primary-blue) 100%)',
+                      color: 'white',
+                      border: 'none',
+                      padding: '0.6rem 1.2rem',
+                      borderRadius: '6px',
+                      fontSize: '0.9rem',
+                      fontWeight: '600',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      textDecoration: 'none',
+                      flex: '1'
+                    }}
+                  >
+                    <FaInfoCircle /> View Details
+                  </button>
+                  <Link 
+                    to={service.link} 
+                    className="btn btn-secondary"
+                    style={{ flex: '1', textAlign: 'center' }}
+                  >
+                    Learn More
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -203,6 +269,21 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* New Zealand Regional Coverage Map */}
+      <NZRegionalMap />
+
+      {/* RMA/NES Compliance Tracker */}
+      <ComplianceTracker />
+
+      {/* Interactive Process Flow Diagrams */}
+      <InteractiveProcessDiagrams />
+
+      {/* Testimonials Carousel */}
+      <TestimonialsCarousel />
+      
+      {/* Professional Credentials */}
+      <ProfessionalCredentials />
+
       {/* Single CTA Section - Consolidated */}
       <section className="section" style={{backgroundColor: 'var(--gray-100)'}}>
         <div className="container text-center">
@@ -211,15 +292,36 @@ const HomePage = () => {
             Contact our Kiwi engineering experts today to discuss how we can benefit your operations with sustainable, efficient solutions.
           </p>
           <div className="flex justify-center gap-4">
-            <Link to="/contact" className="btn btn-primary btn-lg">
+            <button
+              onClick={() => setConsultationOpen(true)}
+              className="btn btn-primary btn-lg"
+              style={{
+                background: 'linear-gradient(135deg, var(--primary-green) 0%, #059669 100%)',
+                border: 'none'
+              }}
+            >
               Start Your Project <FaArrowRight />
-            </Link>
+            </button>
             <Link to="/services" className="btn btn-secondary btn-lg">
               Explore Services
             </Link>
           </div>
         </div>
       </section>
+
+      {/* Modals and Interactive Components */}
+      <ServiceModal
+        isOpen={activeModal !== null}
+        onClose={closeServiceModal}
+        serviceType={activeModal}
+      />
+      
+      <ConsultationBooking
+        isOpen={consultationOpen}
+        onClose={() => setConsultationOpen(false)}
+      />
+      
+      <BackToTop />
     </div>
   );
 };

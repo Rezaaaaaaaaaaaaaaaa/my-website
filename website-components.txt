@@ -1,0 +1,194 @@
+WEBSITE COMPONENTS DOCUMENTATION
+=====================================
+
+OVERVIEW
+--------
+This document provides a comprehensive list of all components in the AquaTech Solutions NZ website.
+The website is built using React.js and focuses on environmental engineering services.
+
+MAIN APPLICATION STRUCTURE
+---------------------------
+1. App.js - Main application component with routing configuration
+   - Implements React Router for navigation
+   - Includes main layout with Navbar, Footer, and TechnicalProcesses components
+   - Defines routes for all pages
+
+CORE LAYOUT COMPONENTS
+----------------------
+
+1. Navbar.js (src/components/Navbar.js)
+   - Responsive navigation bar with mobile menu toggle
+   - Brand name: "AquaTech Solutions NZ"
+   - Navigation links: Home, Services, About, Contact, Processes
+   - Uses React Router for navigation with active link highlighting
+
+2. Footer.js (src/components/Footer.js)
+   - Company information and branding
+   - Core services listing
+   - Contact information (email, location, LinkedIn, phone)
+   - NZ-specific industry focus
+   - Copyright information
+
+3. Hero.js (src/components/Hero.js)
+   - Reusable hero section component
+   - Accepts props: title, subtitle, description, children
+   - Used across multiple pages for consistent styling
+
+REUSABLE COMPONENTS
+-------------------
+
+4. Logo.js (src/components/Logo.js)
+   - Company logo component
+   - Multiple size and variant options
+   - Used in Footer and potentially other locations
+
+5. ServiceCard.js (src/components/ServiceCard.js)
+   - Individual service display card
+   - Used to showcase different engineering services
+
+6. Dropdown.js (src/components/Dropdown.js)
+   - Reusable dropdown menu component
+   - For navigation or filtering purposes
+
+7. ProcessSchematic.js (src/components/ProcessSchematic.js)
+   - Visual representation of engineering processes
+   - Technical diagrams and schematics
+
+8. ProcessFlowDiagram.js (src/components/ProcessFlowDiagram.js)
+   - Flow diagram component for process visualization
+   - Engineering workflow representations
+
+9. TechnicalIcons.js (src/components/TechnicalIcons.js)
+   - Collection of technical/engineering icons
+   - Consistent iconography across the site
+
+10. TechnicalProcesses (Referenced in App.js)
+    - Component displaying technical processes
+    - Likely showcases engineering capabilities
+
+PAGE COMPONENTS
+---------------
+
+MAIN PAGES:
+11. HomePage.js (src/pages/HomePage.js)
+    - Landing page with company overview
+
+12. ServicesPage.js (src/pages/ServicesPage.js)
+    - Complete listing of engineering services
+
+13. AboutPage.js (src/pages/AboutPage.js)
+    - Company information and background
+
+14. ContactPage.js (src/pages/ContactPage.js)
+    - Contact information and inquiry forms
+
+15. ProcessesPage.js (src/pages/ProcessesPage.js)
+    - Overview of engineering processes
+
+WATER & WASTEWATER TREATMENT PAGES:
+16. FiltrationPage.js
+    - Sand, multimedia, and cartridge filtration
+
+17. ReverseOsmosisPage.js
+    - RO membrane separation systems
+
+18. UltrafiltrationPage.js
+    - Hollow fiber membrane systems
+
+19. UVDisinfectionPage.js
+    - Chemical-free UV disinfection
+
+20. IonExchangePage.js
+    - Water softening and deionization
+
+21. ActivatedCarbonPage.js
+    - Organic compound adsorption
+
+BIOLOGICAL PROCESSES PAGES:
+22. BioreactorPage.js
+    - Fermentation vessel design
+
+23. MembraneBioreactorPage.js
+    - Combined biological treatment and membrane filtration
+
+CHEMICAL ENGINEERING PAGES:
+24. ReactorPage.js
+    - Chemical reactor design and analysis
+
+25. DistillationPage.js
+    - Liquid mixture separation systems
+
+26. HeatExchangerPage.js
+    - Heat transfer equipment design
+
+27. SeparatorPage.js
+    - Multiphase flow separation vessels
+
+28. CrystallizationPage.js
+    - Crystal formation and purification
+
+29. ExtractionPage.js
+    - Liquid-liquid and solid-liquid extraction
+
+FOOD ENGINEERING PAGES:
+30. DairyProcessingPage.js
+    - Dairy industry engineering solutions
+
+31. FoodSafetySystemsPage.js
+    - HACCP and food safety standards
+
+ANALYSIS & DIGITAL SERVICES PAGES:
+32. QMRAAnalysisPage.js
+    - Quantitative Microbial Risk Assessment
+
+33. MachineLearningPage.js
+    - AI-driven process optimization
+
+34. MechanisticAnalysisPage.js
+    - First-principles modeling
+
+35. RatingCurvesPage.js
+    - Hydraulic rating curve development
+
+36. ReactionPage.js
+    - Chemical reaction analysis and optimization
+
+DATA AND CONFIGURATION FILES
+-----------------------------
+
+37. servicesData.js (src/data/servicesData.js)
+    - Central data file containing all service information
+    - Includes service categories, descriptions, icons, and links
+    - Service categories: Water Treatment, Biological Processes, Chemical Engineering, Analysis & Digital Services, Food Engineering, General Engineering
+
+38. index.js (src/index.js)
+    - Application entry point
+    - React DOM rendering configuration
+
+STYLING
+-------
+- Main CSS file: src/styles/index.css
+- Component-specific CSS: Hero.css (for Hero component)
+
+EXTERNAL DEPENDENCIES
+---------------------
+- React Router Dom - for navigation and routing
+- React Icons (FA library) - for consistent iconography throughout the site
+- Various engineering and technical icons from FontAwesome
+
+TOTAL COMPONENT COUNT
+---------------------
+- Core Layout Components: 3
+- Reusable Components: 7
+- Page Components: 26
+- Data/Configuration Files: 2
+- Total React Components: 38
+
+NOTES
+-----
+- The website specializes in environmental engineering services
+- Strong focus on New Zealand market and industries
+- Comprehensive coverage of water treatment, chemical engineering, and biological processes
+- Modern React architecture with component-based design
+- Responsive design with mobile-friendly navigation
+- Professional branding with "Local Water Done Well" tagline

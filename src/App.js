@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ErrorBoundary from './components/ErrorBoundary';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import TechnicalProcesses from './components/TechnicalProcesses';
@@ -17,26 +18,28 @@ import './styles/index.css';
 
 function App() {
   return (
-    <Router>
-      <div className="app">
-        <Navbar />
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/reactor" element={<ReactorPage />} />
-            <Route path="/distillation" element={<DistillationPage />} />
-            <Route path="/heat-exchanger" element={<HeatExchangerPage />} />
-            <Route path="/separator" element={<SeparatorPage />} />
-            <Route path="/processes" element={<ProcessesPage />} />
-          </Routes>
-        </main>
-        <TechnicalProcesses />
-        <Footer />
-      </div>
-    </Router>
+    <ErrorBoundary>
+      <Router>
+        <div className="app">
+          <Navbar />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/reactor" element={<ReactorPage />} />
+              <Route path="/distillation" element={<DistillationPage />} />
+              <Route path="/heat-exchanger" element={<HeatExchangerPage />} />
+              <Route path="/separator" element={<SeparatorPage />} />
+              <Route path="/processes" element={<ProcessesPage />} />
+            </Routes>
+          </main>
+          <TechnicalProcesses />
+          <Footer />
+        </div>
+      </Router>
+    </ErrorBoundary>
   );
 }
 

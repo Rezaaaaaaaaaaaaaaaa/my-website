@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="30" cy="30" r="28" fill="url(#gradient1)" stroke="url(#gradient2)" stroke-width="2"/>
+  
+  <!-- Water Drops -->
+  <path d="M20 24C20 19 23 16 26 16C29 16 32 19 32 24C32 29 29 32 26 32C23 32 20 29 20 24Z" fill="url(#waterGradient)"/>
+  <path d="M28 24C28 19 31 16 34 16C37 16 40 19 40 24C40 29 37 32 34 32C31 32 28 29 28 24Z" fill="url(#waterGradient)"/>
+  
+  <!-- Gear/Process Elements -->
+  <circle cx="26" cy="38" r="6" fill="none" stroke="url(#techGradient)" stroke-width="1.5"/>
+  <path d="M26 32L26 44M20 38L32 38M23 35L29 41M29 35L23 41" stroke="url(#techGradient)" stroke-width="1.2"/>
+  
+  <circle cx="34" cy="38" r="6" fill="none" stroke="url(#techGradient)" stroke-width="1.5"/>
+  <path d="M34 32L34 44M28 38L40 38M31 35L37 41M37 35L31 41" stroke="url(#techGradient)" stroke-width="1.2"/>
+  
+  <!-- Wave Elements -->
+  <path d="M15 48C18 46 21 50 24 48C27 46 30 50 33 48" stroke="url(#waveGradient)" stroke-width="2" fill="none"/>
+  <path d="M27 48C30 46 33 50 36 48C39 46 42 50 45 48" stroke="url(#waveGradient)" stroke-width="2" fill="none"/>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14b8a6"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0891b2"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="waterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bae6fd"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="techGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="50%" stop-color="#14b8a6"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+</svg>

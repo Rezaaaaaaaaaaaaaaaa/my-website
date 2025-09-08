@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="220" height="70" viewBox="0 0 220 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="35" cy="35" r="32" fill="url(#gradient1)" stroke="url(#gradient2)" stroke-width="1.5"/>
+  
+  <!-- Water Drops -->
+  <path d="M22 28C22 23 25 20 28 20C31 20 34 23 34 28C34 33 31 36 28 36C25 36 22 33 22 28Z" fill="url(#waterGradient)"/>
+  <path d="M36 28C36 23 39 20 42 20C45 20 48 23 48 28C48 33 45 36 42 36C39 36 36 33 36 28Z" fill="url(#waterGradient)"/>
+  
+  <!-- Gear/Process Elements -->
+  <circle cx="28" cy="45" r="5" fill="none" stroke="url(#techGradient)" stroke-width="1.2"/>
+  <path d="M28 40L28 50M23 45L33 45M25.5 42.5L30.5 47.5M30.5 42.5L25.5 47.5" stroke="url(#techGradient)" stroke-width="1"/>
+  
+  <circle cx="42" cy="45" r="5" fill="none" stroke="url(#techGradient)" stroke-width="1.2"/>
+  <path d="M42 40L42 50M37 45L47 45M39.5 42.5L44.5 47.5M44.5 42.5L39.5 47.5" stroke="url(#techGradient)" stroke-width="1"/>
+  
+  <!-- Wave Elements -->
+  <path d="M18 55C21 53 24 57 27 55C30 53 33 57 36 55" stroke="url(#waveGradient)" stroke-width="1.5" fill="none"/>
+  <path d="M34 55C37 53 40 57 43 55C46 53 49 57 52 55" stroke="url(#waveGradient)" stroke-width="1.5" fill="none"/>
+  
+  <!-- Company Name -->
+  <text x="80" y="25" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="url(#textGradient1)">AquaTech</text>
+  <text x="80" y="42" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="url(#textGradient2)">Solutions NZ</text>
+  
+  <!-- Tagline -->
+  <text x="80" y="55" font-family="Arial, sans-serif" font-size="10" font-style="italic" fill="#64748b">Local Water Done Well</text>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14b8a6"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0891b2"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="waterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bae6fd"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="techGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="50%" stop-color="#14b8a6"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="textGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0891b2"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="textGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#14b8a6"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+</svg>

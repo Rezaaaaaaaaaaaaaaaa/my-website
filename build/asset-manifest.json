@@ -1,14 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.d1cc04f9.css",
-    "main.js": "/static/js/main.e364587d.js",
-    "static/media/logo.svg": "/static/media/logo.0c957a48fbb748132d47317a7418aec3.svg",
+    "main.css": "/static/css/main.838b36eb.css",
+    "main.js": "/static/js/main.24687bdb.js",
+    "static/media/AquaTechLogo.svg": "/static/media/AquaTechLogo.11141d00cdb4f0b95de1e7bc505b51df.svg",
+    "static/media/AquaTechLogoCompact.svg": "/static/media/AquaTechLogoCompact.6b0bfa6514e9ba2b479e9fe40a7d6c4f.svg",
+    "static/media/AquaTechIcon.svg": "/static/media/AquaTechIcon.2b2f9411f3b7d53a07976de377917fa5.svg",
     "index.html": "/index.html",
-    "main.d1cc04f9.css.map": "/static/css/main.d1cc04f9.css.map",
-    "main.e364587d.js.map": "/static/js/main.e364587d.js.map"
+    "main.838b36eb.css.map": "/static/css/main.838b36eb.css.map",
+    "main.24687bdb.js.map": "/static/js/main.24687bdb.js.map"
   },
   "entrypoints": [
-    "static/css/main.d1cc04f9.css",
-    "static/js/main.e364587d.js"
+    "static/css/main.838b36eb.css",
+    "static/js/main.24687bdb.js"
   ]
 }

@@ -14,6 +14,9 @@ import DistillationPage from './pages/DistillationPage';
 import HeatExchangerPage from './pages/HeatExchangerPage';
 import SeparatorPage from './pages/SeparatorPage';
 import ProcessesPage from './pages/ProcessesPage';
+import WaterTreatmentServicesPage from './pages/WaterTreatmentServicesPage';
+import ProcessEngineeringPage from './pages/ProcessEngineeringPage';
+import FoodProcessingPage from './pages/FoodProcessingPage';
 import './styles/index.css';
 
 function App() {
@@ -33,6 +36,9 @@ function App() {
               <Route path="/heat-exchanger" element={<HeatExchangerPage />} />
               <Route path="/separator" element={<SeparatorPage />} />
               <Route path="/processes" element={<ProcessesPage />} />
+              <Route path="/water-treatment-services" element={<WaterTreatmentServicesPage />} />
+              <Route path="/process-engineering" element={<ProcessEngineeringPage />} />
+              <Route path="/food-processing" element={<FoodProcessingPage />} />
             </Routes>
           </main>
           <TechnicalProcesses />

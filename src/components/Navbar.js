@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import Logo from './Logo';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,8 +16,8 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="container">
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo" onClick={closeMenu}>
-            RMES
+          <Link to="/" className="navbar-logo" onClick={closeMenu} style={{textDecoration: 'none'}}>
+            <Logo size="small" animated={true} />
           </Link>
           
           <ul className={`nav-menu ${isOpen ? 'nav-menu-open' : ''}`}>

@@ -12,9 +12,9 @@ const Footer = () => {
         <div className="footer-content">
           <div>
             <div className="mb-4">
-              <Logo size="default" variant="compact" />
+              <Logo size="small" />
             </div>
-            <p>RMES (Reza Moghaddam Engineering Solutions) is a PhD-led professional engineering consultancy specializing in advanced chemical processes, bioprocess systems, water treatment, and environmental compliance solutions for New Zealand industries.</p>
+            <p>R.M. Engineering is a PhD-led professional engineering consultancy specializing in advanced chemical processes, bioprocess systems, water treatment, and environmental compliance solutions for New Zealand industries.</p>
             <div className="mt-4 p-3 bg-gradient-to-r from-teal-600/10 to-blue-600/10 rounded-lg">
               <p className="text-sm font-semibold text-teal-700 italic">Professional Process Engineering</p>
               <p className="text-xs text-slate-600 mt-1">Chemical, biological, and water treatment engineering solutions</p>
@@ -61,7 +61,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {currentYear} RMES. All rights reserved. | Serving New Zealand businesses nationwide</p>
+          <p>&copy; {currentYear} R.M. Engineering. All rights reserved. | Serving New Zealand businesses nationwide</p>
         </div>
       </div>
     </footer>

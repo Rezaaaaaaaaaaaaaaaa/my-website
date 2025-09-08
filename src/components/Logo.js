@@ -1,5 +1,5 @@
 import React from 'react';
-import rmesLogo from './rmes.svg';
+import rmesLogo from '../assets/logo.png';
 
 const Logo = ({ 
   className = "", 
@@ -10,17 +10,17 @@ const Logo = ({
   showTagline = true 
 }) => {
   const sizes = {
-    tiny: { width: 60, height: 60 },
-    small: { width: 140, height: 45 },
-    default: { width: 220, height: 70 },
-    large: { width: 320, height: 100 },
-    hero: { width: 400, height: 120 },
+    tiny: { width: 80, height: 32 },
+    small: { width: 160, height: 64 },
+    default: { width: 240, height: 96 },
+    large: { width: 320, height: 128 },
+    hero: { width: 400, height: 160 },
   };
 
   const { width, height } = sizes[size] || sizes.default;
 
   const logoSrc = rmesLogo;
-  const altText = "RMES - Reza Moghaddam Engineering Solutions";
+  const altText = "R.M. Engineering - Professional Process Engineering Solutions";
 
   const logoElement = (
     <div className={`flex items-center ${className}`} style={{ cursor: linkTo ? 'pointer' : 'default' }}>
@@ -29,7 +29,9 @@ const Logo = ({
         alt={altText} 
         style={{ 
           width, 
-          height,
+          height: 'auto',
+          maxHeight: height,
+          objectFit: 'contain',
           transition: animated ? 'all 0.3s ease' : 'none',
           transform: animated ? 'scale(1)' : 'none'
         }}
@@ -54,15 +56,16 @@ const Logo = ({
             WebkitTextFillColor: "transparent",
             backgroundClip: "text"
           }}>
-            RMES
+            R.M. ENGINEERING
           </div>
           <div style={{ 
-            fontSize: size === "hero" ? "1.2rem" : size === "large" ? "1rem" : "0.9rem",
-            fontWeight: "600",
+            fontSize: size === "hero" ? "1rem" : size === "large" ? "0.9rem" : "0.8rem",
+            fontWeight: "500",
             color: "#338F9A",
-            marginTop: "-0.2rem"
+            marginTop: "-0.2rem",
+            letterSpacing: "0.05em"
           }}>
-            Engineering Solutions
+            Professional Process Engineering
           </div>
           {showTagline && size !== "tiny" && size !== "small" && (
             <div style={{ 
